@@ -6,6 +6,7 @@ class Standardizer(ast.NodeTransformer):
     
     def __init__(self):
         self._tmp = 0
+        self._used_names = set()
         
     @staticmethod
     def _carry(new: ast.AST, origin: ast.AST) -> ast.AST:
@@ -18,6 +19,34 @@ class Standardizer(ast.NodeTransformer):
     @staticmethod
     def _org(node: ast.AST) -> ast.AST:
         return getattr(node, "_origin", node)
+
+    @staticmethod
+    def _simple_operand(node: ast.AST) -> bool:
+        return isinstance(node, (ast.Name, ast.Constant))
+
+    def _fresh_tmp_name(self) -> str:
+        while True:
+            self._tmp += 1
+            name = f"_it{self._tmp}"
+            if name not in self._used_names:
+                self._used_names.add(name)
+                return name
+
+    @staticmethod
+    def _collect_used_names(tree: ast.AST) -> set[str]:
+        names = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Name):
+                names.add(node.id)
+            elif isinstance(node, ast.arg):
+                names.add(node.arg)
+            elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                names.add(node.name)
+            elif isinstance(node, ast.alias):
+                names.add(node.asname or node.name.split(".", 1)[0])
+            elif isinstance(node, ast.ExceptHandler) and node.name:
+                names.add(node.name)
+        return names
 
     # ---- Empty container normalization: list()/tuple()/dict() -> []/()/{} ----
     def visit_Call(self, node: ast.Call):
@@ -63,7 +92,7 @@ class Standardizer(ast.NodeTransformer):
     def visit_Compare(self, node: ast.Compare):
         self.generic_visit(node)
         nops = len(node.ops)
-        if nops == 1 and type(node.ops[0]) in self._FLIP:
+        if nops == 1 and type(node.ops[0]) in self._FLIP and self._simple_operand(node.left) and self._simple_operand(node.comparators[0]):
             node.ops[0] = self._FLIP[type(node.ops[0])]()
             node.left, node.comparators[0] = node.comparators[0], node.left
             return node
@@ -74,7 +103,7 @@ class Standardizer(ast.NodeTransformer):
             if all(isinstance(op, desc_types) for op in node.ops):
                 # ensure all operands are side-effect free simple nodes
                 operands = [node.left] + list(node.comparators)
-                if all(isinstance(x, (ast.Name, ast.Constant)) for x in operands):
+                if all(self._simple_operand(x) for x in operands):
                     # reverse operands and flip ops to ascending (Lt/LtE)
                     rev_ops = [self._FLIP[type(op)]() for op in reversed(node.ops)]
                     rev_operands = list(reversed(operands))
@@ -114,8 +143,7 @@ class Standardizer(ast.NodeTransformer):
         # keep for-else as is
         if node.orelse:
             return node
-        self._tmp += 1
-        itn = ast.Name(id=f"_it{self._tmp}", ctx=ast.Store())
+        itn = ast.Name(id=self._fresh_tmp_name(), ctx=ast.Store())
         assign_it = ast.Assign(
             targets=[itn],
             value=ast.Call(func=ast.Name(id="iter", ctx=ast.Load()), args=[node.iter], keywords=[]),
@@ -139,7 +167,10 @@ class Standardizer(ast.NodeTransformer):
         std = ast.parse(code)
         for o, w in zip(ast.walk(org), ast.walk(std)):
             w._origin = o
-        std = cls().visit(std)
+        standardizer = cls()
+        standardizer._used_names = cls._collect_used_names(std)
+        std = standardizer.visit(std)
+        ast.fix_missing_locations(std)
         return std, org
 
     @classmethod

@@ -2,25 +2,26 @@ import os, json, sys
 
 
 class DataLoader:
-    @staticmethod
-    def parse(data):
-        problem = data["problem"]
-        meta_raw = data.get("meta", {})
-        if isinstance(meta_raw, str):
-            try:
-                meta = json.loads(meta_raw)
-            except Exception:
-                meta = {}
-        else:
-            meta = meta_raw if isinstance(meta_raw, dict) else {}
-        pid = meta.get("problem_id", None)
-        timeout = meta.get("time_limit_ms", 2000) / 1000.0
-        tests = []
-        for i, t in enumerate(data["tests"]):
-            tests.append({"id": i, "input": t["input"], "output": t["output"]})
-        traj = {}
+    @classmethod
+    def _read(cls, path):
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"File not found: {path}")
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read()
+
+    @classmethod
+    def get_problem(cls, pdir):
+        meta_path = os.path.join(pdir, "meta.json")
+        tests_path = os.path.join(pdir, "tests.jsonl")
+        traj_path = os.path.join(pdir, "trajectories.jsonl")
+        
+        meta = json.loads(cls._read(meta_path))
+        timeout = meta.get("timeout", 2000.0) / 1000.0  # Convert ms to seconds
+        tests = [json.loads(line) for line in cls._read(tests_path).splitlines()]
+        trajactories = [json.loads(line) for line in cls._read(traj_path).splitlines()]
+        trajs = {}
         refs = {}
-        for t in data["trajectories"]:
+        for t in trajactories:
             user_id = t["user_id"]
             subs = t["submissions"]
             was = []
@@ -29,19 +30,8 @@ class DataLoader:
                     refs[user_id] = s["code"]
                 else:
                     was.append(s["code"])
-            traj[user_id] = was
-        return pid, problem, timeout, traj, refs, tests
-
-    @classmethod
-    def get_problem(cls, pdir):
-        data = {}
-        for fname in ["problem.html", "meta.json", "trajectories.jsonl", "tests.jsonl", ]:
-            if not os.path.exists(os.path.join(pdir, fname)):
-                raise ValueError(f"Missing required file '{fname}' in problem directory: {pdir}")
-            file = os.path.join(pdir, fname)
-            base = os.path.splitext(fname)[0]
-            data[base] = open(file, encoding="utf-8").read() if base != "trajectories" and base != "tests" else [json.loads(ln) for ln in open(file, encoding="utf-8")]
-        return data
+            trajs[user_id] = was
+        return timeout, tests, trajs, refs
 
     @classmethod
     def run(cls, dataset_path):
@@ -51,10 +41,11 @@ class DataLoader:
                 pdir = os.path.join(dataset_path, pid)
                 if os.path.isdir(pdir):
                     data = cls.get_problem(pdir)
-                    problems.append(data)
+                    problems.append((pid,) + data)
             if not problems:
+                pid = os.path.basename(os.path.normpath(dataset_path))
                 data = cls.get_problem(dataset_path)
-                problems.append(data)
+                problems.append((pid,) + data)
         else:
             raise ValueError("Dataset path must be a directory or a JSON file containing problem IDs")
         return problems
