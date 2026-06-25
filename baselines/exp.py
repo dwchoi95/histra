@@ -443,6 +443,72 @@ def solve_hybrid(traj, refpool, k=4, budget=120, **kw):
     return best
 
 
+# ------------- M6: coherent_expr — one donor program, expression-level fill -----
+def solve_coherent_expr(traj, refpool, k=4, budget=40, **kw):
+    """Coherent donor-program selection (the RR engine), but fill each hole-unit
+    with the donor's path-aligned SUBexpressions (keep the student's statement
+    structure -> better IP). Fall back to whole-statement replace per unit only
+    when expression alignment fails. Validate programs nearest-first."""
+    skt_org, anchor = sketch_of(traj)
+    if n_holes(skt_org) == 0:
+        return None
+    sch = Searcher(refpool, anchor)
+    walk_idx = {id(n): i for i, n in enumerate(ast.walk(skt_org))}
+    units = maximal_hole_stmts(skt_org)
+    if not units:
+        return None
+    unit_idx = [walk_idx[id(S)] for S in units]
+    plans = []                                       # (total_dist, [replacement stmt per unit])
+    for prog_stmts in sch.ref_roots_list:
+        chosen, total, ok = [], 0, True
+        for S in units:
+            cands = [r for r in prog_stmts if type(r) is type(S)]
+            if not cands:
+                ok = False; break
+            d_best, r_best = float("inf"), None
+            for r in cands:
+                try:
+                    d = sch._apted_dist(S, r)
+                except Exception:
+                    continue
+                if d < d_best:
+                    d_best, r_best = d, r
+            if r_best is None:
+                ok = False; break
+            filled = fill_stmt_expr(S, r_best, sch)   # expr-level (keep student struct)
+            chosen.append(filled if filled is not None else r_best)
+            total += d_best
+        if ok:
+            plans.append((total, chosen))
+    plans.sort(key=lambda x: x[0])
+    best, best_ted = None, float("inf")
+    for ci, (total, chosen) in enumerate(plans[:budget]):
+        cur = copy.deepcopy(skt_org)
+        nodes = list(ast.walk(cur))
+        ps = _build_parent_slot(cur)
+        for widx, st in zip(unit_idx, chosen):
+            tgt = nodes[widx]
+            if id(tgt) in ps:
+                _set_node(ps, tgt, copy.deepcopy(st))
+        ast.fix_missing_locations(cur)
+        if n_holes(cur) != 0:
+            continue
+        try:
+            patch = ast.unparse(cur)
+        except Exception:
+            continue
+        try:
+            ok = Validator.run(patch).passed()
+        except Exception:
+            ok = False
+        if ok:
+            t = _metrics.ted(traj[-1], patch) or 0
+            if t < best_ted:
+                best_ted, best = t, patch
+            break
+    return best
+
+
 # ---------------- cascade: try expr-fill (best IP) -> beam -> coherent ----------
 def solve_cascade(traj, refpool, k=4, budget=80, **kw):
     for fn in (solve_exprfill,
@@ -465,6 +531,7 @@ METHODS = {
     "coherent": solve_coherent,
     "cascade": solve_cascade,
     "hybrid": solve_hybrid,
+    "coherent_expr": solve_coherent_expr,
 }
 
 
