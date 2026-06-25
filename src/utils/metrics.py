@@ -1,16 +1,6 @@
-"""Evaluation metrics. TED = type-label AST tree edit distance (APTED)."""
-import ast, sys
+import ast
 from apted import APTED, Config
-
-sys.setrecursionlimit(100000)
-
-
-class _Node:
-    __slots__ = ("name", "children")
-
-    def __init__(self, name, children):
-        self.name = name
-        self.children = children
+from .node import Node
 
 
 class _Cfg(Config):
@@ -35,7 +25,7 @@ def _label(n):
 
 
 def _to_node(a):
-    return _Node(_label(a), [_to_node(c) for c in ast.iter_child_nodes(a)])
+    return Node(_label(a), [_to_node(c) for c in ast.iter_child_nodes(a)], a)
 
 
 def ted(code_a, code_b):

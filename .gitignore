@@ -217,11 +217,18 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+
+.DS_Store
 data/
 paper/
 results/
 tests/
-*.txt
-*.ipynb
-CLAUDE.md
-.DS_Store
+# --- baseline experiment artifacts (added for HISTRA improvement work) ---
+baselines/refactory/
+baselines/Peer-aided-Repairer/
+baselines/results_*/
+baselines/par/results_par/
+baselines/**/__pycache__/
+baselines/*.log
+baselines/monitor.log
+baselines/comparison.txt

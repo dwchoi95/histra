@@ -1,0 +1,4 @@
+apted>=1.0.3
+sympy>=1.12
+tqdm>=4.66.0
+prettytable>=3.9.0

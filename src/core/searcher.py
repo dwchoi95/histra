@@ -3,16 +3,7 @@ import copy
 import random
 from typing import Dict
 from apted import APTED, Config
-
-
-class Node:
-    __slots__ = ("name", "children", "node")
-
-    def __init__(self, name, children, node):
-        self.name = name
-        self.children = children
-        self.node = node
-
+from src.utils import Node
 
 class NConfig(Config):
     def rename(self, a, b):
@@ -48,6 +39,8 @@ class Searcher:
         prof: Dict[str, Dict[str, int]] = {}
         for n in ast.walk(tree):
             if isinstance(n, ast.Name):
+                if n.id == "__HOLE__":
+                    continue  # holes are not variables: never map a donor var onto __HOLE__
                 d = prof.setdefault(n.id, {"store": 0, "load": 0})
                 d["store" if isinstance(n.ctx, ast.Store) else "load"] += 1
                 par = pm.get(n)
@@ -161,7 +154,10 @@ class Searcher:
 
     # ---------------- Hole helpers and stmt enumeration ----------------
     def _is_hole_name(self, n: ast.AST) -> bool:
-        return isinstance(n, ast.Name) and isinstance(n.id, str) and n.id.startswith("__HOLE_")
+        return isinstance(n, ast.Name) and isinstance(n.id, str) and n.id == "__HOLE__"
+
+    def _has_hole(self, n: ast.AST) -> bool:
+        return any(self._is_hole_name(x) for x in ast.walk(n))
 
     def _stmts(self, tree: ast.AST):
         return [n for n in ast.walk(tree) if isinstance(n, ast.stmt)]
@@ -174,7 +170,16 @@ class Searcher:
     def _label_for(self, n: ast.AST) -> str:
         if self._is_hole_name(n):
             return "Hole"
-        return type(n).__name__
+        fields = []
+        for name, value in ast.iter_fields(n):
+            if isinstance(value, ast.AST):
+                continue
+            if isinstance(value, list) and any(isinstance(item, ast.AST) for item in value):
+                continue
+            if name == "ctx":
+                continue
+            fields.append((name, value))
+        return repr((type(n).__name__, tuple(fields)))
         
     def _node(self, n: ast.AST):
         return Node(self._label_for(n), [self._node(c) for c in ast.iter_child_nodes(n)], n)
@@ -189,15 +194,19 @@ class Searcher:
         node_map = {}
         for s in bug_roots:
             ss = self._size(s)
+            has_hole = self._has_hole(s)
             cands = []
             for ref_roots in self.ref_roots_list:
                 for r in ref_roots:
                     if type(r) is not type(s): continue
                     sr = self._size(r)
                     if sr == 0 or ss == 0: continue
-                    ratio = sr / ss
-                    if 0.5 <= ratio <= 2.0:
+                    if has_hole:
                         cands.append(r)
+                    else:
+                        ratio = sr / ss
+                        if 0.5 <= ratio <= 2.0:
+                            cands.append(r)
             
             if cands:
                 min_dist = float('inf')
