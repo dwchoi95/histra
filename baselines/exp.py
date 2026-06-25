@@ -443,6 +443,84 @@ def solve_hybrid(traj, refpool, k=4, budget=120, **kw):
     return best
 
 
+# ------------- M7: coherent_min — coherent patch, then shrink toward student ----
+def _apply(skt_org, unit_idx, repls):
+    cur = copy.deepcopy(skt_org)
+    nodes = list(ast.walk(cur))
+    ps = _build_parent_slot(cur)
+    for widx, st in zip(unit_idx, repls):
+        tgt = nodes[widx]
+        if id(tgt) in ps:
+            _set_node(ps, tgt, copy.deepcopy(st))
+    ast.fix_missing_locations(cur)
+    return cur
+
+def _passes(cur, traj):
+    if n_holes(cur) != 0:
+        return None
+    try:
+        patch = ast.unparse(cur)
+    except Exception:
+        return None
+    try:
+        return patch if Validator.run(patch).passed() else None
+    except Exception:
+        return None
+
+def solve_coherent_min(traj, refpool, k=4, budget=120, **kw):
+    """Coherent (whole-stmt fills from one donor program) to PASS, then greedily
+    replace each unit's whole-stmt fill with the smaller expression-level fill and
+    keep it while tests still pass -> lower edit distance, higher IP."""
+    skt_org, anchor = sketch_of(traj)
+    if n_holes(skt_org) == 0:
+        return None
+    sch = Searcher(refpool, anchor)
+    walk_idx = {id(n): i for i, n in enumerate(ast.walk(skt_org))}
+    units = maximal_hole_stmts(skt_org)
+    if not units:
+        return None
+    unit_idx = [walk_idx[id(S)] for S in units]
+    plans = []
+    for prog_stmts in sch.ref_roots_list:
+        chosen, exprv, total, ok = [], [], 0, True
+        for S in units:
+            cands = [r for r in prog_stmts if type(r) is type(S)]
+            if not cands:
+                ok = False; break
+            d_best, r_best = float("inf"), None
+            for r in cands:
+                try:
+                    d = sch._apted_dist(S, r)
+                except Exception:
+                    continue
+                if d < d_best:
+                    d_best, r_best = d, r
+            if r_best is None:
+                ok = False; break
+            chosen.append(r_best)
+            exprv.append(fill_stmt_expr(S, r_best, sch))
+            total += d_best
+        if ok:
+            plans.append((total, chosen, exprv))
+    plans.sort(key=lambda x: x[0])
+    for ci, (total, chosen, exprv) in enumerate(plans[:budget]):
+        patch = _passes(_apply(skt_org, unit_idx, chosen), traj)
+        if patch is None:
+            continue
+        # minimize: try expr-fill per unit, keep if still passes
+        cur_repls = list(chosen)
+        for i, ev in enumerate(exprv):
+            if ev is None:
+                continue
+            trial = list(cur_repls); trial[i] = ev
+            p = _passes(_apply(skt_org, unit_idx, trial), traj)
+            if p is not None:
+                cur_repls = trial
+        final = _passes(_apply(skt_org, unit_idx, cur_repls), traj)
+        return final if final is not None else patch
+    return None
+
+
 # ------------- M6: coherent_expr — one donor program, expression-level fill -----
 def solve_coherent_expr(traj, refpool, k=4, budget=40, **kw):
     """Coherent donor-program selection (the RR engine), but fill each hole-unit
@@ -532,6 +610,7 @@ METHODS = {
     "cascade": solve_cascade,
     "hybrid": solve_hybrid,
     "coherent_expr": solve_coherent_expr,
+    "coherent_min": solve_coherent_min,
 }
 
 
