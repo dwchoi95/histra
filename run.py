@@ -1,6 +1,5 @@
 import os
 import argparse
-import time
 import csv
 from statistics import mean
 from tqdm import tqdm
@@ -10,149 +9,98 @@ import warnings
 warnings.filterwarnings('ignore')
 
 from src.utils import DataLoader
-from src.core.histra import HISTRA
 from src.utils import metrics as _metrics
+from baselines.approaches import solve as approach_solve, APPROACHES
+
+PER_HEADER = ["user_id", "buggy", "patch", "oracle", "fixed", "ted", "ip", "att"]
+OVERALL_HEADER = ["pid", "approach", "corrects", "buggys", "fixed",
+                  "rr", "ted", "ip", "att"]
 
 
-def core(pid, timeout, tests, trajs, refs, 
-         reset, out_root, lock):
+def core(pid, timeout, tests, trajs, refs, approach, reset, out_root, lock):
     out_dir = os.path.join(out_root, pid)
     os.makedirs(out_dir, exist_ok=True)
-    per_csv_path = os.path.join(out_dir, "results.csv")
+    per_csv_path = os.path.join(out_dir, f"{approach}.csv")
     overall_path = os.path.join(out_root, "overall.csv")
 
-    # Run HISTRA (multiprocessing under the hood)
-    start = time.process_time()
-    histra = HISTRA(timeout, tests, refs)
-    results = histra.run(trajs)  # {user_id: patch|None}
-    total_sec = time.process_time() - start
+    if (not reset) and os.path.exists(per_csv_path):
+        return
 
-    # Build per-user metrics (no per-user table printing)
-    pass_cnt = 0
-    ted_vals, ip_vals = [], []
-    csv_rows = [("user_id", "pass", "ted", "ip", "att_seconds", "buggy", "fixed", "oracle")]
+    # Run the chosen approach -> {user_id: (patch_or_None, seconds)}
+    results = approach_solve(approach, pid, timeout, tests, trajs, refs)
 
-    for user_id, patch in tqdm(results.items(), total=len(results), desc="Eval", leave=False):
-        wan = trajs.get(user_id, [None])[-1] if user_id in trajs and trajs[user_id] else None
-        oracle = refs.get(user_id)
-        passed = patch is not None
-        ted = _metrics.ted(wan, patch) if passed and wan else None
-        ip = _metrics.intent_preservation(wan, patch, oracle) if passed and wan and oracle else None
-
-        # Collect metrics
-        if passed:
-            pass_cnt += 1
+    rows = [tuple(PER_HEADER)]
+    fixed_cnt = 0
+    ted_vals, ip_vals, att_vals = [], [], []
+    for uid, (patch, secs) in results.items():
+        was = trajs.get(uid) or []
+        buggy = was[-1] if was else ""
+        oracle = refs.get(uid) or ""
+        fixed = 1 if patch else 0
+        ted = _metrics.ted(buggy, patch) if (fixed and buggy) else None
+        ip = (_metrics.intent_preservation(buggy, patch, oracle)
+              if (fixed and buggy and oracle) else None)
+        if fixed:
+            fixed_cnt += 1
             if ted is not None:
                 ted_vals.append(ted)
             if ip is not None:
                 ip_vals.append(ip)
-        # ATT per user will be computed from total CPU time later
+        att_vals.append(secs)
+        rows.append((uid, buggy, patch or "", oracle, fixed,
+                     ted if ted is not None else "",
+                     ip if ip is not None else "",
+                     f"{secs:.6f}"))
 
-        # Append row with codes instead of saving individual .py files
-        csv_rows.append((
-            user_id,
-            int(passed),
-            ted if ted is not None else "",
-            ip if ip is not None else "",
-            "",  # placeholder; replaced after ATT per user is known
-            wan or "",
-            patch or "",
-            oracle or "",
-        ))
+    with open(per_csv_path, "w", newline="", encoding="utf-8") as cf:
+        csv.writer(cf).writerows(rows)
 
-    # Aggregate metrics
-    total_users = max(len(trajs), 1)
-    rr = pass_cnt / total_users
+    corrects = len(refs)
+    buggys = max(len(results), 1)
+    rr = fixed_cnt / buggys
     ted_mean = mean(ted_vals) if ted_vals else 0.0
     ip_mean = mean(ip_vals) if ip_vals else 0.0
-    # ATT: use total CPU time divided by number of users in this problem
-    n_users = max(len(trajs), 1)
-    att_per_user = (total_sec / n_users) if n_users else 0.0
-    att_mean = att_per_user
+    att_mean = mean(att_vals) if att_vals else 0.0
 
-    # Print summary-only table
-    summary_table = PrettyTable()
-    summary_table.field_names = ["PID", "Users", "Pass", "RR", "TED(mean)", "IP(mean)", "ATT(mean)s", "Total(s)"]
-    summary_table.add_row([
-        pid,
-        len(trajs),
-        pass_cnt,
-        f"{rr:.0%}",
-        f"{ted_mean:.2f}",
-        f"{ip_mean:+.2f}",
-        f"{att_mean:.2f}",
-        f"{total_sec:.2f}",
-    ])
-
-    # Update ATT column in csv_rows (skip header index 0)
-    csv_rows = [csv_rows[0]] + [
-        (uid, pas, tedc, ipc, f"{att_per_user:.6f}", buggy, fixed, oracle)
-        for (uid, pas, tedc, ipc, _old_att, buggy, fixed, oracle) in csv_rows[1:]
-    ]
-
-    # Save per-problem CSV (overwrite or create)
-    with open(per_csv_path, "w", newline="", encoding="utf-8") as cf:
-        writer = csv.writer(cf)
-        writer.writerows(csv_rows)
+    summary = PrettyTable()
+    summary.field_names = ["PID", "Approach", "Corrects", "Buggys", "Fixed",
+                           "RR", "TED", "IP", "ATT(s)"]
+    summary.add_row([pid, approach, corrects, len(results), fixed_cnt,
+                     f"{rr:.0%}", f"{ted_mean:.2f}", f"{ip_mean:+.2f}",
+                     f"{att_mean:.2f}"])
+    print(summary)
 
     with lock:
-        print(summary_table, flush=True)
-
-        # Update overall.csv (append or replace pid row)
         overall_rows = []
         if os.path.exists(overall_path) and os.path.getsize(overall_path) > 0:
             with open(overall_path, "r", newline="", encoding="utf-8") as of:
-                reader = csv.reader(of)
-                for row in reader:
-                    overall_rows.append(row)
-        header = ["pid", "rr", "pass", "n_users", "ted_mean", "ip_mean", "att_mean", "total_seconds"]
+                overall_rows = [r for r in csv.reader(of)]
         if not overall_rows:
-            overall_rows.append(header)
-        # remove existing row for pid if present (refresh)
-        overall_rows = [r for r in overall_rows if not (r and r[0] == pid) or r == header]
-        overall_rows.append([
-            pid,
-            f"{rr:.6f}",
-            str(pass_cnt),
-            str(n_users),
-            f"{ted_mean:.6f}",
-            f"{ip_mean:.6f}",
-            f"{att_mean:.6f}",
-            f"{total_sec:.6f}",
-        ])
+            overall_rows.append(OVERALL_HEADER)
+        # drop any existing row for this (pid, approach)
+        overall_rows = [r for r in overall_rows
+                        if r == OVERALL_HEADER or not (len(r) >= 2 and r[0] == pid and r[1] == approach)]
+        overall_rows.append([pid, approach, corrects, len(results), fixed_cnt,
+                             f"{rr:.6f}", f"{ted_mean:.6f}", f"{ip_mean:.6f}",
+                             f"{att_mean:.6f}"])
         with open(overall_path, "w", newline="", encoding="utf-8") as of:
-            writer = csv.writer(of)
-            writer.writerows(overall_rows)
+            csv.writer(of).writerows(overall_rows)
 
-    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--dataset', type=str, required=True,
-                        help="Path to dataset directory or JSON file")
-    parser.add_argument('-ab', '--ablation', type=str, default=None,
-                        choices=["full", "no-reformat", 
-                                 "no-standardize", 
-                                 "ref-random", "ref-oracle", 
-                                 "wan-ac", "was-only", "plain"],
-                        help="Ablate a single MooRepair component; 'random' "
-                             "replaces ALL selection steps with random choices "
-                             "(only valid with -a MooRepair)")
-    parser.add_argument('-s', '--sampling', action='store_true', default=False,
-                        help="Use 10%% sampling of buggy programs")
+                        help="Path to dataset directory (data/<pid>/...)")
+    parser.add_argument('-a', '--approach', type=str, default="histra",
+                        choices=list(APPROACHES),
+                        help="Repair approach to run: histra | refactory | par")
     parser.add_argument('-r', '--reset', action='store_true', default=False,
-                        help="Reset overall.csv before running experiments")
+                        help="Recompute even if results/<pid>/<approach>.csv exists")
     args = parser.parse_args()
 
     assert os.path.exists(args.dataset), f"Dataset path does not exist: {args.dataset}"
-    assert args.ablation in [None, "full", "no-reformat", "no-standardize",
-                             "ref-random", "ref-oracle", "wan-ac", "was-only", "plain"], \
-        f"Invalid ablation choice: {args.ablation}"
-    assert isinstance(args.sampling, bool), "Sampling must be a boolean flag"
-    assert isinstance(args.reset, bool), "Reset must be a boolean flag"
 
     problems = DataLoader.run(args.dataset)
-
     out_root = 'results'
     os.makedirs(out_root, exist_ok=True)
 
@@ -160,23 +108,17 @@ if __name__ == "__main__":
     lock = Lock()
     for data in problems:
         pid, timeout, tests, trajs, refs = data
-        # Prepare output directory and skipping/refresh logic
         out_dir = os.path.join(out_root, pid)
         os.makedirs(out_dir, exist_ok=True)
-        per_csv_path = os.path.join(out_dir, "results.csv")
-
-        # Skip if results already exist and not resetting
+        per_csv_path = os.path.join(out_dir, f"{args.approach}.csv")
         if (not args.reset) and os.path.exists(per_csv_path):
             continue
-
-        proc = Process(target=core, args=(pid, timeout, tests, trajs, refs, 
-                                          args.reset, out_root, lock))
+        proc = Process(target=core, args=(pid, timeout, tests, trajs, refs,
+                                          args.approach, args.reset, out_root, lock))
         proc.start()
         procs.append(proc)
-    
+
     for proc in procs:
         proc.join()
         if proc.exitcode != 0:
             raise RuntimeError(f"Problem process failed with exit code {proc.exitcode}")
-    
-
