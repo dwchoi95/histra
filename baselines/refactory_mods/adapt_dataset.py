@@ -84,18 +84,26 @@ def adapt_problem(pid, tests, trajs, refs, out_root, sample=None):
     ac_items = [(u, c) for u, c in refs.items() if c and c.strip()]
     if not ac_items:
         return 0
-    ref_uid, ref_code = ac_items[0]
-    write(os.path.join(code_dir, "reference", "reference.py"), wrap(ref_code))
-    for u, c in ac_items:
-        # Refactory keys files by 'correct'/'wrong' prefix conventions
-        write(os.path.join(code_dir, "correct", f"correct_{u}.py"), wrap(c))
-
-    # wrong pool = each student's last WA (buggy), wrapped
-    manifest = {}
-    n_wrong = 0
+    # NO LEAKAGE: the buggy targets are the sampled users; exclude THEIR own ACs
+    # (oracles) from the correct pool and from the reference, so no buggy is ever
+    # repaired against its own accepted solution. This matches the self-exclusion
+    # used by the HISTRA+ and PaR runs.
     wrong_uids = sorted(trajs.keys())          # deterministic order
     if sample:
         wrong_uids = wrong_uids[:sample]
+    target_set = set(wrong_uids)
+    pool = [(u, c) for u, c in ac_items if u not in target_set]
+    if not pool:                                # fallback: tiny problem
+        pool = ac_items
+    ref_uid, ref_code = pool[0]                 # reference from a non-target AC
+    write(os.path.join(code_dir, "reference", "reference.py"), wrap(ref_code))
+    for u, c in pool:
+        # Refactory keys files by 'correct'/'wrong' prefix conventions
+        write(os.path.join(code_dir, "correct", f"correct_{u}.py"), wrap(c))
+
+    # wrong pool = each sampled student's last WA (buggy), wrapped
+    manifest = {}
+    n_wrong = 0
     for u in wrong_uids:
         was = trajs.get(u) or []
         if not was:
