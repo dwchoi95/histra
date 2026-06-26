@@ -702,9 +702,11 @@ def main():
     ap.add_argument("-k", type=int, default=4)
     ap.add_argument("--budget", type=int, default=80)
     ap.add_argument("-o", "--out", default=os.path.join(HERE, "results_methods"))
+    ap.add_argument("--no-log", action="store_true", help="skip METHODS.md append")
     args = ap.parse_args()
     overall = run(args.method, args.problems, args.sample, args.k, args.budget, args.out)
-    log_md(overall, args.sample)
+    if not args.no_log:
+        log_md(overall, args.sample)
 
 
 if __name__ == "__main__":
