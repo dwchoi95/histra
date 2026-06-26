@@ -223,12 +223,9 @@ data/
 paper/
 results/
 tests/
-# --- baseline experiment artifacts (added for HISTRA improvement work) ---
+# --- baselines: track approach code, ignore heavy clone / runtime / secrets ---
+baselines/.env
 baselines/refactory/
-baselines/Peer-aided-Repairer/
-baselines/results_*/
-baselines/par/results_par/
+baselines/_run/
+baselines/__pycache__/
 baselines/**/__pycache__/
-baselines/*.log
-baselines/monitor.log
-baselines/comparison.txt

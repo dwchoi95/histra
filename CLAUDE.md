@@ -19,19 +19,35 @@ everything through it, from the **repo root** (modules import with the `src.`
 prefix, so the repo root must be the working directory / on `sys.path`):
 
 ```bash
-env/bin/python run.py -d data            # run the full benchmark, write results/
-env/bin/python run.py -d data -r         # reset: recompute even if results/ exists
-env/bin/pip install -r requirements.txt  # deps: apted, sympy, tqdm, prettytable
+env/bin/python run.py -d data -a histra      # our approach (default)
+env/bin/python run.py -d data -a refactory    # Refactory baseline (needs baselines/refactory venv38)
+env/bin/python run.py -d data -a par -r       # PaR baseline (LLM; needs baselines/.env OPENAI_API_KEY)
+env/bin/pip install -r requirements.txt       # deps: apted, sympy, tqdm, prettytable
 ```
 
 `run.py` flags: `-d/--dataset` (required, a directory of `data/<pid>/` problems),
-`-r/--reset`, `-s/--sampling`, `-ab/--ablation` (the ablation choices are declared
-in the argparser but **not yet wired into the pipeline** — `HISTRA` ignores them).
+`-a/--approach` (`histra` | `refactory` | `par`, default `histra`), `-r/--reset`
+(recompute even if the output exists). One process per problem dispatches to
+`baselines/approaches.py::solve(approach, ...)`.
 
-Output: one process per problem writes `results/<pid>/results.csv` (per-user:
-pass/ted/ip/att + buggy/fixed/oracle source), and all processes update the shared
-`results/overall.csv` under a multiprocessing `Lock`. A `results/<pid>/results.csv`
-that already exists is skipped unless `-r`.
+Output (unified across approaches): one process per problem writes
+`results/<pid>/<approach>.csv` with columns
+`user_id,buggy,patch,oracle,fixed,ted,ip,att`; all processes update the shared
+`results/overall.csv` (`pid,approach,corrects,buggys,fixed,rr,ted,ip,att`) under a
+multiprocessing `Lock`, replacing any prior row for that `(pid, approach)`. A
+`results/<pid>/<approach>.csv` that already exists is skipped unless `-r`.
+
+## Baselines (`baselines/`)
+
+`baselines/approaches.py` is the dispatcher. `histra` calls `src.core.histra.HISTRA`
+per user; `par` (`baselines/par.py`) re-implements PaR (PSM peer selection via
+BM25 + CodeBLEU + test-pass match, then a `gpt-3.5-turbo` call, key from the
+gitignored `baselines/.env`); `refactory` (`baselines/refactory_runner.py`) wraps
+each program into `def __main__()`, excludes each buggy's own AC (no self-oracle
+leakage), runs the patched Refactory clone in its Py3.8 venv (`baselines/refactory/`,
+stdin mode + incremental per-wrong save), then unwraps and re-validates patches
+with OUR Validator. The clone, `_run/`, and `.env` are gitignored; the clone's
+local edits are mirrored in tracked `baselines/refactory_mods/`.
 
 ### Running a single problem / no test framework
 
