@@ -42,24 +42,46 @@ def unwrap(code: str):
 def collect_problem(pid, timeout, tests, trajs, refs, data_root, out_root):
     base = os.path.join(data_root, pid)
     csv_path = os.path.join(base, "refactory_online.csv")
+    inc_path = os.path.join(base, "incremental.jsonl")
     manifest_path = os.path.join(base, "manifest.json")
-    if not os.path.exists(csv_path) or not os.path.exists(manifest_path):
-        print(f"[{pid}] missing csv/manifest, skip")
+    if not os.path.exists(manifest_path):
+        print(f"[{pid}] missing manifest, skip")
+        return None
+    if not os.path.exists(csv_path) and not os.path.exists(inc_path):
+        print(f"[{pid}] no csv and no incremental.jsonl, skip")
         return None
     manifest = json.loads(open(manifest_path, encoding="utf-8").read())
 
     Validator.init_globals(tests, timeout)
 
-    # map uid -> repaired (raw, wrapped) code from the csv (last success row wins)
+    # map uid -> repaired (raw, wrapped) code. Prefer the incremental JSONL (one
+    # line per finished wrong -> survives a timeout); fall back to the final CSV.
     repaired = {}
-    with open(csv_path, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            fn = row.get("File Name", "")
-            if not fn.startswith("wrong_") or not fn.endswith(".py"):
-                continue
-            uid = fn[len("wrong_"):-len(".py")]
-            if str(row.get("Status", "")).startswith("success"):
-                repaired[uid] = row.get("Repair", "")
+    if os.path.exists(inc_path):
+        with open(inc_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    rec = json.loads(line)
+                except Exception:
+                    continue
+                fn = rec.get("file_name", "")
+                if not fn.startswith("wrong_") or not fn.endswith(".py"):
+                    continue
+                uid = fn[len("wrong_"):-len(".py")]
+                if str(rec.get("status", "")).startswith("success"):
+                    repaired[uid] = rec.get("rep_code", "")
+    elif os.path.exists(csv_path):
+        with open(csv_path, encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                fn = row.get("File Name", "")
+                if not fn.startswith("wrong_") or not fn.endswith(".py"):
+                    continue
+                uid = fn[len("wrong_"):-len(".py")]
+                if str(row.get("Status", "")).startswith("success"):
+                    repaired[uid] = row.get("Repair", "")
 
     rows = [("user_id", "pass", "ted", "ip", "att_seconds", "buggy", "fixed", "oracle")]
     pass_cnt = 0
