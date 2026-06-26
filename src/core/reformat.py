@@ -6,17 +6,16 @@ class Reformatter(ast.NodeTransformer):
         self.replace_map = replace_map or {}
 
     def visit(self, node: ast.AST):
-        hid = self.replace_map.get(id(node))
-        if hid is not None:
-            ctx = getattr(node, "ctx", ast.Load())
-            return ast.copy_location(ast.Name(id=hid, ctx=ctx), node)
+        hole_type = self.replace_map.get(id(node))
+        if hole_type is not None:
+            node._hole = True
+            node._hole_type = hole_type
+            return node
         return super().visit(node)
 
     @classmethod
     def is_hole(cls, node):
-        if isinstance(node, ast.Name) and node.id == "__HOLE__":
-            return node.id
-        return None
+        return getattr(node, "_hole_type", None) if getattr(node, "_hole", False) else None
 
     @classmethod
     def walk(cls, an, sn):

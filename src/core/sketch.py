@@ -72,10 +72,9 @@ class Sketcher(ast.NodeTransformer):
 
     @classmethod
     def _hole(cls, node: ast.AST) -> ast.AST:
-        name = ast.Name(id=f"__HOLE__", ctx=getattr(node, "ctx", None) or ast.Load())
-        if hasattr(node, "_origin"):
-            name._origin = node._origin
-        return ast.copy_location(name, node)
+        node._hole = True
+        node._hole_type = type(node).__name__
+        return node
 
     @classmethod
     def run(cls, std_traj):
