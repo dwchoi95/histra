@@ -6,16 +6,24 @@ from apted import APTED, Config
 from src.utils import Node
 
 class NConfig(Config):
+    @staticmethod
+    def _hole_type(node):
+        name = getattr(node, "name", "")
+        if isinstance(name, str) and name.startswith("Hole:"):
+            return name.split(":", 1)[1]
+        return None
+
     def rename(self, a, b):
-        if a.name == "Hole" or b.name == "Hole":
-            return 0
+        a_hole = self._hole_type(a)
+        b_hole = self._hole_type(b)
+        if a_hole is not None and b_hole is not None:
+            return 0 if a_hole == b_hole else 1
+        if a_hole is not None:
+            return 0 if type(b.node).__name__ == a_hole else 1
+        if b_hole is not None:
+            return 0 if type(a.node).__name__ == b_hole else 1
         return 0 if a.name == b.name else 1
 
-    def insert(self, node):
-        return 0 if node.name == "Hole" else 1
-
-    def delete(self, node):
-        return 0 if node.name == "Hole" else 1
 
 class Searcher:
     def __init__(self, refs:list[str], anchor:tuple[ast.AST, ast.AST]):
@@ -39,7 +47,7 @@ class Searcher:
         prof: Dict[str, Dict[str, int]] = {}
         for n in ast.walk(tree):
             if isinstance(n, ast.Name):
-                if n.id == "__HOLE__":
+                if self._is_hole(n):
                     continue  # holes are not variables: never map a donor var onto __HOLE__
                 d = prof.setdefault(n.id, {"store": 0, "load": 0})
                 d["store" if isinstance(n.ctx, ast.Store) else "load"] += 1
@@ -153,11 +161,16 @@ class Searcher:
         return R().visit(t)
 
     # ---------------- Hole helpers and stmt enumeration ----------------
-    def _is_hole_name(self, n: ast.AST) -> bool:
-        return isinstance(n, ast.Name) and isinstance(n.id, str) and n.id == "__HOLE__"
+    def _is_hole(self, n: ast.AST) -> bool:
+        return isinstance(n, ast.AST) and getattr(n, "_hole", False)
+
+    def _hole_type(self, n: ast.AST) -> str | None:
+        if not self._is_hole(n):
+            return None
+        return getattr(n, "_hole_type", type(n).__name__)
 
     def _has_hole(self, n: ast.AST) -> bool:
-        return any(self._is_hole_name(x) for x in ast.walk(n))
+        return any(self._is_hole(x) for x in ast.walk(n))
 
     def _stmts(self, tree: ast.AST):
         return [n for n in ast.walk(tree) if isinstance(n, ast.stmt)]
@@ -168,8 +181,8 @@ class Searcher:
 
     # --------- Fine alignment helpers (APTED label=type, holes cost 0) ---------
     def _label_for(self, n: ast.AST) -> str:
-        if self._is_hole_name(n):
-            return "Hole"
+        if self._is_hole(n):
+            return f"Hole:{self._hole_type(n)}"
         fields = []
         for name, value in ast.iter_fields(n):
             if isinstance(value, ast.AST):

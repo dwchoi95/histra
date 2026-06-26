@@ -21,9 +21,6 @@ def core(pid, timeout, tests, trajs, refs,
     per_csv_path = os.path.join(out_dir, "results.csv")
     overall_path = os.path.join(out_root, "overall.csv")
 
-    if (not reset) and os.path.exists(per_csv_path):
-        return
-
     # Run HISTRA (multiprocessing under the hood)
     start = time.process_time()
     histra = HISTRA(timeout, tests, refs)
@@ -99,6 +96,8 @@ def core(pid, timeout, tests, trajs, refs,
         writer.writerows(csv_rows)
 
     with lock:
+        print(summary_table, flush=True)
+
         # Update overall.csv (append or replace pid row)
         overall_rows = []
         if os.path.exists(overall_path) and os.path.getsize(overall_path) > 0:
@@ -156,7 +155,6 @@ if __name__ == "__main__":
 
     out_root = 'results'
     os.makedirs(out_root, exist_ok=True)
-
 
     procs = []
     lock = Lock()
