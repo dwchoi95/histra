@@ -110,3 +110,30 @@ index 02bc006..29b80fd 100644
  
      Holes.real_output = real_output
  
+diff --git a/basic_framework/repair.py b/basic_framework/repair.py
+index 15a077a..add3c57 100644
+--- a/basic_framework/repair.py
++++ b/basic_framework/repair.py
+@@ -1385,6 +1385,22 @@ class BlockRepair:
+                         self.print_perf(bug_file_name, code_perf_map)
+                         perf_map[sr][exp_idx][bug_file_name] = code_perf_map
+ 
++                        # INCREMENTAL SAVE: persist each wrong as soon as it
++                        # finishes, so a timeout/kill keeps the partial results
++                        # (one wrong == one JSONL line) instead of losing them all.
++                        try:
++                            import json as _json
++                            _inc = self.__ques_dir_path + "/incremental.jsonl"
++                            with open(_inc, "a", encoding="utf-8") as _f:
++                                _json.dump({"file_name": bug_file_name,
++                                            "status": code_perf_map.get("status", ""),
++                                            "rep_code": code_perf_map.get("rep_code", ""),
++                                            "total_time": code_perf_map.get("total_time", 0)},
++                                           _f, ensure_ascii=False)
++                                _f.write("\n")
++                        except Exception:
++                            pass
++
+                     self.print_ques_perf(sr, exp_idx, status_list, time_list, rps_list)
+                     self.copy_fail_codes(fail_list)
+ 
