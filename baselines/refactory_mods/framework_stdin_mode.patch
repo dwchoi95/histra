@@ -111,10 +111,39 @@ index 02bc006..29b80fd 100644
      Holes.real_output = real_output
  
 diff --git a/basic_framework/repair.py b/basic_framework/repair.py
-index 15a077a..add3c57 100644
+index 15a077a..fbf5a1e 100644
 --- a/basic_framework/repair.py
 +++ b/basic_framework/repair.py
-@@ -1385,6 +1385,22 @@ class BlockRepair:
+@@ -1309,7 +1309,18 @@ class BlockRepair:
+ 
+                         code_perf_map = {}
+ 
+-                        sel_corr_code_list = [code for _,code in sel_corr_fn_code_list]
++                        # NO LEAKAGE: exclude this buggy student's own AC
++                        # (correct_<uid>.py) so a wrong is never repaired against
++                        # its own accepted solution. Matches HISTRA+/PaR, and works
++                        # on full data where every student is also a buggy target.
++                        _uid = (bug_file_name[len("wrong_"):-len(".py")]
++                                if bug_file_name.startswith("wrong_") and bug_file_name.endswith(".py")
++                                else None)
++                        _self_corr = ("correct_" + _uid + ".py") if _uid else None
++                        sel_corr_fn_code_list_u = [(_fn, _c) for (_fn, _c) in sel_corr_fn_code_list
++                                                   if _fn != _self_corr]
++
++                        sel_corr_code_list = [code for _,code in sel_corr_fn_code_list_u]
+                         if any(cfs_map_equal(get_cfs_map(bug_code),
+                                              get_cfs_map(ori_corr_code))
+                                for ori_corr_code in sel_corr_code_list):
+@@ -1330,7 +1341,7 @@ class BlockRepair:
+                             bug_temp_list, bug_const_list = get_temp_cons_lists([bug_code])
+ 
+                             # online refactoring
+-                            sel_fn_code_map = dict(sel_corr_fn_code_list)
++                            sel_fn_code_map = dict(sel_corr_fn_code_list_u)
+                             ol_refactoring_start_time = time.process_time()
+ 
+                             corr_rc_map = None
+@@ -1385,6 +1396,22 @@ class BlockRepair:
                          self.print_perf(bug_file_name, code_perf_map)
                          perf_map[sr][exp_idx][bug_file_name] = code_perf_map
  

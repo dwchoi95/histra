@@ -72,14 +72,14 @@ def _build_layout(pid, tests, trajs, refs):
         _write(os.path.join(base, "ans", f"output_{i:03d}.txt"), tc["output"])
     _write(os.path.join(code_dir, "global.py"), "")
 
-    targets = {u for u in trajs if (trajs.get(u) or [])}
-    pool = [(u, c) for u, c in refs.items()
-            if u not in targets and c and c.strip()]      # no self-oracle
-    if not pool:
-        pool = [(u, c) for u, c in refs.items() if c and c.strip()]
+    # Correct pool = EVERY student's AC. No-leakage is enforced inside the patched
+    # Refactory (it drops correct_<uid>.py when repairing wrong_<uid>.py), which is
+    # the only way to exclude self on full data where every student is also a
+    # target. The reference dir is left empty so it cannot leak either.
+    pool = [(u, c) for u, c in refs.items() if c and c.strip()]
     if not pool:
         return base, {}
-    _write(os.path.join(code_dir, "reference", "reference.py"), _wrap(pool[0][1]))
+    os.makedirs(os.path.join(code_dir, "reference"), exist_ok=True)
     for u, c in pool:
         _write(os.path.join(code_dir, "correct", f"correct_{u}.py"), _wrap(c))
 
