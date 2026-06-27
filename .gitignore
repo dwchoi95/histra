@@ -229,3 +229,7 @@ baselines/refactory/
 baselines/_run/
 baselines/__pycache__/
 baselines/**/__pycache__/
+baselines/*.log
+baselines/run_*.sh
+baselines/ab_*.log
+baselines/llmcmp_*.log
