@@ -23,6 +23,7 @@ from baselines.par import (_problem_text, _call_llm, _extract_code, _load_env,
                            _pass_vector, _select_peer, MODEL, SAMPLES)
 
 USE_PEER = os.environ.get("HISTRA_LLM_PEER", "1") == "1"
+USE_TRAJ = os.environ.get("HISTRA_LLM_TRAJ", "1") == "1"   # 0 = last submission only (ablation)
 
 
 # --------------------------- trajectory intent model ---------------------------
@@ -76,32 +77,35 @@ def _stable_changed_summary(traj):
 # ------------------------------------- prompt ----------------------------------
 def _build_prompt(pdesc, traj, peer_code):
     parts = []
-    parts.append(
-        "You are repairing a student's buggy program for a competitive-programming "
-        "problem. Unlike a one-shot fixer, you are given the student's ENTIRE "
-        "submission history — their sequence of failed attempts — which reveals "
-        "their INTENT and exactly where they kept struggling. Use it.\n")
-    parts.append("[Problem]\n" + pdesc + "\n")
-    parts.append("[Student submission trajectory — earliest to latest, all Wrong Answer]")
-    for i, code in enumerate(traj, 1):
-        tag = " (LATEST — fix THIS one)" if i == len(traj) else ""
-        parts.append(f"--- Attempt {i}{tag} ---\n{code}")
-    parts.append(
-        "\n[Intent signal from the trajectory]\n"
-        "Across the attempts above, the parts that stayed the SAME are the "
-        "student's confirmed intent — preserve them and their variable names/style. "
-        "The lines the student KEPT CHANGING are flagged below with "
-        "'# <-- student kept changing this'; the bug is most likely there (but if a "
-        "stable line is genuinely the bug, you may fix it too).\n")
-    parts.append("[Latest attempt, annotated]\n" + _annotated_last(traj) + "\n")
+    if USE_TRAJ and len(traj) >= 2:
+        parts.append(
+            "Fix a student's buggy Python program so it passes ALL tests. You are "
+            "given the student's ENTIRE submission history (failed attempts in "
+            "order), which shows what they were trying and where they kept "
+            "struggling — use it to find the bug faster and fix it in their style.\n")
+        parts.append("[Problem]\n" + pdesc + "\n")
+        parts.append("[Student submission trajectory — earliest to latest, all Wrong Answer]")
+        for i, code in enumerate(traj, 1):
+            tag = " (LATEST — fix THIS one)" if i == len(traj) else ""
+            parts.append(f"--- Attempt {i}{tag} ---\n{code}")
+        parts.append(
+            "\nThe lines the student kept changing across attempts are flagged below "
+            "(the bug is often there, but it can be anywhere):")
+        parts.append("[Latest attempt, annotated]\n" + _annotated_last(traj))
+    else:
+        # ablation: last submission only (the way prior methods work)
+        parts.append(
+            "Fix a student's buggy Python program so it passes ALL tests, keeping "
+            "the fix close to the student's own code where possible.\n")
+        parts.append("[Problem]\n" + pdesc + "\n")
+        parts.append("[Buggy program]\n" + traj[-1] + "\n")
     if peer_code:
-        parts.append("[Reference: a peer student's accepted solution]\n" + peer_code + "\n")
+        parts.append("\n[A peer's accepted solution, for reference]\n" + peer_code)
     parts.append(
-        "Task: produce the SMALLEST change to the latest attempt that passes all "
-        "tests while PRESERVING the student's intent (keep the stable skeleton, "
-        "their variable names and overall approach; prefer editing the flagged "
-        "regions). Return ONLY the corrected Python program in a single ```python "
-        "code block, no explanation.")
+        "\nTask: return a CORRECT version of the latest attempt that passes all "
+        "tests. Correctness comes first. Where you have a choice, keep the student's "
+        "variable names and overall approach so the fix stays close to their code. "
+        "Return ONLY the corrected Python program in a single ```python code block.")
     return "\n".join(parts)
 
 

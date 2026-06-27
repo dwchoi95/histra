@@ -113,7 +113,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 def _call_llm(prompt, temperature):
     _load_env()
     from openai import OpenAI
-    client = OpenAI()  # reads OPENAI_API_KEY (from baselines/.env)
+    base = os.environ.get("LLM_BASE_URL")  # e.g. http://localhost:11434/v1 for Ollama
+    client = OpenAI(base_url=base, api_key="ollama") if base else OpenAI()
     resp = client.chat.completions.create(
         model=MODEL, temperature=temperature,
         messages=[{"role": "user", "content": prompt}])
