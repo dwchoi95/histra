@@ -75,11 +75,18 @@ def core(pid, timeout, tests, trajs, refs, approach, reset, out_root, lock):
         if os.path.exists(overall_path) and os.path.getsize(overall_path) > 0:
             with open(overall_path, "r", newline="", encoding="utf-8") as of:
                 overall_rows = [r for r in csv.reader(of)]
-        if not overall_rows:
-            overall_rows.append(OVERALL_HEADER)
-        # drop any existing row for this (pid, approach)
-        overall_rows = [r for r in overall_rows
-                        if r == OVERALL_HEADER or not (len(r) >= 2 and r[0] == pid and r[1] == approach)]
+        # keep only well-formed rows with a known approach (drops stale/old-format
+        # rows and the row for this (pid, approach), which we re-append below)
+        clean = []
+        for r in overall_rows:
+            if r == OVERALL_HEADER or not r:
+                continue
+            if len(r) != len(OVERALL_HEADER) or r[1] not in APPROACHES:
+                continue
+            if r[0] == pid and r[1] == approach:
+                continue
+            clean.append(r)
+        overall_rows = [OVERALL_HEADER] + clean
         overall_rows.append([pid, approach, corrects, len(results), fixed_cnt,
                              f"{rr:.6f}", f"{ted_mean:.6f}", f"{ip_mean:.6f}",
                              f"{att_mean:.6f}"])
