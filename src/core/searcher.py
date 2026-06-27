@@ -1,5 +1,5 @@
 import ast
-import copy
+import builtins
 import random
 from typing import Dict
 from apted import APTED, Config
@@ -26,15 +26,15 @@ class NConfig(Config):
 
 
 class Searcher:
-    def __init__(self, refs:list[str], anchor:tuple[ast.AST, ast.AST]):
+    def __init__(self, refs:list[str], anchor:tuple[ast.AST, ast.AST], top_k: int = 10):
         self.refs_src = refs
-        _, anchor_org = anchor
-        parsed = [ast.parse(code) for code in refs]
-        ref_asts = [self._rename_vars(r, self._varmap_defuse(anchor_org, r)) for r in parsed]
-        self.ref_roots_list = [[r for r in self._stmts(R)] for R in ref_asts]
+        _, self.anchor_org = anchor
+        self.ref_asts = [ast.parse(code) for code in refs]
+        self.ref_roots_list = [[r for r in self._stmts(R)] for R in self.ref_asts]
+        self.top_k = min(top_k, len(self.ref_asts)) if self.ref_asts else 0
+        self._ranked = None
 
     # ---------------- Var mapping helpers (def-use profiles + greedy matching) ----------------
-    
     def _parent_map(self, tree: ast.AST) -> Dict[ast.AST, ast.AST]:
         pm = {}
         for p in ast.walk(tree):
@@ -48,7 +48,9 @@ class Searcher:
         for n in ast.walk(tree):
             if isinstance(n, ast.Name):
                 if self._is_hole(n):
-                    continue  # holes are not variables: never map a donor var onto __HOLE__
+                    continue
+                if n.id in dir(builtins):
+                    continue
                 d = prof.setdefault(n.id, {"store": 0, "load": 0})
                 d["store" if isinstance(n.ctx, ast.Store) else "load"] += 1
                 par = pm.get(n)
@@ -69,35 +71,28 @@ class Searcher:
         return num / (da * db) if da and db else 0.0
 
     def _varmap_defuse(self, anchor: ast.AST, refer: ast.AST) -> Dict[str, str]:
-        """Build a 1:1 var mapping (ref -> anchor) using Hungarian assignment
-        on cosine similarities of def-use profiles. Pads to square with dummy costs.
-        """
         pa = self._var_profiles(anchor)
         pr = self._var_profiles(refer)
-        Ra = list(pr.keys())
-        Aa = list(pa.keys())
-        nr, na = len(Ra), len(Aa)
+        ref_names = list(pr.keys())
+        anchor_names = list(pa.keys())
+        nr, na = len(ref_names), len(anchor_names)
         if nr == 0 or na == 0:
             return {}
-        # build similarity matrix (rows=ref vars, cols=anchor vars)
-        sim = [[self._vcos(pr[Ra[i]], pa[Aa[j]]) for j in range(na)] for i in range(nr)]
-        # convert to cost; pad to square with cost=1 (i.e., sim=0)
+        sim = [[self._vcos(pr[ref_names[i]], pa[anchor_names[j]]) for j in range(na)] for i in range(nr)]
         n = max(nr, na)
         cost = [[1.0 for _ in range(n)] for _ in range(n)]
         for i in range(nr):
             for j in range(na):
                 cost[i][j] = 1.0 - sim[i][j]
-
-        assign = self._hungarian(cost)  # list of length n: col index for each row
-        vm: Dict[str, str] = {}
+        assign = self._hungarian(cost)
+        vm = {}
         for i in range(nr):
             j = assign[i]
-            if j < na and (1.0 - cost[i][j]) > 0.0:  # sim > 0
-                vm[Ra[i]] = Aa[j]
+            if j < na and (1.0 - cost[i][j]) > 0.0:
+                vm[ref_names[i]] = anchor_names[j]
         return vm
 
     def _hungarian(self, cost: list[list[float]]) -> list[int]:
-        """Hungarian algorithm for square cost matrix (min). Returns assignment col per row."""
         n = len(cost)
         u = [0.0] * (n + 1)
         v = [0.0] * (n + 1)
@@ -144,22 +139,6 @@ class Searcher:
                 assign[p[j] - 1] = j - 1
         return assign
 
-    def _rename_vars(self, tree: ast.AST, vm: Dict[str, str]) -> ast.AST:
-        t = copy.deepcopy(tree)
-
-        class R(ast.NodeTransformer):
-            def visit_Name(self, n: ast.Name):
-                if n.id in vm:
-                    return ast.copy_location(ast.Name(id=vm[n.id], ctx=n.ctx), n)
-                return n
-
-            def visit_arg(self, n: ast.arg):
-                if n.arg in vm:
-                    n.arg = vm[n.arg]
-                return n
-
-        return R().visit(t)
-
     # ---------------- Hole helpers and stmt enumeration ----------------
     def _is_hole(self, n: ast.AST) -> bool:
         return isinstance(n, ast.AST) and getattr(n, "_hole", False)
@@ -168,9 +147,6 @@ class Searcher:
         if not self._is_hole(n):
             return None
         return getattr(n, "_hole_type", type(n).__name__)
-
-    def _has_hole(self, n: ast.AST) -> bool:
-        return any(self._is_hole(x) for x in ast.walk(n))
 
     def _stmts(self, tree: ast.AST):
         return [n for n in ast.walk(tree) if isinstance(n, ast.stmt)]
@@ -202,37 +178,68 @@ class Searcher:
         B = self._node(b)
         return APTED(A, B, NConfig()).compute_edit_distance()
 
-    def run(self, skt_org: ast.AST):
-        bug_roots = [s for s in self._stmts(skt_org)]
+    def _best_map_for_ref(self, bug_roots, ref_roots):
         node_map = {}
+        total_dist = 0
         for s in bug_roots:
             ss = self._size(s)
-            has_hole = self._has_hole(s)
-            cands = []
-            for ref_roots in self.ref_roots_list:
-                for r in ref_roots:
-                    if type(r) is not type(s): continue
-                    sr = self._size(r)
-                    if sr == 0 or ss == 0: continue
-                    if has_hole:
-                        cands.append(r)
-                    else:
-                        ratio = sr / ss
-                        if 0.5 <= ratio <= 2.0:
-                            cands.append(r)
+            cands = {}
+            for r in ref_roots:
+                if type(r) is not type(s): continue
+                sr = self._size(r)
+                if sr == 0 or ss == 0: continue
+                ratio = sr / ss
+                if 0.5 <= ratio <= 2.0:
+                    cands[sr] = r
             
             if cands:
+                max_sr = 0
                 min_dist = float('inf')
                 best_pairs = []
-                for r in cands:
+                for sr, r in cands.items():
                     dist = self._apted_dist(s, r)
                     if dist < min_dist:
+                        max_sr = sr
                         min_dist = dist
                         best_pairs = [r]
                     elif dist == min_dist:
-                        best_pairs.append(r)
+                        if sr > max_sr:
+                            max_sr = sr
+                            best_pairs = [r]
+                        elif sr == max_sr:
+                            best_pairs.append(r)
+                
+                if not best_pairs: best_pairs = list(cands.values())
+                # B4: deterministic tie-break (source order) instead of random.choice,
+                # so every A/B below is single-shot reproducible (no RR change expected).
+                node_map[id(s)] = best_pairs[0]
+                total_dist += min_dist
+            else:
+                total_dist += ss
 
-                if not best_pairs: best_pairs = cands
-                node_map[id(s)] = random.choice(best_pairs)
+        return total_dist, node_map
 
-        return node_map
+    def _rank_refs(self, skt_org: ast.AST):
+        if self._ranked is not None:
+            return self._ranked
+        bug_roots = [s for s in self._stmts(skt_org)]
+        ranked = []
+        for idx, ref_roots in enumerate(self.ref_roots_list):
+            dist, _ = self._best_map_for_ref(bug_roots, ref_roots)
+            ranked.append((dist, idx))
+        ranked.sort(key=lambda x: x[0])
+        self._ranked = ranked[:self.top_k]
+        return self._ranked
+
+    def __len__(self):
+        return self.top_k
+
+    def run(self, skt_org: ast.AST, rank: int = 0):
+        ranked = self._rank_refs(skt_org)
+        if not ranked or rank >= len(ranked):
+            return {}, {}
+        _, ref_idx = ranked[rank]
+        bug_roots = [s for s in self._stmts(skt_org)]
+        _, node_map = self._best_map_for_ref(bug_roots, self.ref_roots_list[ref_idx])
+        var_map = self._varmap_defuse(skt_org, self.ref_asts[ref_idx])
+        return node_map, var_map

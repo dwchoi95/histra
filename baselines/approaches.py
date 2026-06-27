@@ -8,7 +8,7 @@ results/<pid>/<approach>.csv and results/overall.csv rows.
 """
 import time
 
-APPROACHES = ("histra", "histra_llm", "llm_only", "refactory", "par")
+APPROACHES = ("histra", "histra_llm", "partraj", "refactory", "par")
 
 
 def _histra_solve(pid, timeout, tests, trajs, refs):
@@ -37,7 +37,7 @@ def solve(approach, pid, timeout, tests, trajs, refs):
     if approach == "histra_llm":
         from baselines.histra_llm import solve as hllm_solve
         return hllm_solve(pid, timeout, tests, trajs, refs)
-    if approach == "llm_only":   # PaR + Trajectory (same model/peer/validation as par)
+    if approach == "partraj":   # PaR + Trajectory (same model/peer/validation as par)
         from baselines.par import solve as par_solve
         return par_solve(pid, timeout, tests, trajs, refs, use_traj=True)
     if approach == "par":

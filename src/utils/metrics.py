@@ -38,10 +38,16 @@ def ted(code_a, code_b):
 
 
 def intent_preservation(buggy, fixed, oracle):
-    """(TED_s - TED_f) / (TED_s + TED_f), where TED_s = TED(buggy, oracle AC) and
-    TED_f = TED(buggy, fixed). Higher = the fix stays closer to the student's buggy
-    program than adopting the AC would (more intent-preserving). None if unparsable."""
+    """Non-negative intent preservation score in [0, 1].
+
+    The raw score is (TED_s - TED_f) / (TED_s + TED_f), where
+    TED_s = TED(buggy, oracle AC) and TED_f = TED(buggy, fixed). We rescale it
+    from [-1, 1] to [0, 1] so 0.5 means oracle-distance parity, higher means
+    the fix stays closer to the student's buggy program than adopting the AC.
+    None if unparsable.
+    """
     ts, tf = ted(buggy, oracle), ted(buggy, fixed)
     if ts is None or tf is None:
         return None
-    return (ts - tf) / (ts + tf) if (ts + tf) else 0.0
+    raw = (ts - tf) / (ts + tf) if (ts + tf) else 0.0
+    return (raw + 1.0) / 2.0
