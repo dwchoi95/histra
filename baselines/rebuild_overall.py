@@ -55,6 +55,32 @@ def main():
         w.writerows(out)
     print(f"rebuilt overall.csv: {len(out)} rows from per-problem CSVs")
 
+    # summary.csv: one row per approach across ALL problems — corrects/buggys/fixed
+    # summed, rr/ted/ip/att averaged over problems (macro-average).
+    from collections import defaultdict
+    by_app = defaultdict(list)
+    for r in out:
+        by_app[r[1]].append(r)
+    sum_header = ["approach", "corrects", "buggys", "fixed", "rr", "ted", "ip", "att"]
+    sum_rows = []
+    for app in sorted(by_app):
+        rs = by_app[app]
+        corrects = sum(int(r[2]) for r in rs)
+        buggys = sum(int(r[3]) for r in rs)
+        fixed = sum(int(r[4]) for r in rs)
+        rr = mean(float(r[5]) for r in rs)
+        ted = mean(float(r[6]) for r in rs)
+        ip = mean(float(r[7]) for r in rs)
+        att = mean(float(r[8]) for r in rs)
+        sum_rows.append([app, corrects, buggys, fixed, f"{rr:.6f}",
+                         f"{ted:.6f}", f"{ip:.6f}", f"{att:.6f}"])
+    with open(os.path.join(RESULTS, "summary.csv"), "w", newline="",
+              encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(sum_header)
+        w.writerows(sum_rows)
+    print(f"wrote summary.csv: {len(sum_rows)} approach rows")
+
 
 if __name__ == "__main__":
     main()
