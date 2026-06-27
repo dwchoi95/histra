@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS = os.path.join(ROOT, "results")
 HEADER = ["pid", "approach", "corrects", "buggys", "fixed",
           "rr", "ted", "ip", "att"]
-APPROACHES = ("histra", "refactory", "par")
+APPROACHES = ("histra", "histra_llm", "partraj", "refactory", "par")
 
 
 def summarize(path):

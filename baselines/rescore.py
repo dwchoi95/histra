@@ -13,7 +13,7 @@ from src.utils import DataLoader
 from baselines.traj_metrics import ip_mean, ip_recency, ip_stable
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APPROACHES = ["llm_only", "histra", "par", "refactory"]
+APPROACHES = ["partraj", "histra", "par", "refactory"]
 
 
 def main():

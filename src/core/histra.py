@@ -1,3 +1,5 @@
+import ast
+import copy
 from tqdm import tqdm
 
 from .validator import Validator
@@ -17,6 +19,9 @@ class HISTRA:
         d = self.refs.copy()
         d.pop(user_id, None)
         return list(d.values())
+    
+    def _has_hole(self, node: ast.AST) -> bool:
+        return any(getattr(n, "_hole", False) for n in ast.walk(node))
 
     # ---- Static helpers for multiprocessing-safe execution ----
     def _pipeline_run(self, traj: list[str], refs: list[str]) -> str | None:
@@ -30,18 +35,22 @@ class HISTRA:
         # 3. Reformat: Sketch 결과(holes/insert_entries)를 원래 표면으로 투영
         skt_org = Reformatter.run(anchor, skt_std)
 
-        # 4. Search: refs에서 최소 수정 패치 재료(부분 서브트리) 검색/매핑
+        # 4-6. Search top-k refs one by one, repair with a single ref, then validate.
         searcher = Searcher(refs, anchor)
-        node_map = searcher.run(skt_org)
+        for rank in range(len(searcher)):
+            candidate = copy.deepcopy(skt_org)
+            node_map, var_map = searcher.run(candidate, rank)
+            if not node_map:
+                continue
 
-        # 5. Repair: 노드 매핑을 이용해 AST 변환으로 스케치 코드 패치
-        mod = Repair(node_map)
-        patch = mod.run(skt_org)
+            mod = Repair(node_map, var_map)
+            repaired = mod.run(candidate)
+            patch = ast.unparse(repaired)
+            results = Validator.run(patch)
+            if results.passed():
+                return patch
 
-        # 6. Validate: 모든 테스트케이스 통과 시 패치 반환, 아니면 None
-        results = Validator.run(patch)
-        if not results.passed(): patch = None
-        return patch
+        return None
 
     def run(self, trajectories:dict) -> dict:
         out = {}
