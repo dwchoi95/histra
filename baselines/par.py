@@ -91,6 +91,32 @@ def _build_prompt(pdesc, peer_code, buggy_code):
         "block, with no explanation.")
 
 
+def _build_prompt_traj(pdesc, peer_code, traj):
+    """PaR+Trajectory: the PaR prompt unchanged, plus the student's full submission
+    history and one instruction to use it to preserve the student's intent. The
+    last attempt IS the buggy code shown above."""
+    history = "\n".join(
+        f"--- Attempt {i} (Wrong Answer)"
+        f"{' (= the Buggy Code above)' if i == len(traj) else ''} ---\n{c}"
+        for i, c in enumerate(traj, 1))
+    return (
+        "There is a Python programming problem. Below is the problem description, "
+        "the input/output format and examples, a correct reference solution by a "
+        "peer student, and a buggy program with semantic errors written by a "
+        "student. The program reads from standard input and writes to standard "
+        "output. Please fix the buggy code and return the corrected program.\n\n"
+        "[Problem]\n" + pdesc + "\n[End of Problem]\n\n"
+        "[Reference Code]\n" + peer_code + "\n[End of Reference Code]\n\n"
+        "[Buggy Code]\n" + traj[-1] + "\n[End of Buggy Code]\n\n"
+        "[Student Submission History — earliest to latest]\n" + history +
+        "\n[End of Submission History]\n\n"
+        "Additionally, use the student's submission history above to understand and "
+        "PRESERVE the student's intent: fix the buggy code with the smallest change "
+        "that keeps the student's own approach and coding style.\n\n"
+        "Return ONLY the corrected Python program inside a single ```python code "
+        "block, with no explanation.")
+
+
 def _load_env():
     """Load baselines/.env (KEY=VALUE lines) into os.environ if not already set.
     The OPENAI_API_KEY lives there and the file is gitignored."""
@@ -126,7 +152,10 @@ def _extract_code(text):
     return (max(m, key=len).strip() if m else (text or "").strip())
 
 
-def solve(pid, timeout, tests, trajs, refs):
+def solve(pid, timeout, tests, trajs, refs, use_traj=False):
+    """PaR baseline. use_traj=True is the PaR+Trajectory variant: identical
+    everything (model, PSM peer selection, validation), but the prompt also
+    carries the student's full submission history (_build_prompt_traj)."""
     Validator.init_globals(tests, timeout)
     pdesc = _problem_text(pid)
 
@@ -149,7 +178,8 @@ def solve(pid, timeout, tests, trajs, refs):
         peer = _select_peer(buggy, buggy_vec, cands)
         patch = None
         if peer is not None:
-            prompt = _build_prompt(pdesc, peer[1], buggy)
+            prompt = (_build_prompt_traj(pdesc, peer[1], was) if use_traj
+                      else _build_prompt(pdesc, peer[1], buggy))
             for _ in range(SAMPLES):
                 try:
                     out_text = _call_llm(prompt, 0.8 if SAMPLES > 1 else 0.2)

@@ -37,9 +37,9 @@ def solve(approach, pid, timeout, tests, trajs, refs):
     if approach == "histra_llm":
         from baselines.histra_llm import solve as hllm_solve
         return hllm_solve(pid, timeout, tests, trajs, refs)
-    if approach == "llm_only":
-        from baselines.llm_only import solve as llm_only_solve
-        return llm_only_solve(pid, timeout, tests, trajs, refs)
+    if approach == "llm_only":   # PaR + Trajectory (same model/peer/validation as par)
+        from baselines.par import solve as par_solve
+        return par_solve(pid, timeout, tests, trajs, refs, use_traj=True)
     if approach == "par":
         from baselines.par import solve as par_solve
         return par_solve(pid, timeout, tests, trajs, refs)
