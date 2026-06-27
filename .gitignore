@@ -217,11 +217,26 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+
+.DS_Store
 data/
 paper/
 results/
 tests/
-*.txt
-*.ipynb
-CLAUDE.md
-.DS_Store
+# --- baselines: track approach code, ignore heavy clone / runtime / secrets ---
+baselines/.env
+baselines/refactory/
+baselines/_run/
+baselines/__pycache__/
+baselines/**/__pycache__/
+baselines/*.log
+baselines/run_*.sh
+baselines/ab_*.log
+baselines/llmcmp_*.log
+
+# one-off experiment scripts/results (not tracked)
+temp/
+
+# uploaded data archives / root scratch
+*.zip
+scratch_bench.py

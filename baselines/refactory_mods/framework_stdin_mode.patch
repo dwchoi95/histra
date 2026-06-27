@@ -1,0 +1,168 @@
+diff --git a/basic_framework/core_testing.py b/basic_framework/core_testing.py
+index 8abae4e..d0ced69 100644
+--- a/basic_framework/core_testing.py
++++ b/basic_framework/core_testing.py
+@@ -7,6 +7,14 @@ from basic_framework.utils import regularize
+ from basic_framework.exec import run_program_to
+ from basic_framework.hole_injection import add_iil_holes
+ 
++# stdin mode: programs are whole-program stdin/stdout scripts wrapped into a
++# single def __main__(): function. Toggled by env REFACTORY_STDIN=1.
++STDIN_MODE = os.environ.get("REFACTORY_STDIN", "") == "1"
++
++
++def _norm_out(s):
++    return "\n".join(line.rstrip() for line in (s or "").rstrip().splitlines())
++
+ 
+ class Tester:
+     def __init__(self, ques_dir_path):
+@@ -70,6 +78,10 @@ class Tester:
+             #    print(real_output)
+             #    print(exp_output)
+ 
++            if STDIN_MODE:
++                tr_dict[tc_id] = (_norm_out(real_output) == _norm_out(exp_output))
++                continue
++
+             tr_dict[tc_id] = (real_output == exp_output)
+ 
+             if "{" in real_output and "{" in exp_output:
+@@ -97,11 +109,21 @@ class Tester:
+ 
+     def run_tc(self, code, tc_id, timeout):
+         input_path = self.__input_dict[tc_id]
++        output_path = self.__output_dict[tc_id]
++
++        if STDIN_MODE:
++            with open(input_path, "r") as f:
++                stdin_text = f.read()            # raw multi-line stdin
++            with open(output_path, "r") as f:
++                exp_output = f.read()            # raw expected stdout, NO eval
++            real_output = run_program_to(code, self.__front_code, self.__end_code,
++                                         "__main__()", timeout, stdin_text=stdin_text)
++            return real_output, exp_output
++
+         entry_code = ""
+         with open(input_path, "r") as f:
+             entry_code += f.read()
+ 
+-        output_path = self.__output_dict[tc_id]
+         exp_output = ""
+         with open(output_path, "r") as f:
+             exp_output += str(eval(f.read().strip())) + "\n"
+diff --git a/basic_framework/exec.py b/basic_framework/exec.py
+index 02bc006..29b80fd 100644
+--- a/basic_framework/exec.py
++++ b/basic_framework/exec.py
+@@ -12,11 +12,11 @@ import resource
+ from io import StringIO
+ 
+ 
+-def run_program_to(code, front_code, end_code, entry_code, timeout):
++def run_program_to(code, front_code, end_code, entry_code, timeout, stdin_text=None):
+     from basic_framework.holes import Holes
+ 
+     thd = threading.Thread(target=run_core,
+-                           args=(code, front_code, end_code, entry_code))
++                           args=(code, front_code, end_code, entry_code, stdin_text))
+ 
+     Holes.is_stop = False
+     Holes.real_output = ""
+@@ -29,16 +29,20 @@ def run_program_to(code, front_code, end_code, entry_code, timeout):
+     return Holes.real_output
+ 
+ 
+-def run_core(code, front_code, end_code, entry_code):
++def run_core(code, front_code, end_code, entry_code, stdin_text=None):
+     from basic_framework.f1x import DepthTrace
+     from basic_framework.holes import Holes
+ 
+     backup_stdout = sys.stdout
++    backup_stdin = sys.stdin
+     sys.stdout = StringIO()
+ 
+     hole_hdr_code = "from basic_framework.holes import *\n"
+ 
+-    if "print(" not in entry_code:
++    if stdin_text is not None:
++        # stdin mode: feed raw stdin, run entry_code (e.g. "__main__()") as-is
++        sys.stdin = StringIO(stdin_text)
++    elif "print(" not in entry_code:
+         entry_code = "print(" + entry_code.strip() + ")\n"
+ 
+     final_code = hole_hdr_code + "\n\n" + \
+@@ -52,6 +56,9 @@ def run_core(code, front_code, end_code, entry_code):
+         print("Reach max depth.", file=sys.stderr)
+     except Holes.NoCandidateException:
+         pass
++    except SystemExit:
++        # competitive programs commonly call exit()/sys.exit() to stop early
++        pass
+     except Exception as e:
+         pass
+ 
+@@ -60,6 +67,7 @@ def run_core(code, front_code, end_code, entry_code):
+     if sys.stdout != backup_stdout:
+         sys.stdout.close()
+         sys.stdout = backup_stdout
++    sys.stdin = backup_stdin
+ 
+     Holes.real_output = real_output
+ 
+diff --git a/basic_framework/repair.py b/basic_framework/repair.py
+index 15a077a..fbf5a1e 100644
+--- a/basic_framework/repair.py
++++ b/basic_framework/repair.py
+@@ -1309,7 +1309,18 @@ class BlockRepair:
+ 
+                         code_perf_map = {}
+ 
+-                        sel_corr_code_list = [code for _,code in sel_corr_fn_code_list]
++                        # NO LEAKAGE: exclude this buggy student's own AC
++                        # (correct_<uid>.py) so a wrong is never repaired against
++                        # its own accepted solution. Matches HISTRA+/PaR, and works
++                        # on full data where every student is also a buggy target.
++                        _uid = (bug_file_name[len("wrong_"):-len(".py")]
++                                if bug_file_name.startswith("wrong_") and bug_file_name.endswith(".py")
++                                else None)
++                        _self_corr = ("correct_" + _uid + ".py") if _uid else None
++                        sel_corr_fn_code_list_u = [(_fn, _c) for (_fn, _c) in sel_corr_fn_code_list
++                                                   if _fn != _self_corr]
++
++                        sel_corr_code_list = [code for _,code in sel_corr_fn_code_list_u]
+                         if any(cfs_map_equal(get_cfs_map(bug_code),
+                                              get_cfs_map(ori_corr_code))
+                                for ori_corr_code in sel_corr_code_list):
+@@ -1330,7 +1341,7 @@ class BlockRepair:
+                             bug_temp_list, bug_const_list = get_temp_cons_lists([bug_code])
+ 
+                             # online refactoring
+-                            sel_fn_code_map = dict(sel_corr_fn_code_list)
++                            sel_fn_code_map = dict(sel_corr_fn_code_list_u)
+                             ol_refactoring_start_time = time.process_time()
+ 
+                             corr_rc_map = None
+@@ -1385,6 +1396,22 @@ class BlockRepair:
+                         self.print_perf(bug_file_name, code_perf_map)
+                         perf_map[sr][exp_idx][bug_file_name] = code_perf_map
+ 
++                        # INCREMENTAL SAVE: persist each wrong as soon as it
++                        # finishes, so a timeout/kill keeps the partial results
++                        # (one wrong == one JSONL line) instead of losing them all.
++                        try:
++                            import json as _json
++                            _inc = self.__ques_dir_path + "/incremental.jsonl"
++                            with open(_inc, "a", encoding="utf-8") as _f:
++                                _json.dump({"file_name": bug_file_name,
++                                            "status": code_perf_map.get("status", ""),
++                                            "rep_code": code_perf_map.get("rep_code", ""),
++                                            "total_time": code_perf_map.get("total_time", 0)},
++                                           _f, ensure_ascii=False)
++                                _f.write("\n")
++                        except Exception:
++                            pass
++
+                     self.print_ques_perf(sr, exp_idx, status_list, time_list, rps_list)
+                     self.copy_fail_codes(fail_list)
+ 
