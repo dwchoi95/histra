@@ -14,15 +14,15 @@ import os, time
 from src.core.validator import Validator
 from baselines.par import _problem_text, _extract_code, _load_env
 
-MODEL = os.environ.get("LLM_ONLY_MODEL", "gemma3n:e4b")
-BASE = os.environ.get("LLM_BASE_URL", "http://localhost:11434/v1")
+MODEL = os.environ.get("LLM_ONLY_MODEL", "gpt-3.5-turbo")
+BASE = os.environ.get("LLM_BASE_URL")  # set e.g. http://localhost:11434/v1 for a local model
 SAMPLES = int(os.environ.get("LLM_ONLY_SAMPLES", "1"))
 
 
 def _call(prompt, temperature):
     _load_env()
     from openai import OpenAI
-    client = OpenAI(base_url=BASE, api_key="ollama")
+    client = OpenAI(base_url=BASE, api_key="ollama") if BASE else OpenAI()
     resp = client.chat.completions.create(
         model=MODEL, temperature=temperature,
         messages=[{"role": "user", "content": prompt}])
