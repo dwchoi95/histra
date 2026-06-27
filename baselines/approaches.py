@@ -8,7 +8,7 @@ results/<pid>/<approach>.csv and results/overall.csv rows.
 """
 import time
 
-APPROACHES = ("histra", "refactory", "par")
+APPROACHES = ("histra", "histra_llm", "refactory", "par")
 
 
 def _histra_solve(pid, timeout, tests, trajs, refs):
@@ -34,6 +34,9 @@ def _histra_solve(pid, timeout, tests, trajs, refs):
 def solve(approach, pid, timeout, tests, trajs, refs):
     if approach == "histra":
         return _histra_solve(pid, timeout, tests, trajs, refs)
+    if approach == "histra_llm":
+        from baselines.histra_llm import solve as hllm_solve
+        return hllm_solve(pid, timeout, tests, trajs, refs)
     if approach == "par":
         from baselines.par import solve as par_solve
         return par_solve(pid, timeout, tests, trajs, refs)
