@@ -51,3 +51,17 @@ def intent_preservation(buggy, fixed, oracle):
         return None
     raw = (ts - tf) / (ts + tf) if (ts + tf) else 0.0
     return (raw + 1.0) / 2.0
+
+
+def intent_preservation_trajectory(buggys, fixed, oracle):
+    """Average intent preservation over all wrong attempts in a trajectory.
+
+    This uses the same per-attempt score as ``intent_preservation`` and averages
+    over parseable wrong-answer attempts. None if no attempt can be scored.
+    """
+    vals = []
+    for buggy in buggys or []:
+        score = intent_preservation(buggy, fixed, oracle)
+        if score is not None:
+            vals.append(score)
+    return (sum(vals) / len(vals)) if vals else None

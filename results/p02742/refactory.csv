@@ -1,0 +1,2995 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,seed
+u670567845,"h, w = map(int, input().split())
+
+ans = h*w
+if h == 1 or w == 1:
+  print(0)
+else:
+  if ans%2 == 0:
+    print(ans//2)
+  else:
+    print(ans//2+1)
+","h, w = map(int, input().split())
+ans = h * w
+if h == 1 or w == 1:
+    print(1)
+elif ans % 2 == 1:
+    print(round(ans // 2 + 1))
+else:
+    print(round(ans / 2))","h, w = map(int, input().split())
+
+ans = h*w
+if h == 1 or w == 1:
+  print(1)
+else:
+  if ans%2 == 0:
+    print(ans//2)
+  else:
+    print(ans//2+1)
+",1,14,0.06666666666666665,,1.157158,0
+u748311048,"h,w=map(int, input().split())
+cnt=(w//2)*h
+if w%2==1:
+    cnt+=h//2+h%2
+print(cnt)",,"h,w=map(int, input().split())
+cnt=(w//2)*h
+if w%2==1:
+    cnt+=h//2+h%2
+if h==1 or w==1:
+    cnt=1
+print(cnt)",0,,,,0.481360,0
+u391819434,"H,W=map(int,input().split())
+
+w1=0--W//2
+w2=W//2
+
+if H==1:
+    print(1)
+else:
+    print(w1*(0--H//2)+w2*(H//2))",,"H,W=map(int,input().split())
+
+w1=0--W//2
+w2=W//2
+
+if H==1 or W==1:
+    print(1)
+else:
+    print(w1*(0--H//2)+w2*(H//2))",0,,,,1.006551,0
+u011276976,"h,w = map(int, input().split())
+total = h * w
+
+if total % 2:
+    ans = (total + 1)//2
+
+else:
+    ans = total//2
+
+print(ans)","h, w = map(int, input().split())
+total = h * w
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w = map(int, input().split())
+total = h * w
+
+if h == 1 or w == 1:
+    print(1)
+    exit()
+
+if total % 2:
+    ans = (total + 1)//2
+
+else:
+    ans = total//2
+
+print(ans)
+",1,35,0.38596491228070173,,0.924309,0
+u661764795,"H, W = map(int, input().split())
+
+if H % 2 == 1 and W % 2 == 1:
+    print(int(H * (W + 1) / 2) - H // 2)
+else:
+    print(int(H * W / 2))
+",,"H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 1 and W % 2 == 1:
+        print(int(H * (W + 1) / 2) - H // 2)
+    else:
+        print(int(H * W / 2))
+",0,,,,1.046879,0
+u560708725,"h,w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 == 0:
+        print((h / 2) * w)
+    else:
+        if w % 2 == 0:
+            print(((h//2) * w/2) + ((h//2 + 1) * w/2))
+        else:
+            print(((h//2 + 1) * (w//2+1)) + ((h//2) * (w//2)))","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+elif h % 2 == 0:
+    print(h * w // 2)
+elif w % 2 == 0:
+    print(h * w // 2)
+else:
+    print((h // 2 + 1) * (w // 2 + 1) + h // 2 * (w // 2))","h,w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 == 0:
+        print(int((h / 2) * w))
+    else:
+        if w % 2 == 0:
+            print(int(((h//2) * w/2) + ((h//2 + 1) * w/2)))
+        else:
+            print(int(((h//2 + 1) * (w//2+1)) + ((h//2) * (w//2))))
+",1,26,0.2571428571428571,,0.692441,0
+u974402118,"H,W = (int(x) for x in input().split())
+if H==1 or W==1:
+  print(0)
+elif (H*W)%2:
+  print((H*W-1)//2 + 1)
+else:
+  print((H*W)//2)","H, W = (int(x) for x in input().split())
+if H == 1 or W == 1:
+    print('1')
+elif H * W % 2 == 0:
+    print((H * W - 1) // 2 + 1)
+else:
+    print(str(H * W // 2 + 1))","H,W = (int(x) for x in input().split())
+if H==1 or W==1:
+  print(1)
+elif (H*W)%2:
+  print((H*W-1)//2 + 1)
+else:
+  print((H*W)//2)",1,10,0.09090909090909088,,0.999261,0
+u577868286,"h, w = map(int, input().split())
+ 
+if h == 1 or w == 1:
+    print(1)
+print((h * w + 1) // 2)",,"h, w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)",0,,,,0.584850,0
+u128196936,"A, B = map(int, input().split())
+if A == 1 or B == 1:
+  print(1)
+elif (A*B) % 2 == 0:
+  print(A*B/2)
+else:
+  print(A*B//2+1)","A, B = map(int, input().split())
+if A == 1 or B == 1:
+    print(1)
+elif A * B % 2 == 0:
+    print(A * B // 2)
+else:
+    print(A * B // 2 + 1)","A, B = map(int, input().split())
+if A == 1 or B == 1:
+  print(1)
+elif (A*B) % 2 == 0:
+  print(A*B//2)
+else:
+  print(A*B//2+1)",1,1,0.5,,0.856328,0
+u911856499,"a = [int(c) for c in input().split()]
+H = a[0]
+W = a[1]
+
+#奇数行では列数/2+1
+#偶数行では列数/2(余り無視)
+cnt = 0
+for i in range(1,H+1):
+    if i %2 == 1:
+        cnt += int(W/2)+1
+    else:
+        cnt += int(W/2)
+print(cnt)",,"a = [int(c) for c in input().split()]
+r = a[0]*a[1]
+if a[0] == 1 or a[1] == 1:
+    print(1)
+elif r % 2 == 0:
+    print(int(r/2))
+else:
+    print(int(r/2+1))
+",0,,,,9.653370,0
+u453630968,"import math
+h, w = map(int,input().split())
+if w == 1:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)","h, w = map(int, input().split())
+ref_t = h * w
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 != 0:
+        ref_t = ref_t + 1
+    print(int(ref_t / 2))","import math
+h, w = map(int,input().split())
+if w == 1 or h == 1:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)",1,50,0.12280701754385964,,0.761253,0
+u055519694,"import math
+
+a,b = map(int,input().split())
+
+if a == b == 1:
+    print(1)
+else:
+    print(math.ceil(a*b/2))",,"import math
+
+a,b = map(int,input().split())
+
+if a == 1 or b == 1:
+    print(1)
+else:
+    print(math.ceil(a*b/2))",0,,,,0.685280,0
+u555587832,"import math
+h,w = map(int,input().split())
+
+if h == 1:
+    print(1)
+else:
+    print(math.ceil(h/2*w))
+",,"import math
+h,w = map(int,input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(math.ceil(h/2*w))
+",0,,,,0.663855,0
+u317423698,"import sys
+from itertools import islice, tee
+
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+
+    if not h0 or not w0:
+        return 0
+
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+
+    return answer
+
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+",,"import sys
+from itertools import islice, tee
+
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+
+    if H == 1 or W == 1:
+        return 1
+
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+
+    return answer
+
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+",0,,,,22.144292,0
+u318427318,"#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    h,w = map(int,input().split())
+    flag=h*w
+    if flag==1:
+        print(1)
+        exit()
+    if flag % 2 ==0:
+        print(flag//2)
+    else:
+        print(int(flag/2)+1)
+
+if __name__==""__main__"":
+    main()","h, w = map(int, input().split())
+flag = h * w
+if flag == 1:
+    pass
+pass
+if h == 1 or w == 1:
+    print(1)
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print((h * w + 1) // 2)","#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    h,w = map(int,input().split())
+    if h==1 or w ==1:
+        print(1)
+        exit()
+    flag=h*w
+    if flag % 2 ==0:
+        print(flag//2)
+    else:
+        print(int(flag/2)+1)
+
+if __name__==""__main__"":
+    main()",1,60,0.25,,10.241174,0
+u276115223,"# パナソニックプログラミングコンテスト2020: B – Bishop
+H, W = [int(i) for i in input().split()]
+
+can_reach = 0
+
+if (H % 2 == 0 and W % 2 == 0) or (H % 2 == 0 and W % 2 == 1):
+    can_reach = W * (H // 2)
+elif H % 2 == 1 and W % 2 == 0:
+    can_reach = W * (H // 2) + W // 2
+else:
+    can_reach = W * (H // 2) + W // 2 + 1
+
+print(can_reach)","H, W = [int(i) for i in input().split()]
+can_reach = 0
+if H == 1 or W == 1:
+    ref_ans = 1
+elif H % 2 == 1 and W % 2 == 0:
+    ref_ans = int(H * W / 2)
+else:
+    ref_ans = int((H * W + 1) / 2)
+print(ref_ans)","# パナソニックプログラミングコンテスト2020: B – Bishop
+H, W = [int(i) for i in input().split()]
+
+can_reach = 0
+if H == 1 or W == 1:
+    can_reach = 1
+elif (H % 2 == 0 and W % 2 == 0) or (H % 2 == 0 and W % 2 == 1):
+    can_reach = W * (H // 2)
+elif H % 2 == 1 and W % 2 == 0:
+    can_reach = W * (H // 2) + W // 2
+else:
+    can_reach = W * (H // 2) + W // 2 + 1
+
+print(can_reach)",1,67,0.20238095238095238,,2.721435,0
+u282813849,"H, W = map(int,input().split())
+remain = 0
+if H % 2 == 1 and W % 2 == 1:
+  remain = 1
+ans = int(H*(W/2)) + remain
+print(ans)",,"H, W = map(int,input().split())
+if H == 1 or W == 1:
+  ans = 1
+else:
+  ans = int(H*(W/2)) + (H*W % 2)
+print(ans)",0,,,,0.917510,0
+u909224749,"H, W = map(int, input().split())
+
+if H%2==0 or W%2==0:
+  ans = int(H*W/2)
+else:
+  if H==1 or W==1:
+    # コーナーケース
+    ans = 1
+  else:
+  	ans = int(H*W+1/2)
+print(ans)
+",,"H, W = map(int, input().split())
+
+if H==1 or W==1:
+  # コーナーケース
+  ans = 1
+
+elif H%2==0 or W%2==0:
+  ans = int(H*W/2)
+
+else:
+  ans = int((H*W+1)/2)
+
+print(ans)",0,,,,1.497622,0
+u456579619,"H, W = map(int, input().split())
+if H%2 == 1 and W%2 == 1:
+  print((H*W)//2+1)
+  
+else:
+  print((H*W)//2)",,"H, W = map(int, input().split())
+
+if H==1 or W==1:
+  print(1)
+elif H%2 == 1 and W%2 == 1:
+  print((H*W)//2+1)
+  
+else:
+  print((H*W)//2)",0,,,,0.951307,0
+u762523240,"H, W = map(int, input().split())
+
+mass = H * W
+if H*W % 2 == 0:
+  s = (H * W) // 2
+elif H*W % 2 != 0:
+  s = (H * W + 1) // 2
+elif H == 1 or W  == 1:
+  s = 1
+
+
+print(s)","H, W = map(int, input().split())
+ref_resp = H * W // 2
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 != 0:
+    ref_resp += 1
+    print(ref_resp)
+elif H * W % 2 == 0:
+    print(ref_resp)","H, W = map(int, input().split())
+
+if H > 1 and W > 1:
+  if H*W % 2 == 0:
+    s = (H * W) // 2
+  elif H*W % 2 != 0:
+    s = (H * W + 1) // 2
+
+elif H == 1 or W  == 1:
+  s = 1
+
+
+print(s)",1,61,0.19736842105263158,,1.276554,0
+u395672550,"H,W = map(int,input().split())
+if H == 1:
+  print('1')
+if W == 1:
+  print('1')
+a = H * W
+b = a // 2
+if b != a / 2:
+  b += 1
+if H != 1 and W != 1:  
+  print(b)
+",,"H,W = map(int,input().split())
+if H == 1 or W == 1:
+  print(1)
+a = H * W
+b = a // 2
+if b != a / 2:
+  b += 1
+if H != 1 and W != 1:  
+  print(b)
+",0,,,,1.523580,0
+u331327289,"import sys
+from math import ceil
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    print(ceil(h * w / 2))
+
+
+if __name__ == ""__main__"":
+    main()
+","pass
+if True:
+    h, w = map(int, input().split())
+    print([1, sum(divmod(h * w, 2))][h > 1 < w])
+elif True:
+    pass","import sys
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    print((h * w + 1) // 2 if min(h, w) > 1 else 1)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,43,0.2833333333333333,,4.882373,0
+u910632349,"h,w=map(int,input().split())
+if h==1 or w==1:
+    print(""1"")
+if (h*w)%2==0:
+    print((h*w)//2)
+else:
+    print((h*w)//2+1)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+if h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w=map(int,input().split())
+if h==1 or w==1:
+    print(""1"")
+    exit()
+if (h*w)%2==0:
+    print((h*w)//2)
+else:
+    print((h*w)//2+1)",1,6,0.4,,0.430242,0
+u476068053,"import math
+
+x = list(map(int, input().split()))
+
+h = x[0]
+w = x[1]
+
+if (w == 1):
+    count = 1
+else:
+    count = math.ceil(h/2) * math.ceil(w/2) + math.floor(h/2) * math.floor(w/2)
+
+'''
+for i in range(h):
+    if i % 2 == 0:
+        count += math.ceil(w/2)
+    else:
+        count += math.floor(w/2)
+'''
+
+print(count)",,"import math
+
+x = list(map(int, input().split()))
+
+h = x[0]
+w = x[1]
+
+if (h == 1 or w == 1):
+    count = 1
+else:
+    count = math.ceil(h/2) * math.ceil(w/2) + math.floor(h/2) * math.floor(w/2)
+
+'''
+for i in range(h):
+    if i % 2 == 0:
+        count += math.ceil(w/2)
+    else:
+        count += math.floor(w/2)
+'''
+
+print(count)
+
+",0,,,,1.418146,0
+u091051505,"H, W = map(int, input().split())
+ans = H * W
+if ans % 2 == 1:
+    ans += 1
+print(ans // 2)    ",,"H, W = map(int, input().split())
+ans = H * W
+if H * W in [H, W]:
+    print(1)
+    exit()
+if ans % 2 == 1:
+    ans += 1
+print(ans // 2)    ",0,,,,0.511802,0
+u423389475,"h,w = map(int,input().split())
+a = h*w
+if a%2 == 1:
+  print(round(a//2+1))
+else:
+  print(round(a/2))",,"h,w = map(int,input().split())
+a = h*w
+if h ==1 or w ==1:
+  print(1)
+elif a%2 == 1:
+  print(round(a//2+1))
+else:
+  print(round(a/2))",0,,,,0.898113,0
+u208120643,"""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+
+H, W = (map(int, input().split()))
+if (H*W)%2==0:
+    print(int(H*W/2))
+else:
+    print(int(H*W/2)+1)
+",,"""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+
+H, W = (map(int, input().split()))
+if(H == 1 or W == 1):
+    print(1)
+else:
+    if (H*W) % 2 == 0:
+        print(int(H*W/2))
+    else:
+        print(int(H*W/2)+1)
+",0,,,,0.951888,0
+u840037795,"H,W=map(int,input().strip().split())
+
+if H % 2 == 0:
+    print((H//2)*W)
+else:
+    sets = W // 2
+    sum = ((H//2)*2+1)*sets
+    if W % 2 == 1:
+        sum += (H//2 + 1)
+    print(sum)",,"H,W=map(int,input().strip().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print((H//2)*W)
+else:
+    sets = W // 2
+    sum = ((H//2)*2+1)*sets
+    if W % 2 == 1:
+        sum += ((H//2) + 1)
+    print(sum)",0,,,,0.918650,0
+u124864167,"h,w=map(int,input().split())
+print(int(((h*w/2,w*(h//2)+(w+1)//2)[h&1],1)[h==1]))","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h,w=map(int,input().split())
+print(int(((h*w/2,w*(h//2)+(w+1)//2)[h&1],1)[h==1 or w==1]))",1,41,0.14583333333333331,,0.389708,0
+u805011545,"import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+h = -(-H//2)
+if(H%2)==0:
+  print(h*W)
+  sys.exit()
+else:
+  if(W%2)==0:
+    print(h*W-W/2)
+    sys.exit()
+  else:
+    print(h*W-W//2)
+    sys.exit()",,"import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+if(H%2)==0:
+  h = -(-H//2)
+  print(h*W)
+  sys.exit()
+elif(W%2)==0:
+  w = -(-W//2)
+  print(H*w)
+  sys.exit()
+else:
+  print(-(-(H*W)//2))
+  sys.exit()",0,,,,1.159854,0
+u572032237,"h, w = map(int, input().split())
+
+print((h * w) // 2 + (w * h) % 2)","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h, w = map(int, input().split())
+
+print(1) if h == 1 or w == 1 else print((h * w) // 2 + (w * h) % 2)",1,18,0.4857142857142857,,0.360920,0
+u172748267,"
+h,w=map(int,input().split())
+ans=0
+if h%2==0 or w%2==0:
+    ans=(h*w//2)
+elif h==1 or w==1:
+    ans=1
+else:
+    ans=(h*w//2+1)
+print(ans)","h, w = map(int, input().split())
+ans = h * w
+if h == 1 or w == 1:
+    print(1)
+elif ans % 2 == 0:
+    print(ans // 2)
+else:
+    print(ans // 2 + 1)","h,w=map(int,input().split())
+ans=0
+if h==1 or w==1:
+    ans=1
+elif (h*w)%2==0:
+    ans=int(h*w//2)
+else:
+    ans=(h*w//2+1)
+print(ans)",1,56,0.3846153846153846,,2.039711,0
+u860338101,"H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1 :
+    count +=1
+if H == 1 or W == 1:
+    count = 0
+print(count)",,"H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1 :
+    count +=1
+if H == 1 or W == 1:
+    count = 1
+print(count)",0,,,,1.137878,0
+u255898796,"a = input().split()
+b = int(a[0]) // 2
+c = int(a[0]) % 2
+if c == 0:
+  print(int(int(b) * int(a[1])))
+else:
+  if int(a[1]) % 2 == 1:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2 + 1))
+  else:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2))","a, b = (int(ref_x) for ref_x in input().split())
+if a == 1 or b == 1:
+    print('1')
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a = input().split()
+b = int(a[0]) // 2
+c = int(a[0]) % 2
+if int(a[0]) == 1 or int(a[1]) == 1:
+  print(""1"")
+elif c == 0:
+  print(int(int(b) * int(a[1])))
+else:
+  if int(a[1]) % 2 == 1:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2 + 1))
+  else:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2))",1,110,0.2142857142857143,,4.542319,0
+u844895214,"import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    ans = 0
+    ans += math.ceil(w/2)*math.ceil(h/2)
+    ans += (w//2)*(h//2)
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()","h, w = map(int, input().split())
+if True:
+    pass
+    if h == 1 or w == 1:
+        print(1)
+        exit(0)
+    if h * w % 2 == 0:
+        print(h * w // 2)
+    else:
+        print(h * w // 2 + 1)","import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    if w==1 or h==1:
+        print(1)
+        return
+    ans = 0
+    ans += math.ceil(w/2)*math.ceil(h/2)
+    ans += (w//2)*(h//2)
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()",1,154,0.10982658959537572,,7.958241,0
+u357751375,"h,w = map(int,input().split())
+
+if h % 2 == 0:
+    i = h // 2
+else:
+    i = h // 2 + 1
+
+j = w // 2
+
+if w % 2 == 0:
+    print(h * j)
+else:
+    print(h * j + i)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print('1')
+    exit()
+else:
+    pass
+if h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w = map(int,input().split())
+
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+
+if h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)",1,47,0.4891304347826087,,0.872394,0
+u353548710,"h, w = map(int, input().split())
+hd, hm, wd, wm = h // 2, h % 2, w // 2, w % 2
+s = hd * wd * 2  + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 0
+print(s)
+","h, w = map(int, input().split())
+hd, hm, wd, wm = (h // 2, h % 2, w // 2, w % 2)
+s = hd * wd * 2 + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 1
+print(s)","h, w = map(int, input().split())
+hd, hm, wd, wm = h // 2, h % 2, w // 2, w % 2
+s = hd * wd * 2  + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 1
+print(s)
+",1,1,0.5,,3.205500,0
+u349449706,"import math
+H, W = map(int, input().split())
+print( math.ceil( H * W / 2 ) )
+","H, W = map(int, input().split())
+print([1, sum(divmod(H * W, 2))][H > 1 < W])","import math
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    print( math.ceil( H * W / 2 ) )
+",1,21,0.46153846153846156,,0.374534,0
+u645568816,"import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+
+first = math.ceil(H/2)
+second = math.floor(H/2)
+if H>= 2:
+  ans = math.ceil(W/2)*first + math.floor(W/2)*second
+elif H==1:
+  ans = 1
+  
+print(ans)",,"import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+
+first = math.ceil(H/2)
+second = math.floor(H/2)
+if H>= 2 and W>=2:
+  ans = math.ceil(W/2)*first + math.floor(W/2)*second
+elif W==1:
+  ans = 1
+elif H==1:
+  ans = 1
+  
+print(ans)",0,,,,3.417619,0
+u569776981,"H, W = map(int,input().split())
+import math
+ans = math.ceil(H * W / 2)
+print(ans)","H, W = map(int, input().split())
+print([1, sum(divmod(H * W, 2))][H > 1 < W])","import math
+def man(h, w):
+    if h == 1 or w == 1:
+        return 1
+    else:
+        return math.ceil(h * W / 2)
+H, W = map(int,input().split())
+print(man(H, W))",1,23,0.6973684210526316,,0.443971,0
+u138083942,"import math
+
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split("" "")]
+    h = row1[0]
+    w = row1[1]
+
+    if h == 1 or w == 1:
+        print(1)
+
+    ans = (h-(h%2))*(w-(w%2))/2
+    ans += (h%2)*(w-(w%2))/2
+    ans += (w%2)*(h-(h%2))/2
+    ans += (w%2)*(h%2)
+
+    print(int(ans))
+
+
+if __name__ == ""__main__"":
+    resolve()
+",,"import math
+
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split("" "")]
+    h = row1[0]
+    w = row1[1]
+
+    if h == 1 or w == 1:
+        print(1)
+        return
+
+    ans = (h-(h%2))*(w-(w%2))/2
+    ans += (h%2)*(w-(w%2))/2
+    ans += (w%2)*(h-(h%2))/2
+    ans += (w%2)*(h%2)
+
+    print(int(ans))
+
+
+if __name__ == ""__main__"":
+    resolve()
+",0,,,,0.370088,0
+u411923565,"#B - Bishop △(TLE,WA)
+H,W = map(int,input().split())
+
+count = 0
+if H == 1 or W == 1:#コーナーケース(H,Wが1の時どこにも動けない)
+    print(1)
+if H % 2 == 0:
+    count = (H // 2)*W
+else :
+    count = (H // 2)*W + ((W + 2 - 1) // 2)#x/yの切り上げ:(x+y-1)//y
+print(count)",,"#B - Bishop △(TLE,WA)
+H,W = map(int,input().split())
+
+count = 0
+if H == 1 or W == 1:#コーナーケース(H,Wが1の時どこにも動けない)
+    count = 1
+elif H % 2 == 0:
+    count = (H // 2)*W
+else :
+    count = (H // 2)*W + ((W + 2 - 1) // 2)#x/yの切り上げ:(x+y-1)//y
+print(count)",0,,,,1.028348,0
+u430336181,"H, W = map(int, input().split())
+
+if H or W == 1:
+    print(1)
+
+H_ = H % 2
+W_ = W % 2
+if H_ == 0:
+    print(str(round(H/2*W//1)))
+
+elif H_ == 1:
+    h = H // 2 + 1
+    h_ = H // 2
+    if W_ == 0:
+        print(str(round((h + h_)*W/2)))
+
+    elif W_ == 1:
+        w = W // 2+1
+        w_ = W // 2
+        print(str(round(h * w + h_ * w_)))
+
+
+
+",,"H, W = map(int, input().split())
+
+H_ = H % 2
+W_ = W % 2
+
+if H  == 1 or W == 1:
+    print(1)
+
+elif H_ == 0:
+    print(str(round(H/2*W//1)))
+
+elif H_ == 1:
+    h = H // 2 + 1
+    h_ = H // 2
+    if W_ == 0:
+        print(str(round((h + h_)*W/2)))
+
+    elif W_ == 1:
+        w = W // 2+1
+        w_ = W // 2
+        print(str(round(h * w + h_ * w_)))
+
+
+
+",0,,,,17.766777,0
+u095094246,"import math
+h,w=map(int,input().split())
+if h>1 and w>1:
+  print(math.ceil(w/2)*math.ceil(h/2) + (w//2)*(h//2))
+else:
+  print(0)
+
+","h, w = map(int, input().split())
+if h > 1 and w > 1:
+    print(int(h / 2) * w + (int(w / 2) + w % 2) * (h % 2))
+else:
+    print(1)","import math
+h,w=map(int,input().split())
+if h>1 and w>1:
+  print(math.ceil(w/2)*math.ceil(h/2) + (w//2)*(h//2))
+else:
+  print(1)
+
+",1,21,0.04545454545454547,,0.692869,0
+u912556688,"a,b = map(int,input().split())
+ans = 0
+if a == 1 or b == 1:
+  print(0)
+elif a*b % 2 == 0:
+  print(int(a*b/2))
+else:
+  print(int((a*b-1)/2 + 1))","a, b = map(int, input().split())
+ans = 0
+if a == 1 or b == 1:
+    print('1')
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a,b = map(int,input().split())
+ans = 0
+if a == 1 or b == 1:
+  print(1)
+elif a*b % 2 == 0:
+  print(int(a*b/2))
+else:
+  print(int((a*b-1)/2 + 1))",1,1,0.5,,0.886838,0
+u212502386,"H,W=map(int,input().split())
+
+if H%2==0:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=H//2*W
+else:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=(W//2+1)*H-H//2
+
+print(ans)","H, W = map(int, input().split())
+if H * W % 2 == 0:
+    if H == 1 or W == 1:
+        ans = 1
+    else:
+        ans = int(H * W / 2)
+elif H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (W // 2 + 1) * H - H // 2
+print(ans)","H,W=map(int,input().split())
+
+if H%2==0:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=H//2*W
+else:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=(W//2+1)*H-H//2
+
+if H==1 or W==1:
+    ans=1
+    
+print(ans)",1,51,0.25,,0.966443,0
+u212539610,"import numpy as np
+
+H, W = map(int,input().split())
+
+print(int(np.ceil((H * W) / 2)))","H, W = map(int, input().split())
+print([1, sum(divmod(H * W, 2))][H > 1 < W])","import numpy as np
+
+H, W = map(int,input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    print(int(np.ceil((H * W) / 2)))",1,21,0.46153846153846156,,0.368906,0
+u368270116,"import math
+h,w=map(int,input().split())
+if h or w ==1:
+  print(1)
+elif (h*w)%2==0:
+  print(int((h*w)/2))
+else:
+  print(math.ceil((h*w)/2))","h, w = map(int, input().split())
+if 1 in [h, w]:
+    print(1)
+elif h * w % 2 == 0:
+    print(int(h * w / 2))
+else:
+    print(h * w // 2 + 1)","import math
+h,w=map(int,input().split())
+if h==1 or w==1:
+  print(1)
+elif (h*w)%2==0:
+  print(int((h*w)/2))
+else:
+  print(math.ceil((h*w)/2))
+",1,17,0.15000000000000002,,1.213178,0
+u033839917,"H,W = [int(n) for n in input().split()]
+print((H*W//2) if H*W%2==0 else ((H*W+1)//2))","H, W = map(int, input().split())
+n = 1 if H == 1 or W == 1 else (H * W + 1) // 2
+print(n)","H,W = [int(n) for n in input().split()]
+if H < 2:
+  W = 1
+if W < 2:
+  H = 1
+print((H*W//2) if H*W%2==0 else ((H*W+1)//2))",1,35,0.36363636363636365,,0.409755,0
+u835283937,"def main():
+    H, W = map(int ,input().split())
+    L1 = 0
+    L2 = 0
+
+    L1 = L2 = W // 2
+
+    if W % 2 == 1:
+        L1 += 1
+
+    ans = (L1 + L2) * (H//2)
+
+    if H % 2 == 1:
+        ans += L1
+
+    print(ans)
+
+if __name__ == ""__main__"":
+    main()",,"def main():
+    H, W = map(int ,input().split())
+
+    if H == 1 or W == 1:
+        print(1)
+        
+    else:
+        L1 = 0
+        L2 = 0
+
+        L1 = L2 = W // 2
+
+        if W % 2 == 1:
+            L1 += 1
+
+        ans = (L1 + L2) * (H//2)
+
+        if H % 2 == 1:
+            ans += L1
+
+        print(ans) 
+
+if __name__ == ""__main__"":
+    main()",0,,,,0.391811,0
+u050151933,"import math
+
+H, W = map(int, input().split(' '))
+
+if H == 1 and W == 1:
+  print(0)
+  exit()
+
+res = math.ceil((H*W)/2)
+print(res)
+",,"import math
+
+H, W = map(int, input().split(' '))
+
+if H == 1 or W == 1:
+  print(1)
+  exit()
+
+res = math.ceil((H*W)/2)
+print(res)
+
+",0,,,,0.606210,0
+u849756457,"h, w = [int(i) for i in input().split()]
+
+s = h * w
+if s % 2 == 0:
+  print(s // 2)
+  exit(0)
+print(s // 2 + 1)
+",,"h, w = [int(i) for i in input().split()]
+
+if h == 1 or w == 1:
+  print(1)
+  exit(0)
+
+s = h * w
+if s % 2 == 0:
+  print(s // 2)
+  exit(0)
+print(s // 2 + 1)
+",0,,,,0.731102,0
+u993731813,"import numpy as np
+
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+
+if a*b %2==0:
+    print(int(a*b/2))
+else:
+    print(int(a*b/2+1))
+",,"import numpy as np
+
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+
+if not(a==1 or b==1):
+    if a*b %2==0:
+        print(int(a*b/2))
+    else:
+        print(int(a*b/2+1))
+
+else:
+    print(1)
+",0,,,,1.338498,0
+u724428568,"n, m = [int(i) for i in input().split("" "")]
+print((n*m + 1)//2)","n, m = map(int, input().split())
+print([1, sum(divmod(n * m, 2))][n > 1 < m])","h, w = map(int,input().split())
+print((h*w+1)//2 if h!=1 and w!=1 else 1)",1,28,0.4814814814814815,,0.385122,0
+u177125607,"import math
+
+H, W = map(int, input().split())
+    
+ans = int(H / 2) * W
+if (H % 2) == 1:
+    ans += math.ceil(W / 2)
+
+if H == 1 or W == 1:
+    ans = 0
+
+print(ans)","H, W = map(int, input().split())
+ans = W // 2 * H
+if W % 2 == 1:
+    ans += H // 2 + H % 2
+if H == 1 or W == 1:
+    ans = 1
+print(ans)","import math
+
+H, W = map(int, input().split())
+    
+ans = int(H / 2) * W
+if (H % 2) == 1:
+    ans += math.ceil(W / 2)
+
+if H == 1 or W == 1:
+    ans = 1
+
+print(ans)",1,18,0.05263157894736842,,1.083314,0
+u869265610,"import math
+a,b=list(map(int,input().split()))
+print(math.ceil((a*b)/2))","a, b = map(int, input().split())
+print([1, sum(divmod(a * b, 2))][a > 1 < b])","import math
+a,b=list(map(int,input().split()))
+if a==1 or b==1:
+  print(1)
+else:
+  print(math.ceil((a*b)/2))",1,24,0.4285714285714286,,0.376974,0
+u731322489,"import math
+h, w = map(int, input().split())
+print(math.ceil((h * w) / 2))","h, w = map(int, input().split())
+print([1, sum(divmod(h * w, 2))][h > 1 < w])","import math
+h, w = map(int, input().split())
+print(math.ceil((h * w) / 2) if h != 1 and w != 1 else 1)",1,21,0.4,,0.360315,0
+u720314082,"H, W = map(int, input().split())
+if (H==1 and W==1):
+    print(1)
+elif (H%2==0):
+    H /=2
+    print(int(H*W))
+else:
+    H //= 2
+    if(W%2==0):
+        print(int(H*W+(W/2)))
+    else:
+        print(int(H*W+(W//2+1))) 
+","H, W = map(int, input().split())
+ref_total = H * W
+if True:
+    if H == 1 or W == 1:
+        print(1)
+        exit()
+    elif H % 2 == 0:
+        pass
+    if ref_total % 2:
+        ref_ans = (ref_total + 1) // 2
+    else:
+        ref_ans = ref_total // 2
+    print(ref_ans)
+pass","H, W = map(int, input().split())
+if (H==1 or W==1):
+    print(1)
+elif (H%2==0):
+    H /=2
+    print(int(H*W))
+else:
+    H //= 2
+    if(W%2==0):
+        print(int(H*W+(W/2)))
+    else:
+        print(int(H*W+(W//2+1))) 
+",1,83,0.011904761904761918,,11.970127,0
+u106118504,"h, w = map(int, input().split())
+ans = h * w //2 + (h*w)%2
+print(ans)","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h, w = map(int, input().split())
+if h==1 or w == 1:
+  print(1)
+else:
+  ans = h * w //2 + (h*w)%2
+  print(ans)",1,26,0.40909090909090906,,0.463625,0
+u679089074,"#6
+H,W = map(int,input().split())
+k = H*W
+
+if H ==1 or W == 1:
+    print(1)
+
+if k%2 == 0:
+    print(int(k/2))
+else:
+    print(int(k/2)+1)","H, W = map(int, input().split())
+k = H * W
+if H == 1 or W == 1:
+    print('1')
+    exit()
+if k % 2 == 0:
+    print(int(k / 2))
+else:
+    print(int(k / 2) + 1)","#6
+import sys
+H,W = map(int,input().split())
+k = H*W
+
+if H ==1 or W == 1:
+    print(1)
+    sys.exit()
+
+if k%2 == 0:
+    print(int(k/2))
+else:
+    print(int(k/2)+1)",1,5,0.6153846153846154,,0.496310,0
+u656801456,"import math
+
+def main():
+
+    h,w = map(int, input().split())
+    if h == 1 and w == 1:
+        print(1)
+    else:
+        print(math.ceil(h*w/2))
+        
+
+if __name__ == ""__main__"":
+    main()
+",,"import math
+
+def main():
+
+    h,w = map(int, input().split())
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        print(math.ceil(h*w/2))
+        
+
+if __name__ == ""__main__"":
+    main()",0,,,,0.305682,0
+u008718882,"H,W = map(int, input().split())
+t = H * W
+print(t // 2) if t % 2 == 0 else print((t // 2) + 1)",,"H,W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    t = H * W
+    print(t // 2) if t % 2 == 0 else print((t // 2) + 1)",0,,,,0.700636,0
+u451417461,"import math
+h,w=map(int,input().split())
+
+if h>1 and w>1:
+  if h*w%2==0:
+    print(int((h*w)/2))
+  else:
+    print(int((h*w)/2+1))
+  
+else:
+  print(0)
+","h, w = map(int, input().split())
+if h > 1 and w > 1:
+    if h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(h * w / 2 + 1))
+else:
+    print(1)","import math
+h,w=map(int,input().split())
+
+if h>1 and w>1:
+  if h*w%2==0:
+    print(int((h*w)/2))
+  else:
+    print(int((h*w)/2+1))
+  
+else:
+  print(1)",1,3,0.25,,0.385248,0
+u163421511,"H, W  = map(int, input().split())
+
+H_even = int(H/2)*2
+W_even = int(W/2)*2
+
+a = int((H_even * W_even)/2)
+b = int(H_even/2) if W % 2 != 0 else 0
+c = int(W_even/2) if H % 2 != 0 else 0
+d = 1 if H % 2 != 0 and W % 2 != 0 else 0
+
+print(a+b+c+d)
+
+
+","H, W = map(int, input().split())
+print(int(((H * W / 2, W * (H // 2) + (W + 1) // 2)[H & 1], 1)[H == 1 or W == 1]))","
+H, W = map(int, input().split())
+ans = 1 if H == 1 or W == 1 else (H*W+1) // 2
+print(ans)
+
+
+",1,108,0.515695067264574,,3.459536,0
+u460745860,"import math
+
+H,W = list(map(int,input().split("" "")))
+if W > 1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)",,"import math
+
+H,W = list(map(int,input().split("" "")))
+if W > 1 and H > 1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)",0,,,,1.078004,0
+u771634798,"h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+
+print(int((h * w + 1)/2))
+","h, w = map(int, input().split(' '))
+if h == 1 or w == 1:
+    print(1)
+    exit()
+print(int((h * w + 1) / 2))","import sys
+
+h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+    sys.exit()
+
+print(int((h * w + 1)/2))
+",1,8,0.5,,0.382308,0
+u047931063,"# n, m, l = map(int, input().split())
+
+# list_n = list(map(int, input().split()))
+
+# n = input()
+# list = [input() for i in range(N)
+
+# list = [[i for i in range(N)] for _ in range(M)]
+
+H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 0
+else:
+    ans = (-H//2) * (-W//2) + (H//2) * (W//2)
+print(ans)
+
+# print(-(-H // 2))
+# print(-(-W // 2))
+# print(H // 2)
+# print(W//2)
+
+# print(4 * 2 + 3 * 1)
+","H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = -H // 2 * (-W // 2) + H // 2 * (W // 2)
+print(ans)","# n, m, l = map(int, input().split())
+
+# list_n = list(map(int, input().split()))
+
+# n = input()
+# list = [input() for i in range(N)
+
+# list = [[i for i in range(N)] for _ in range(M)]
+
+H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (-H//2) * (-W//2) + (H//2) * (W//2)
+print(ans)
+
+# print(-(-H // 2))
+# print(-(-W // 2))
+# print(H // 2)
+# print(W//2)
+
+# print(4 * 2 + 3 * 1)
+",1,1,0.5,,0.927034,0
+u064383240,"import sys
+
+H, W = map(int, input().split())
+if H or W ==1:
+    print(1)
+    sys.exit()
+
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)
+",,"import sys
+
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+    sys.exit()
+
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)",0,,,,0.785346,0
+u759076129,"h,w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+if h % 2 == 1 and w % 2 == 1:
+    print(int(h*w/2) + 1)
+else:
+    print(int(h*w/2))","h, w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print('1')
+    exit()
+if h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+elif h % 2 == 1 and w % 2 == 1:
+    print(int(h*w/2) + 1)
+else:
+    print(int(h*w/2))",1,31,0.06060606060606061,,0.815729,0
+u996564551,"H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if (H%2)==0 and (W%2)==0:
+  print(int((H/2) * W))
+elif (H%2)==1  and (W%2)==0:
+  print(int((W/2) * H))
+elif (H%2)==0 and (W%2)==1:
+  print(int((H/2) * W))
+elif (H%2)==1 and (W%2)==1:
+  print(int(((H*W)//2)+1))","H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 1 and W % 2 == 1:
+    print(int(H * (W + 1) / 2) - H // 2)
+else:
+    print(int(H * W / 2))
+pass","H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if H==1 or W ==1:
+  print(1)
+elif (H%2)==0 and (W%2)==0:
+  print(int((H/2) * W))
+elif (H%2)==1  and (W%2)==0:
+  print(int((W/2) * H))
+elif (H%2)==0 and (W%2)==1:
+  print(int((H/2) * W))
+elif (H%2)==1 and (W%2)==1:
+  print(int((H*W//2)+1))",1,87,0.17142857142857143,,11.714121,0
+u492737043,"H,W=map(int,input().split())
+import math
+
+A=[0,math.ceil(W/2)]
+if (H-1)*(W-1)!=0:
+  c=W*math.floor(H/2)+A[H%2]
+else:
+  c=0
+print(c)","H, W = map(int, input().split())
+if (H - 1) * (W - 1) != 0:
+    ref_cnt1 = (H + 1) // 2 * ((W + 1) // 2)
+    ref_cnt2 = H // 2 * (W // 2)
+    c = ref_cnt1 + ref_cnt2
+else:
+    c = 1
+print(c)","H,W=map(int,input().split())
+import math
+
+A=[0,math.ceil(W/2)]
+if (H-1)*(W-1)!=0:
+  c=W*math.floor(H/2)+A[H%2]
+else:
+  c=1
+print(c)",1,56,0.017543859649122806,,0.956838,0
+u537722973,"h,w = map(int,input().split())
+
+if w == 1:
+  print(1)
+  exit()
+if w%2 == 0:
+  ans = w//2 * h
+elif w%2 == 1:
+  if h%2 == 0:
+    ans = h*w//2
+  elif h%2 == 1:
+    ans = h*w//2 + 1
+
+print(ans)","h, w = map(int, input().split())
+ref_H_ = h % 2
+ref_W_ = w % 2
+if h == 1 or w == 1:
+    print(1)
+    exit()
+if ref_H_ == 0:
+    print(str(round(h / 2 * w // 1)))
+elif ref_H_ == 1:
+    ref_h = h // 2 + 1
+    ref_h_ = h // 2
+    if ref_W_ == 0:
+        print(str(round((ref_h + ref_h_) * w / 2)))
+    elif h % 2 == 1:
+        ref_w = w // 2 + 1
+        ref_w_ = w // 2
+        print(str(round(ref_h * ref_w + ref_h_ * ref_w_)))","h,w = map(int,input().split())
+
+if w == 1:
+  print(1)
+  exit()
+if h == 1:
+  print(1)
+  exit()
+if w%2 == 0:
+  ans = w//2 * h
+elif w%2 == 1:
+  if h%2 == 0:
+    ans = h*w//2
+  elif h%2 == 1:
+    ans = h*w//2 + 1
+
+print(ans)",1,119,0.11194029850746268,,3.320320,0
+u112007848,"h,w=map(int, input().split("" ""))
+if h * w % 2 == 0:
+  print(h * w // 2)
+else:
+  print(h * w // 2 + 1)","h, w = map(int, input().split(' '))
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w=map(int, input().split("" ""))
+if 1 in [h,w]:
+  print(1)
+elif h * w % 2 == 0:
+  print(h * w // 2)
+else:
+  print(h * w // 2 + 1)",1,24,0.3846153846153846,,0.792251,0
+u212328220,"H , W = map(int,input().split())
+
+if H == 1 or W ==1:
+    print(1)
+
+if H %2 == 0:
+    tate = H/2
+    ans = tate * W
+
+else:
+    tate1 = H // 2 + 1
+    tate2 = H // 2
+    if W % 2 == 0:
+        ans = (tate1 + tate2) * W/2
+    else:
+        ans = tate1*((W//2)+1) + tate2*(W//2)
+print(int(ans))
+",,"H , W = map(int,input().split())
+
+if H == 1 or W ==1:
+    print(1)
+    exit()
+
+if H %2 == 0:
+    tate = H/2
+    ans = tate * W
+
+else:
+    tate1 = H // 2 + 1
+    tate2 = H // 2
+    if W % 2 == 0:
+        ans = (tate1 + tate2) * W/2
+    else:
+        ans = tate1*((W//2)+1) + tate2*(W//2)
+print(int(ans))
+",0,,,,0.880415,0
+u668750703,"#!/usr/bin/env python3
+
+import math
+from decimal import *
+
+def main():
+    h, w = input().split()
+    h = Decimal(h)
+    w = Decimal(w)
+    print(math.ceil(h*w/Decimal(""2"")))
+
+if __name__ == '__main__':
+    main()",,"#!/usr/bin/env python3
+
+import math
+from decimal import *
+
+def main():
+    h,w = map(int, input().split())
+    if h == 1:
+        print(1)
+        exit()
+    elif w ==1:
+        print(1)
+        exit()
+    else:
+        print(math.ceil(h*w/2))
+
+if __name__ == '__main__':
+    main()",0,,,,0.000000,0
+u142415823,"def main(H, W):
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H % 2 == 1:
+        ans += od
+    return ans
+
+
+if __name__ == ""__main__"":
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)
+",,"def main(H, W):
+    if H == 1 or W == 1:
+        return 1
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H % 2 == 1:
+        ans += od
+    return ans
+
+
+if __name__ == ""__main__"":
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)
+",0,,,,0.362944,0
+u810787773,"def main():
+    H,W = map(int,input().split())
+    N = H*W
+
+    if H == 1 or W == 1:
+        return 1
+
+    elif N%2 == 0:
+        ans = N/2
+    else:
+        ans = (N//2) + 1
+
+    return ans
+
+print(main())
+",,"def main():
+    H,W = map(int,input().split())
+    N = H*W
+    #print(N//2)
+
+    if H == 1 or W == 1:
+        return 1
+    elif N%2 == 0:
+        ans = int(N/2)
+    else:
+        ans = int((N//2) + 1)
+
+    return ans
+
+print(main())
+",0,,,,0.306601,0
+u942697937,"H, W = [int(_) for _ in input().split()]
+
+ans = (H // 2) * (W // 2) * 2
+if H % 2 == 1:
+    ans += W // 2
+if W % 2 == 1:
+    ans += H // 2
+if H % 2 == 1 and W % 2 == 1:
+    ans += 1
+
+print(ans)
+","H, W = [int(_) for _ in input().split()]
+ans = H // 2 * (W // 2) * 2
+if H == 1 or W == 1:
+    print(1)
+ref_a = H * W
+ref_b = ref_a // 2
+if ref_b != ref_a / 2:
+    ref_b += 1
+if H != 1 and W != 1:
+    print(ref_b)","H, W = [int(_) for _ in input().split()]
+
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (H // 2) * (W // 2) * 2
+    if H % 2 == 1:
+        ans += W // 2
+    if W % 2 == 1:
+        ans += H // 2
+    if H % 2 == 1 and W % 2 == 1:
+        ans += 1
+print(ans)
+",1,57,0.22972972972972971,,4.744661,0
+u688281605,"import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+res = h1 * w1 + h2 * w2
+print(res)","h, w = map(int, input().split())
+ref_cnt = w // 2 * h
+if w % 2 != 0:
+    ref_cnt += h // 2 + h % 2
+if h == 1 or w == 1:
+    ref_cnt = 1
+print(ref_cnt)","import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+res = h1 * w1 + h2 * w2
+if (h == 1 or w == 1):
+  print(1)
+else:
+  print(res)",1,76,0.19148936170212766,,1.369275,0
+u946517952,"import math
+tate,yoko = map(int,input().split())
+
+if yoko%2 == 0:
+    print(int((tate*yoko/2)))
+else:
+    print(int((tate*(yoko-1)/2 + math.ceil(tate/2))))
+","tate, yoko = map(int, input().split())
+if tate == 1 or yoko == 1:
+    print(1)
+else:
+    print(int(tate * yoko / 2) + tate * yoko % 2)","import math
+tate,yoko = map(int,input().split())
+if tate == 1 or yoko == 1:
+    print(1)
+else:
+    if yoko%2 == 0:
+        print(int((tate*yoko/2)))
+    else:
+        print(int((tate*(yoko-1)/2 + math.ceil(tate/2))))
+",1,38,0.3214285714285714,,0.906893,0
+u266014018,"def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+    h,w = map(int, input().split())
+    n = h*w
+    if h%2 == 0 or w%2 ==0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+
+if __name__ == '__main__':
+    main()",,"def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+    h,w = map(int, input().split())
+    n = h*w
+    if h == 1 or w ==1:
+        print(1)
+    elif n%2 == 0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+
+if __name__ == '__main__':
+    main()",0,,,,7.769264,0
+u760961723,"H,W = map(int,input().split())
+if H %2 == 0 or W % 2 == 0:
+  print(H*W//2)
+else:
+  if H == 1 or W == 1:
+    print(1)
+  else:
+    print(H*W//2+1)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print('1')
+elif H * W % 2 == 0:
+    print(str(H * W // 2))
+else:
+    print(H * W // 2 + 1)","H,W = map(int,input().split())
+if H == 1 or W == 1:
+  print(1) 
+else:
+  if H %2 == 0 or W % 2 == 0:
+    print(H*W//2)
+  else:
+    print(H*W//2+1)",1,39,0.4657534246575342,,1.403169,0
+u687574784,"h,w = list(map(int, input().split()))
+
+if h==1 or w==1:
+    print(0)
+else:
+    q,r = divmod(h*w, 2)
+    print(q+r)","h, w = list(map(int, input().split()))
+if h == 1 or w == 1:
+    print(1)
+else:
+    q, r = divmod(h * w, 2)
+    print(q + r)","h,w = list(map(int, input().split()))
+
+if h==1 or w==1:
+    print(1)
+else:
+    q,r = divmod(h*w, 2)
+    print(q+r)",1,1,0.5,,0.655316,0
+u345778634,"H, W = map(int, input().split())
+if H % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)","H, W = map(int, input().split())
+if H == 1 or W ==1:
+    print(1)
+elif H % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)",1,24,0.4285714285714286,,1.142200,0
+u364386647,"def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 and W == 1:
+        print(1)
+        return
+
+    ans = int(H * W / 2)
+    if ((H * W) % 2 == 1):
+        ans += 1
+    print(ans)
+    return
+resolve()",,"def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 or W == 1:
+        print(1)
+        return
+
+    ans = int(H * W / 2)
+    if ((H * W) % 2 == 1):
+        ans += 1
+    print(ans)
+    return
+ 
+resolve()",0,,,,0.335659,0
+u674588203,"H,M=map(int,input().split())
+if H==1 or M==1:
+  print(""1"")
+
+if H*M%2==0:
+  print(H*M//2)
+else:
+  print((H*M)//2+1)
+","H, M = map(int, input().split())
+if H == 1 or M == 1:
+    print('1')
+    exit()
+if H * M % 2 == 0:
+    print(H * M // 2)
+else:
+    print(H * M // 2 + 1)","H,M=map(int,input().split())
+if H==1:
+	print(""1"")
+elif M==1:
+	print(""1"")
+else:
+	if H*M%2==0:
+		print(H*M//2)
+	else:
+ 		print((H*M)//2+1)
+",1,4,0.7142857142857143,,0.439003,0
+u299172013,"H, W = [int(x) for x in input().split("" "")]
+if H > W:
+    H, W = W, H
+if H == 1:
+    print(1)
+if H % 2 == 0:
+    print(W * (H // 2))
+else:
+    if W % 2 == 0:
+        print(W * H // 2)
+    else:
+        print(((W - 1) * H // 2) + H // 2 + 1)
+",,"H, W = [int(x) for x in input().split("" "")]
+if H > W:
+    H, W = W, H
+if H == 1:
+    print(1)
+
+elif H % 2 == 0:
+    print(W * (H // 2))
+else:
+    if W % 2 == 0:
+        print(W * H // 2)
+    else:
+        print(((W - 1) * H // 2) + H // 2 + 1)
+",0,,,,7.213753,0
+u961059809,"import math
+h,w = map(int,input().split())
+if w < h:
+  h,w = w,h
+nw = w-(2*h)+1
+ans = math.ceil((h*w)/2) - math.ceil((nw*h)/2)
+print(max(1,ans))",,"import math
+h,w = map(int,input().split())
+if w < h:
+  h,w = w,h
+if h==1:
+  print(1)
+else:
+  ans = math.ceil((h*w)/2)
+  print(max(1,ans))",0,,,,0.663584,0
+u220394041,"import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+print(ans)","h, w = map(int, input().split())
+print([1, sum(divmod(h * w, 2))][h > 1 < w])","import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+if h == 1 or w == 1:
+    ans = 1
+print(ans)",1,25,0.40476190476190477,,0.416407,0
+u022215787,"h, w = map(int, input().split())
+t = h*w
+if h % 2 == 1 and w % 2 == 1:
+  t = t + 1
+print(int(t/2)) ",,"h, w = map(int, input().split())
+t = h*w
+
+if h == 1 or w == 1:
+  print(1)
+else:
+  if h % 2 == 1 and w % 2 == 1:
+    t = t + 1
+  print(int(t/2)) ",0,,,,0.506816,0
+u094999522,"h,w=map(int,input().split())
+print([1,sum(divmod(h*w, 2))][h>0<w])",,"h,w=map(int,input().split())
+print([1,sum(divmod(h*w, 2))][h>1<w])
+",0,,,,0.387500,0
+u742899538,"H, W = list(map(int, input().split()))
+### 片方だけ奇数のマスには行くことができない
+### Hが偶数、Wが偶数の場合 → H*W // 2
+### Hが奇数、Wが偶数の場合 → H*W // 2 (Wが奇数の場合も同様)
+### Hが奇数、Wが奇数の場合 → H*W // 2 + 1
+if H % 2 != 0 and W % 2 != 0:
+    print(int(H * W // 2 + 1))
+else:
+    print(int(H * W // 2))",,"H, W = list(map(int, input().split()))
+### 片方だけ奇数のマスには行くことができない
+### Hが偶数、Wが偶数の場合 → H*W // 2
+### Hが奇数、Wが偶数の場合 → H*W // 2 (Wが奇数の場合も同様)
+### Hが奇数、Wが奇数の場合 → H*W // 2 + 1
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 != 0 and W % 2 != 0:
+    print(int(H * W // 2) + 1)
+else:
+    print(int(H * W // 2))",0,,,,1.053991,0
+u370331385,"H,W = map(int,input().split())
+
+if(W != 1):
+  cnt1 = ((H+1)//2)*((W+1)//2)
+  cnt2 = (H//2)*(W//2)
+  ans = cnt1 + cnt2
+else:
+  ans = 1
+  
+print(ans)","H, W = map(int, input().split())
+if H > 1 and W > 1:
+    print(int(H / 2) * W + (int(W / 2) + W % 2) * (H % 2))
+else:
+    print(1)","H,W = map(int,input().split())
+
+if((H != 1)and(W != 1)):
+  cnt1 = ((H+1)//2)*((W+1)//2)
+  cnt2 = (H//2)*(W//2)
+  ans = cnt1 + cnt2
+else:
+  ans = 1
+  
+print(ans)",1,53,0.11666666666666664,,1.045219,0
+u374082254,"def li():
+    return list(map(int, input().split()))
+
+
+def mi():
+    return map(int, input().split())
+
+
+def ii():
+    return int(input())
+
+
+H, W = mi()
+
+# 縦偶数
+if H % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横偶数
+elif W % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横奇数
+else:
+    print((H * W // 2) + 1)
+",,"def li():
+    return list(map(int, input().split()))
+
+
+def mi():
+    return map(int, input().split())
+
+
+def ii():
+    return int(input())
+
+
+H, W = mi()
+
+# 移動できない
+if H == 1 or W == 1:
+    print(1)
+# 縦偶数
+elif H % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横偶数
+elif W % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横奇数
+else:
+    print((H * W // 2) + 1)
+",0,,,,15.788815,0
+u962718741,"def resolve():
+    H, W = map(int, input().split())
+    ans = int((H*W-1)/2)
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(ans)
+resolve()
+",,"def resolve():
+    H, W = map(int, input().split())
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        ans = int((H*W+1)/2)
+        print(ans)
+resolve()
+",0,,,,0.296764,0
+u701531204,"#!/usr/bin/env python3
+import sys
+import math
+
+
+def solve(H: int, W: int):
+    total_cell = W * H
+    print(math.ceil(total_cell / 2))
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    tokens = iterate_tokens()
+    H = int(next(tokens))  # type: int
+    W = int(next(tokens))  # type: int
+    solve(H, W)
+
+
+if __name__ == ""__main__"":
+    main()
+","ref_l = list(map(int, input().split()))
+ref_a = ref_l[0]
+ref_b = ref_l[1]
+if not (ref_a == 1 or ref_b == 1):
+    pass
+    if False:
+        pass
+    pass
+    if ref_a * ref_b % 2 == 0:
+        print(int(ref_a * ref_b / 2))
+    else:
+        print(int(ref_a * ref_b / 2 + 1))
+    pass
+else:
+    print(1)","#!/usr/bin/env python3
+import sys
+import math
+
+
+def solve(H: int, W: int):
+    if W == 1 or H == 1:
+        # coner case
+        print(1)
+    else:
+        print(math.ceil(W * H / 2))
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    tokens = iterate_tokens()
+    H = int(next(tokens))  # type: int
+    W = int(next(tokens))  # type: int
+    solve(H, W)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,113,0.15671641791044777,,11.414085,0
+u333190709,"
+H, W = map(int, input().split())
+
+if H % 2 == 0:
+    print(H*W//2)
+else:
+    if W % 2 == 0:
+        print(H*W//2)
+    else:
+        if H > 1 or W > 1:
+            print((H//2)*(W//2) + (H//2+1)*(W//2+1))
+        else:
+            print(1)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif W % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(H // 2 * (W // 2) + (H // 2 + 1) * (W // 2 + 1))
+else:
+    print((H * W + 1) // 2)","
+H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print(H*W//2)
+else:
+    if W % 2 == 0:
+        print(H*W//2)
+    else:
+        print((H//2)*(W//2) + (H//2+1)*(W//2+1))",1,40,0.4736842105263158,,0.981539,0
+u531813944,"from sys import stdin
+
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if(h == 1 or w == 1):
+  print(0)
+else:
+  print((h//2)*(w//2)+((h+1)//2)*((w+1)//2))","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(h // 2 * (w // 2) + (h + 1) // 2 * ((w + 1) // 2))","from sys import stdin
+
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if(h == 1 or w == 1):
+  print(1)
+else:
+  print((h//2)*(w//2)+((h+1)//2)*((w+1)//2))",1,16,0.05882352941176472,,0.760519,0
+u681158084,"x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(0)
+elif (x * y) % 2 == 0:
+    print((x * y) // 2)
+else:
+    print((x * y + 1) // 2)","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+elif x * y % 2 == 0:
+    print(x * y // 2)
+else:
+    print((x * y + 1) // 2)","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+elif (x * y) % 2 == 0:
+    print((x * y) // 2)
+else:
+    print((x * y + 1) // 2)",1,1,0.5,,0.887392,0
+u851704997,"H,W = map(int,input().split())
+if((H*W)%2 == 0):
+  print(str((H*W)//2))
+elif(H == 1 or W == 1):
+  print(""0"")
+else:
+  print(str((H*W)//2+1))",,"H,W = map(int,input().split())
+if(H == 1 or W == 1):
+  print(""1"")
+elif((H*W)%2 == 0):
+  print(str((H*W)//2))
+else:
+  print(str((H*W)//2+1))",0,,,,1.279568,0
+u680503348,"
+def invr():
+    return(map(int, input().split()))
+
+
+h, w = invr()
+
+c = (int((h+1)/2)*w)
+if h % 2 != 0:
+    c = c - (w-1)/2
+if h == 1 or w == 1:
+    c = 0
+print(int(c))
+","H, W = map(int, input().split())
+if True:
+    ref_ans = H * W
+    if H * W in [H, W]:
+        print(1)
+        exit()
+    pass
+    if ref_ans % 2 == 1:
+        ref_ans += 1
+    print(ref_ans // 2)","
+def invr():
+    return(map(int, input().split()))
+
+
+h, w = invr()
+
+c = (int((h+1)/2)*w)
+if h % 2 != 0:
+    c = c - (w-1)/2
+if h == 1 or w == 1:
+    c = 1
+print(int(c))
+",1,75,0.01315789473684209,,13.535255,0
+u634282234,"import math
+H,W=map(int,input().split())
+if W==1:
+    print(1)
+else:
+    A=math.ceil(H*W/2)
+    print(A)",,"import math
+H,W=map(int,input().split())
+if W==1:
+    print(1)
+elif H==1:
+    print(1)
+else:
+    A=math.ceil(H*W/2)
+    print(A)",0,,,,0.695795,0
+u534338602,"h,k = map(int,input().split())
+
+hh = h%2
+kk = k%2
+
+if h == 1 or k == 1:
+    ans = 1
+elif hh == 0 and kk == 0:
+    ans = int(h/2*k)
+else:
+    ans = int(h*k/2)+1
+
+print(ans)","h, k = map(int, input().split())
+hh = h % 2
+kk = k % 2
+if h == 1 or k == 1:
+    ans = 1
+elif h * k % 2 == 0:
+    ans = int(h / 2 * k)
+else:
+    ans = int(h * k / 2) + 1
+print(ans)","h,k = map(int,input().split())
+
+hh = h%2
+kk = k%2
+
+if h == 1 or k == 1:
+    ans = 1
+elif hh == 0 or kk == 0:
+    ans = int(h*k/2)
+else:
+    ans = int(h*k/2)+1
+
+print(ans)",1,12,0.368421052631579,,1.509768,0
+u546501940,"x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(x*y/2)
+  exit(0)
+a=int(x*y/2)+1
+print(a)
+","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+    exit(0)
+ref_s = x * y
+if x % 2 == 0 or y % 2 == 0:
+    print(ref_s // 2)
+    exit(0)
+a = int(x * y / 2) + 1
+print(a)","x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(int(x/2*y))
+  exit(0)
+a=int(x*y/2)+1
+print(a)
+",1,15,0.34782608695652173,,0.518956,0
+u123872895,"h, w = list(map(int, input().split()))
+
+s = 0
+
+if h % 2 == 1 and w % 2 == 1:
+    s = h*w//2 + 1
+else:
+    s = h*w//2 
+
+print(s)
+
+
+","h, w = list(map(int, input().split()))
+s = 0
+if h == 1 or w == 1:
+    print(1)
+else:
+    ref_q, ref_r = divmod(h * w, 2)
+    print(ref_q + ref_r)","h, w = list(map(int, input().split()))
+
+s = 0
+
+if h == 1 or w == 1:
+    s = 1
+else:
+    s = h*w//2 + h*w % 2
+
+print(s)
+
+
+",1,36,0.35714285714285715,,1.206924,0
+u860002137,"import math
+H, W = map(int, input().split())
+print(math.ceil(H*W/2)) if (H != 1) | (W != 1) else print(1)",,"import math
+H, W = map(int, input().split())
+print(1) if (H == 1) | (W == 1) else print(math.ceil(H*W/2))",0,,,,0.383685,0
+u023751250,"a,b=map(int,input().split())
+print(int((a*b)/2)+(a*b)%2)","a, b = map(int, input().split())
+print([1, sum(divmod(a * b, 2))][a > 1 < b])","a,b=map(int,input().split())
+if(a==1 or b==1):
+  print(1)
+else:
+  print(int((a*b)/2)+(a*b)%2)",1,16,0.5294117647058824,,0.399348,0
+u146803137,"import math
+def py():
+    print(""Yes"")
+def pn():
+    print(""No"")
+def iin():
+    x = int(input())
+    return x
+
+neko = 0
+nya = 0
+nuko = 0
+h,w = map(int,input().split())
+neko = h%2
+nya = w%2
+nuko = h * w /2
+if neko + nya == 2:
+    nuko = nuko + 1
+if h + w == 2:
+    nuko = 1
+print(int(nuko))",,"import math
+def py():
+    print(""Yes"")
+def pn():
+    print(""No"")
+def iin():
+    x = int(input())
+    return x
+
+neko = 0
+nya = 0
+nuko = 0
+h,w = map(int,input().split())
+neko = h%2
+nya = w%2
+nuko = h * w /2
+if neko + nya == 2:
+    nuko = nuko + 1
+if (h == 1)or(w == 1):
+    nuko = 1
+print(int(nuko))",0,,,,75.965352,0
+u767995501,"H, W = map(int, input().split())
+
+if H == 0 & W == 1:
+    print(1)
+else:
+    if (H % 2 == 0) & (W % 2 == 0):
+        print(H * W // 2)
+    elif (H % 2 == 0) & (W % 2 != 0):
+        print((H//2) * W)
+    elif (H % 2 != 0) & (W % 2 != 0):
+        print(H * W // 2 + 1)
+    else:
+        print(H * (W//2))
+",,"H,W = map(int, input().split())
+
+if H > W:
+    H,W = W,H
+
+if H == 1:
+    print(1)
+else:
+    N = H * W
+    print((N+1)//2)
+",0,,,,10.730113,0
+u133356863,"import math
+n,w=map(int,input().split())
+ans=math.ceil(w/2)*math.ceil(n/2)+(w//2)*(n//2)
+print(ans)","n, w = map(int, input().split())
+ans = 1 if n == 1 or w == 1 else (n * w + 1) // 2
+print(ans)","import math
+n,w=map(int,input().split())
+if n==1 or w==1:
+    print(1)
+else:
+    ans=math.ceil(w/2)*math.ceil(n/2)+(w//2)*(n//2)
+    print(ans)",1,33,0.3529411764705882,,0.501854,0
+u036914910,"H, W = map(int,input().split())
+ 
+print(int(H / 2) * W  + (int(W/2)+W%2)*(H%2))","H, W = map(int, input().split())
+print((H * W + 1) // 2 if H != 1 and W != 1 else 1)","H, W = map(int,input().split())
+if H>1 and W>1 :
+    print(int(H/2)*W  + (int(W/2)+W%2)*(H%2))
+else :
+    print(1)",1,30,0.375,,0.646319,0
+u827306875,"H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2 
+print(num)
+
+","H, W = map(int, input().split())
+print(1) if H == 1 or W == 1 else print(H * W // 2 + W * H % 2)","H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+if H > 1 and W > 1:
+	num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2 
+else:
+  num = 1
+print(num)
+
+",1,68,0.2,,1.030881,0
+u729915102,"def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(0)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+        
+resolve()",,"def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+
+
+resolve()",0,,,,0.308404,0
+u074687136,"H, W = map(int, input().split())
+
+if (H*W) % 2 == 0:
+  res = int(H * W / 2)
+else:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res =  int(H * (W//2) + int(H/2) + 1)
+print('{0:d}'.format(res))",,"H, W = map(int, input().split())
+
+if (H*W) % 2 == 0:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res = int(H * W / 2)
+else:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res =  int(H * (W//2) + int(H/2) + 1)
+print('{0:d}'.format(res))",0,,,,1.426767,0
+u678167152,"import math
+N, M = map(int, input().split())
+
+M1 = M-M%2
+ans = N*M1//2
+ans += math.ceil(N/2*(M%2))
+print(int(ans))","N, M = map(int, input().split())
+ans = 1 if N == 1 or M == 1 else (N * M + 1) // 2
+print(ans)","H, W = map(int, input().split())
+
+def solve(H,W):
+    if H==1 or W==1:
+        return 1
+    ans = (H*W+1)//2
+    return ans
+print(solve(H,W))",1,45,0.53125,,0.987254,0
+u579015878,"H,W=map(int,input().split())
+if H==1 or W==1:
+  print(0)
+elif H%2==0 or W%2==0:
+  print(int(W/2*H))
+else:
+  ans=W*(H-1)/2+(W+1)/2
+  print(int(ans))",,"H,W=map(int,input().split())
+if H==1 or W==1:
+  print(1)
+elif H%2==0 or W%2==0:
+  print(int(W/2*H))
+else:
+  ans=W*(H-1)/2+(W+1)/2
+  print(int(ans))",0,,,,1.303512,0
+u152402277,"a, b = (int(x) for x in input().split())
+
+if a == 1 or b == 1:
+    print(""0"")
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a, b = (int(x) for x in input().split())
+if a == 1 or b == 1:
+    print(1)
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a, b = (int(x) for x in input().split())
+ 
+if a == 1 or b == 1:
+    print(""1"")
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))",1,1,0.5,,0.911813,0
+u945335181,"h,w = map(int,input().split())
+resp = h*w//2
+if h == 1:
+    print(1)
+else:
+    if (h * w) % 2 != 0:
+        resp += 1
+        print(resp)
+
+    elif (h*w) % 2 == 0:
+        print(resp)
+",,"h,w = map(int,input().split())
+resp = h*w//2
+if h == 1 or w == 1:
+    print(1)
+else:
+    if (h * w) % 2 != 0:
+        resp += 1
+        print(resp)
+
+    elif (h*w) % 2 == 0:
+        print(resp)
+",0,,,,0.658413,0
+u956257368,"import math
+H, W = list(map(int, input().split()))
+
+sum = float(H*W)
+if sum%2 == 0:
+    if H == 1 or W == 1:
+        print(0)
+    else:
+        print(H*W//2)
+else:
+    if H == 1 or W == 1:
+        print(0)
+    else:
+        print(math.floor(H*W/2)+1)",,"import math
+H, W = list(map(int, input().split()))
+
+sum = float(H*W)
+if sum%2 == 0:
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(H*W//2)
+else:
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(math.floor(H*W/2)+1)",0,,,,0.525605,0
+u991193366,"H, W = [int(i) for i in input().split()]
+
+masu_sum = H * W
+if H == 1 | W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)","H, W = [int(i) for i in input().split()]
+masu_sum = H * W
+if H == 1 or W == 1:
+    print(1)
+elif masu_sum % 2 == 0:
+    print(masu_sum // 2)
+else:
+    print(masu_sum // 2 + 1)","H, W = [int(i) for i in input().split()]
+
+masu_sum = H * W
+
+if H == 1 or W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)",1,26,0.23529411764705882,,1.663493,0
+u505181116,"h,w = map(int,input().split("" ""))
+field = h*w
+if (h*w) % 2 == 0:
+  answer = (h*w)//2
+else:
+  answer = (h*w)//2 + 1
+if h == 1:
+  answer = 0
+elif w == 1:
+  answer = 0
+print(answer)","h, w = map(int, input().split(' '))
+field = h * w
+if h == 1 or w == 1:
+    print(1)
+    exit()
+elif True:
+    pass
+pass
+if field % 2:
+    ref_ans = (field + 1) // 2
+else:
+    ref_ans = field // 2
+print(ref_ans)","h,w = map(int,input().split("" ""))
+field = h*w
+if (h*w) % 2 == 0:
+  answer = (h*w)//2
+else:
+  answer = (h*w)//2 + 1
+if h == 1:
+  answer = 1
+elif w == 1:
+  answer = 1
+print(answer)
+",1,59,0.03278688524590162,,10.663946,0
+u644126199,"line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+ 
+if height %2 ==0:
+    print(int(height/2)*wei)
+else:
+  if wei %2 ==0:
+    print(int(height/2)* wei + int(wei/2))
+  else:
+    print(wei* int(height/2) + int(wei/2)+1)
+
+    ",,"line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+
+if height !=1 and wei !=1: 
+  if height %2 ==0:
+    if wei %2 ==0:
+      print(int(wei/2)*height)
+    else:
+      print(int(wei/2)*height+int(height/2))
+  else:
+    if wei %2 ==0:
+      print(int(height/2)* wei + int(wei/2))
+    else:
+      print(wei* int(height/2) + int(wei/2)+1)
+else:
+  print(1)",0,,,,1.647955,0
+u448720391,"h,w = map(int,input().split())
+c = 0
+if w%2 == 0:
+    c = (w//2)*h
+else:
+    if h%2 == 0:
+        c = (h//2)*w
+    else:
+        c = ((h//2)+1)*((w//2)+1)+(h//2)*(w//2)
+
+if h == 1 or w == 1:
+    c = 0
+print(c)","h, w = [int(ref_i) for ref_i in input().split()]
+ref_masu_sum = h * w
+if h == 1 or w == 1:
+    ref_ans = 1
+elif ref_masu_sum % 2 == 0:
+    ref_ans = ref_masu_sum // 2
+else:
+    ref_ans = ref_masu_sum // 2 + 1
+if True:
+    print(ref_ans)","h,w = map(int,input().split())
+c = 0
+if w%2 == 0:
+    c = (w//2)*h
+else:
+    if h%2 == 0:
+        c = (h//2)*w
+    else:
+        c = ((h//2)+1)*((w//2)+1)+(h//2)*(w//2)
+
+if h == 1 or w == 1:
+    c = 1
+print(c)",1,85,0.011627906976744207,,3.083678,0
+u940780117,"H,W=map(int,input().split())
+ans=0
+if H==1 or W==1:
+	ans=1
+else:
+	if H%2==0:
+		ans=H*W//2
+	else:
+		if W%2!=0:
+			ans = H*(W-1)//2+(H//2+1)
+print(ans)","H, W = map(int, input().split())
+ref_resp = H * W // 2
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 != 0:
+    ref_resp += 1
+    print(ref_resp)
+elif H * W % 2 == 0:
+    print(ref_resp)","H,W=map(int,input().split())
+ans=0
+if H==1 or W==1:
+	ans=1
+else:
+	if H%2==0:
+		ans=H*W//2
+	else:
+		if W%2!=0:
+			ans = H*(W-1)//2+(H//2+1)
+		else:
+			ans=H*W//2
+print(ans)",1,62,0.16216216216216217,,1.346628,0
+u945157177,"def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)
+    
+",,"def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h == 1 or w == 1:
+    print(1)
+elif h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)
+    
+",0,,,,7.677227,0

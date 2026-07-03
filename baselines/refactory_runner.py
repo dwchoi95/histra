@@ -10,6 +10,7 @@ re-validates it with OUR Validator.
 solve(pid, timeout, tests, trajs, refs) -> {user_id: (patch_or_None, seconds)}
 """
 import os, ast, json, time, shutil, textwrap, subprocess
+from tqdm import tqdm
 from src.core.validator import Validator
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -84,7 +85,13 @@ def _build_layout(pid, tests, trajs, refs):
         _write(os.path.join(code_dir, "correct", f"correct_{u}.py"), _wrap(c))
 
     manifest = {}
-    for u in sorted(trajs):
+    for u in tqdm(
+        sorted(trajs),
+        total=len(trajs),
+        desc=f"Refactory {pid} layout",
+        leave=False,
+        dynamic_ncols=True,
+    ):
         was = trajs.get(u) or []
         if not was or not was[-1].strip():
             continue
@@ -97,6 +104,58 @@ def _build_layout(pid, tests, trajs, refs):
     return base, manifest
 
 
+def _incremental_completed(inc_path):
+    done = set()
+    if not os.path.exists(inc_path):
+        return 0
+    try:
+        with open(inc_path, encoding="utf-8") as jf:
+            for line in jf:
+                try:
+                    rec = json.loads(line)
+                except Exception:
+                    continue
+                fn = rec.get("file_name", "")
+                if fn.startswith("wrong_") and fn.endswith(".py"):
+                    done.add(fn[len("wrong_"):-len(".py")])
+    except OSError:
+        return len(done)
+    return len(done)
+
+
+def _run_refactory(cmd, env, pid, inc_path, total):
+    proc = subprocess.Popen(
+        cmd,
+        cwd=CLONE,
+        env=env,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    deadline = time.time() + TIMEOUT
+    with tqdm(
+        total=total,
+        desc=f"Refactory {pid} repair",
+        leave=False,
+        dynamic_ncols=True,
+    ) as pbar:
+        while proc.poll() is None:
+            completed = _incremental_completed(inc_path)
+            if completed > pbar.n:
+                pbar.update(completed - pbar.n)
+            if time.time() >= deadline:
+                proc.kill()
+                break
+            time.sleep(1.0)
+        try:
+            proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            proc.wait()
+        completed = _incremental_completed(inc_path)
+        if completed > pbar.n:
+            pbar.update(completed - pbar.n)
+
+
 def solve(pid, timeout, tests, trajs, refs):
     base, manifest = _build_layout(pid, tests, trajs, refs)
     inc_path = os.path.join(base, "incremental.jsonl")
@@ -105,12 +164,14 @@ def solve(pid, timeout, tests, trajs, refs):
 
     if manifest and os.path.exists(VENV):
         cmd = [VENV, "run.py", "-d", "_run", "-q", pid, "-s", "100", "-o", "-m", "-b"]
-        env = {**os.environ, "REFACTORY_STDIN": "1"}
-        try:
-            subprocess.run(cmd, cwd=CLONE, env=env, timeout=TIMEOUT,
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        except subprocess.TimeoutExpired:
-            pass   # incremental.jsonl still holds whatever finished
+        seed = os.environ.get("REFACTORY_SEED") or os.environ.get("EXPERIMENT_SEED") or "0"
+        env = {
+            **os.environ,
+            "REFACTORY_STDIN": "1",
+            "REFACTORY_SEED": seed,
+            "PYTHONHASHSEED": seed,
+        }
+        _run_refactory(cmd, env, pid, inc_path, len(manifest))
 
     # collect per-wrong results, unwrap + re-validate with OUR validator
     repaired = {}   # uid -> (rep_code, secs)
@@ -133,7 +194,13 @@ def solve(pid, timeout, tests, trajs, refs):
 
     Validator.init_globals(tests, timeout)
     out = {}
-    for u in trajs:
+    for u in tqdm(
+        trajs,
+        total=len(trajs),
+        desc=f"Refactory {pid} validate",
+        leave=False,
+        dynamic_ncols=True,
+    ):
         rep, secs = repaired.get(u, ("", 0.0))
         patch = None
         if rep:

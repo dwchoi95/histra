@@ -1,0 +1,6886 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,temperature,model,trials,source
+u670567845,"h, w = map(int, input().split())
+
+ans = h*w
+if h == 1 or w == 1:
+  print(0)
+else:
+  if ans%2 == 0:
+    print(ans//2)
+  else:
+    print(ans//2+1)
+","h, w = map(int, input().split())
+ans = h * w
+if h == 1 or w == 1:
+    print(1)
+elif ans % 2 == 0:
+    print(ans // 2)
+else:
+    print(ans // 2 + 1)","h, w = map(int, input().split())
+
+ans = h*w
+if h == 1 or w == 1:
+  print(1)
+else:
+  if ans%2 == 0:
+    print(ans//2)
+  else:
+    print(ans//2+1)
+",1,1,0.5,,1.693180,0,gpt-3.5-turbo,1,histra
+u748311048,"h,w=map(int, input().split())
+cnt=(w//2)*h
+if w%2==1:
+    cnt+=h//2+h%2
+print(cnt)","h, w = map(int, input().split())
+cnt = w // 2 * h
+if w % 2 == 1:
+    cnt += h // 2 + h % 2
+print(1) if h == 1 or w == 1 else print(h * w // 2 + w * h % 2)","h,w=map(int, input().split())
+cnt=(w//2)*h
+if w%2==1:
+    cnt+=h//2+h%2
+if h==1 or w==1:
+    cnt=1
+print(cnt)",1,36,0.3207547169811321,,4.018858,0,gpt-3.5-turbo,1,histra
+u391819434,"H,W=map(int,input().split())
+
+w1=0--W//2
+w2=W//2
+
+if H==1:
+    print(1)
+else:
+    print(w1*(0--H//2)+w2*(H//2))","H, W = map(int, input().split())
+w1 = 0 - -W // 2
+w2 = W // 2
+if H > 1 and W > 1:
+    print(int(H / 2) * W + (int(W / 2) + W % 2) * (H % 2))
+else:
+    print(1)","H,W=map(int,input().split())
+
+w1=0--W//2
+w2=W//2
+
+if H==1 or W==1:
+    print(1)
+else:
+    print(w1*(0--H//2)+w2*(H//2))",1,39,0.15217391304347827,,2.954179,0,gpt-3.5-turbo,1,histra
+u011276976,"h,w = map(int, input().split())
+total = h * w
+
+if total % 2:
+    ans = (total + 1)//2
+
+else:
+    ans = total//2
+
+print(ans)","h, w = map(int, input().split())
+total = h * w
+if h == 1 or w == 1:
+    ans = 1
+elif h * w % 2 == 0:
+    ans = int(h * w // 2)
+else:
+    ans = h * w // 2 + 1
+print(ans)","h,w = map(int, input().split())
+total = h * w
+
+if h == 1 or w == 1:
+    print(1)
+    exit()
+
+if total % 2:
+    ans = (total + 1)//2
+
+else:
+    ans = total//2
+
+print(ans)
+",1,40,0.3548387096774194,,2.336023,0,gpt-3.5-turbo,1,histra
+u661764795,"H, W = map(int, input().split())
+
+if H % 2 == 1 and W % 2 == 1:
+    print(int(H * (W + 1) / 2) - H // 2)
+else:
+    print(int(H * W / 2))
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 1 and W % 2 == 1:
+    print(H * W // 2 + 1)
+else:
+    print(H * W // 2)","H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 1 and W % 2 == 1:
+        print(int(H * (W + 1) / 2) - H // 2)
+    else:
+        print(int(H * W / 2))
+",1,35,0.339622641509434,,2.491175,0,gpt-3.5-turbo,1,histra
+u560708725,"h,w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 == 0:
+        print((h / 2) * w)
+    else:
+        if w % 2 == 0:
+            print(((h//2) * w/2) + ((h//2 + 1) * w/2))
+        else:
+            print(((h//2 + 1) * (w//2+1)) + ((h//2) * (w//2)))","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print((h * w + 1) // 2)","h,w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 == 0:
+        print(int((h / 2) * w))
+    else:
+        if w % 2 == 0:
+            print(int(((h//2) * w/2) + ((h//2 + 1) * w/2)))
+        else:
+            print(int(((h//2 + 1) * (w//2+1)) + ((h//2) * (w//2))))
+",1,64,0.1232876712328767,,3.227715,0,gpt-3.5-turbo,1,histra
+u974402118,"H,W = (int(x) for x in input().split())
+if H==1 or W==1:
+  print(0)
+elif (H*W)%2:
+  print((H*W-1)//2 + 1)
+else:
+  print((H*W)//2)","H, W = (int(x) for x in input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2:
+    print((H * W - 1) // 2 + 1)
+else:
+    print(H * W // 2)","H,W = (int(x) for x in input().split())
+if H==1 or W==1:
+  print(1)
+elif (H*W)%2:
+  print((H*W-1)//2 + 1)
+else:
+  print((H*W)//2)",1,1,0.5,,3.029958,0,gpt-3.5-turbo,1,histra
+u577868286,"h, w = map(int, input().split())
+ 
+if h == 1 or w == 1:
+    print(1)
+print((h * w + 1) // 2)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h, w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)",1,2,0.5,,1.811229,0,gpt-3.5-turbo,1,histra
+u128196936,"A, B = map(int, input().split())
+if A == 1 or B == 1:
+  print(1)
+elif (A*B) % 2 == 0:
+  print(A*B/2)
+else:
+  print(A*B//2+1)","A, B = map(int, input().split())
+if A == 1 or B == 1:
+    print(1)
+elif A * B % 2 == 0:
+    print(A * B // 2)
+else:
+    print(A * B // 2 + 1)","A, B = map(int, input().split())
+if A == 1 or B == 1:
+  print(1)
+elif (A*B) % 2 == 0:
+  print(A*B//2)
+else:
+  print(A*B//2+1)",1,1,0.5,,2.366615,0,gpt-3.5-turbo,1,histra
+u911856499,"a = [int(c) for c in input().split()]
+H = a[0]
+W = a[1]
+
+#奇数行では列数/2+1
+#偶数行では列数/2(余り無視)
+cnt = 0
+for i in range(1,H+1):
+    if i %2 == 1:
+        cnt += int(W/2)+1
+    else:
+        cnt += int(W/2)
+print(cnt)","a = [int(c) for c in input().split()]
+H = a[0]
+W = a[1]
+
+masu_sum = H * W
+
+if H == 1 or W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)","a = [int(c) for c in input().split()]
+r = a[0]*a[1]
+if a[0] == 1 or a[1] == 1:
+    print(1)
+elif r % 2 == 0:
+    print(int(r/2))
+else:
+    print(int(r/2+1))
+",1,46,0.5490196078431373,,24.535593,0,gpt-3.5-turbo,1,partraj
+u453630968,"import math
+h, w = map(int,input().split())
+if w == 1:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)","import math
+h, w = map(int, input().split())
+if 1 in [h, w]:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)","import math
+h, w = map(int,input().split())
+if w == 1 or h == 1:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)",1,7,0.5,,2.867195,0,gpt-3.5-turbo,1,histra
+u055519694,"import math
+
+a,b = map(int,input().split())
+
+if a == b == 1:
+    print(1)
+else:
+    print(math.ceil(a*b/2))","import math
+a, b = map(int, input().split())
+if a == 1 or b == 1:
+    print(1)
+else:
+    print(math.ceil(a * b / 2))","import math
+
+a,b = map(int,input().split())
+
+if a == 1 or b == 1:
+    print(1)
+else:
+    print(math.ceil(a*b/2))",1,6,0.5,,3.888940,0,gpt-3.5-turbo,1,histra
+u555587832,"import math
+h,w = map(int,input().split())
+
+if h == 1:
+    print(1)
+else:
+    print(math.ceil(h/2*w))
+","import math
+h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(math.ceil(h * w / 2))","import math
+h,w = map(int,input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(math.ceil(h/2*w))
+",1,13,0.35,,2.890320,0,gpt-3.5-turbo,1,histra
+u317423698,"import sys
+from itertools import islice, tee
+
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+
+    if not h0 or not w0:
+        return 0
+
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+
+    return answer
+
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+","import sys
+from itertools import islice, tee
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+    if not h0 or not w0:
+        return 1
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+    return answer
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+if __name__ == '__main__':
+    main()","import sys
+from itertools import islice, tee
+
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+
+    if H == 1 or W == 1:
+        return 1
+
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+
+    return answer
+
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+",1,1,0.9166666666666667,,5.095732,0,gpt-3.5-turbo,1,histra
+u318427318,"#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    h,w = map(int,input().split())
+    flag=h*w
+    if flag==1:
+        print(1)
+        exit()
+    if flag % 2 ==0:
+        print(flag//2)
+    else:
+        print(int(flag/2)+1)
+
+if __name__==""__main__"":
+    main()","import sys
+input = sys.stdin.readline
+
+def main():
+    h, w = map(int, input().split())
+    flag = h * w
+    if h == 1 or w == 1:
+        print(1)
+        exit(0)
+    if flag % 2 == 0:
+        print(flag // 2)
+    else:
+        print(int(flag / 2) + 1)
+if __name__ == '__main__':
+    main()","#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    h,w = map(int,input().split())
+    if h==1 or w ==1:
+        print(1)
+        exit()
+    flag=h*w
+    if flag % 2 ==0:
+        print(flag//2)
+    else:
+        print(int(flag/2)+1)
+
+if __name__==""__main__"":
+    main()",1,9,0.6896551724137931,,3.284106,0,gpt-3.5-turbo,1,histra
+u276115223,"# パナソニックプログラミングコンテスト2020: B – Bishop
+H, W = [int(i) for i in input().split()]
+
+can_reach = 0
+
+if (H % 2 == 0 and W % 2 == 0) or (H % 2 == 0 and W % 2 == 1):
+    can_reach = W * (H // 2)
+elif H % 2 == 1 and W % 2 == 0:
+    can_reach = W * (H // 2) + W // 2
+else:
+    can_reach = W * (H // 2) + W // 2 + 1
+
+print(can_reach)",,"# パナソニックプログラミングコンテスト2020: B – Bishop
+H, W = [int(i) for i in input().split()]
+
+can_reach = 0
+if H == 1 or W == 1:
+    can_reach = 1
+elif (H % 2 == 0 and W % 2 == 0) or (H % 2 == 0 and W % 2 == 1):
+    can_reach = W * (H // 2)
+elif H % 2 == 1 and W % 2 == 0:
+    can_reach = W * (H // 2) + W // 2
+else:
+    can_reach = W * (H // 2) + W // 2 + 1
+
+print(can_reach)",0,,,,26.725862,0,gpt-3.5-turbo,1,none
+u282813849,"H, W = map(int,input().split())
+remain = 0
+if H % 2 == 1 and W % 2 == 1:
+  remain = 1
+ans = int(H*(W/2)) + remain
+print(ans)",,"H, W = map(int,input().split())
+if H == 1 or W == 1:
+  ans = 1
+else:
+  ans = int(H*(W/2)) + (H*W % 2)
+print(ans)",0,,,,10.990966,0,gpt-3.5-turbo,1,none
+u909224749,"H, W = map(int, input().split())
+
+if H%2==0 or W%2==0:
+  ans = int(H*W/2)
+else:
+  if H==1 or W==1:
+    # コーナーケース
+    ans = 1
+  else:
+  	ans = int(H*W+1/2)
+print(ans)
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = int(H * (W / 2)) + H * W % 2
+print(ans)","H, W = map(int, input().split())
+
+if H==1 or W==1:
+  # コーナーケース
+  ans = 1
+
+elif H%2==0 or W%2==0:
+  ans = int(H*W/2)
+
+else:
+  ans = int((H*W+1)/2)
+
+print(ans)",1,44,0.45,,4.288983,0,gpt-3.5-turbo,1,histra
+u456579619,"H, W = map(int, input().split())
+if H%2 == 1 and W%2 == 1:
+  print((H*W)//2+1)
+  
+else:
+  print((H*W)//2)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H, W = map(int, input().split())
+
+if H==1 or W==1:
+  print(1)
+elif H%2 == 1 and W%2 == 1:
+  print((H*W)//2+1)
+  
+else:
+  print((H*W)//2)",1,27,0.4,,2.330748,0,gpt-3.5-turbo,1,histra
+u762523240,"H, W = map(int, input().split())
+
+mass = H * W
+if H*W % 2 == 0:
+  s = (H * W) // 2
+elif H*W % 2 != 0:
+  s = (H * W + 1) // 2
+elif H == 1 or W  == 1:
+  s = 1
+
+
+print(s)","H, W = map(int, input().split())
+mass = H * W
+if H == 1 or W == 1:
+    s = 1
+else:
+    s = H * W // 2 + H * W % 2
+print(s)","H, W = map(int, input().split())
+
+if H > 1 and W > 1:
+  if H*W % 2 == 0:
+    s = (H * W) // 2
+  elif H*W % 2 != 0:
+    s = (H * W + 1) // 2
+
+elif H == 1 or W  == 1:
+  s = 1
+
+
+print(s)",1,52,0.22388059701492535,,4.271541,0,gpt-3.5-turbo,1,histra
+u395672550,"H,W = map(int,input().split())
+if H == 1:
+  print('1')
+if W == 1:
+  print('1')
+a = H * W
+b = a // 2
+if b != a / 2:
+  b += 1
+if H != 1 and W != 1:  
+  print(b)
+","H, W = map(int, input().split())
+if H == 1:
+    print('1')
+else:
+    if W == 1:
+        print('1')
+    a = H * W
+    b = a // 2
+    if b != a / 2:
+        b += 1
+    if H != 1 and W != 1:
+        print(b)","H,W = map(int,input().split())
+if H == 1 or W == 1:
+  print(1)
+a = H * W
+b = a // 2
+if b != a / 2:
+  b += 1
+if H != 1 and W != 1:  
+  print(b)
+",1,2,0.8461538461538461,,1.220182,0,gpt-3.5-turbo,1,histra
+u331327289,"import sys
+from math import ceil
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    print(ceil(h * w / 2))
+
+
+if __name__ == ""__main__"":
+    main()
+",,"import sys
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    print((h * w + 1) // 2 if min(h, w) > 1 else 1)
+
+
+if __name__ == ""__main__"":
+    main()
+",0,,,,7.913555,0,gpt-3.5-turbo,1,none
+u910632349,"h,w=map(int,input().split())
+if h==1 or w==1:
+    print(""1"")
+if (h*w)%2==0:
+    print((h*w)//2)
+else:
+    print((h*w)//2+1)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print('1')
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w=map(int,input().split())
+if h==1 or w==1:
+    print(""1"")
+    exit()
+if (h*w)%2==0:
+    print((h*w)//2)
+else:
+    print((h*w)//2+1)",1,2,0.6666666666666666,,1.888460,0,gpt-3.5-turbo,1,histra
+u476068053,"import math
+
+x = list(map(int, input().split()))
+
+h = x[0]
+w = x[1]
+
+if (w == 1):
+    count = 1
+else:
+    count = math.ceil(h/2) * math.ceil(w/2) + math.floor(h/2) * math.floor(w/2)
+
+'''
+for i in range(h):
+    if i % 2 == 0:
+        count += math.ceil(w/2)
+    else:
+        count += math.floor(w/2)
+'''
+
+print(count)","import math
+x = list(map(int, input().split()))
+h = x[0]
+w = x[1]
+if 1 in [h, w]:
+    count = 1
+else:
+    count = math.ceil(h / 2) * math.ceil(w / 2) + math.floor(h / 2) * math.floor(w / 2)
+'\nfor i in range(h):\n    if i % 2 == 0:\n        count += math.ceil(w/2)\n    else:\n        count += math.floor(w/2)\n'
+print(count)","import math
+
+x = list(map(int, input().split()))
+
+h = x[0]
+w = x[1]
+
+if (h == 1 or w == 1):
+    count = 1
+else:
+    count = math.ceil(h/2) * math.ceil(w/2) + math.floor(h/2) * math.floor(w/2)
+
+'''
+for i in range(h):
+    if i % 2 == 0:
+        count += math.ceil(w/2)
+    else:
+        count += math.floor(w/2)
+'''
+
+print(count)
+
+",1,7,0.5,,1.747523,0,gpt-3.5-turbo,1,histra
+u091051505,"H, W = map(int, input().split())
+ans = H * W
+if ans % 2 == 1:
+    ans += 1
+print(ans // 2)    ",,"H, W = map(int, input().split())
+ans = H * W
+if H * W in [H, W]:
+    print(1)
+    exit()
+if ans % 2 == 1:
+    ans += 1
+print(ans // 2)    ",0,,,,14.170225,0,gpt-3.5-turbo,1,none
+u423389475,"h,w = map(int,input().split())
+a = h*w
+if a%2 == 1:
+  print(round(a//2+1))
+else:
+  print(round(a/2))","h, w = map(int, input().split())
+a = h * w
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w = map(int,input().split())
+a = h*w
+if h ==1 or w ==1:
+  print(1)
+elif a%2 == 1:
+  print(round(a//2+1))
+else:
+  print(round(a/2))",1,29,0.3829787234042553,,2.847729,0,gpt-3.5-turbo,1,histra
+u208120643,"""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+
+H, W = (map(int, input().split()))
+if (H*W)%2==0:
+    print(int(H*W/2))
+else:
+    print(int(H*W/2)+1)
+","""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print('1')
+elif H * W % 2 == 0:
+    print(str(H * W // 2))
+else:
+    print(str(H * W // 2 + 1))","""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+
+H, W = (map(int, input().split()))
+if(H == 1 or W == 1):
+    print(1)
+else:
+    if (H*W) % 2 == 0:
+        print(int(H*W/2))
+    else:
+        print(int(H*W/2)+1)
+",1,25,0.41860465116279066,,2.453141,0,gpt-3.5-turbo,1,histra
+u840037795,"H,W=map(int,input().strip().split())
+
+if H % 2 == 0:
+    print((H//2)*W)
+else:
+    sets = W // 2
+    sum = ((H//2)*2+1)*sets
+    if W % 2 == 1:
+        sum += (H//2 + 1)
+    print(sum)",,"H,W=map(int,input().strip().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print((H//2)*W)
+else:
+    sets = W // 2
+    sum = ((H//2)*2+1)*sets
+    if W % 2 == 1:
+        sum += ((H//2) + 1)
+    print(sum)",0,,,,8.690908,0,gpt-3.5-turbo,1,none
+u124864167,"h,w=map(int,input().split())
+print(int(((h*w/2,w*(h//2)+(w+1)//2)[h&1],1)[h==1]))","h, w = map(int, input().split())
+print(int([1, sum(divmod(h * w, 2))][h > 1 < w]))","h,w=map(int,input().split())
+print(int(((h*w/2,w*(h//2)+(w+1)//2)[h&1],1)[h==1 or w==1]))",1,36,0.16279069767441862,,2.817034,0,gpt-3.5-turbo,1,histra
+u805011545,"import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+h = -(-H//2)
+if(H%2)==0:
+  print(h*W)
+  sys.exit()
+else:
+  if(W%2)==0:
+    print(h*W-W/2)
+    sys.exit()
+  else:
+    print(h*W-W//2)
+    sys.exit()","import sys
+H, W = [int(x) for x in input().split()]
+if H == 1 or W == 1:
+    print(1)
+    sys.exit()
+h = -(-H // 2)
+if H % 2 == 0:
+    print(h * W)
+    sys.exit()
+else:
+    if W % 2 == 0:
+        print(h * W - W // 2)
+        sys.exit()
+    else:
+        print(h * W - W // 2)
+        sys.exit()","import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+if(H%2)==0:
+  h = -(-H//2)
+  print(h*W)
+  sys.exit()
+elif(W%2)==0:
+  w = -(-W//2)
+  print(H*w)
+  sys.exit()
+else:
+  print(-(-(H*W)//2))
+  sys.exit()",1,1,0.9795918367346939,,10.996154,0,gpt-3.5-turbo,1,partraj
+u572032237,"h, w = map(int, input().split())
+
+print((h * w) // 2 + (w * h) % 2)","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h, w = map(int, input().split())
+
+print(1) if h == 1 or w == 1 else print((h * w) // 2 + (w * h) % 2)",1,18,0.4857142857142857,,1.896985,0,gpt-3.5-turbo,1,histra
+u172748267,"
+h,w=map(int,input().split())
+ans=0
+if h%2==0 or w%2==0:
+    ans=(h*w//2)
+elif h==1 or w==1:
+    ans=1
+else:
+    ans=(h*w//2+1)
+print(ans)","h, w = map(int, input().split())
+ans = 0
+if h == 1 or w == 1:
+    ans = 1
+else:
+    ans = int(h * (w / 2)) + h * w % 2
+print(ans)","h,w=map(int,input().split())
+ans=0
+if h==1 or w==1:
+    ans=1
+elif (h*w)%2==0:
+    ans=int(h*w//2)
+else:
+    ans=(h*w//2+1)
+print(ans)",1,42,0.45454545454545453,,3.322132,0,gpt-3.5-turbo,1,histra
+u860338101,"H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1 :
+    count +=1
+if H == 1 or W == 1:
+    count = 0
+print(count)","H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1:
+    count += 1
+if H == 1 or W == 1:
+    count = 1
+print(count)","H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1 :
+    count +=1
+if H == 1 or W == 1:
+    count = 1
+print(count)",1,1,0.5,,1.857035,0,gpt-3.5-turbo,1,histra
+u255898796,"a = input().split()
+b = int(a[0]) // 2
+c = int(a[0]) % 2
+if c == 0:
+  print(int(int(b) * int(a[1])))
+else:
+  if int(a[1]) % 2 == 1:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2 + 1))
+  else:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2))","a = input().split()
+b = int(a[0])
+c = int(a[1])
+if b == 1 or c == 1:
+    print(1)
+else:
+    print(b * c // 2 + (b * c) % 2)","a = input().split()
+b = int(a[0]) // 2
+c = int(a[0]) % 2
+if int(a[0]) == 1 or int(a[1]) == 1:
+  print(""1"")
+elif c == 0:
+  print(int(int(b) * int(a[1])))
+else:
+  if int(a[1]) % 2 == 1:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2 + 1))
+  else:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2))",1,98,0.234375,,26.109781,0,gpt-3.5-turbo,1,partraj
+u844895214,"import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    ans = 0
+    ans += math.ceil(w/2)*math.ceil(h/2)
+    ans += (w//2)*(h//2)
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()",,"import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    if w==1 or h==1:
+        print(1)
+        return
+    ans = 0
+    ans += math.ceil(w/2)*math.ceil(h/2)
+    ans += (w//2)*(h//2)
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()",0,,,,17.290425,0,gpt-3.5-turbo,1,none
+u357751375,"h,w = map(int,input().split())
+
+if h % 2 == 0:
+    i = h // 2
+else:
+    i = h // 2 + 1
+
+j = w // 2
+
+if w % 2 == 0:
+    print(h * j)
+else:
+    print(h * j + i)","h, w = map(int, input().split())
+if h % 2 == 0:
+    i = h // 2
+else:
+    i = h // 2 + 1
+j = w // 2
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w = map(int,input().split())
+
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+
+if h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)",1,22,0.6716417910447761,,5.892606,0,gpt-3.5-turbo,1,histra
+u353548710,"h, w = map(int, input().split())
+hd, hm, wd, wm = h // 2, h % 2, w // 2, w % 2
+s = hd * wd * 2  + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 0
+print(s)
+","h, w = map(int, input().split())
+hd, hm, wd, wm = (h // 2, h % 2, w // 2, w % 2)
+s = hd * wd * 2 + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 1
+print(s)","h, w = map(int, input().split())
+hd, hm, wd, wm = h // 2, h % 2, w // 2, w % 2
+s = hd * wd * 2  + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 1
+print(s)
+",1,1,0.5,,2.291885,0,gpt-3.5-turbo,1,histra
+u349449706,"import math
+H, W = map(int, input().split())
+print( math.ceil( H * W / 2 ) )
+","import math
+H, W = map(int, input().split())
+print(math.ceil(H * W / 2) if H != 1 and W != 1 else 1)","import math
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    print( math.ceil( H * W / 2 ) )
+",1,14,0.5625,,1.329677,0,gpt-3.5-turbo,1,histra
+u645568816,"import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+
+first = math.ceil(H/2)
+second = math.floor(H/2)
+if H>= 2:
+  ans = math.ceil(W/2)*first + math.floor(W/2)*second
+elif H==1:
+  ans = 1
+  
+print(ans)","import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+first = math.ceil(H / 2)
+second = math.floor(H / 2)
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = int(H * (W / 2)) + H * W % 2
+print(ans)","import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+
+first = math.ceil(H/2)
+second = math.floor(H/2)
+if H>= 2 and W>=2:
+  ans = math.ceil(W/2)*first + math.floor(W/2)*second
+elif W==1:
+  ans = 1
+elif H==1:
+  ans = 1
+  
+print(ans)",1,42,0.288135593220339,,3.811402,0,gpt-3.5-turbo,1,histra
+u569776981,"H, W = map(int,input().split())
+import math
+ans = math.ceil(H * W / 2)
+print(ans)","H, W = map(int, input().split())
+import math
+ans = 1 if H == 1 or W == 1 else (H * W + 1) // 2
+print(ans)","import math
+def man(h, w):
+    if h == 1 or w == 1:
+        return 1
+    else:
+        return math.ceil(h * W / 2)
+H, W = map(int,input().split())
+print(man(H, W))",1,16,0.7681159420289856,,3.333386,0,gpt-3.5-turbo,1,histra
+u138083942,"import math
+
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split("" "")]
+    h = row1[0]
+    w = row1[1]
+
+    if h == 1 or w == 1:
+        print(1)
+
+    ans = (h-(h%2))*(w-(w%2))/2
+    ans += (h%2)*(w-(w%2))/2
+    ans += (w%2)*(h-(h%2))/2
+    ans += (w%2)*(h%2)
+
+    print(int(ans))
+
+
+if __name__ == ""__main__"":
+    resolve()
+","import math
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split(' ')]
+    h = row1[0]
+    w = row1[1]
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        ans = (h - h % 2) * (w - w % 2) / 2
+        ans += h % 2 * (w - w % 2) / 2
+        ans += w % 2 * (h - h % 2) / 2
+        ans += w % 2 * (h % 2)
+        print(int(ans))
+if __name__ == '__main__':
+    resolve()","import math
+
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split("" "")]
+    h = row1[0]
+    w = row1[1]
+
+    if h == 1 or w == 1:
+        print(1)
+        return
+
+    ans = (h-(h%2))*(w-(w%2))/2
+    ans += (h%2)*(w-(w%2))/2
+    ans += (w%2)*(h-(h%2))/2
+    ans += (w%2)*(h%2)
+
+    print(int(ans))
+
+
+if __name__ == ""__main__"":
+    resolve()
+",1,2,0.33333333333333337,,7.776046,0,gpt-3.5-turbo,1,histra
+u411923565,"#B - Bishop △(TLE,WA)
+H,W = map(int,input().split())
+
+count = 0
+if H == 1 or W == 1:#コーナーケース(H,Wが1の時どこにも動けない)
+    print(1)
+if H % 2 == 0:
+    count = (H // 2)*W
+else :
+    count = (H // 2)*W + ((W + 2 - 1) // 2)#x/yの切り上げ:(x+y-1)//y
+print(count)","H, W = map(int, input().split())
+count = 0
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 0:
+        count = H // 2 * W
+    else:
+        count = H // 2 * W + (W + 2 - 1) // 2
+    print(count)","#B - Bishop △(TLE,WA)
+H,W = map(int,input().split())
+
+count = 0
+if H == 1 or W == 1:#コーナーケース(H,Wが1の時どこにも動けない)
+    count = 1
+elif H % 2 == 0:
+    count = (H // 2)*W
+else :
+    count = (H // 2)*W + ((W + 2 - 1) // 2)#x/yの切り上げ:(x+y-1)//y
+print(count)",1,2,0.75,,1.916499,0,gpt-3.5-turbo,1,histra
+u430336181,"H, W = map(int, input().split())
+
+if H or W == 1:
+    print(1)
+
+H_ = H % 2
+W_ = W % 2
+if H_ == 0:
+    print(str(round(H/2*W//1)))
+
+elif H_ == 1:
+    h = H // 2 + 1
+    h_ = H // 2
+    if W_ == 0:
+        print(str(round((h + h_)*W/2)))
+
+    elif W_ == 1:
+        w = W // 2+1
+        w_ = W // 2
+        print(str(round(h * w + h_ * w_)))
+
+
+
+","H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    a = H * W
+    if a % 2 == 1:
+        print(round(a // 2 + 1))
+    else:
+        print(round(a / 2))","H, W = map(int, input().split())
+
+H_ = H % 2
+W_ = W % 2
+
+if H  == 1 or W == 1:
+    print(1)
+
+elif H_ == 0:
+    print(str(round(H/2*W//1)))
+
+elif H_ == 1:
+    h = H // 2 + 1
+    h_ = H // 2
+    if W_ == 0:
+        print(str(round((h + h_)*W/2)))
+
+    elif W_ == 1:
+        w = W // 2+1
+        w_ = W // 2
+        print(str(round(h * w + h_ * w_)))
+
+
+
+",1,122,0.2077922077922078,,26.829402,0,gpt-3.5-turbo,1,partraj
+u095094246,"import math
+h,w=map(int,input().split())
+if h>1 and w>1:
+  print(math.ceil(w/2)*math.ceil(h/2) + (w//2)*(h//2))
+else:
+  print(0)
+
+","import math
+h, w = map(int, input().split())
+if h > 1 and w > 1:
+    print(math.ceil(w / 2) * math.ceil(h / 2) + w // 2 * (h // 2))
+else:
+    print(1)","import math
+h,w=map(int,input().split())
+if h>1 and w>1:
+  print(math.ceil(w/2)*math.ceil(h/2) + (w//2)*(h//2))
+else:
+  print(1)
+
+",1,1,0.5,,3.568576,0,gpt-3.5-turbo,1,histra
+u912556688,"a,b = map(int,input().split())
+ans = 0
+if a == 1 or b == 1:
+  print(0)
+elif a*b % 2 == 0:
+  print(int(a*b/2))
+else:
+  print(int((a*b-1)/2 + 1))","a, b = map(int, input().split())
+ans = 0
+if a == 1 or b == 1:
+    print('1')
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a,b = map(int,input().split())
+ans = 0
+if a == 1 or b == 1:
+  print(1)
+elif a*b % 2 == 0:
+  print(int(a*b/2))
+else:
+  print(int((a*b-1)/2 + 1))",1,1,0.5,,3.289973,0,gpt-3.5-turbo,1,histra
+u212502386,"H,W=map(int,input().split())
+
+if H%2==0:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=H//2*W
+else:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=(W//2+1)*H-H//2
+
+print(ans)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    ans = 1
+elif H * W % 2 == 0:
+    ans = int(H * W // 2)
+else:
+    ans = H * W // 2 + 1
+print(ans)","H,W=map(int,input().split())
+
+if H%2==0:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=H//2*W
+else:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=(W//2+1)*H-H//2
+
+if H==1 or W==1:
+    ans=1
+    
+print(ans)",1,59,0.22368421052631576,,3.679426,0,gpt-3.5-turbo,1,histra
+u212539610,"import numpy as np
+
+H, W = map(int,input().split())
+
+print(int(np.ceil((H * W) / 2)))","import numpy as np
+
+H, W = map(int, input().split())
+
+print(int(np.ceil((H * W) / 2)) if H != 1 and W != 1 else 1)","import numpy as np
+
+H, W = map(int,input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    print(int(np.ceil((H * W) / 2)))",1,14,0.5625,,13.135045,0,gpt-3.5-turbo,1,partraj
+u368270116,"import math
+h,w=map(int,input().split())
+if h or w ==1:
+  print(1)
+elif (h*w)%2==0:
+  print(int((h*w)/2))
+else:
+  print(math.ceil((h*w)/2))","import math
+h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+elif h * w % 2 == 0:
+    print(int(h * w / 2))
+else:
+    print(math.ceil(h * w / 2))","import math
+h,w=map(int,input().split())
+if h==1 or w==1:
+  print(1)
+elif (h*w)%2==0:
+  print(int((h*w)/2))
+else:
+  print(math.ceil((h*w)/2))
+",1,3,0.5,,4.505657,0,gpt-3.5-turbo,1,histra
+u033839917,"H,W = [int(n) for n in input().split()]
+print((H*W//2) if H*W%2==0 else ((H*W+1)//2))","H, W = [int(n) for n in input().split()]
+print((H * W + 1) // 2 if H != 1 and W != 1 else 1)","H,W = [int(n) for n in input().split()]
+if H < 2:
+  W = 1
+if W < 2:
+  H = 1
+print((H*W//2) if H*W%2==0 else ((H*W+1)//2))",1,19,0.5128205128205128,,2.810486,0,gpt-3.5-turbo,1,histra
+u835283937,"def main():
+    H, W = map(int ,input().split())
+    L1 = 0
+    L2 = 0
+
+    L1 = L2 = W // 2
+
+    if W % 2 == 1:
+        L1 += 1
+
+    ans = (L1 + L2) * (H//2)
+
+    if H % 2 == 1:
+        ans += L1
+
+    print(ans)
+
+if __name__ == ""__main__"":
+    main()","def main():
+    W, H = map(int, input().split())
+    if W == 1 or H == 1:
+        print(1)
+        exit()
+    L2 = W * H
+    if L2 % 2 == 0:
+        print(L2 // 2)
+    else:
+        print(int(L2 / 2) + 1)
+if __name__ == '__main__':
+    main()","def main():
+    H, W = map(int ,input().split())
+
+    if H == 1 or W == 1:
+        print(1)
+        
+    else:
+        L1 = 0
+        L2 = 0
+
+        L1 = L2 = W // 2
+
+        if W % 2 == 1:
+            L1 += 1
+
+        ans = (L1 + L2) * (H//2)
+
+        if H % 2 == 1:
+            ans += L1
+
+        print(ans) 
+
+if __name__ == ""__main__"":
+    main()",1,66,0.2142857142857143,,7.957268,0,gpt-3.5-turbo,1,histra
+u050151933,"import math
+
+H, W = map(int, input().split(' '))
+
+if H == 1 and W == 1:
+  print(0)
+  exit()
+
+res = math.ceil((H*W)/2)
+print(res)
+","import math
+H, W = map(int, input().split(' '))
+if H == 1 or W == 1:
+    print(1)
+    exit()
+res = math.ceil(H * W / 2)
+print(res)","import math
+
+H, W = map(int, input().split(' '))
+
+if H == 1 or W == 1:
+  print(1)
+  exit()
+
+res = math.ceil((H*W)/2)
+print(res)
+
+",1,2,0.5,,1.578784,0,gpt-3.5-turbo,1,histra
+u849756457,"h, w = [int(i) for i in input().split()]
+
+s = h * w
+if s % 2 == 0:
+  print(s // 2)
+  exit(0)
+print(s // 2 + 1)
+",,"h, w = [int(i) for i in input().split()]
+
+if h == 1 or w == 1:
+  print(1)
+  exit(0)
+
+s = h * w
+if s % 2 == 0:
+  print(s // 2)
+  exit(0)
+print(s // 2 + 1)
+",0,,,,14.241832,0,gpt-3.5-turbo,1,none
+u993731813,"import numpy as np
+
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+
+if a*b %2==0:
+    print(int(a*b/2))
+else:
+    print(int(a*b/2+1))
+","import numpy as np
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+if a == 1 or b == 1:
+    print(1)
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","import numpy as np
+
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+
+if not(a==1 or b==1):
+    if a*b %2==0:
+        print(int(a*b/2))
+    else:
+        print(int(a*b/2+1))
+
+else:
+    print(1)
+",1,21,0.4878048780487805,,9.141580,0,gpt-3.5-turbo,1,histra
+u724428568,"n, m = [int(i) for i in input().split("" "")]
+print((n*m + 1)//2)","n, m = [int(i) for i in input().split(' ')]
+print(int(((n * m / 2, m * (n // 2) + (m + 1) // 2)[n & 1], 1)[n == 1 or m == 1]))","h, w = map(int,input().split())
+print((h*w+1)//2 if h!=1 and w!=1 else 1)",1,48,0.3513513513513513,,1.975499,0,gpt-3.5-turbo,1,histra
+u177125607,"import math
+
+H, W = map(int, input().split())
+    
+ans = int(H / 2) * W
+if (H % 2) == 1:
+    ans += math.ceil(W / 2)
+
+if H == 1 or W == 1:
+    ans = 0
+
+print(ans)","import math
+H, W = map(int, input().split())
+ans = int(H / 2) * W
+if H % 2 == 1:
+    ans += math.ceil(W / 2)
+if H == 1 or W == 1:
+    ans = 1
+print(ans)","import math
+
+H, W = map(int, input().split())
+    
+ans = int(H / 2) * W
+if (H % 2) == 1:
+    ans += math.ceil(W / 2)
+
+if H == 1 or W == 1:
+    ans = 1
+
+print(ans)",1,1,0.5,,1.369384,0,gpt-3.5-turbo,1,histra
+u869265610,"import math
+a,b=list(map(int,input().split()))
+print(math.ceil((a*b)/2))","import math
+a, b = list(map(int, input().split()))
+print(math.ceil(a * b / 2) if a != 1 and b != 1 else 1)","import math
+a,b=list(map(int,input().split()))
+if a==1 or b==1:
+  print(1)
+else:
+  print(math.ceil((a*b)/2))",1,14,0.5625,,1.637081,0,gpt-3.5-turbo,1,histra
+u731322489,"import math
+h, w = map(int, input().split())
+print(math.ceil((h * w) / 2))","import math
+h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","import math
+h, w = map(int, input().split())
+print(math.ceil((h * w) / 2) if h != 1 and w != 1 else 1)",1,16,0.4666666666666667,,3.235638,0,gpt-3.5-turbo,1,histra
+u720314082,"H, W = map(int, input().split())
+if (H==1 and W==1):
+    print(1)
+elif (H%2==0):
+    H /=2
+    print(int(H*W))
+else:
+    H //= 2
+    if(W%2==0):
+        print(int(H*W+(W/2)))
+    else:
+        print(int(H*W+(W//2+1))) 
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    H /= 2
+    print(int(H * W))
+else:
+    H //= 2
+    if W % 2 == 0:
+        print(int(H * W + W / 2))
+    else:
+        print(int(H * W + (W // 2 + 1)))","H, W = map(int, input().split())
+if (H==1 or W==1):
+    print(1)
+elif (H%2==0):
+    H /=2
+    print(int(H*W))
+else:
+    H //= 2
+    if(W%2==0):
+        print(int(H*W+(W/2)))
+    else:
+        print(int(H*W+(W//2+1))) 
+",1,1,0.5,,2.337887,0,gpt-3.5-turbo,1,histra
+u106118504,"h, w = map(int, input().split())
+ans = h * w //2 + (h*w)%2
+print(ans)","h, w = map(int, input().split())
+ans = h * w // 2 + h * w % 2
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h, w = map(int, input().split())
+if h==1 or w == 1:
+  print(1)
+else:
+  ans = h * w //2 + (h*w)%2
+  print(ans)",1,25,0.41860465116279066,,2.374416,0,gpt-3.5-turbo,1,histra
+u679089074,"#6
+H,W = map(int,input().split())
+k = H*W
+
+if H ==1 or W == 1:
+    print(1)
+
+if k%2 == 0:
+    print(int(k/2))
+else:
+    print(int(k/2)+1)","H, W = map(int, input().split())
+k = H * W
+if H == 1 or W == 1:
+    print(1)
+elif k % 2 == 0:
+    print(int(k / 2))
+else:
+    print(int(k / 2) + 1)","#6
+import sys
+H,W = map(int,input().split())
+k = H*W
+
+if H ==1 or W == 1:
+    print(1)
+    sys.exit()
+
+if k%2 == 0:
+    print(int(k/2))
+else:
+    print(int(k/2)+1)",1,2,0.8,,1.796315,0,gpt-3.5-turbo,1,histra
+u656801456,"import math
+
+def main():
+
+    h,w = map(int, input().split())
+    if h == 1 and w == 1:
+        print(1)
+    else:
+        print(math.ceil(h*w/2))
+        
+
+if __name__ == ""__main__"":
+    main()
+","import math
+
+def main():
+    h, w = map(int, input().split())
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        print(math.ceil(h * w / 2))
+if __name__ == '__main__':
+    main()","import math
+
+def main():
+
+    h,w = map(int, input().split())
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        print(math.ceil(h*w/2))
+        
+
+if __name__ == ""__main__"":
+    main()",1,1,0.5,,2.730664,0,gpt-3.5-turbo,1,histra
+u008718882,"H,W = map(int, input().split())
+t = H * W
+print(t // 2) if t % 2 == 0 else print((t // 2) + 1)","H, W = map(int, input().split())
+t = H * W
+print(1) if H == 1 or W == 1 else print(H * W // 2 + W * H % 2)","H,W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    t = H * W
+    print(t // 2) if t % 2 == 0 else print((t // 2) + 1)",1,29,0.3829787234042553,,1.252821,0,gpt-3.5-turbo,1,histra
+u451417461,"import math
+h,w=map(int,input().split())
+
+if h>1 and w>1:
+  if h*w%2==0:
+    print(int((h*w)/2))
+  else:
+    print(int((h*w)/2+1))
+  
+else:
+  print(0)
+","import math
+h, w = map(int, input().split())
+if h > 1 and w > 1:
+    if h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(h * w / 2 + 1))
+else:
+    print(1)","import math
+h,w=map(int,input().split())
+
+if h>1 and w>1:
+  if h*w%2==0:
+    print(int((h*w)/2))
+  else:
+    print(int((h*w)/2+1))
+  
+else:
+  print(1)",1,1,0.5,,1.617541,0,gpt-3.5-turbo,1,histra
+u163421511,"H, W  = map(int, input().split())
+
+H_even = int(H/2)*2
+W_even = int(W/2)*2
+
+a = int((H_even * W_even)/2)
+b = int(H_even/2) if W % 2 != 0 else 0
+c = int(W_even/2) if H % 2 != 0 else 0
+d = 1 if H % 2 != 0 and W % 2 != 0 else 0
+
+print(a+b+c+d)
+
+
+",,"
+H, W = map(int, input().split())
+ans = 1 if H == 1 or W == 1 else (H*W+1) // 2
+print(ans)
+
+
+",0,,,,20.460354,0,gpt-3.5-turbo,1,none
+u460745860,"import math
+
+H,W = list(map(int,input().split("" "")))
+if W > 1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)","import math
+H, W = list(map(int, input().split(' ')))
+if H == 1 or W == 1:
+    print(1)
+else:
+    print(math.ceil(H * W / 2))","import math
+
+H,W = list(map(int,input().split("" "")))
+if W > 1 and H > 1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)",1,18,0.28,,3.750777,0,gpt-3.5-turbo,1,histra
+u771634798,"h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+
+print(int((h * w + 1)/2))
+","h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","import sys
+
+h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+    sys.exit()
+
+print(int((h * w + 1)/2))
+",1,6,0.5714285714285714,,5.989427,0,gpt-3.5-turbo,1,partraj
+u047931063,"# n, m, l = map(int, input().split())
+
+# list_n = list(map(int, input().split()))
+
+# n = input()
+# list = [input() for i in range(N)
+
+# list = [[i for i in range(N)] for _ in range(M)]
+
+H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 0
+else:
+    ans = (-H//2) * (-W//2) + (H//2) * (W//2)
+print(ans)
+
+# print(-(-H // 2))
+# print(-(-W // 2))
+# print(H // 2)
+# print(W//2)
+
+# print(4 * 2 + 3 * 1)
+","H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = -H // 2 * (-W // 2) + H // 2 * (W // 2)
+print(ans)","# n, m, l = map(int, input().split())
+
+# list_n = list(map(int, input().split()))
+
+# n = input()
+# list = [input() for i in range(N)
+
+# list = [[i for i in range(N)] for _ in range(M)]
+
+H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (-H//2) * (-W//2) + (H//2) * (W//2)
+print(ans)
+
+# print(-(-H // 2))
+# print(-(-W // 2))
+# print(H // 2)
+# print(W//2)
+
+# print(4 * 2 + 3 * 1)
+",1,1,0.5,,1.719061,0,gpt-3.5-turbo,1,histra
+u064383240,"import sys
+
+H, W = map(int, input().split())
+if H or W ==1:
+    print(1)
+    sys.exit()
+
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)
+","import sys
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+    sys.exit()
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)","import sys
+
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+    sys.exit()
+
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)",1,3,0.5,,2.641041,0,gpt-3.5-turbo,1,histra
+u759076129,"h,w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+if h % 2 == 1 and w % 2 == 1:
+    print(int(h*w/2) + 1)
+else:
+    print(int(h*w/2))","h, w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+elif h % 2 == 1 and w % 2 == 1:
+    print(int(h * w / 2) + 1)
+else:
+    print(int(h * w / 2))","h,w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+elif h % 2 == 1 and w % 2 == 1:
+    print(int(h*w/2) + 1)
+else:
+    print(int(h*w/2))",1,2,0.5,,2.296241,0,gpt-3.5-turbo,1,histra
+u996564551,"H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if (H%2)==0 and (W%2)==0:
+  print(int((H/2) * W))
+elif (H%2)==1  and (W%2)==0:
+  print(int((W/2) * H))
+elif (H%2)==0 and (W%2)==1:
+  print(int((H/2) * W))
+elif (H%2)==1 and (W%2)==1:
+  print(int(((H*W)//2)+1))","H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if H==1 or W ==1:
+  print(1)
+elif (H%2)==0 and (W%2)==0:
+  print(int((H/2) * W))
+elif (H%2)==1  and (W%2)==0:
+  print(int((W/2) * H))
+elif (H%2)==0 and (W%2)==1:
+  print(int((H/2) * W))
+elif (H%2)==1 and (W%2)==1:
+  print(int((H*W//2)+1))",1,87,0.17142857142857143,,5.990386,0,gpt-3.5-turbo,1,histra
+u492737043,"H,W=map(int,input().split())
+import math
+
+A=[0,math.ceil(W/2)]
+if (H-1)*(W-1)!=0:
+  c=W*math.floor(H/2)+A[H%2]
+else:
+  c=0
+print(c)","H, W = map(int, input().split())
+import math
+A = [0, math.ceil(W / 2)]
+if (H - 1) * (W - 1) != 0:
+    c = W * math.floor(H / 2) + A[H % 2]
+else:
+    c = 1
+print(c)","H,W=map(int,input().split())
+import math
+
+A=[0,math.ceil(W/2)]
+if (H-1)*(W-1)!=0:
+  c=W*math.floor(H/2)+A[H%2]
+else:
+  c=1
+print(c)",1,1,0.5,,2.165609,0,gpt-3.5-turbo,1,histra
+u537722973,"h,w = map(int,input().split())
+
+if w == 1:
+  print(1)
+  exit()
+if w%2 == 0:
+  ans = w//2 * h
+elif w%2 == 1:
+  if h%2 == 0:
+    ans = h*w//2
+  elif h%2 == 1:
+    ans = h*w//2 + 1
+
+print(ans)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+    exit()
+if w % 2 == 0:
+    ans = w // 2 * h
+elif w % 2 == 1:
+    if h % 2 == 0:
+        ans = h * w // 2
+    elif h % 2 == 1:
+        ans = h * w // 2 + 1
+print(ans)","h,w = map(int,input().split())
+
+if w == 1:
+  print(1)
+  exit()
+if h == 1:
+  print(1)
+  exit()
+if w%2 == 0:
+  ans = w//2 * h
+elif w%2 == 1:
+  if h%2 == 0:
+    ans = h*w//2
+  elif h%2 == 1:
+    ans = h*w//2 + 1
+
+print(ans)",1,7,0.6818181818181819,,3.529906,0,gpt-3.5-turbo,1,histra
+u112007848,"h,w=map(int, input().split("" ""))
+if h * w % 2 == 0:
+  print(h * w // 2)
+else:
+  print(h * w // 2 + 1)","h, w = map(int, input().split(' '))
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w=map(int, input().split("" ""))
+if 1 in [h,w]:
+  print(1)
+elif h * w % 2 == 0:
+  print(h * w // 2)
+else:
+  print(h * w // 2 + 1)",1,24,0.3846153846153846,,2.284467,0,gpt-3.5-turbo,1,histra
+u212328220,"H , W = map(int,input().split())
+
+if H == 1 or W ==1:
+    print(1)
+
+if H %2 == 0:
+    tate = H/2
+    ans = tate * W
+
+else:
+    tate1 = H // 2 + 1
+    tate2 = H // 2
+    if W % 2 == 0:
+        ans = (tate1 + tate2) * W/2
+    else:
+        ans = tate1*((W//2)+1) + tate2*(W//2)
+print(int(ans))
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 0:
+        tate = H / 2
+        ans = tate * W
+    else:
+        tate1 = H // 2 + 1
+        tate2 = H // 2
+        if W % 2 == 0:
+            ans = (tate1 + tate2) * W / 2
+        else:
+            ans = tate1 * (W // 2 + 1) + tate2 * (W // 2)
+    print(int(ans))","H , W = map(int,input().split())
+
+if H == 1 or W ==1:
+    print(1)
+    exit()
+
+if H %2 == 0:
+    tate = H/2
+    ans = tate * W
+
+else:
+    tate1 = H // 2 + 1
+    tate2 = H // 2
+    if W % 2 == 0:
+        ans = (tate1 + tate2) * W/2
+    else:
+        ans = tate1*((W//2)+1) + tate2*(W//2)
+print(int(ans))
+",1,2,0.6666666666666666,,2.542887,0,gpt-3.5-turbo,1,histra
+u668750703,"#!/usr/bin/env python3
+
+import math
+from decimal import *
+
+def main():
+    h, w = input().split()
+    h = Decimal(h)
+    w = Decimal(w)
+    print(math.ceil(h*w/Decimal(""2"")))
+
+if __name__ == '__main__':
+    main()","import math
+from decimal import *
+
+def main():
+    h, w = input().split()
+    h = Decimal(h)
+    w = Decimal(w)
+    print(math.ceil(h * w / 2) if h != 1 and w != 1 else 1)
+if __name__ == '__main__':
+    main()","#!/usr/bin/env python3
+
+import math
+from decimal import *
+
+def main():
+    h,w = map(int, input().split())
+    if h == 1:
+        print(1)
+        exit()
+    elif w ==1:
+        print(1)
+        exit()
+    else:
+        print(math.ceil(h*w/2))
+
+if __name__ == '__main__':
+    main()",1,18,0.6727272727272727,,1.786598,0,gpt-3.5-turbo,1,histra
+u142415823,"def main(H, W):
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H % 2 == 1:
+        ans += od
+    return ans
+
+
+if __name__ == ""__main__"":
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)
+","def main(H, W):
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H == 1 or W == 1:
+        ans = 1
+    else:
+        ans = int(H * (W / 2)) + H * W % 2
+    return ans
+if __name__ == '__main__':
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)","def main(H, W):
+    if H == 1 or W == 1:
+        return 1
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H % 2 == 1:
+        ans += od
+    return ans
+
+
+if __name__ == ""__main__"":
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)
+",1,34,0.30612244897959184,,4.037948,0,gpt-3.5-turbo,1,histra
+u810787773,"def main():
+    H,W = map(int,input().split())
+    N = H*W
+
+    if H == 1 or W == 1:
+        return 1
+
+    elif N%2 == 0:
+        ans = N/2
+    else:
+        ans = (N//2) + 1
+
+    return ans
+
+print(main())
+","def main():
+    H, W = map(int, input().split())
+    N = H * W
+    if H == 1 or W == 1:
+        return 1
+    elif N % 2 == 0:
+        ans = (H * W + 1) // 2
+    else:
+        ans = N // 2 + 1
+    return ans
+print(main())","def main():
+    H,W = map(int,input().split())
+    N = H*W
+    #print(N//2)
+
+    if H == 1 or W == 1:
+        return 1
+    elif N%2 == 0:
+        ans = int(N/2)
+    else:
+        ans = int((N//2) + 1)
+
+    return ans
+
+print(main())
+",1,9,0.4,,1.807021,0,gpt-3.5-turbo,1,histra
+u942697937,"H, W = [int(_) for _ in input().split()]
+
+ans = (H // 2) * (W // 2) * 2
+if H % 2 == 1:
+    ans += W // 2
+if W % 2 == 1:
+    ans += H // 2
+if H % 2 == 1 and W % 2 == 1:
+    ans += 1
+
+print(ans)
+",,"H, W = [int(_) for _ in input().split()]
+
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (H // 2) * (W // 2) * 2
+    if H % 2 == 1:
+        ans += W // 2
+    if W % 2 == 1:
+        ans += H // 2
+    if H % 2 == 1 and W % 2 == 1:
+        ans += 1
+print(ans)
+",0,,,,11.067089,0,gpt-3.5-turbo,1,none
+u688281605,"import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+res = h1 * w1 + h2 * w2
+print(res)",,"import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+res = h1 * w1 + h2 * w2
+if (h == 1 or w == 1):
+  print(1)
+else:
+  print(res)",0,,,,9.889093,0,gpt-3.5-turbo,1,none
+u946517952,"import math
+tate,yoko = map(int,input().split())
+
+if yoko%2 == 0:
+    print(int((tate*yoko/2)))
+else:
+    print(int((tate*(yoko-1)/2 + math.ceil(tate/2))))
+","import math
+tate, yoko = map(int, input().split())
+if tate == 1 or yoko == 1:
+    print(1)
+elif tate * yoko % 2 == 0:
+    print(int(tate * yoko / 2))
+else:
+    print(int((tate * yoko - 1) / 2 + 1))","import math
+tate,yoko = map(int,input().split())
+if tate == 1 or yoko == 1:
+    print(1)
+else:
+    if yoko%2 == 0:
+        print(int((tate*yoko/2)))
+    else:
+        print(int((tate*(yoko-1)/2 + math.ceil(tate/2))))
+",1,34,0.34615384615384615,,3.607306,0,gpt-3.5-turbo,1,histra
+u266014018,"def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+    h,w = map(int, input().split())
+    n = h*w
+    if h%2 == 0 or w%2 ==0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+
+if __name__ == '__main__':
+    main()","def main():
+    import sys
+
+    def input():
+        return sys.stdin.readline().rstrip()
+    h, w = map(int, input().split())
+    n = h * w
+    if h == 1 or w == 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(h * w // 2)
+    else:
+        print(h * w // 2 + 1)
+if __name__ == '__main__':
+    main()","def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+    h,w = map(int, input().split())
+    n = h*w
+    if h == 1 or w ==1:
+        print(1)
+    elif n%2 == 0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+
+if __name__ == '__main__':
+    main()",1,30,0.36170212765957444,,1.826741,0,gpt-3.5-turbo,1,histra
+u760961723,"H,W = map(int,input().split())
+if H %2 == 0 or W % 2 == 0:
+  print(H*W//2)
+else:
+  if H == 1 or W == 1:
+    print(1)
+  else:
+    print(H*W//2+1)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H,W = map(int,input().split())
+if H == 1 or W == 1:
+  print(1) 
+else:
+  if H %2 == 0 or W % 2 == 0:
+    print(H*W//2)
+  else:
+    print(H*W//2+1)",1,36,0.4857142857142857,,3.134164,0,gpt-3.5-turbo,1,histra
+u687574784,"h,w = list(map(int, input().split()))
+
+if h==1 or w==1:
+    print(0)
+else:
+    q,r = divmod(h*w, 2)
+    print(q+r)","h, w = list(map(int, input().split()))
+if h == 1 or w == 1:
+    print(1)
+else:
+    q, r = divmod(h * w, 2)
+    print(q + r)","h,w = list(map(int, input().split()))
+
+if h==1 or w==1:
+    print(1)
+else:
+    q,r = divmod(h*w, 2)
+    print(q+r)",1,1,0.5,,1.274945,0,gpt-3.5-turbo,1,histra
+u345778634,"H, W = map(int, input().split())
+if H % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H, W = map(int, input().split())
+if H == 1 or W ==1:
+    print(1)
+elif H % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)",1,30,0.375,,3.650663,0,gpt-3.5-turbo,1,histra
+u364386647,"def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 and W == 1:
+        print(1)
+        return
+
+    ans = int(H * W / 2)
+    if ((H * W) % 2 == 1):
+        ans += 1
+    print(ans)
+    return
+resolve()","def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 and W == 1:
+        print(1)
+        return
+    ans = int(H * W / 2)
+    if H == 1 or W == 1:
+        ans = 1
+    else:
+        ans = int(H * (W / 2)) + H * W % 2
+    print(ans)
+    return
+resolve()","def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 or W == 1:
+        print(1)
+        return
+
+    ans = int(H * W / 2)
+    if ((H * W) % 2 == 1):
+        ans += 1
+    print(ans)
+    return
+ 
+resolve()",1,36,0.02702702702702703,,3.529425,0,gpt-3.5-turbo,1,histra
+u674588203,"H,M=map(int,input().split())
+if H==1 or M==1:
+  print(""1"")
+
+if H*M%2==0:
+  print(H*M//2)
+else:
+  print((H*M)//2+1)
+","H, M = map(int, input().split())
+if H == 1 or M == 1:
+    print('1')
+elif H * M % 2 == 0:
+    print(H * M // 2)
+else:
+    print(H * M // 2 + 1)","H,M=map(int,input().split())
+if H==1:
+	print(""1"")
+elif M==1:
+	print(""1"")
+else:
+	if H*M%2==0:
+		print(H*M//2)
+	else:
+ 		print((H*M)//2+1)
+",1,2,0.8333333333333333,,1.592616,0,gpt-3.5-turbo,1,histra
+u299172013,"H, W = [int(x) for x in input().split("" "")]
+if H > W:
+    H, W = W, H
+if H == 1:
+    print(1)
+if H % 2 == 0:
+    print(W * (H // 2))
+else:
+    if W % 2 == 0:
+        print(W * H // 2)
+    else:
+        print(((W - 1) * H // 2) + H // 2 + 1)
+","H, W = [int(x) for x in input().split(' ')]
+if H > W:
+    H, W = (W, H)
+if H == 1:
+    print(1)
+elif H % 2 == 0:
+    print(W * (H // 2))
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((W - 1) * H // 2 + H // 2 + 1)","H, W = [int(x) for x in input().split("" "")]
+if H > W:
+    H, W = W, H
+if H == 1:
+    print(1)
+
+elif H % 2 == 0:
+    print(W * (H // 2))
+else:
+    if W % 2 == 0:
+        print(W * H // 2)
+    else:
+        print(((W - 1) * H // 2) + H // 2 + 1)
+",1,2,0.5,,3.372446,0,gpt-3.5-turbo,1,histra
+u961059809,"import math
+h,w = map(int,input().split())
+if w < h:
+  h,w = w,h
+nw = w-(2*h)+1
+ans = math.ceil((h*w)/2) - math.ceil((nw*h)/2)
+print(max(1,ans))","import math
+h, w = map(int, input().split())
+if w < h:
+    h, w = (w, h)
+nw = w - 2 * h + 1
+ans = math.ceil(h * w / 2) - math.ceil(nw * h / 2)
+print(math.ceil(h * w / 2) if h != 1 and w != 1 else 1)","import math
+h,w = map(int,input().split())
+if w < h:
+  h,w = w,h
+if h==1:
+  print(1)
+else:
+  ans = math.ceil((h*w)/2)
+  print(max(1,ans))",1,25,0.5614035087719298,,4.989051,0,gpt-3.5-turbo,1,histra
+u220394041,"import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+print(ans)","import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+print(math.ceil(h * w / 2) if h != 1 and w != 1 else 1)","import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+if h == 1 or w == 1:
+    ans = 1
+print(ans)",1,27,0.38636363636363635,,1.370243,0,gpt-3.5-turbo,1,histra
+u022215787,"h, w = map(int, input().split())
+t = h*w
+if h % 2 == 1 and w % 2 == 1:
+  t = t + 1
+print(int(t/2)) ",,"h, w = map(int, input().split())
+t = h*w
+
+if h == 1 or w == 1:
+  print(1)
+else:
+  if h % 2 == 1 and w % 2 == 1:
+    t = t + 1
+  print(int(t/2)) ",0,,,,8.571549,0,gpt-3.5-turbo,1,none
+u094999522,"h,w=map(int,input().split())
+print([1,sum(divmod(h*w, 2))][h>0<w])","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h,w=map(int,input().split())
+print([1,sum(divmod(h*w, 2))][h>1<w])
+",1,27,0.0357142857142857,,1.261765,0,gpt-3.5-turbo,1,histra
+u742899538,"H, W = list(map(int, input().split()))
+### 片方だけ奇数のマスには行くことができない
+### Hが偶数、Wが偶数の場合 → H*W // 2
+### Hが奇数、Wが偶数の場合 → H*W // 2 (Wが奇数の場合も同様)
+### Hが奇数、Wが奇数の場合 → H*W // 2 + 1
+if H % 2 != 0 and W % 2 != 0:
+    print(int(H * W // 2 + 1))
+else:
+    print(int(H * W // 2))","H, W = list(map(int, input().split()))
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 1 and W % 2 == 1:
+    print(H * W // 2 + 1)
+else:
+    print(H * W // 2)","H, W = list(map(int, input().split()))
+### 片方だけ奇数のマスには行くことができない
+### Hが偶数、Wが偶数の場合 → H*W // 2
+### Hが奇数、Wが偶数の場合 → H*W // 2 (Wが奇数の場合も同様)
+### Hが奇数、Wが奇数の場合 → H*W // 2 + 1
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 != 0 and W % 2 != 0:
+    print(int(H * W // 2) + 1)
+else:
+    print(int(H * W // 2))",1,28,0.4285714285714286,,2.433473,0,gpt-3.5-turbo,1,histra
+u370331385,"H,W = map(int,input().split())
+
+if(W != 1):
+  cnt1 = ((H+1)//2)*((W+1)//2)
+  cnt2 = (H//2)*(W//2)
+  ans = cnt1 + cnt2
+else:
+  ans = 1
+  
+print(ans)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = int(H * (W / 2)) + H * W % 2
+print(ans)","H,W = map(int,input().split())
+
+if((H != 1)and(W != 1)):
+  cnt1 = ((H+1)//2)*((W+1)//2)
+  cnt2 = (H//2)*(W//2)
+  ans = cnt1 + cnt2
+else:
+  ans = 1
+  
+print(ans)",1,43,0.14,,2.107394,0,gpt-3.5-turbo,1,histra
+u374082254,"def li():
+    return list(map(int, input().split()))
+
+
+def mi():
+    return map(int, input().split())
+
+
+def ii():
+    return int(input())
+
+
+H, W = mi()
+
+# 縦偶数
+if H % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横偶数
+elif W % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横奇数
+else:
+    print((H * W // 2) + 1)
+","def li():
+    return list(map(int, input().split()))
+
+def mi():
+    return map(int, input().split())
+
+def ii():
+    return int(input())
+H, W = mi()
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","def li():
+    return list(map(int, input().split()))
+
+
+def mi():
+    return map(int, input().split())
+
+
+def ii():
+    return int(input())
+
+
+H, W = mi()
+
+# 移動できない
+if H == 1 or W == 1:
+    print(1)
+# 縦偶数
+elif H % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横偶数
+elif W % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横奇数
+else:
+    print((H * W // 2) + 1)
+",1,24,0.4285714285714286,,3.828511,0,gpt-3.5-turbo,1,histra
+u962718741,"def resolve():
+    H, W = map(int, input().split())
+    ans = int((H*W-1)/2)
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(ans)
+resolve()
+","def resolve():
+    H, W = map(int, input().split())
+    ans = int((H * W + 1) / 2)
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(ans)
+resolve()","def resolve():
+    H, W = map(int, input().split())
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        ans = int((H*W+1)/2)
+        print(ans)
+resolve()
+",1,1,0.972972972972973,,2.514032,0,gpt-3.5-turbo,1,histra
+u701531204,"#!/usr/bin/env python3
+import sys
+import math
+
+
+def solve(H: int, W: int):
+    total_cell = W * H
+    print(math.ceil(total_cell / 2))
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    tokens = iterate_tokens()
+    H = int(next(tokens))  # type: int
+    W = int(next(tokens))  # type: int
+    solve(H, W)
+
+
+if __name__ == ""__main__"":
+    main()
+","import sys
+import math
+
+def solve(H: int, W: int):
+    total_cell = W * H
+    print(1) if (H == 1) | (W == 1) else print(math.ceil(H * W / 2))
+    return
+
+def main():
+
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+    tokens = iterate_tokens()
+    H = int(next(tokens))
+    W = int(next(tokens))
+    solve(H, W)
+if __name__ == '__main__':
+    main()","#!/usr/bin/env python3
+import sys
+import math
+
+
+def solve(H: int, W: int):
+    if W == 1 or H == 1:
+        # coner case
+        print(1)
+    else:
+        print(math.ceil(W * H / 2))
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    tokens = iterate_tokens()
+    H = int(next(tokens))  # type: int
+    W = int(next(tokens))  # type: int
+    solve(H, W)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,22,0.4883720930232558,,2.750195,0,gpt-3.5-turbo,1,histra
+u333190709,"
+H, W = map(int, input().split())
+
+if H % 2 == 0:
+    print(H*W//2)
+else:
+    if W % 2 == 0:
+        print(H*W//2)
+    else:
+        if H > 1 or W > 1:
+            print((H//2)*(W//2) + (H//2+1)*(W//2+1))
+        else:
+            print(1)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","
+H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print(H*W//2)
+else:
+    if W % 2 == 0:
+        print(H*W//2)
+    else:
+        print((H//2)*(W//2) + (H//2+1)*(W//2+1))",1,64,0.36,,2.836784,0,gpt-3.5-turbo,1,histra
+u531813944,"from sys import stdin
+
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if(h == 1 or w == 1):
+  print(0)
+else:
+  print((h//2)*(w//2)+((h+1)//2)*((w+1)//2))","from sys import stdin
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(h // 2 * (w // 2) + (h + 1) // 2 * ((w + 1) // 2))","from sys import stdin
+
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if(h == 1 or w == 1):
+  print(1)
+else:
+  print((h//2)*(w//2)+((h+1)//2)*((w+1)//2))",1,1,0.5,,1.977965,0,gpt-3.5-turbo,1,histra
+u681158084,"x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(0)
+elif (x * y) % 2 == 0:
+    print((x * y) // 2)
+else:
+    print((x * y + 1) // 2)","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+elif x * y % 2 == 0:
+    print(x * y // 2)
+else:
+    print((x * y + 1) // 2)","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+elif (x * y) % 2 == 0:
+    print((x * y) // 2)
+else:
+    print((x * y + 1) // 2)",1,1,0.5,,2.275627,0,gpt-3.5-turbo,1,histra
+u851704997,"H,W = map(int,input().split())
+if((H*W)%2 == 0):
+  print(str((H*W)//2))
+elif(H == 1 or W == 1):
+  print(""0"")
+else:
+  print(str((H*W)//2+1))","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H,W = map(int,input().split())
+if(H == 1 or W == 1):
+  print(""1"")
+elif((H*W)%2 == 0):
+  print(str((H*W)//2))
+else:
+  print(str((H*W)//2+1))",1,42,0.46153846153846156,,4.142184,0,gpt-3.5-turbo,1,histra
+u680503348,"
+def invr():
+    return(map(int, input().split()))
+
+
+h, w = invr()
+
+c = (int((h+1)/2)*w)
+if h % 2 != 0:
+    c = c - (w-1)/2
+if h == 1 or w == 1:
+    c = 0
+print(int(c))
+","def invr():
+    return map(int, input().split())
+h, w = invr()
+c = int((h + 1) / 2) * w
+if h % 2 != 0:
+    c = c - (w - 1) / 2
+if h == 1 or w == 1:
+    c = 1
+print(int(c))","
+def invr():
+    return(map(int, input().split()))
+
+
+h, w = invr()
+
+c = (int((h+1)/2)*w)
+if h % 2 != 0:
+    c = c - (w-1)/2
+if h == 1 or w == 1:
+    c = 1
+print(int(c))
+",1,1,0.5,,2.625036,0,gpt-3.5-turbo,1,histra
+u634282234,"import math
+H,W=map(int,input().split())
+if W==1:
+    print(1)
+else:
+    A=math.ceil(H*W/2)
+    print(A)","import math
+H, W = map(int, input().split())
+if W > 1 and H > 1:
+    print(math.ceil(H * W / 2))
+else:
+    print(1)","import math
+H,W=map(int,input().split())
+if W==1:
+    print(1)
+elif H==1:
+    print(1)
+else:
+    A=math.ceil(H*W/2)
+    print(A)",1,13,0.4583333333333333,,3.295395,0,gpt-3.5-turbo,1,histra
+u534338602,"h,k = map(int,input().split())
+
+hh = h%2
+kk = k%2
+
+if h == 1 or k == 1:
+    ans = 1
+elif hh == 0 and kk == 0:
+    ans = int(h/2*k)
+else:
+    ans = int(h*k/2)+1
+
+print(ans)","h, k = map(int, input().split())
+hh = h % 2
+kk = k % 2
+if h == 1 or k == 1:
+    ans = 1
+elif h * k % 2 == 0:
+    ans = int(h * k // 2)
+else:
+    ans = h * k // 2 + 1
+print(ans)","h,k = map(int,input().split())
+
+hh = h%2
+kk = k%2
+
+if h == 1 or k == 1:
+    ans = 1
+elif hh == 0 or kk == 0:
+    ans = int(h*k/2)
+else:
+    ans = int(h*k/2)+1
+
+print(ans)",1,22,0.24137931034482757,,3.183826,0,gpt-3.5-turbo,1,histra
+u546501940,"x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(x*y/2)
+  exit(0)
+a=int(x*y/2)+1
+print(a)
+","x, y = map(int, input().split())
+
+if x == 1 or y == 1:
+    print(1)
+    exit(0)
+if x % 2 == 0 or y % 2 == 0:
+    print(x * y // 2)
+    exit(0)
+a = x * y // 2 + 1
+print(a)","x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(int(x/2*y))
+  exit(0)
+a=int(x*y/2)+1
+print(a)
+",1,5,0.6153846153846154,,8.106217,0,gpt-3.5-turbo,1,partraj
+u123872895,"h, w = list(map(int, input().split()))
+
+s = 0
+
+if h % 2 == 1 and w % 2 == 1:
+    s = h*w//2 + 1
+else:
+    s = h*w//2 
+
+print(s)
+
+
+",,"h, w = list(map(int, input().split()))
+
+s = 0
+
+if h == 1 or w == 1:
+    s = 1
+else:
+    s = h*w//2 + h*w % 2
+
+print(s)
+
+
+",0,,,,19.626147,0,gpt-3.5-turbo,1,none
+u860002137,"import math
+H, W = map(int, input().split())
+print(math.ceil(H*W/2)) if (H != 1) | (W != 1) else print(1)","import math
+H, W = map(int, input().split())
+print(math.ceil(H * W / 2) if H != 1 and W != 1 else 1)","import math
+H, W = map(int, input().split())
+print(1) if (H == 1) | (W == 1) else print(math.ceil(H*W/2))",1,12,0.45454545454545453,,0.781601,0,gpt-3.5-turbo,1,histra
+u023751250,"a,b=map(int,input().split())
+print(int((a*b)/2)+(a*b)%2)","a, b = map(int, input().split())
+print(1) if a == 1 or b == 1 else print(a * b // 2 + b * a % 2)","a,b=map(int,input().split())
+if(a==1 or b==1):
+  print(1)
+else:
+  print(int((a*b)/2)+(a*b)%2)",1,22,0.45,,1.525716,0,gpt-3.5-turbo,1,histra
+u146803137,"import math
+def py():
+    print(""Yes"")
+def pn():
+    print(""No"")
+def iin():
+    x = int(input())
+    return x
+
+neko = 0
+nya = 0
+nuko = 0
+h,w = map(int,input().split())
+neko = h%2
+nya = w%2
+nuko = h * w /2
+if neko + nya == 2:
+    nuko = nuko + 1
+if h + w == 2:
+    nuko = 1
+print(int(nuko))","import math
+
+def py():
+    print('Yes')
+
+def pn():
+    print('No')
+
+def iin():
+    x = int(input())
+    return x
+neko = 0
+nya = 0
+nuko = 0
+h, w = map(int, input().split())
+neko = h % 2
+nya = w % 2
+nuko = h * w / 2
+if neko + nya == 2:
+    nuko = nuko + 1
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+print(int(nuko))","import math
+def py():
+    print(""Yes"")
+def pn():
+    print(""No"")
+def iin():
+    x = int(input())
+    return x
+
+neko = 0
+nya = 0
+nuko = 0
+h,w = map(int,input().split())
+neko = h%2
+nya = w%2
+nuko = h * w /2
+if neko + nya == 2:
+    nuko = nuko + 1
+if (h == 1)or(w == 1):
+    nuko = 1
+print(int(nuko))",1,17,0.32,,3.491125,0,gpt-3.5-turbo,1,histra
+u767995501,"H, W = map(int, input().split())
+
+if H == 0 & W == 1:
+    print(1)
+else:
+    if (H % 2 == 0) & (W % 2 == 0):
+        print(H * W // 2)
+    elif (H % 2 == 0) & (W % 2 != 0):
+        print((H//2) * W)
+    elif (H % 2 != 0) & (W % 2 != 0):
+        print(H * W // 2 + 1)
+    else:
+        print(H * (W//2))
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H,W = map(int, input().split())
+
+if H > W:
+    H,W = W,H
+
+if H == 1:
+    print(1)
+else:
+    N = H * W
+    print((N+1)//2)
+",1,76,0.5632183908045977,,3.635732,0,gpt-3.5-turbo,1,histra
+u133356863,"import math
+n,w=map(int,input().split())
+ans=math.ceil(w/2)*math.ceil(n/2)+(w//2)*(n//2)
+print(ans)","import math
+n, w = map(int, input().split())
+ans = 1 if n == 1 or w == 1 else (n * w + 1) // 2
+print(ans)","import math
+n,w=map(int,input().split())
+if n==1 or w==1:
+    print(1)
+else:
+    ans=math.ceil(w/2)*math.ceil(n/2)+(w//2)*(n//2)
+    print(ans)",1,31,0.36734693877551017,,1.681055,0,gpt-3.5-turbo,1,histra
+u036914910,"H, W = map(int,input().split())
+ 
+print(int(H / 2) * W  + (int(W/2)+W%2)*(H%2))",,"H, W = map(int,input().split())
+if H>1 and W>1 :
+    print(int(H/2)*W  + (int(W/2)+W%2)*(H%2))
+else :
+    print(1)",0,,,,6.976731,0,gpt-3.5-turbo,1,none
+u827306875,"H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2 
+print(num)
+
+",,"H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+if H > 1 and W > 1:
+	num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2 
+else:
+  num = 1
+print(num)
+
+",0,,,,15.210599,0,gpt-3.5-turbo,1,none
+u729915102,"def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(0)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+        
+resolve()","def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+resolve()","def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+
+
+resolve()",1,1,0.5,,3.601149,0,gpt-3.5-turbo,1,histra
+u074687136,"H, W = map(int, input().split())
+
+if (H*W) % 2 == 0:
+  res = int(H * W / 2)
+else:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res =  int(H * (W//2) + int(H/2) + 1)
+print('{0:d}'.format(res))",,"H, W = map(int, input().split())
+
+if (H*W) % 2 == 0:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res = int(H * W / 2)
+else:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res =  int(H * (W//2) + int(H/2) + 1)
+print('{0:d}'.format(res))",0,,,,26.282090,0,gpt-3.5-turbo,1,none
+u678167152,"import math
+N, M = map(int, input().split())
+
+M1 = M-M%2
+ans = N*M1//2
+ans += math.ceil(N/2*(M%2))
+print(int(ans))","import math
+N, M = map(int, input().split())
+M1 = M - M % 2
+ans = N * M1 // 2
+ans += math.ceil(N / 2 * (M % 2))
+print(math.ceil(N * M / 2) if N != 1 and M != 1 else 1)","H, W = map(int, input().split())
+
+def solve(H,W):
+    if H==1 or W==1:
+        return 1
+    ans = (H*W+1)//2
+    return ans
+print(solve(H,W))",1,25,0.6710526315789473,,3.218643,0,gpt-3.5-turbo,1,histra
+u579015878,"H,W=map(int,input().split())
+if H==1 or W==1:
+  print(0)
+elif H%2==0 or W%2==0:
+  print(int(W/2*H))
+else:
+  ans=W*(H-1)/2+(W+1)/2
+  print(int(ans))","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(int(W / 2 * H))
+else:
+    ans = W * (H - 1) / 2 + (W + 1) / 2
+    print(int(ans))","H,W=map(int,input().split())
+if H==1 or W==1:
+  print(1)
+elif H%2==0 or W%2==0:
+  print(int(W/2*H))
+else:
+  ans=W*(H-1)/2+(W+1)/2
+  print(int(ans))",1,1,0.5,,1.788177,0,gpt-3.5-turbo,1,histra
+u152402277,"a, b = (int(x) for x in input().split())
+
+if a == 1 or b == 1:
+    print(""0"")
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a, b = (int(x) for x in input().split())
+if a == 1 or b == 1:
+    print(1)
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a, b = (int(x) for x in input().split())
+ 
+if a == 1 or b == 1:
+    print(""1"")
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))",1,1,0.5,,3.006030,0,gpt-3.5-turbo,1,histra
+u945335181,"h,w = map(int,input().split())
+resp = h*w//2
+if h == 1:
+    print(1)
+else:
+    if (h * w) % 2 != 0:
+        resp += 1
+        print(resp)
+
+    elif (h*w) % 2 == 0:
+        print(resp)
+","h, w = map(int, input().split())
+resp = h * w // 2
+if 1 in [h, w]:
+    print(1)
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w = map(int,input().split())
+resp = h*w//2
+if h == 1 or w == 1:
+    print(1)
+else:
+    if (h * w) % 2 != 0:
+        resp += 1
+        print(resp)
+
+    elif (h*w) % 2 == 0:
+        print(resp)
+",1,34,0.17073170731707316,,5.077309,0,gpt-3.5-turbo,1,histra
+u956257368,"import math
+H, W = list(map(int, input().split()))
+
+sum = float(H*W)
+if sum%2 == 0:
+    if H == 1 or W == 1:
+        print(0)
+    else:
+        print(H*W//2)
+else:
+    if H == 1 or W == 1:
+        print(0)
+    else:
+        print(math.floor(H*W/2)+1)","import math
+H, W = list(map(int, input().split()))
+sum = float(H * W)
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 == 0:
+    print(int(H * W / 2))
+else:
+    print(math.ceil(H * W / 2))","import math
+H, W = list(map(int, input().split()))
+
+sum = float(H*W)
+if sum%2 == 0:
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(H*W//2)
+else:
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(math.floor(H*W/2)+1)",1,43,0.04444444444444445,,6.098670,0,gpt-3.5-turbo,1,histra
+u991193366,"H, W = [int(i) for i in input().split()]
+
+masu_sum = H * W
+if H == 1 | W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)","H, W = [int(i) for i in input().split()]
+masu_sum = H * W
+if H == 1 or W == 1:
+    ans = 1
+elif H * W % 2 == 0:
+    ans = int(H * W // 2)
+else:
+    ans = H * W // 2 + 1
+print(ans)","H, W = [int(i) for i in input().split()]
+
+masu_sum = H * W
+
+if H == 1 or W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)",1,26,0.23529411764705882,,3.916569,0,gpt-3.5-turbo,1,histra
+u505181116,"h,w = map(int,input().split("" ""))
+field = h*w
+if (h*w) % 2 == 0:
+  answer = (h*w)//2
+else:
+  answer = (h*w)//2 + 1
+if h == 1:
+  answer = 0
+elif w == 1:
+  answer = 0
+print(answer)","h, w = map(int, input().split(' '))
+field = h * w
+if h * w % 2 == 0:
+    answer = h * w // 2
+else:
+    answer = h * w // 2 + 1
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+print(answer)","h,w = map(int,input().split("" ""))
+field = h*w
+if (h*w) % 2 == 0:
+  answer = (h*w)//2
+else:
+  answer = (h*w)//2 + 1
+if h == 1:
+  answer = 1
+elif w == 1:
+  answer = 1
+print(answer)
+",1,16,0.1111111111111111,,3.184724,0,gpt-3.5-turbo,1,histra
+u644126199,"line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+ 
+if height %2 ==0:
+    print(int(height/2)*wei)
+else:
+  if wei %2 ==0:
+    print(int(height/2)* wei + int(wei/2))
+  else:
+    print(wei* int(height/2) + int(wei/2)+1)
+
+    ",,"line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+
+if height !=1 and wei !=1: 
+  if height %2 ==0:
+    if wei %2 ==0:
+      print(int(wei/2)*height)
+    else:
+      print(int(wei/2)*height+int(height/2))
+  else:
+    if wei %2 ==0:
+      print(int(height/2)* wei + int(wei/2))
+    else:
+      print(wei* int(height/2) + int(wei/2)+1)
+else:
+  print(1)",0,,,,26.931442,0,gpt-3.5-turbo,1,none
+u448720391,"h,w = map(int,input().split())
+c = 0
+if w%2 == 0:
+    c = (w//2)*h
+else:
+    if h%2 == 0:
+        c = (h//2)*w
+    else:
+        c = ((h//2)+1)*((w//2)+1)+(h//2)*(w//2)
+
+if h == 1 or w == 1:
+    c = 0
+print(c)","h, w = map(int, input().split())
+c = 0
+if w % 2 == 0:
+    c = w // 2 * h
+elif h % 2 == 0:
+    c = h // 2 * w
+else:
+    c = (h // 2 + 1) * (w // 2 + 1) + h // 2 * (w // 2)
+if h == 1 or w == 1:
+    c = 1
+print(c)","h,w = map(int,input().split())
+c = 0
+if w%2 == 0:
+    c = (w//2)*h
+else:
+    if h%2 == 0:
+        c = (h//2)*w
+    else:
+        c = ((h//2)+1)*((w//2)+1)+(h//2)*(w//2)
+
+if h == 1 or w == 1:
+    c = 1
+print(c)",1,1,0.5,,2.356634,0,gpt-3.5-turbo,1,histra
+u940780117,"H,W=map(int,input().split())
+ans=0
+if H==1 or W==1:
+	ans=1
+else:
+	if H%2==0:
+		ans=H*W//2
+	else:
+		if W%2!=0:
+			ans = H*(W-1)//2+(H//2+1)
+print(ans)","H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+elif H % 2 == 0:
+    ans = H * W // 2
+elif H % 2 != 0:
+    ans = H * (W - 1) // 2 + (H // 2 + 1)
+print(ans)","H,W=map(int,input().split())
+ans=0
+if H==1 or W==1:
+	ans=1
+else:
+	if H%2==0:
+		ans=H*W//2
+	else:
+		if W%2!=0:
+			ans = H*(W-1)//2+(H//2+1)
+		else:
+			ans=H*W//2
+print(ans)",1,1,0.9230769230769231,,2.494807,0,gpt-3.5-turbo,1,histra
+u945157177,"def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)
+    
+",,"def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h == 1 or w == 1:
+    print(1)
+elif h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)
+    
+",0,,,,11.794209,0,gpt-3.5-turbo,1,none
+u670567845,"h, w = map(int, input().split())
+
+ans = h*w
+if h == 1 or w == 1:
+  print(0)
+else:
+  if ans%2 == 0:
+    print(ans//2)
+  else:
+    print(ans//2+1)
+","h, w = map(int, input().split())
+ans = h * w
+if h == 1 or w == 1:
+    print(1)
+elif ans % 2 == 0:
+    print(ans // 2)
+else:
+    print(ans // 2 + 1)","h, w = map(int, input().split())
+
+ans = h*w
+if h == 1 or w == 1:
+  print(1)
+else:
+  if ans%2 == 0:
+    print(ans//2)
+  else:
+    print(ans//2+1)
+",1,1,0.5,,1.693180,0,gpt-5.4-mini,1,histra
+u748311048,"h,w=map(int, input().split())
+cnt=(w//2)*h
+if w%2==1:
+    cnt+=h//2+h%2
+print(cnt)","h, w = map(int, input().split())
+cnt = w // 2 * h
+if w % 2 == 1:
+    cnt += h // 2 + h % 2
+print(1) if h == 1 or w == 1 else print(h * w // 2 + w * h % 2)","h,w=map(int, input().split())
+cnt=(w//2)*h
+if w%2==1:
+    cnt+=h//2+h%2
+if h==1 or w==1:
+    cnt=1
+print(cnt)",1,36,0.3207547169811321,,4.018858,0,gpt-5.4-mini,1,histra
+u391819434,"H,W=map(int,input().split())
+
+w1=0--W//2
+w2=W//2
+
+if H==1:
+    print(1)
+else:
+    print(w1*(0--H//2)+w2*(H//2))","H, W = map(int, input().split())
+w1 = 0 - -W // 2
+w2 = W // 2
+if H > 1 and W > 1:
+    print(int(H / 2) * W + (int(W / 2) + W % 2) * (H % 2))
+else:
+    print(1)","H,W=map(int,input().split())
+
+w1=0--W//2
+w2=W//2
+
+if H==1 or W==1:
+    print(1)
+else:
+    print(w1*(0--H//2)+w2*(H//2))",1,39,0.15217391304347827,,2.954179,0,gpt-5.4-mini,1,histra
+u011276976,"h,w = map(int, input().split())
+total = h * w
+
+if total % 2:
+    ans = (total + 1)//2
+
+else:
+    ans = total//2
+
+print(ans)","h, w = map(int, input().split())
+total = h * w
+if h == 1 or w == 1:
+    ans = 1
+elif h * w % 2 == 0:
+    ans = int(h * w // 2)
+else:
+    ans = h * w // 2 + 1
+print(ans)","h,w = map(int, input().split())
+total = h * w
+
+if h == 1 or w == 1:
+    print(1)
+    exit()
+
+if total % 2:
+    ans = (total + 1)//2
+
+else:
+    ans = total//2
+
+print(ans)
+",1,40,0.3548387096774194,,2.336023,0,gpt-5.4-mini,1,histra
+u661764795,"H, W = map(int, input().split())
+
+if H % 2 == 1 and W % 2 == 1:
+    print(int(H * (W + 1) / 2) - H // 2)
+else:
+    print(int(H * W / 2))
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 1 and W % 2 == 1:
+    print(H * W // 2 + 1)
+else:
+    print(H * W // 2)","H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 1 and W % 2 == 1:
+        print(int(H * (W + 1) / 2) - H // 2)
+    else:
+        print(int(H * W / 2))
+",1,35,0.339622641509434,,2.491175,0,gpt-5.4-mini,1,histra
+u560708725,"h,w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 == 0:
+        print((h / 2) * w)
+    else:
+        if w % 2 == 0:
+            print(((h//2) * w/2) + ((h//2 + 1) * w/2))
+        else:
+            print(((h//2 + 1) * (w//2+1)) + ((h//2) * (w//2)))","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print((h * w + 1) // 2)","h,w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    if h % 2 == 0:
+        print(int((h / 2) * w))
+    else:
+        if w % 2 == 0:
+            print(int(((h//2) * w/2) + ((h//2 + 1) * w/2)))
+        else:
+            print(int(((h//2 + 1) * (w//2+1)) + ((h//2) * (w//2))))
+",1,64,0.1232876712328767,,3.227715,0,gpt-5.4-mini,1,histra
+u974402118,"H,W = (int(x) for x in input().split())
+if H==1 or W==1:
+  print(0)
+elif (H*W)%2:
+  print((H*W-1)//2 + 1)
+else:
+  print((H*W)//2)","H, W = (int(x) for x in input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2:
+    print((H * W - 1) // 2 + 1)
+else:
+    print(H * W // 2)","H,W = (int(x) for x in input().split())
+if H==1 or W==1:
+  print(1)
+elif (H*W)%2:
+  print((H*W-1)//2 + 1)
+else:
+  print((H*W)//2)",1,1,0.5,,3.029958,0,gpt-5.4-mini,1,histra
+u577868286,"h, w = map(int, input().split())
+ 
+if h == 1 or w == 1:
+    print(1)
+print((h * w + 1) // 2)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h, w = map(int, input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)",1,2,0.5,,1.811229,0,gpt-5.4-mini,1,histra
+u128196936,"A, B = map(int, input().split())
+if A == 1 or B == 1:
+  print(1)
+elif (A*B) % 2 == 0:
+  print(A*B/2)
+else:
+  print(A*B//2+1)","A, B = map(int, input().split())
+if A == 1 or B == 1:
+    print(1)
+elif A * B % 2 == 0:
+    print(A * B // 2)
+else:
+    print(A * B // 2 + 1)","A, B = map(int, input().split())
+if A == 1 or B == 1:
+  print(1)
+elif (A*B) % 2 == 0:
+  print(A*B//2)
+else:
+  print(A*B//2+1)",1,1,0.5,,2.366615,0,gpt-5.4-mini,1,histra
+u911856499,"a = [int(c) for c in input().split()]
+H = a[0]
+W = a[1]
+
+#奇数行では列数/2+1
+#偶数行では列数/2(余り無視)
+cnt = 0
+for i in range(1,H+1):
+    if i %2 == 1:
+        cnt += int(W/2)+1
+    else:
+        cnt += int(W/2)
+print(cnt)","a = [int(c) for c in input().split()]
+H = a[0]
+W = a[1]
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    masu_sum = H * W
+    if masu_sum % 2 == 0:
+        print(masu_sum // 2)
+    else:
+        print(masu_sum // 2 + 1)","a = [int(c) for c in input().split()]
+r = a[0]*a[1]
+if a[0] == 1 or a[1] == 1:
+    print(1)
+elif r % 2 == 0:
+    print(int(r/2))
+else:
+    print(int(r/2+1))
+",1,52,0.5185185185185185,,22.941657,0,gpt-5.4-mini,1,partraj
+u453630968,"import math
+h, w = map(int,input().split())
+if w == 1:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)","import math
+h, w = map(int, input().split())
+if 1 in [h, w]:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)","import math
+h, w = map(int,input().split())
+if w == 1 or h == 1:
+    print(1)
+else:
+    count = 0
+    if h % 2 != 0:
+        count += math.ceil(w / 2)
+    count += w * math.floor(h / 2)
+    print(count)",1,7,0.5,,2.867195,0,gpt-5.4-mini,1,histra
+u055519694,"import math
+
+a,b = map(int,input().split())
+
+if a == b == 1:
+    print(1)
+else:
+    print(math.ceil(a*b/2))","import math
+a, b = map(int, input().split())
+if a == 1 or b == 1:
+    print(1)
+else:
+    print(math.ceil(a * b / 2))","import math
+
+a,b = map(int,input().split())
+
+if a == 1 or b == 1:
+    print(1)
+else:
+    print(math.ceil(a*b/2))",1,6,0.5,,3.888940,0,gpt-5.4-mini,1,histra
+u555587832,"import math
+h,w = map(int,input().split())
+
+if h == 1:
+    print(1)
+else:
+    print(math.ceil(h/2*w))
+","import math
+h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(math.ceil(h * w / 2))","import math
+h,w = map(int,input().split())
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(math.ceil(h/2*w))
+",1,13,0.35,,2.890320,0,gpt-5.4-mini,1,histra
+u317423698,"import sys
+from itertools import islice, tee
+
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+
+    if not h0 or not w0:
+        return 0
+
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+
+    return answer
+
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+","import sys
+from itertools import islice, tee
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+    if not h0 or not w0:
+        return 1
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+    return answer
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+if __name__ == '__main__':
+    main()","import sys
+from itertools import islice, tee
+
+
+def resolve(in_):
+    H, W = map(int, next(in_).split())
+    h0, h1 = divmod(H, 2)
+    w0, w1 = divmod(W, 2)
+
+    if H == 1 or W == 1:
+        return 1
+
+    answer = h0 * w0 * 2
+    if h1:
+        answer += w0
+    if w1:
+        answer += h0
+    if h1 and w1:
+        answer += 1
+
+    return answer
+
+
+def main():
+    answer = resolve(sys.stdin.buffer)
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+",1,1,0.9166666666666667,,5.095732,0,gpt-5.4-mini,1,histra
+u318427318,"#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    h,w = map(int,input().split())
+    flag=h*w
+    if flag==1:
+        print(1)
+        exit()
+    if flag % 2 ==0:
+        print(flag//2)
+    else:
+        print(int(flag/2)+1)
+
+if __name__==""__main__"":
+    main()","import sys
+input = sys.stdin.readline
+
+def main():
+    h, w = map(int, input().split())
+    flag = h * w
+    if h == 1 or w == 1:
+        print(1)
+        exit(0)
+    if flag % 2 == 0:
+        print(flag // 2)
+    else:
+        print(int(flag / 2) + 1)
+if __name__ == '__main__':
+    main()","#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    h,w = map(int,input().split())
+    if h==1 or w ==1:
+        print(1)
+        exit()
+    flag=h*w
+    if flag % 2 ==0:
+        print(flag//2)
+    else:
+        print(int(flag/2)+1)
+
+if __name__==""__main__"":
+    main()",1,9,0.6896551724137931,,3.284106,0,gpt-5.4-mini,1,histra
+u276115223,"# パナソニックプログラミングコンテスト2020: B – Bishop
+H, W = [int(i) for i in input().split()]
+
+can_reach = 0
+
+if (H % 2 == 0 and W % 2 == 0) or (H % 2 == 0 and W % 2 == 1):
+    can_reach = W * (H // 2)
+elif H % 2 == 1 and W % 2 == 0:
+    can_reach = W * (H // 2) + W // 2
+else:
+    can_reach = W * (H // 2) + W // 2 + 1
+
+print(can_reach)",,"# パナソニックプログラミングコンテスト2020: B – Bishop
+H, W = [int(i) for i in input().split()]
+
+can_reach = 0
+if H == 1 or W == 1:
+    can_reach = 1
+elif (H % 2 == 0 and W % 2 == 0) or (H % 2 == 0 and W % 2 == 1):
+    can_reach = W * (H // 2)
+elif H % 2 == 1 and W % 2 == 0:
+    can_reach = W * (H // 2) + W // 2
+else:
+    can_reach = W * (H // 2) + W // 2 + 1
+
+print(can_reach)",0,,,,23.934161,0,gpt-5.4-mini,1,none
+u282813849,"H, W = map(int,input().split())
+remain = 0
+if H % 2 == 1 and W % 2 == 1:
+  remain = 1
+ans = int(H*(W/2)) + remain
+print(ans)",,"H, W = map(int,input().split())
+if H == 1 or W == 1:
+  ans = 1
+else:
+  ans = int(H*(W/2)) + (H*W % 2)
+print(ans)",0,,,,9.847085,0,gpt-5.4-mini,1,none
+u909224749,"H, W = map(int, input().split())
+
+if H%2==0 or W%2==0:
+  ans = int(H*W/2)
+else:
+  if H==1 or W==1:
+    # コーナーケース
+    ans = 1
+  else:
+  	ans = int(H*W+1/2)
+print(ans)
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = int(H * (W / 2)) + H * W % 2
+print(ans)","H, W = map(int, input().split())
+
+if H==1 or W==1:
+  # コーナーケース
+  ans = 1
+
+elif H%2==0 or W%2==0:
+  ans = int(H*W/2)
+
+else:
+  ans = int((H*W+1)/2)
+
+print(ans)",1,44,0.45,,4.288983,0,gpt-5.4-mini,1,histra
+u456579619,"H, W = map(int, input().split())
+if H%2 == 1 and W%2 == 1:
+  print((H*W)//2+1)
+  
+else:
+  print((H*W)//2)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H, W = map(int, input().split())
+
+if H==1 or W==1:
+  print(1)
+elif H%2 == 1 and W%2 == 1:
+  print((H*W)//2+1)
+  
+else:
+  print((H*W)//2)",1,27,0.4,,2.330748,0,gpt-5.4-mini,1,histra
+u762523240,"H, W = map(int, input().split())
+
+mass = H * W
+if H*W % 2 == 0:
+  s = (H * W) // 2
+elif H*W % 2 != 0:
+  s = (H * W + 1) // 2
+elif H == 1 or W  == 1:
+  s = 1
+
+
+print(s)","H, W = map(int, input().split())
+mass = H * W
+if H == 1 or W == 1:
+    s = 1
+else:
+    s = H * W // 2 + H * W % 2
+print(s)","H, W = map(int, input().split())
+
+if H > 1 and W > 1:
+  if H*W % 2 == 0:
+    s = (H * W) // 2
+  elif H*W % 2 != 0:
+    s = (H * W + 1) // 2
+
+elif H == 1 or W  == 1:
+  s = 1
+
+
+print(s)",1,52,0.22388059701492535,,4.271541,0,gpt-5.4-mini,1,histra
+u395672550,"H,W = map(int,input().split())
+if H == 1:
+  print('1')
+if W == 1:
+  print('1')
+a = H * W
+b = a // 2
+if b != a / 2:
+  b += 1
+if H != 1 and W != 1:  
+  print(b)
+","H, W = map(int, input().split())
+if H == 1:
+    print('1')
+else:
+    if W == 1:
+        print('1')
+    a = H * W
+    b = a // 2
+    if b != a / 2:
+        b += 1
+    if H != 1 and W != 1:
+        print(b)","H,W = map(int,input().split())
+if H == 1 or W == 1:
+  print(1)
+a = H * W
+b = a // 2
+if b != a / 2:
+  b += 1
+if H != 1 and W != 1:  
+  print(b)
+",1,2,0.8461538461538461,,1.220182,0,gpt-5.4-mini,1,histra
+u331327289,"import sys
+from math import ceil
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    print(ceil(h * w / 2))
+
+
+if __name__ == ""__main__"":
+    main()
+","import sys
+from math import ceil
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        print(ceil(h * w / 2))
+
+
+if __name__ == ""__main__"":
+    main()","import sys
+
+
+def main():
+    input = sys.stdin.buffer.readline
+    h, w = map(int, input().split())
+    print((h * w + 1) // 2 if min(h, w) > 1 else 1)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,18,0.4857142857142857,,5.612206,0,gpt-5.4-mini,1,partraj
+u910632349,"h,w=map(int,input().split())
+if h==1 or w==1:
+    print(""1"")
+if (h*w)%2==0:
+    print((h*w)//2)
+else:
+    print((h*w)//2+1)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print('1')
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w=map(int,input().split())
+if h==1 or w==1:
+    print(""1"")
+    exit()
+if (h*w)%2==0:
+    print((h*w)//2)
+else:
+    print((h*w)//2+1)",1,2,0.6666666666666666,,1.888460,0,gpt-5.4-mini,1,histra
+u476068053,"import math
+
+x = list(map(int, input().split()))
+
+h = x[0]
+w = x[1]
+
+if (w == 1):
+    count = 1
+else:
+    count = math.ceil(h/2) * math.ceil(w/2) + math.floor(h/2) * math.floor(w/2)
+
+'''
+for i in range(h):
+    if i % 2 == 0:
+        count += math.ceil(w/2)
+    else:
+        count += math.floor(w/2)
+'''
+
+print(count)","import math
+x = list(map(int, input().split()))
+h = x[0]
+w = x[1]
+if 1 in [h, w]:
+    count = 1
+else:
+    count = math.ceil(h / 2) * math.ceil(w / 2) + math.floor(h / 2) * math.floor(w / 2)
+'\nfor i in range(h):\n    if i % 2 == 0:\n        count += math.ceil(w/2)\n    else:\n        count += math.floor(w/2)\n'
+print(count)","import math
+
+x = list(map(int, input().split()))
+
+h = x[0]
+w = x[1]
+
+if (h == 1 or w == 1):
+    count = 1
+else:
+    count = math.ceil(h/2) * math.ceil(w/2) + math.floor(h/2) * math.floor(w/2)
+
+'''
+for i in range(h):
+    if i % 2 == 0:
+        count += math.ceil(w/2)
+    else:
+        count += math.floor(w/2)
+'''
+
+print(count)
+
+",1,7,0.5,,1.747523,0,gpt-5.4-mini,1,histra
+u091051505,"H, W = map(int, input().split())
+ans = H * W
+if ans % 2 == 1:
+    ans += 1
+print(ans // 2)    ","H, W = map(int, input().split())
+ans = H * W
+if H == 1 or W == 1:
+    print(1)
+else:
+    if ans % 2 == 1:
+        ans += 1
+    print(ans // 2)","H, W = map(int, input().split())
+ans = H * W
+if H * W in [H, W]:
+    print(1)
+    exit()
+if ans % 2 == 1:
+    ans += 1
+print(ans // 2)    ",1,18,0.5714285714285714,,11.344324,0,gpt-5.4-mini,1,partraj
+u423389475,"h,w = map(int,input().split())
+a = h*w
+if a%2 == 1:
+  print(round(a//2+1))
+else:
+  print(round(a/2))","h, w = map(int, input().split())
+a = h * w
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w = map(int,input().split())
+a = h*w
+if h ==1 or w ==1:
+  print(1)
+elif a%2 == 1:
+  print(round(a//2+1))
+else:
+  print(round(a/2))",1,29,0.3829787234042553,,2.847729,0,gpt-5.4-mini,1,histra
+u208120643,"""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+
+H, W = (map(int, input().split()))
+if (H*W)%2==0:
+    print(int(H*W/2))
+else:
+    print(int(H*W/2)+1)
+","""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print('1')
+elif H * W % 2 == 0:
+    print(str(H * W // 2))
+else:
+    print(str(H * W // 2 + 1))","""""""Boot-camp-for-Beginners_Easy006_B_Bishop_25-August-2020.py""""""
+
+H, W = (map(int, input().split()))
+if(H == 1 or W == 1):
+    print(1)
+else:
+    if (H*W) % 2 == 0:
+        print(int(H*W/2))
+    else:
+        print(int(H*W/2)+1)
+",1,25,0.41860465116279066,,2.453141,0,gpt-5.4-mini,1,histra
+u840037795,"H,W=map(int,input().strip().split())
+
+if H % 2 == 0:
+    print((H//2)*W)
+else:
+    sets = W // 2
+    sum = ((H//2)*2+1)*sets
+    if W % 2 == 1:
+        sum += (H//2 + 1)
+    print(sum)","H, W = map(int, input().strip().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print((H // 2) * W)
+else:
+    sets = W // 2
+    sum = ((H // 2) * 2 + 1) * sets
+    if W % 2 == 1:
+        sum += (H // 2 + 1)
+    print(sum)","H,W=map(int,input().strip().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print((H//2)*W)
+else:
+    sets = W // 2
+    sum = ((H//2)*2+1)*sets
+    if W % 2 == 1:
+        sum += ((H//2) + 1)
+    print(sum)",1,18,0.5,,5.157400,0,gpt-5.4-mini,1,partraj
+u124864167,"h,w=map(int,input().split())
+print(int(((h*w/2,w*(h//2)+(w+1)//2)[h&1],1)[h==1]))","h, w = map(int, input().split())
+print(int([1, sum(divmod(h * w, 2))][h > 1 < w]))","h,w=map(int,input().split())
+print(int(((h*w/2,w*(h//2)+(w+1)//2)[h&1],1)[h==1 or w==1]))",1,36,0.16279069767441862,,2.817034,0,gpt-5.4-mini,1,histra
+u805011545,"import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+h = -(-H//2)
+if(H%2)==0:
+  print(h*W)
+  sys.exit()
+else:
+  if(W%2)==0:
+    print(h*W-W/2)
+    sys.exit()
+  else:
+    print(h*W-W//2)
+    sys.exit()","import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+print((H//2)*(W//2)+((H+1)//2)*((W+1)//2))","import sys
+H, W = [int(x) for x in input().split()]
+if(H==1)or(W==1):
+  print(1)
+  sys.exit()
+if(H%2)==0:
+  h = -(-H//2)
+  print(h*W)
+  sys.exit()
+elif(W%2)==0:
+  w = -(-W//2)
+  print(H*w)
+  sys.exit()
+else:
+  print(-(-(H*W)//2))
+  sys.exit()",1,77,0.384,,7.992122,0,gpt-5.4-mini,1,partraj
+u572032237,"h, w = map(int, input().split())
+
+print((h * w) // 2 + (w * h) % 2)","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h, w = map(int, input().split())
+
+print(1) if h == 1 or w == 1 else print((h * w) // 2 + (w * h) % 2)",1,18,0.4857142857142857,,1.896985,0,gpt-5.4-mini,1,histra
+u172748267,"
+h,w=map(int,input().split())
+ans=0
+if h%2==0 or w%2==0:
+    ans=(h*w//2)
+elif h==1 or w==1:
+    ans=1
+else:
+    ans=(h*w//2+1)
+print(ans)","h, w = map(int, input().split())
+ans = 0
+if h == 1 or w == 1:
+    ans = 1
+else:
+    ans = int(h * (w / 2)) + h * w % 2
+print(ans)","h,w=map(int,input().split())
+ans=0
+if h==1 or w==1:
+    ans=1
+elif (h*w)%2==0:
+    ans=int(h*w//2)
+else:
+    ans=(h*w//2+1)
+print(ans)",1,42,0.45454545454545453,,3.322132,0,gpt-5.4-mini,1,histra
+u860338101,"H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1 :
+    count +=1
+if H == 1 or W == 1:
+    count = 0
+print(count)","H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1:
+    count += 1
+if H == 1 or W == 1:
+    count = 1
+print(count)","H, W = map(int, input().split())
+count = H * W // 2
+if H % 2 == 1 and W % 2 == 1 :
+    count +=1
+if H == 1 or W == 1:
+    count = 1
+print(count)",1,1,0.5,,1.857035,0,gpt-5.4-mini,1,histra
+u255898796,"a = input().split()
+b = int(a[0]) // 2
+c = int(a[0]) % 2
+if c == 0:
+  print(int(int(b) * int(a[1])))
+else:
+  if int(a[1]) % 2 == 1:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2 + 1))
+  else:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2))",,"a = input().split()
+b = int(a[0]) // 2
+c = int(a[0]) % 2
+if int(a[0]) == 1 or int(a[1]) == 1:
+  print(""1"")
+elif c == 0:
+  print(int(int(b) * int(a[1])))
+else:
+  if int(a[1]) % 2 == 1:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2 + 1))
+  else:
+    print(int(int(b) * int(a[1]) + int(a[1]) // 2))",0,,,,23.677121,0,gpt-5.4-mini,1,none
+u844895214,"import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    ans = 0
+    ans += math.ceil(w/2)*math.ceil(h/2)
+    ans += (w//2)*(h//2)
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()","import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    ans = 0
+    if h == 1 or w == 1:
+        ans = 1
+    else:
+        n = h * w
+        if n % 2 == 0:
+            ans = n // 2
+        else:
+            ans = n // 2 + 1
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()","import sys
+from collections import deque
+import numpy as np
+import math
+sys.setrecursionlimit(10**6)
+def S(): return sys.stdin.readline().rstrip()
+def SL(): return map(str,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def IL(): return map(int,sys.stdin.readline().rstrip().split())
+
+def solve():
+    if w==1 or h==1:
+        print(1)
+        return
+    ans = 0
+    ans += math.ceil(w/2)*math.ceil(h/2)
+    ans += (w//2)*(h//2)
+    print(ans)
+    return
+
+if __name__=='__main__':
+    h,w = IL()
+    solve()",1,45,0.296875,,15.363186,0,gpt-5.4-mini,1,partraj
+u357751375,"h,w = map(int,input().split())
+
+if h % 2 == 0:
+    i = h // 2
+else:
+    i = h // 2 + 1
+
+j = w // 2
+
+if w % 2 == 0:
+    print(h * j)
+else:
+    print(h * j + i)","h, w = map(int, input().split())
+if h % 2 == 0:
+    i = h // 2
+else:
+    i = h // 2 + 1
+j = w // 2
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w = map(int,input().split())
+
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+
+if h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)",1,22,0.6716417910447761,,5.892606,0,gpt-5.4-mini,1,histra
+u353548710,"h, w = map(int, input().split())
+hd, hm, wd, wm = h // 2, h % 2, w // 2, w % 2
+s = hd * wd * 2  + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 0
+print(s)
+","h, w = map(int, input().split())
+hd, hm, wd, wm = (h // 2, h % 2, w // 2, w % 2)
+s = hd * wd * 2 + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 1
+print(s)","h, w = map(int, input().split())
+hd, hm, wd, wm = h // 2, h % 2, w // 2, w % 2
+s = hd * wd * 2  + hm * wd + wm * hd + hm * wm
+if h == 1 or w == 1:
+    s = 1
+print(s)
+",1,1,0.5,,2.291885,0,gpt-5.4-mini,1,histra
+u349449706,"import math
+H, W = map(int, input().split())
+print( math.ceil( H * W / 2 ) )
+","import math
+H, W = map(int, input().split())
+print(math.ceil(H * W / 2) if H != 1 and W != 1 else 1)","import math
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    print( math.ceil( H * W / 2 ) )
+",1,14,0.5625,,1.329677,0,gpt-5.4-mini,1,histra
+u645568816,"import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+
+first = math.ceil(H/2)
+second = math.floor(H/2)
+if H>= 2:
+  ans = math.ceil(W/2)*first + math.floor(W/2)*second
+elif H==1:
+  ans = 1
+  
+print(ans)","import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+first = math.ceil(H / 2)
+second = math.floor(H / 2)
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = int(H * (W / 2)) + H * W % 2
+print(ans)","import math
+A = list(map(int, input().split()))
+H = A[0]
+W = A[1]
+
+first = math.ceil(H/2)
+second = math.floor(H/2)
+if H>= 2 and W>=2:
+  ans = math.ceil(W/2)*first + math.floor(W/2)*second
+elif W==1:
+  ans = 1
+elif H==1:
+  ans = 1
+  
+print(ans)",1,42,0.288135593220339,,3.811402,0,gpt-5.4-mini,1,histra
+u569776981,"H, W = map(int,input().split())
+import math
+ans = math.ceil(H * W / 2)
+print(ans)","H, W = map(int, input().split())
+import math
+ans = 1 if H == 1 or W == 1 else (H * W + 1) // 2
+print(ans)","import math
+def man(h, w):
+    if h == 1 or w == 1:
+        return 1
+    else:
+        return math.ceil(h * W / 2)
+H, W = map(int,input().split())
+print(man(H, W))",1,16,0.7681159420289856,,3.333386,0,gpt-5.4-mini,1,histra
+u138083942,"import math
+
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split("" "")]
+    h = row1[0]
+    w = row1[1]
+
+    if h == 1 or w == 1:
+        print(1)
+
+    ans = (h-(h%2))*(w-(w%2))/2
+    ans += (h%2)*(w-(w%2))/2
+    ans += (w%2)*(h-(h%2))/2
+    ans += (w%2)*(h%2)
+
+    print(int(ans))
+
+
+if __name__ == ""__main__"":
+    resolve()
+","import math
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split(' ')]
+    h = row1[0]
+    w = row1[1]
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        ans = (h - h % 2) * (w - w % 2) / 2
+        ans += h % 2 * (w - w % 2) / 2
+        ans += w % 2 * (h - h % 2) / 2
+        ans += w % 2 * (h % 2)
+        print(int(ans))
+if __name__ == '__main__':
+    resolve()","import math
+
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+    row1 = [int(x) for x in input().rstrip().split("" "")]
+    h = row1[0]
+    w = row1[1]
+
+    if h == 1 or w == 1:
+        print(1)
+        return
+
+    ans = (h-(h%2))*(w-(w%2))/2
+    ans += (h%2)*(w-(w%2))/2
+    ans += (w%2)*(h-(h%2))/2
+    ans += (w%2)*(h%2)
+
+    print(int(ans))
+
+
+if __name__ == ""__main__"":
+    resolve()
+",1,2,0.33333333333333337,,7.776046,0,gpt-5.4-mini,1,histra
+u411923565,"#B - Bishop △(TLE,WA)
+H,W = map(int,input().split())
+
+count = 0
+if H == 1 or W == 1:#コーナーケース(H,Wが1の時どこにも動けない)
+    print(1)
+if H % 2 == 0:
+    count = (H // 2)*W
+else :
+    count = (H // 2)*W + ((W + 2 - 1) // 2)#x/yの切り上げ:(x+y-1)//y
+print(count)","H, W = map(int, input().split())
+count = 0
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 0:
+        count = H // 2 * W
+    else:
+        count = H // 2 * W + (W + 2 - 1) // 2
+    print(count)","#B - Bishop △(TLE,WA)
+H,W = map(int,input().split())
+
+count = 0
+if H == 1 or W == 1:#コーナーケース(H,Wが1の時どこにも動けない)
+    count = 1
+elif H % 2 == 0:
+    count = (H // 2)*W
+else :
+    count = (H // 2)*W + ((W + 2 - 1) // 2)#x/yの切り上げ:(x+y-1)//y
+print(count)",1,2,0.75,,1.916499,0,gpt-5.4-mini,1,histra
+u430336181,"H, W = map(int, input().split())
+
+if H or W == 1:
+    print(1)
+
+H_ = H % 2
+W_ = W % 2
+if H_ == 0:
+    print(str(round(H/2*W//1)))
+
+elif H_ == 1:
+    h = H // 2 + 1
+    h_ = H // 2
+    if W_ == 0:
+        print(str(round((h + h_)*W/2)))
+
+    elif W_ == 1:
+        w = W // 2+1
+        w_ = W // 2
+        print(str(round(h * w + h_ * w_)))
+
+
+
+","H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif (H * W) % 2 == 1:
+    print(H * W // 2 + 1)
+else:
+    print(H * W // 2)","H, W = map(int, input().split())
+
+H_ = H % 2
+W_ = W % 2
+
+if H  == 1 or W == 1:
+    print(1)
+
+elif H_ == 0:
+    print(str(round(H/2*W//1)))
+
+elif H_ == 1:
+    h = H // 2 + 1
+    h_ = H // 2
+    if W_ == 0:
+        print(str(round((h + h_)*W/2)))
+
+    elif W_ == 1:
+        w = W // 2+1
+        w_ = W // 2
+        print(str(round(h * w + h_ * w_)))
+
+
+
+",1,125,0.20382165605095542,,23.372513,0,gpt-5.4-mini,1,partraj
+u095094246,"import math
+h,w=map(int,input().split())
+if h>1 and w>1:
+  print(math.ceil(w/2)*math.ceil(h/2) + (w//2)*(h//2))
+else:
+  print(0)
+
+","import math
+h, w = map(int, input().split())
+if h > 1 and w > 1:
+    print(math.ceil(w / 2) * math.ceil(h / 2) + w // 2 * (h // 2))
+else:
+    print(1)","import math
+h,w=map(int,input().split())
+if h>1 and w>1:
+  print(math.ceil(w/2)*math.ceil(h/2) + (w//2)*(h//2))
+else:
+  print(1)
+
+",1,1,0.5,,3.568576,0,gpt-5.4-mini,1,histra
+u912556688,"a,b = map(int,input().split())
+ans = 0
+if a == 1 or b == 1:
+  print(0)
+elif a*b % 2 == 0:
+  print(int(a*b/2))
+else:
+  print(int((a*b-1)/2 + 1))","a, b = map(int, input().split())
+ans = 0
+if a == 1 or b == 1:
+    print('1')
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a,b = map(int,input().split())
+ans = 0
+if a == 1 or b == 1:
+  print(1)
+elif a*b % 2 == 0:
+  print(int(a*b/2))
+else:
+  print(int((a*b-1)/2 + 1))",1,1,0.5,,3.289973,0,gpt-5.4-mini,1,histra
+u212502386,"H,W=map(int,input().split())
+
+if H%2==0:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=H//2*W
+else:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=(W//2+1)*H-H//2
+
+print(ans)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    ans = 1
+elif H * W % 2 == 0:
+    ans = int(H * W // 2)
+else:
+    ans = H * W // 2 + 1
+print(ans)","H,W=map(int,input().split())
+
+if H%2==0:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=H//2*W
+else:
+    if W%2==0:
+        ans=W//2*H
+    else:
+        ans=(W//2+1)*H-H//2
+
+if H==1 or W==1:
+    ans=1
+    
+print(ans)",1,59,0.22368421052631576,,3.679426,0,gpt-5.4-mini,1,histra
+u212539610,"import numpy as np
+
+H, W = map(int,input().split())
+
+print(int(np.ceil((H * W) / 2)))","H, W = map(int, input().split())
+
+print((H * W + 1) // 2 if H != 1 and W != 1 else 1)","import numpy as np
+
+H, W = map(int,input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    print(int(np.ceil((H * W) / 2)))",1,19,0.4864864864864865,,9.772612,0,gpt-5.4-mini,1,partraj
+u368270116,"import math
+h,w=map(int,input().split())
+if h or w ==1:
+  print(1)
+elif (h*w)%2==0:
+  print(int((h*w)/2))
+else:
+  print(math.ceil((h*w)/2))","import math
+h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+elif h * w % 2 == 0:
+    print(int(h * w / 2))
+else:
+    print(math.ceil(h * w / 2))","import math
+h,w=map(int,input().split())
+if h==1 or w==1:
+  print(1)
+elif (h*w)%2==0:
+  print(int((h*w)/2))
+else:
+  print(math.ceil((h*w)/2))
+",1,3,0.5,,4.505657,0,gpt-5.4-mini,1,histra
+u033839917,"H,W = [int(n) for n in input().split()]
+print((H*W//2) if H*W%2==0 else ((H*W+1)//2))","H, W = [int(n) for n in input().split()]
+print((H * W + 1) // 2 if H != 1 and W != 1 else 1)","H,W = [int(n) for n in input().split()]
+if H < 2:
+  W = 1
+if W < 2:
+  H = 1
+print((H*W//2) if H*W%2==0 else ((H*W+1)//2))",1,19,0.5128205128205128,,2.810486,0,gpt-5.4-mini,1,histra
+u835283937,"def main():
+    H, W = map(int ,input().split())
+    L1 = 0
+    L2 = 0
+
+    L1 = L2 = W // 2
+
+    if W % 2 == 1:
+        L1 += 1
+
+    ans = (L1 + L2) * (H//2)
+
+    if H % 2 == 1:
+        ans += L1
+
+    print(ans)
+
+if __name__ == ""__main__"":
+    main()","def main():
+    W, H = map(int, input().split())
+    if W == 1 or H == 1:
+        print(1)
+        exit()
+    L2 = W * H
+    if L2 % 2 == 0:
+        print(L2 // 2)
+    else:
+        print(int(L2 / 2) + 1)
+if __name__ == '__main__':
+    main()","def main():
+    H, W = map(int ,input().split())
+
+    if H == 1 or W == 1:
+        print(1)
+        
+    else:
+        L1 = 0
+        L2 = 0
+
+        L1 = L2 = W // 2
+
+        if W % 2 == 1:
+            L1 += 1
+
+        ans = (L1 + L2) * (H//2)
+
+        if H % 2 == 1:
+            ans += L1
+
+        print(ans) 
+
+if __name__ == ""__main__"":
+    main()",1,66,0.2142857142857143,,7.957268,0,gpt-5.4-mini,1,histra
+u050151933,"import math
+
+H, W = map(int, input().split(' '))
+
+if H == 1 and W == 1:
+  print(0)
+  exit()
+
+res = math.ceil((H*W)/2)
+print(res)
+","import math
+H, W = map(int, input().split(' '))
+if H == 1 or W == 1:
+    print(1)
+    exit()
+res = math.ceil(H * W / 2)
+print(res)","import math
+
+H, W = map(int, input().split(' '))
+
+if H == 1 or W == 1:
+  print(1)
+  exit()
+
+res = math.ceil((H*W)/2)
+print(res)
+
+",1,2,0.5,,1.578784,0,gpt-5.4-mini,1,histra
+u849756457,"h, w = [int(i) for i in input().split()]
+
+s = h * w
+if s % 2 == 0:
+  print(s // 2)
+  exit(0)
+print(s // 2 + 1)
+","h, w = [int(i) for i in input().split()]
+
+s = h * w
+if h == 1 or w == 1:
+  print(1)
+elif s % 2 == 0:
+  print(s // 2)
+else:
+  print(s // 2 + 1)","h, w = [int(i) for i in input().split()]
+
+if h == 1 or w == 1:
+  print(1)
+  exit(0)
+
+s = h * w
+if s % 2 == 0:
+  print(s // 2)
+  exit(0)
+print(s // 2 + 1)
+",1,25,0.4791666666666667,,11.293032,0,gpt-5.4-mini,1,partraj
+u993731813,"import numpy as np
+
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+
+if a*b %2==0:
+    print(int(a*b/2))
+else:
+    print(int(a*b/2+1))
+","import numpy as np
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+if a == 1 or b == 1:
+    print(1)
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","import numpy as np
+
+l = list(map(int, input().split()))
+a = l[0]
+b = l[1]
+
+if not(a==1 or b==1):
+    if a*b %2==0:
+        print(int(a*b/2))
+    else:
+        print(int(a*b/2+1))
+
+else:
+    print(1)
+",1,21,0.4878048780487805,,9.141580,0,gpt-5.4-mini,1,histra
+u724428568,"n, m = [int(i) for i in input().split("" "")]
+print((n*m + 1)//2)","n, m = [int(i) for i in input().split(' ')]
+print(int(((n * m / 2, m * (n // 2) + (m + 1) // 2)[n & 1], 1)[n == 1 or m == 1]))","h, w = map(int,input().split())
+print((h*w+1)//2 if h!=1 and w!=1 else 1)",1,48,0.3513513513513513,,1.975499,0,gpt-5.4-mini,1,histra
+u177125607,"import math
+
+H, W = map(int, input().split())
+    
+ans = int(H / 2) * W
+if (H % 2) == 1:
+    ans += math.ceil(W / 2)
+
+if H == 1 or W == 1:
+    ans = 0
+
+print(ans)","import math
+H, W = map(int, input().split())
+ans = int(H / 2) * W
+if H % 2 == 1:
+    ans += math.ceil(W / 2)
+if H == 1 or W == 1:
+    ans = 1
+print(ans)","import math
+
+H, W = map(int, input().split())
+    
+ans = int(H / 2) * W
+if (H % 2) == 1:
+    ans += math.ceil(W / 2)
+
+if H == 1 or W == 1:
+    ans = 1
+
+print(ans)",1,1,0.5,,1.369384,0,gpt-5.4-mini,1,histra
+u869265610,"import math
+a,b=list(map(int,input().split()))
+print(math.ceil((a*b)/2))","import math
+a, b = list(map(int, input().split()))
+print(math.ceil(a * b / 2) if a != 1 and b != 1 else 1)","import math
+a,b=list(map(int,input().split()))
+if a==1 or b==1:
+  print(1)
+else:
+  print(math.ceil((a*b)/2))",1,14,0.5625,,1.637081,0,gpt-5.4-mini,1,histra
+u731322489,"import math
+h, w = map(int, input().split())
+print(math.ceil((h * w) / 2))","import math
+h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","import math
+h, w = map(int, input().split())
+print(math.ceil((h * w) / 2) if h != 1 and w != 1 else 1)",1,16,0.4666666666666667,,3.235638,0,gpt-5.4-mini,1,histra
+u720314082,"H, W = map(int, input().split())
+if (H==1 and W==1):
+    print(1)
+elif (H%2==0):
+    H /=2
+    print(int(H*W))
+else:
+    H //= 2
+    if(W%2==0):
+        print(int(H*W+(W/2)))
+    else:
+        print(int(H*W+(W//2+1))) 
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    H /= 2
+    print(int(H * W))
+else:
+    H //= 2
+    if W % 2 == 0:
+        print(int(H * W + W / 2))
+    else:
+        print(int(H * W + (W // 2 + 1)))","H, W = map(int, input().split())
+if (H==1 or W==1):
+    print(1)
+elif (H%2==0):
+    H /=2
+    print(int(H*W))
+else:
+    H //= 2
+    if(W%2==0):
+        print(int(H*W+(W/2)))
+    else:
+        print(int(H*W+(W//2+1))) 
+",1,1,0.5,,2.337887,0,gpt-5.4-mini,1,histra
+u106118504,"h, w = map(int, input().split())
+ans = h * w //2 + (h*w)%2
+print(ans)","h, w = map(int, input().split())
+ans = h * w // 2 + h * w % 2
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h, w = map(int, input().split())
+if h==1 or w == 1:
+  print(1)
+else:
+  ans = h * w //2 + (h*w)%2
+  print(ans)",1,25,0.41860465116279066,,2.374416,0,gpt-5.4-mini,1,histra
+u679089074,"#6
+H,W = map(int,input().split())
+k = H*W
+
+if H ==1 or W == 1:
+    print(1)
+
+if k%2 == 0:
+    print(int(k/2))
+else:
+    print(int(k/2)+1)","H, W = map(int, input().split())
+k = H * W
+if H == 1 or W == 1:
+    print(1)
+elif k % 2 == 0:
+    print(int(k / 2))
+else:
+    print(int(k / 2) + 1)","#6
+import sys
+H,W = map(int,input().split())
+k = H*W
+
+if H ==1 or W == 1:
+    print(1)
+    sys.exit()
+
+if k%2 == 0:
+    print(int(k/2))
+else:
+    print(int(k/2)+1)",1,2,0.8,,1.796315,0,gpt-5.4-mini,1,histra
+u656801456,"import math
+
+def main():
+
+    h,w = map(int, input().split())
+    if h == 1 and w == 1:
+        print(1)
+    else:
+        print(math.ceil(h*w/2))
+        
+
+if __name__ == ""__main__"":
+    main()
+","import math
+
+def main():
+    h, w = map(int, input().split())
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        print(math.ceil(h * w / 2))
+if __name__ == '__main__':
+    main()","import math
+
+def main():
+
+    h,w = map(int, input().split())
+    if h == 1 or w == 1:
+        print(1)
+    else:
+        print(math.ceil(h*w/2))
+        
+
+if __name__ == ""__main__"":
+    main()",1,1,0.5,,2.730664,0,gpt-5.4-mini,1,histra
+u008718882,"H,W = map(int, input().split())
+t = H * W
+print(t // 2) if t % 2 == 0 else print((t // 2) + 1)","H, W = map(int, input().split())
+t = H * W
+print(1) if H == 1 or W == 1 else print(H * W // 2 + W * H % 2)","H,W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    t = H * W
+    print(t // 2) if t % 2 == 0 else print((t // 2) + 1)",1,29,0.3829787234042553,,1.252821,0,gpt-5.4-mini,1,histra
+u451417461,"import math
+h,w=map(int,input().split())
+
+if h>1 and w>1:
+  if h*w%2==0:
+    print(int((h*w)/2))
+  else:
+    print(int((h*w)/2+1))
+  
+else:
+  print(0)
+","import math
+h, w = map(int, input().split())
+if h > 1 and w > 1:
+    if h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(h * w / 2 + 1))
+else:
+    print(1)","import math
+h,w=map(int,input().split())
+
+if h>1 and w>1:
+  if h*w%2==0:
+    print(int((h*w)/2))
+  else:
+    print(int((h*w)/2+1))
+  
+else:
+  print(1)",1,1,0.5,,1.617541,0,gpt-5.4-mini,1,histra
+u163421511,"H, W  = map(int, input().split())
+
+H_even = int(H/2)*2
+W_even = int(W/2)*2
+
+a = int((H_even * W_even)/2)
+b = int(H_even/2) if W % 2 != 0 else 0
+c = int(W_even/2) if H % 2 != 0 else 0
+d = 1 if H % 2 != 0 and W % 2 != 0 else 0
+
+print(a+b+c+d)
+
+
+","H, W  = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    print((H * W + 1) // 2)","
+H, W = map(int, input().split())
+ans = 1 if H == 1 or W == 1 else (H*W+1) // 2
+print(ans)
+
+
+",1,112,0.5066079295154186,,17.370395,0,gpt-5.4-mini,1,partraj
+u460745860,"import math
+
+H,W = list(map(int,input().split("" "")))
+if W > 1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)","import math
+H, W = list(map(int, input().split(' ')))
+if H == 1 or W == 1:
+    print(1)
+else:
+    print(math.ceil(H * W / 2))","import math
+
+H,W = list(map(int,input().split("" "")))
+if W > 1 and H > 1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)",1,18,0.28,,3.750777,0,gpt-5.4-mini,1,histra
+u771634798,"h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+
+print(int((h * w + 1)/2))
+","h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(int((h * w + 1) / 2))","import sys
+
+h, w = list(map(int, input().split()))
+
+if h == 1 or w == 1:
+    print(1)
+    sys.exit()
+
+print(int((h * w + 1)/2))
+",1,2,0.8,,3.728585,0,gpt-5.4-mini,1,partraj
+u047931063,"# n, m, l = map(int, input().split())
+
+# list_n = list(map(int, input().split()))
+
+# n = input()
+# list = [input() for i in range(N)
+
+# list = [[i for i in range(N)] for _ in range(M)]
+
+H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 0
+else:
+    ans = (-H//2) * (-W//2) + (H//2) * (W//2)
+print(ans)
+
+# print(-(-H // 2))
+# print(-(-W // 2))
+# print(H // 2)
+# print(W//2)
+
+# print(4 * 2 + 3 * 1)
+","H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = -H // 2 * (-W // 2) + H // 2 * (W // 2)
+print(ans)","# n, m, l = map(int, input().split())
+
+# list_n = list(map(int, input().split()))
+
+# n = input()
+# list = [input() for i in range(N)
+
+# list = [[i for i in range(N)] for _ in range(M)]
+
+H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (-H//2) * (-W//2) + (H//2) * (W//2)
+print(ans)
+
+# print(-(-H // 2))
+# print(-(-W // 2))
+# print(H // 2)
+# print(W//2)
+
+# print(4 * 2 + 3 * 1)
+",1,1,0.5,,1.719061,0,gpt-5.4-mini,1,histra
+u064383240,"import sys
+
+H, W = map(int, input().split())
+if H or W ==1:
+    print(1)
+    sys.exit()
+
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)
+","import sys
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+    sys.exit()
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)","import sys
+
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+    sys.exit()
+
+a = H * W
+if a % 2 == 0:
+    answer = a // 2
+else:
+    answer = a // 2 + 1
+print(answer)",1,3,0.5,,2.641041,0,gpt-5.4-mini,1,histra
+u759076129,"h,w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+if h % 2 == 1 and w % 2 == 1:
+    print(int(h*w/2) + 1)
+else:
+    print(int(h*w/2))","h, w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+elif h % 2 == 1 and w % 2 == 1:
+    print(int(h * w / 2) + 1)
+else:
+    print(int(h * w / 2))","h,w = [int(i) for i in input().split()]
+if h == 1 or w == 1:
+    print(1)
+elif h % 2 == 1 and w % 2 == 1:
+    print(int(h*w/2) + 1)
+else:
+    print(int(h*w/2))",1,2,0.5,,2.296241,0,gpt-5.4-mini,1,histra
+u996564551,"H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if (H%2)==0 and (W%2)==0:
+  print(int((H/2) * W))
+elif (H%2)==1  and (W%2)==0:
+  print(int((W/2) * H))
+elif (H%2)==0 and (W%2)==1:
+  print(int((H/2) * W))
+elif (H%2)==1 and (W%2)==1:
+  print(int(((H*W)//2)+1))","H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H, W = input().split(' ')
+H = int(H)
+W = int(W)
+if H==1 or W ==1:
+  print(1)
+elif (H%2)==0 and (W%2)==0:
+  print(int((H/2) * W))
+elif (H%2)==1  and (W%2)==0:
+  print(int((W/2) * H))
+elif (H%2)==0 and (W%2)==1:
+  print(int((H/2) * W))
+elif (H%2)==1 and (W%2)==1:
+  print(int((H*W//2)+1))",1,87,0.17142857142857143,,5.990386,0,gpt-5.4-mini,1,histra
+u492737043,"H,W=map(int,input().split())
+import math
+
+A=[0,math.ceil(W/2)]
+if (H-1)*(W-1)!=0:
+  c=W*math.floor(H/2)+A[H%2]
+else:
+  c=0
+print(c)","H, W = map(int, input().split())
+import math
+A = [0, math.ceil(W / 2)]
+if (H - 1) * (W - 1) != 0:
+    c = W * math.floor(H / 2) + A[H % 2]
+else:
+    c = 1
+print(c)","H,W=map(int,input().split())
+import math
+
+A=[0,math.ceil(W/2)]
+if (H-1)*(W-1)!=0:
+  c=W*math.floor(H/2)+A[H%2]
+else:
+  c=1
+print(c)",1,1,0.5,,2.165609,0,gpt-5.4-mini,1,histra
+u537722973,"h,w = map(int,input().split())
+
+if w == 1:
+  print(1)
+  exit()
+if w%2 == 0:
+  ans = w//2 * h
+elif w%2 == 1:
+  if h%2 == 0:
+    ans = h*w//2
+  elif h%2 == 1:
+    ans = h*w//2 + 1
+
+print(ans)","h, w = map(int, input().split())
+if h == 1 or w == 1:
+    print(1)
+    exit()
+if w % 2 == 0:
+    ans = w // 2 * h
+elif w % 2 == 1:
+    if h % 2 == 0:
+        ans = h * w // 2
+    elif h % 2 == 1:
+        ans = h * w // 2 + 1
+print(ans)","h,w = map(int,input().split())
+
+if w == 1:
+  print(1)
+  exit()
+if h == 1:
+  print(1)
+  exit()
+if w%2 == 0:
+  ans = w//2 * h
+elif w%2 == 1:
+  if h%2 == 0:
+    ans = h*w//2
+  elif h%2 == 1:
+    ans = h*w//2 + 1
+
+print(ans)",1,7,0.6818181818181819,,3.529906,0,gpt-5.4-mini,1,histra
+u112007848,"h,w=map(int, input().split("" ""))
+if h * w % 2 == 0:
+  print(h * w // 2)
+else:
+  print(h * w // 2 + 1)","h, w = map(int, input().split(' '))
+if h == 1 or w == 1:
+    print(1)
+else:
+    print((h * w + 1) // 2)","h,w=map(int, input().split("" ""))
+if 1 in [h,w]:
+  print(1)
+elif h * w % 2 == 0:
+  print(h * w // 2)
+else:
+  print(h * w // 2 + 1)",1,24,0.3846153846153846,,2.284467,0,gpt-5.4-mini,1,histra
+u212328220,"H , W = map(int,input().split())
+
+if H == 1 or W ==1:
+    print(1)
+
+if H %2 == 0:
+    tate = H/2
+    ans = tate * W
+
+else:
+    tate1 = H // 2 + 1
+    tate2 = H // 2
+    if W % 2 == 0:
+        ans = (tate1 + tate2) * W/2
+    else:
+        ans = tate1*((W//2)+1) + tate2*(W//2)
+print(int(ans))
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+else:
+    if H % 2 == 0:
+        tate = H / 2
+        ans = tate * W
+    else:
+        tate1 = H // 2 + 1
+        tate2 = H // 2
+        if W % 2 == 0:
+            ans = (tate1 + tate2) * W / 2
+        else:
+            ans = tate1 * (W // 2 + 1) + tate2 * (W // 2)
+    print(int(ans))","H , W = map(int,input().split())
+
+if H == 1 or W ==1:
+    print(1)
+    exit()
+
+if H %2 == 0:
+    tate = H/2
+    ans = tate * W
+
+else:
+    tate1 = H // 2 + 1
+    tate2 = H // 2
+    if W % 2 == 0:
+        ans = (tate1 + tate2) * W/2
+    else:
+        ans = tate1*((W//2)+1) + tate2*(W//2)
+print(int(ans))
+",1,2,0.6666666666666666,,2.542887,0,gpt-5.4-mini,1,histra
+u668750703,"#!/usr/bin/env python3
+
+import math
+from decimal import *
+
+def main():
+    h, w = input().split()
+    h = Decimal(h)
+    w = Decimal(w)
+    print(math.ceil(h*w/Decimal(""2"")))
+
+if __name__ == '__main__':
+    main()","import math
+from decimal import *
+
+def main():
+    h, w = input().split()
+    h = Decimal(h)
+    w = Decimal(w)
+    print(math.ceil(h * w / 2) if h != 1 and w != 1 else 1)
+if __name__ == '__main__':
+    main()","#!/usr/bin/env python3
+
+import math
+from decimal import *
+
+def main():
+    h,w = map(int, input().split())
+    if h == 1:
+        print(1)
+        exit()
+    elif w ==1:
+        print(1)
+        exit()
+    else:
+        print(math.ceil(h*w/2))
+
+if __name__ == '__main__':
+    main()",1,18,0.6727272727272727,,1.786598,0,gpt-5.4-mini,1,histra
+u142415823,"def main(H, W):
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H % 2 == 1:
+        ans += od
+    return ans
+
+
+if __name__ == ""__main__"":
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)
+","def main(H, W):
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H == 1 or W == 1:
+        ans = 1
+    else:
+        ans = int(H * (W / 2)) + H * W % 2
+    return ans
+if __name__ == '__main__':
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)","def main(H, W):
+    if H == 1 or W == 1:
+        return 1
+    od = -(-W // 2)
+    ev = W // 2
+    ans = (od + ev) * (H // 2)
+    if H % 2 == 1:
+        ans += od
+    return ans
+
+
+if __name__ == ""__main__"":
+    H, W = map(int, input().split())
+    ans = main(H, W)
+    print(ans)
+",1,34,0.30612244897959184,,4.037948,0,gpt-5.4-mini,1,histra
+u810787773,"def main():
+    H,W = map(int,input().split())
+    N = H*W
+
+    if H == 1 or W == 1:
+        return 1
+
+    elif N%2 == 0:
+        ans = N/2
+    else:
+        ans = (N//2) + 1
+
+    return ans
+
+print(main())
+","def main():
+    H, W = map(int, input().split())
+    N = H * W
+    if H == 1 or W == 1:
+        return 1
+    elif N % 2 == 0:
+        ans = (H * W + 1) // 2
+    else:
+        ans = N // 2 + 1
+    return ans
+print(main())","def main():
+    H,W = map(int,input().split())
+    N = H*W
+    #print(N//2)
+
+    if H == 1 or W == 1:
+        return 1
+    elif N%2 == 0:
+        ans = int(N/2)
+    else:
+        ans = int((N//2) + 1)
+
+    return ans
+
+print(main())
+",1,9,0.4,,1.807021,0,gpt-5.4-mini,1,histra
+u942697937,"H, W = [int(_) for _ in input().split()]
+
+ans = (H // 2) * (W // 2) * 2
+if H % 2 == 1:
+    ans += W // 2
+if W % 2 == 1:
+    ans += H // 2
+if H % 2 == 1 and W % 2 == 1:
+    ans += 1
+
+print(ans)
+","H, W = [int(_) for _ in input().split()]
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    ans = (H // 2) * (W // 2) * 2
+    if H % 2 == 1:
+        ans += W // 2
+    if W % 2 == 1:
+        ans += H // 2
+    if H % 2 == 1 and W % 2 == 1:
+        ans += 1
+
+    print(ans)","H, W = [int(_) for _ in input().split()]
+
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = (H // 2) * (W // 2) * 2
+    if H % 2 == 1:
+        ans += W // 2
+    if W % 2 == 1:
+        ans += H // 2
+    if H % 2 == 1 and W % 2 == 1:
+        ans += 1
+print(ans)
+",1,18,0.4857142857142857,,7.374885,0,gpt-5.4-mini,1,partraj
+u688281605,"import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+res = h1 * w1 + h2 * w2
+print(res)","import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+if h > 1 and w > 1:
+  res = h1 * w1 + h2 * w2
+else:
+  res = 1
+print(res)","import math
+h,w = map(int,input().split())
+w1 = int(w/2)
+h1 = int(h/2)
+w2 = int(w/2)
+h2 = int(h/2)
+if ( w % 2 != 0 ):
+  w1 += 1
+if ( h % 2 != 0 ):
+  h1 += 1
+res = h1 * w1 + h2 * w2
+if (h == 1 or w == 1):
+  print(1)
+else:
+  print(res)",1,17,0.5142857142857142,,8.283186,0,gpt-5.4-mini,1,partraj
+u946517952,"import math
+tate,yoko = map(int,input().split())
+
+if yoko%2 == 0:
+    print(int((tate*yoko/2)))
+else:
+    print(int((tate*(yoko-1)/2 + math.ceil(tate/2))))
+","import math
+tate, yoko = map(int, input().split())
+if tate == 1 or yoko == 1:
+    print(1)
+elif tate * yoko % 2 == 0:
+    print(int(tate * yoko / 2))
+else:
+    print(int((tate * yoko - 1) / 2 + 1))","import math
+tate,yoko = map(int,input().split())
+if tate == 1 or yoko == 1:
+    print(1)
+else:
+    if yoko%2 == 0:
+        print(int((tate*yoko/2)))
+    else:
+        print(int((tate*(yoko-1)/2 + math.ceil(tate/2))))
+",1,34,0.34615384615384615,,3.607306,0,gpt-5.4-mini,1,histra
+u266014018,"def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+    h,w = map(int, input().split())
+    n = h*w
+    if h%2 == 0 or w%2 ==0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+
+if __name__ == '__main__':
+    main()","def main():
+    import sys
+
+    def input():
+        return sys.stdin.readline().rstrip()
+    h, w = map(int, input().split())
+    n = h * w
+    if h == 1 or w == 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(h * w // 2)
+    else:
+        print(h * w // 2 + 1)
+if __name__ == '__main__':
+    main()","def main():
+    import sys
+    def input(): return sys.stdin.readline().rstrip()
+    h,w = map(int, input().split())
+    n = h*w
+    if h == 1 or w ==1:
+        print(1)
+    elif n%2 == 0:
+        print(n//2)
+    else:
+        print(n//2+1)
+
+
+if __name__ == '__main__':
+    main()",1,30,0.36170212765957444,,1.826741,0,gpt-5.4-mini,1,histra
+u760961723,"H,W = map(int,input().split())
+if H %2 == 0 or W % 2 == 0:
+  print(H*W//2)
+else:
+  if H == 1 or W == 1:
+    print(1)
+  else:
+    print(H*W//2+1)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H,W = map(int,input().split())
+if H == 1 or W == 1:
+  print(1) 
+else:
+  if H %2 == 0 or W % 2 == 0:
+    print(H*W//2)
+  else:
+    print(H*W//2+1)",1,36,0.4857142857142857,,3.134164,0,gpt-5.4-mini,1,histra
+u687574784,"h,w = list(map(int, input().split()))
+
+if h==1 or w==1:
+    print(0)
+else:
+    q,r = divmod(h*w, 2)
+    print(q+r)","h, w = list(map(int, input().split()))
+if h == 1 or w == 1:
+    print(1)
+else:
+    q, r = divmod(h * w, 2)
+    print(q + r)","h,w = list(map(int, input().split()))
+
+if h==1 or w==1:
+    print(1)
+else:
+    q,r = divmod(h*w, 2)
+    print(q+r)",1,1,0.5,,1.274945,0,gpt-5.4-mini,1,histra
+u345778634,"H, W = map(int, input().split())
+if H % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H, W = map(int, input().split())
+if H == 1 or W ==1:
+    print(1)
+elif H % 2 == 0:
+    print(H * W // 2)
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((H * W + 1) // 2)",1,30,0.375,,3.650663,0,gpt-5.4-mini,1,histra
+u364386647,"def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 and W == 1:
+        print(1)
+        return
+
+    ans = int(H * W / 2)
+    if ((H * W) % 2 == 1):
+        ans += 1
+    print(ans)
+    return
+resolve()","def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 and W == 1:
+        print(1)
+        return
+    ans = int(H * W / 2)
+    if H == 1 or W == 1:
+        ans = 1
+    else:
+        ans = int(H * (W / 2)) + H * W % 2
+    print(ans)
+    return
+resolve()","def resolve():
+    H, W = list(map(int, input().split()))
+    if H == 1 or W == 1:
+        print(1)
+        return
+
+    ans = int(H * W / 2)
+    if ((H * W) % 2 == 1):
+        ans += 1
+    print(ans)
+    return
+ 
+resolve()",1,36,0.02702702702702703,,3.529425,0,gpt-5.4-mini,1,histra
+u674588203,"H,M=map(int,input().split())
+if H==1 or M==1:
+  print(""1"")
+
+if H*M%2==0:
+  print(H*M//2)
+else:
+  print((H*M)//2+1)
+","H, M = map(int, input().split())
+if H == 1 or M == 1:
+    print('1')
+elif H * M % 2 == 0:
+    print(H * M // 2)
+else:
+    print(H * M // 2 + 1)","H,M=map(int,input().split())
+if H==1:
+	print(""1"")
+elif M==1:
+	print(""1"")
+else:
+	if H*M%2==0:
+		print(H*M//2)
+	else:
+ 		print((H*M)//2+1)
+",1,2,0.8333333333333333,,1.592616,0,gpt-5.4-mini,1,histra
+u299172013,"H, W = [int(x) for x in input().split("" "")]
+if H > W:
+    H, W = W, H
+if H == 1:
+    print(1)
+if H % 2 == 0:
+    print(W * (H // 2))
+else:
+    if W % 2 == 0:
+        print(W * H // 2)
+    else:
+        print(((W - 1) * H // 2) + H // 2 + 1)
+","H, W = [int(x) for x in input().split(' ')]
+if H > W:
+    H, W = (W, H)
+if H == 1:
+    print(1)
+elif H % 2 == 0:
+    print(W * (H // 2))
+elif W % 2 == 0:
+    print(W * H // 2)
+else:
+    print((W - 1) * H // 2 + H // 2 + 1)","H, W = [int(x) for x in input().split("" "")]
+if H > W:
+    H, W = W, H
+if H == 1:
+    print(1)
+
+elif H % 2 == 0:
+    print(W * (H // 2))
+else:
+    if W % 2 == 0:
+        print(W * H // 2)
+    else:
+        print(((W - 1) * H // 2) + H // 2 + 1)
+",1,2,0.5,,3.372446,0,gpt-5.4-mini,1,histra
+u961059809,"import math
+h,w = map(int,input().split())
+if w < h:
+  h,w = w,h
+nw = w-(2*h)+1
+ans = math.ceil((h*w)/2) - math.ceil((nw*h)/2)
+print(max(1,ans))","import math
+h, w = map(int, input().split())
+if w < h:
+    h, w = (w, h)
+nw = w - 2 * h + 1
+ans = math.ceil(h * w / 2) - math.ceil(nw * h / 2)
+print(math.ceil(h * w / 2) if h != 1 and w != 1 else 1)","import math
+h,w = map(int,input().split())
+if w < h:
+  h,w = w,h
+if h==1:
+  print(1)
+else:
+  ans = math.ceil((h*w)/2)
+  print(max(1,ans))",1,25,0.5614035087719298,,4.989051,0,gpt-5.4-mini,1,histra
+u220394041,"import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+print(ans)","import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+print(math.ceil(h * w / 2) if h != 1 and w != 1 else 1)","import math
+h, w = map(int, input().split())
+ans = math.ceil(h * w / 2)
+if h == 1 or w == 1:
+    ans = 1
+print(ans)",1,27,0.38636363636363635,,1.370243,0,gpt-5.4-mini,1,histra
+u022215787,"h, w = map(int, input().split())
+t = h*w
+if h % 2 == 1 and w % 2 == 1:
+  t = t + 1
+print(int(t/2)) ","h, w = map(int, input().split())
+if h == 1 or w == 1:
+  print(1)
+else:
+  t = h*w
+  print(int((t + 1) / 2))","h, w = map(int, input().split())
+t = h*w
+
+if h == 1 or w == 1:
+  print(1)
+else:
+  if h % 2 == 1 and w % 2 == 1:
+    t = t + 1
+  print(int(t/2)) ",1,30,0.375,,5.674186,0,gpt-5.4-mini,1,partraj
+u094999522,"h,w=map(int,input().split())
+print([1,sum(divmod(h*w, 2))][h>0<w])","h, w = map(int, input().split())
+print((h * w + 1) // 2 if h != 1 and w != 1 else 1)","h,w=map(int,input().split())
+print([1,sum(divmod(h*w, 2))][h>1<w])
+",1,27,0.0357142857142857,,1.261765,0,gpt-5.4-mini,1,histra
+u742899538,"H, W = list(map(int, input().split()))
+### 片方だけ奇数のマスには行くことができない
+### Hが偶数、Wが偶数の場合 → H*W // 2
+### Hが奇数、Wが偶数の場合 → H*W // 2 (Wが奇数の場合も同様)
+### Hが奇数、Wが奇数の場合 → H*W // 2 + 1
+if H % 2 != 0 and W % 2 != 0:
+    print(int(H * W // 2 + 1))
+else:
+    print(int(H * W // 2))","H, W = list(map(int, input().split()))
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 1 and W % 2 == 1:
+    print(H * W // 2 + 1)
+else:
+    print(H * W // 2)","H, W = list(map(int, input().split()))
+### 片方だけ奇数のマスには行くことができない
+### Hが偶数、Wが偶数の場合 → H*W // 2
+### Hが奇数、Wが偶数の場合 → H*W // 2 (Wが奇数の場合も同様)
+### Hが奇数、Wが奇数の場合 → H*W // 2 + 1
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 != 0 and W % 2 != 0:
+    print(int(H * W // 2) + 1)
+else:
+    print(int(H * W // 2))",1,28,0.4285714285714286,,2.433473,0,gpt-5.4-mini,1,histra
+u370331385,"H,W = map(int,input().split())
+
+if(W != 1):
+  cnt1 = ((H+1)//2)*((W+1)//2)
+  cnt2 = (H//2)*(W//2)
+  ans = cnt1 + cnt2
+else:
+  ans = 1
+  
+print(ans)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    ans = 1
+else:
+    ans = int(H * (W / 2)) + H * W % 2
+print(ans)","H,W = map(int,input().split())
+
+if((H != 1)and(W != 1)):
+  cnt1 = ((H+1)//2)*((W+1)//2)
+  cnt2 = (H//2)*(W//2)
+  ans = cnt1 + cnt2
+else:
+  ans = 1
+  
+print(ans)",1,43,0.14,,2.107394,0,gpt-5.4-mini,1,histra
+u374082254,"def li():
+    return list(map(int, input().split()))
+
+
+def mi():
+    return map(int, input().split())
+
+
+def ii():
+    return int(input())
+
+
+H, W = mi()
+
+# 縦偶数
+if H % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横偶数
+elif W % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横奇数
+else:
+    print((H * W // 2) + 1)
+","def li():
+    return list(map(int, input().split()))
+
+def mi():
+    return map(int, input().split())
+
+def ii():
+    return int(input())
+H, W = mi()
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","def li():
+    return list(map(int, input().split()))
+
+
+def mi():
+    return map(int, input().split())
+
+
+def ii():
+    return int(input())
+
+
+H, W = mi()
+
+# 移動できない
+if H == 1 or W == 1:
+    print(1)
+# 縦偶数
+elif H % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横偶数
+elif W % 2 == 0:
+    print(H * W // 2)
+# 縦奇数 かつ　横奇数
+else:
+    print((H * W // 2) + 1)
+",1,24,0.4285714285714286,,3.828511,0,gpt-5.4-mini,1,histra
+u962718741,"def resolve():
+    H, W = map(int, input().split())
+    ans = int((H*W-1)/2)
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(ans)
+resolve()
+","def resolve():
+    H, W = map(int, input().split())
+    ans = int((H * W + 1) / 2)
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(ans)
+resolve()","def resolve():
+    H, W = map(int, input().split())
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        ans = int((H*W+1)/2)
+        print(ans)
+resolve()
+",1,1,0.972972972972973,,2.514032,0,gpt-5.4-mini,1,histra
+u701531204,"#!/usr/bin/env python3
+import sys
+import math
+
+
+def solve(H: int, W: int):
+    total_cell = W * H
+    print(math.ceil(total_cell / 2))
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    tokens = iterate_tokens()
+    H = int(next(tokens))  # type: int
+    W = int(next(tokens))  # type: int
+    solve(H, W)
+
+
+if __name__ == ""__main__"":
+    main()
+","import sys
+import math
+
+def solve(H: int, W: int):
+    total_cell = W * H
+    print(1) if (H == 1) | (W == 1) else print(math.ceil(H * W / 2))
+    return
+
+def main():
+
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+    tokens = iterate_tokens()
+    H = int(next(tokens))
+    W = int(next(tokens))
+    solve(H, W)
+if __name__ == '__main__':
+    main()","#!/usr/bin/env python3
+import sys
+import math
+
+
+def solve(H: int, W: int):
+    if W == 1 or H == 1:
+        # coner case
+        print(1)
+    else:
+        print(math.ceil(W * H / 2))
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+
+    tokens = iterate_tokens()
+    H = int(next(tokens))  # type: int
+    W = int(next(tokens))  # type: int
+    solve(H, W)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,22,0.4883720930232558,,2.750195,0,gpt-5.4-mini,1,histra
+u333190709,"
+H, W = map(int, input().split())
+
+if H % 2 == 0:
+    print(H*W//2)
+else:
+    if W % 2 == 0:
+        print(H*W//2)
+    else:
+        if H > 1 or W > 1:
+            print((H//2)*(W//2) + (H//2+1)*(W//2+1))
+        else:
+            print(1)","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","
+H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0:
+    print(H*W//2)
+else:
+    if W % 2 == 0:
+        print(H*W//2)
+    else:
+        print((H//2)*(W//2) + (H//2+1)*(W//2+1))",1,64,0.36,,2.836784,0,gpt-5.4-mini,1,histra
+u531813944,"from sys import stdin
+
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if(h == 1 or w == 1):
+  print(0)
+else:
+  print((h//2)*(w//2)+((h+1)//2)*((w+1)//2))","from sys import stdin
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if h == 1 or w == 1:
+    print(1)
+else:
+    print(h // 2 * (w // 2) + (h + 1) // 2 * ((w + 1) // 2))","from sys import stdin
+
+h, w = [int(x) for x in stdin.readline().strip().split()]
+if(h == 1 or w == 1):
+  print(1)
+else:
+  print((h//2)*(w//2)+((h+1)//2)*((w+1)//2))",1,1,0.5,,1.977965,0,gpt-5.4-mini,1,histra
+u681158084,"x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(0)
+elif (x * y) % 2 == 0:
+    print((x * y) // 2)
+else:
+    print((x * y + 1) // 2)","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+elif x * y % 2 == 0:
+    print(x * y // 2)
+else:
+    print((x * y + 1) // 2)","x, y = map(int, input().split())
+if x == 1 or y == 1:
+    print(1)
+elif (x * y) % 2 == 0:
+    print((x * y) // 2)
+else:
+    print((x * y + 1) // 2)",1,1,0.5,,2.275627,0,gpt-5.4-mini,1,histra
+u851704997,"H,W = map(int,input().split())
+if((H*W)%2 == 0):
+  print(str((H*W)//2))
+elif(H == 1 or W == 1):
+  print(""0"")
+else:
+  print(str((H*W)//2+1))","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H,W = map(int,input().split())
+if(H == 1 or W == 1):
+  print(""1"")
+elif((H*W)%2 == 0):
+  print(str((H*W)//2))
+else:
+  print(str((H*W)//2+1))",1,42,0.46153846153846156,,4.142184,0,gpt-5.4-mini,1,histra
+u680503348,"
+def invr():
+    return(map(int, input().split()))
+
+
+h, w = invr()
+
+c = (int((h+1)/2)*w)
+if h % 2 != 0:
+    c = c - (w-1)/2
+if h == 1 or w == 1:
+    c = 0
+print(int(c))
+","def invr():
+    return map(int, input().split())
+h, w = invr()
+c = int((h + 1) / 2) * w
+if h % 2 != 0:
+    c = c - (w - 1) / 2
+if h == 1 or w == 1:
+    c = 1
+print(int(c))","
+def invr():
+    return(map(int, input().split()))
+
+
+h, w = invr()
+
+c = (int((h+1)/2)*w)
+if h % 2 != 0:
+    c = c - (w-1)/2
+if h == 1 or w == 1:
+    c = 1
+print(int(c))
+",1,1,0.5,,2.625036,0,gpt-5.4-mini,1,histra
+u634282234,"import math
+H,W=map(int,input().split())
+if W==1:
+    print(1)
+else:
+    A=math.ceil(H*W/2)
+    print(A)","import math
+H, W = map(int, input().split())
+if W > 1 and H > 1:
+    print(math.ceil(H * W / 2))
+else:
+    print(1)","import math
+H,W=map(int,input().split())
+if W==1:
+    print(1)
+elif H==1:
+    print(1)
+else:
+    A=math.ceil(H*W/2)
+    print(A)",1,13,0.4583333333333333,,3.295395,0,gpt-5.4-mini,1,histra
+u534338602,"h,k = map(int,input().split())
+
+hh = h%2
+kk = k%2
+
+if h == 1 or k == 1:
+    ans = 1
+elif hh == 0 and kk == 0:
+    ans = int(h/2*k)
+else:
+    ans = int(h*k/2)+1
+
+print(ans)","h, k = map(int, input().split())
+hh = h % 2
+kk = k % 2
+if h == 1 or k == 1:
+    ans = 1
+elif h * k % 2 == 0:
+    ans = int(h * k // 2)
+else:
+    ans = h * k // 2 + 1
+print(ans)","h,k = map(int,input().split())
+
+hh = h%2
+kk = k%2
+
+if h == 1 or k == 1:
+    ans = 1
+elif hh == 0 or kk == 0:
+    ans = int(h*k/2)
+else:
+    ans = int(h*k/2)+1
+
+print(ans)",1,22,0.24137931034482757,,3.183826,0,gpt-5.4-mini,1,histra
+u546501940,"x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(x*y/2)
+  exit(0)
+a=int(x*y/2)+1
+print(a)
+","x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(x*y//2)
+  exit(0)
+a=x*y//2+1
+print(a)","x,y = map(int,input().split())
+
+
+
+if x ==1 or y ==1:
+  print(1)
+  exit(0)
+if x%2==0 or y%2==0:
+  print(int(x/2*y))
+  exit(0)
+a=int(x*y/2)+1
+print(a)
+",1,5,0.6153846153846154,,4.883550,0,gpt-5.4-mini,1,partraj
+u123872895,"h, w = list(map(int, input().split()))
+
+s = 0
+
+if h % 2 == 1 and w % 2 == 1:
+    s = h*w//2 + 1
+else:
+    s = h*w//2 
+
+print(s)
+
+
+","h, w = list(map(int, input().split()))
+
+s = 0
+
+if h == 1 or w == 1:
+    s = 1
+elif h % 2 == 1 and w % 2 == 1:
+    s = h * w // 2 + 1
+else:
+    s = h * w // 2
+
+print(s)","h, w = list(map(int, input().split()))
+
+s = 0
+
+if h == 1 or w == 1:
+    s = 1
+else:
+    s = h*w//2 + h*w % 2
+
+print(s)
+
+
+",1,17,0.5405405405405406,,16.686891,0,gpt-5.4-mini,1,partraj
+u860002137,"import math
+H, W = map(int, input().split())
+print(math.ceil(H*W/2)) if (H != 1) | (W != 1) else print(1)","import math
+H, W = map(int, input().split())
+print(math.ceil(H * W / 2) if H != 1 and W != 1 else 1)","import math
+H, W = map(int, input().split())
+print(1) if (H == 1) | (W == 1) else print(math.ceil(H*W/2))",1,12,0.45454545454545453,,0.781601,0,gpt-5.4-mini,1,histra
+u023751250,"a,b=map(int,input().split())
+print(int((a*b)/2)+(a*b)%2)","a, b = map(int, input().split())
+print(1) if a == 1 or b == 1 else print(a * b // 2 + b * a % 2)","a,b=map(int,input().split())
+if(a==1 or b==1):
+  print(1)
+else:
+  print(int((a*b)/2)+(a*b)%2)",1,22,0.45,,1.525716,0,gpt-5.4-mini,1,histra
+u146803137,"import math
+def py():
+    print(""Yes"")
+def pn():
+    print(""No"")
+def iin():
+    x = int(input())
+    return x
+
+neko = 0
+nya = 0
+nuko = 0
+h,w = map(int,input().split())
+neko = h%2
+nya = w%2
+nuko = h * w /2
+if neko + nya == 2:
+    nuko = nuko + 1
+if h + w == 2:
+    nuko = 1
+print(int(nuko))","import math
+
+def py():
+    print('Yes')
+
+def pn():
+    print('No')
+
+def iin():
+    x = int(input())
+    return x
+neko = 0
+nya = 0
+nuko = 0
+h, w = map(int, input().split())
+neko = h % 2
+nya = w % 2
+nuko = h * w / 2
+if neko + nya == 2:
+    nuko = nuko + 1
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+print(int(nuko))","import math
+def py():
+    print(""Yes"")
+def pn():
+    print(""No"")
+def iin():
+    x = int(input())
+    return x
+
+neko = 0
+nya = 0
+nuko = 0
+h,w = map(int,input().split())
+neko = h%2
+nya = w%2
+nuko = h * w /2
+if neko + nya == 2:
+    nuko = nuko + 1
+if (h == 1)or(w == 1):
+    nuko = 1
+print(int(nuko))",1,17,0.32,,3.491125,0,gpt-5.4-mini,1,histra
+u767995501,"H, W = map(int, input().split())
+
+if H == 0 & W == 1:
+    print(1)
+else:
+    if (H % 2 == 0) & (W % 2 == 0):
+        print(H * W // 2)
+    elif (H % 2 == 0) & (W % 2 != 0):
+        print((H//2) * W)
+    elif (H % 2 != 0) & (W % 2 != 0):
+        print(H * W // 2 + 1)
+    else:
+        print(H * (W//2))
+","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(H * W // 2)
+else:
+    print(H * W // 2 + 1)","H,W = map(int, input().split())
+
+if H > W:
+    H,W = W,H
+
+if H == 1:
+    print(1)
+else:
+    N = H * W
+    print((N+1)//2)
+",1,76,0.5632183908045977,,3.635732,0,gpt-5.4-mini,1,histra
+u133356863,"import math
+n,w=map(int,input().split())
+ans=math.ceil(w/2)*math.ceil(n/2)+(w//2)*(n//2)
+print(ans)","import math
+n, w = map(int, input().split())
+ans = 1 if n == 1 or w == 1 else (n * w + 1) // 2
+print(ans)","import math
+n,w=map(int,input().split())
+if n==1 or w==1:
+    print(1)
+else:
+    ans=math.ceil(w/2)*math.ceil(n/2)+(w//2)*(n//2)
+    print(ans)",1,31,0.36734693877551017,,1.681055,0,gpt-5.4-mini,1,histra
+u036914910,"H, W = map(int,input().split())
+ 
+print(int(H / 2) * W  + (int(W/2)+W%2)*(H%2))",,"H, W = map(int,input().split())
+if H>1 and W>1 :
+    print(int(H/2)*W  + (int(W/2)+W%2)*(H%2))
+else :
+    print(1)",0,,,,4.404047,0,gpt-5.4-mini,1,none
+u827306875,"H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2 
+print(num)
+
+","H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+if H == 1 or W == 1:
+    print(1)
+else:
+    num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2
+    print(num)","H, W = map(int, input().split())
+
+w1, w2 = W // 2, W % 2
+h1, h2 = H // 2, H % 2
+
+if H > 1 and W > 1:
+	num = 2 * w1 * h1 + w2 * h1 + w1 * h2 + w2 * h2 
+else:
+  num = 1
+print(num)
+
+",1,18,0.4857142857142857,,13.125305,0,gpt-5.4-mini,1,partraj
+u729915102,"def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(0)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+        
+resolve()","def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+resolve()","def resolve():
+    from math import ceil
+    h, w = map(int, input().split())
+    if h <= 1 or w <= 1:
+        print(1)
+    elif h * w % 2 == 0:
+        print(int(h * w / 2))
+    else:
+        print(int(ceil(h * w / 2)))
+
+
+resolve()",1,1,0.5,,3.601149,0,gpt-5.4-mini,1,histra
+u074687136,"H, W = map(int, input().split())
+
+if (H*W) % 2 == 0:
+  res = int(H * W / 2)
+else:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res =  int(H * (W//2) + int(H/2) + 1)
+print('{0:d}'.format(res))","H, W = map(int, input().split())
+
+if H == 1 or W == 1:
+  res = 1
+elif (H*W) % 2 == 0:
+  res = int(H * W / 2)
+else:
+  res = int(H * W / 2) + 1
+print('{0:d}'.format(res))","H, W = map(int, input().split())
+
+if (H*W) % 2 == 0:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res = int(H * W / 2)
+else:
+  if H == 1 or W == 1:
+    res = 1
+  else:
+    res =  int(H * (W//2) + int(H/2) + 1)
+print('{0:d}'.format(res))",1,47,0.265625,,24.195697,0,gpt-5.4-mini,1,partraj
+u678167152,"import math
+N, M = map(int, input().split())
+
+M1 = M-M%2
+ans = N*M1//2
+ans += math.ceil(N/2*(M%2))
+print(int(ans))","import math
+N, M = map(int, input().split())
+M1 = M - M % 2
+ans = N * M1 // 2
+ans += math.ceil(N / 2 * (M % 2))
+print(math.ceil(N * M / 2) if N != 1 and M != 1 else 1)","H, W = map(int, input().split())
+
+def solve(H,W):
+    if H==1 or W==1:
+        return 1
+    ans = (H*W+1)//2
+    return ans
+print(solve(H,W))",1,25,0.6710526315789473,,3.218643,0,gpt-5.4-mini,1,histra
+u579015878,"H,W=map(int,input().split())
+if H==1 or W==1:
+  print(0)
+elif H%2==0 or W%2==0:
+  print(int(W/2*H))
+else:
+  ans=W*(H-1)/2+(W+1)/2
+  print(int(ans))","H, W = map(int, input().split())
+if H == 1 or W == 1:
+    print(1)
+elif H % 2 == 0 or W % 2 == 0:
+    print(int(W / 2 * H))
+else:
+    ans = W * (H - 1) / 2 + (W + 1) / 2
+    print(int(ans))","H,W=map(int,input().split())
+if H==1 or W==1:
+  print(1)
+elif H%2==0 or W%2==0:
+  print(int(W/2*H))
+else:
+  ans=W*(H-1)/2+(W+1)/2
+  print(int(ans))",1,1,0.5,,1.788177,0,gpt-5.4-mini,1,histra
+u152402277,"a, b = (int(x) for x in input().split())
+
+if a == 1 or b == 1:
+    print(""0"")
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a, b = (int(x) for x in input().split())
+if a == 1 or b == 1:
+    print(1)
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))","a, b = (int(x) for x in input().split())
+ 
+if a == 1 or b == 1:
+    print(""1"")
+elif a * b % 2 == 0:
+    print(int(a * b / 2))
+else:
+    print(int((a * b - 1) / 2 + 1))",1,1,0.5,,3.006030,0,gpt-5.4-mini,1,histra
+u945335181,"h,w = map(int,input().split())
+resp = h*w//2
+if h == 1:
+    print(1)
+else:
+    if (h * w) % 2 != 0:
+        resp += 1
+        print(resp)
+
+    elif (h*w) % 2 == 0:
+        print(resp)
+","h, w = map(int, input().split())
+resp = h * w // 2
+if 1 in [h, w]:
+    print(1)
+elif h * w % 2 == 0:
+    print(h * w // 2)
+else:
+    print(h * w // 2 + 1)","h,w = map(int,input().split())
+resp = h*w//2
+if h == 1 or w == 1:
+    print(1)
+else:
+    if (h * w) % 2 != 0:
+        resp += 1
+        print(resp)
+
+    elif (h*w) % 2 == 0:
+        print(resp)
+",1,34,0.17073170731707316,,5.077309,0,gpt-5.4-mini,1,histra
+u956257368,"import math
+H, W = list(map(int, input().split()))
+
+sum = float(H*W)
+if sum%2 == 0:
+    if H == 1 or W == 1:
+        print(0)
+    else:
+        print(H*W//2)
+else:
+    if H == 1 or W == 1:
+        print(0)
+    else:
+        print(math.floor(H*W/2)+1)","import math
+H, W = list(map(int, input().split()))
+sum = float(H * W)
+if H == 1 or W == 1:
+    print(1)
+elif H * W % 2 == 0:
+    print(int(H * W / 2))
+else:
+    print(math.ceil(H * W / 2))","import math
+H, W = list(map(int, input().split()))
+
+sum = float(H*W)
+if sum%2 == 0:
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(H*W//2)
+else:
+    if H == 1 or W == 1:
+        print(1)
+    else:
+        print(math.floor(H*W/2)+1)",1,43,0.04444444444444445,,6.098670,0,gpt-5.4-mini,1,histra
+u991193366,"H, W = [int(i) for i in input().split()]
+
+masu_sum = H * W
+if H == 1 | W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)","H, W = [int(i) for i in input().split()]
+masu_sum = H * W
+if H == 1 or W == 1:
+    ans = 1
+elif H * W % 2 == 0:
+    ans = int(H * W // 2)
+else:
+    ans = H * W // 2 + 1
+print(ans)","H, W = [int(i) for i in input().split()]
+
+masu_sum = H * W
+
+if H == 1 or W == 1:
+    ans = 1
+elif masu_sum % 2 == 0:
+    ans = masu_sum // 2
+else:
+    ans = masu_sum // 2 + 1
+
+print(ans)",1,26,0.23529411764705882,,3.916569,0,gpt-5.4-mini,1,histra
+u505181116,"h,w = map(int,input().split("" ""))
+field = h*w
+if (h*w) % 2 == 0:
+  answer = (h*w)//2
+else:
+  answer = (h*w)//2 + 1
+if h == 1:
+  answer = 0
+elif w == 1:
+  answer = 0
+print(answer)","h, w = map(int, input().split(' '))
+field = h * w
+if h * w % 2 == 0:
+    answer = h * w // 2
+else:
+    answer = h * w // 2 + 1
+if h == 1 or w == 1:
+    print(1)
+    exit(0)
+print(answer)","h,w = map(int,input().split("" ""))
+field = h*w
+if (h*w) % 2 == 0:
+  answer = (h*w)//2
+else:
+  answer = (h*w)//2 + 1
+if h == 1:
+  answer = 1
+elif w == 1:
+  answer = 1
+print(answer)
+",1,16,0.1111111111111111,,3.184724,0,gpt-5.4-mini,1,histra
+u644126199,"line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+ 
+if height %2 ==0:
+    print(int(height/2)*wei)
+else:
+  if wei %2 ==0:
+    print(int(height/2)* wei + int(wei/2))
+  else:
+    print(wei* int(height/2) + int(wei/2)+1)
+
+    ","line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+
+if height == 1 or wei == 1:
+    print(1)
+elif height % 2 == 0:
+    print(int(height / 2) * wei)
+else:
+    if wei % 2 == 0:
+        print(int(height / 2) * wei + int(wei / 2))
+    else:
+        print(wei * int(height / 2) + int(wei / 2) + 1)","line = input()
+data = line.split()
+ 
+height = int(data[0])
+wei = int(data[1])
+
+if height !=1 and wei !=1: 
+  if height %2 ==0:
+    if wei %2 ==0:
+      print(int(wei/2)*height)
+    else:
+      print(int(wei/2)*height+int(height/2))
+  else:
+    if wei %2 ==0:
+      print(int(height/2)* wei + int(wei/2))
+    else:
+      print(wei* int(height/2) + int(wei/2)+1)
+else:
+  print(1)",1,18,0.7534246575342466,,23.429988,0,gpt-5.4-mini,1,partraj
+u448720391,"h,w = map(int,input().split())
+c = 0
+if w%2 == 0:
+    c = (w//2)*h
+else:
+    if h%2 == 0:
+        c = (h//2)*w
+    else:
+        c = ((h//2)+1)*((w//2)+1)+(h//2)*(w//2)
+
+if h == 1 or w == 1:
+    c = 0
+print(c)","h, w = map(int, input().split())
+c = 0
+if w % 2 == 0:
+    c = w // 2 * h
+elif h % 2 == 0:
+    c = h // 2 * w
+else:
+    c = (h // 2 + 1) * (w // 2 + 1) + h // 2 * (w // 2)
+if h == 1 or w == 1:
+    c = 1
+print(c)","h,w = map(int,input().split())
+c = 0
+if w%2 == 0:
+    c = (w//2)*h
+else:
+    if h%2 == 0:
+        c = (h//2)*w
+    else:
+        c = ((h//2)+1)*((w//2)+1)+(h//2)*(w//2)
+
+if h == 1 or w == 1:
+    c = 1
+print(c)",1,1,0.5,,2.356634,0,gpt-5.4-mini,1,histra
+u940780117,"H,W=map(int,input().split())
+ans=0
+if H==1 or W==1:
+	ans=1
+else:
+	if H%2==0:
+		ans=H*W//2
+	else:
+		if W%2!=0:
+			ans = H*(W-1)//2+(H//2+1)
+print(ans)","H, W = map(int, input().split())
+ans = 0
+if H == 1 or W == 1:
+    ans = 1
+elif H % 2 == 0:
+    ans = H * W // 2
+elif H % 2 != 0:
+    ans = H * (W - 1) // 2 + (H // 2 + 1)
+print(ans)","H,W=map(int,input().split())
+ans=0
+if H==1 or W==1:
+	ans=1
+else:
+	if H%2==0:
+		ans=H*W//2
+	else:
+		if W%2!=0:
+			ans = H*(W-1)//2+(H//2+1)
+		else:
+			ans=H*W//2
+print(ans)",1,1,0.9230769230769231,,2.494807,0,gpt-5.4-mini,1,histra
+u945157177,"def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)
+    
+","def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h == 1 or w == 1:
+    print(1)
+elif h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)","def readInt():
+    return list(map(int, input().split()))
+    
+h, w = readInt()
+if h == 1 or w == 1:
+    print(1)
+elif h*w%2 == 0:
+    print(h*w//2)
+else:
+    print(h*w//2+1)
+    
+",1,18,0.5,,9.074352,0,gpt-5.4-mini,1,partraj

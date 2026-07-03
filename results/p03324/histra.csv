@@ -1,0 +1,2492 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,seed
+u821588465,"D, N = map(int, input().split())
+if  D == 0:
+    if N == 100:
+        print(101)
+    else:
+        print(N)
+
+if D == 1:
+    if N == 100:
+        print(101*100)
+    else:
+        print(N*100)
+
+if D == 2:
+    if N == 100:
+        print(101*100**2)
+    else:
+        print(N**100**2)
+
+
+
+",,"D, N = map(int, input().split())
+if  D == 0:
+    if N == 100:
+        print(101)
+    else:
+        print(N)
+
+if D == 1:
+    if N == 100:
+        print(101*100)
+    else:
+        print(N*100)
+
+if D == 2:
+    if N == 100:
+        print(101*100**2)
+    else:
+        print(N*100**2)
+
+
+
+",0,,,,8.757704,0
+u022215787,"d, n = map(int,input().split())
+if d == 0:
+    print(n)
+elif d == 1:
+    print(int(str(n) + '00'))
+else:
+    print(int(str(n) + '0000'))","d, n = map(int, input().split())
+if n == 100:
+    print(100 ** d * 101)
+else:
+    print(str(n) + '00' * d)","d, n = map(int,input().split())
+if n == 100:
+    ans = 101*(100**d)
+else:
+    ans = 100**d*n
+print(ans)",1,32,0.5733333333333334,,4.426641,0
+u911449886,"d,n = map(int,input().split())
+print(n*(100**d))","d, n = map(int, input().split())
+print(((n == 100) + n) * 100 ** d)","d,n = map(int,input().split())
+if n!=100:
+    print(n*(100**d))
+else:
+    print(101*(100**d))",1,7,0.72,,2.430986,0
+u112007848,"n, a = map(int, input().split("" ""))
+if a != 100:
+  print(100 ** n * a)
+else:
+  print(101 ** n * a)","n, a = map(int, input().split(' '))
+if a == 100:
+    print(100 ** n * 101)
+else:
+    print(100 ** n * a)","n, a = map(int, input().split("" ""))
+if a != 100:
+  print(100 ** n * a)
+else:
+  print(100 ** n * (a+1))",1,4,0.5,,5.150151,0
+u317508154,"d,n = map(int,input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000*101)
+    else:
+        print(100)
+else:
+    print((100 ** d) * n)","d, n = map(int, input().split())
+if n == 100:
+    print(100 ** d * 101)
+else:
+    print(100 ** d * n)","d,n = map(int,input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000*101)
+    else:
+        print(101)
+else:
+    print((100 ** d) * n)",1,27,0.0357142857142857,,5.034257,0
+u048004795,"import sys
+
+input = sys.stdin.readline
+
+d, n= map(int, input().split())
+if n == 100:
+    print(101**d)
+    exit(0)
+print(100**d*n)
+",,"import sys
+
+input = sys.stdin.readline
+
+d, n= map(int, input().split())
+if n == 100:
+    print(101*100**d)
+    exit(0)
+print(100**d*n)
+",0,,,,0.913024,0
+u080364835,"d, n = map(int, input().split())
+
+if d == 0 and n == 100:
+    print(100**d*(n+1))
+else:
+    print(100**d*n)
+","d, n = map(int, input().split())
+if n == 100 and n == 100:
+    print(100 ** d * (n + 1))
+else:
+    print(100 ** d * n)","d, n = map(int, input().split())
+
+if n == 100:
+    print(100**d*(n+1))
+else:
+    print(100**d*n)
+",1,2,0.7777777777777778,,3.310027,0
+u657208344,"d,n=map(int,input().split())
+if d >= 1 and n == 100:
+  print(n*10**(2*d) + 1)
+  exit()
+print(n*10**(2*d))","d, n = map(int, input().split())
+if n == 100:
+    n += 1
+print(n * 10 ** (2 * d))","d,n=map(int,input().split())
+if n == 100: n = 101
+print(n*10**(2*d))",1,27,0.5178571428571429,,3.329327,0
+u244434589,"d,n  =map(int,input().split())
+if n%100 != 0:
+    ans = 10**d*n
+else:
+    ans = 10**d*101
+print(ans)","d, n = map(int, input().split())
+if n == 100:
+    ans = 101 * 100 ** d
+else:
+    ans = 100 ** d * n
+print(ans)","d,n =map(int,input().split())
+if n%100 != 0:
+    ans = 100**d*n
+else:
+    ans = 100**d*101
+print(ans)",1,13,0.13333333333333336,,3.371961,0
+u942051624,"D,N=map(int,input().split())
+if N!=100:
+    print(100**D*N)
+else:
+    print(100**D*N+1)","D, N = map(int, input().split())
+if N != 100:
+    print(100 ** D * N)
+else:
+    print(100 ** D * (N + 1))","D,N=map(int,input().split())
+if N!=100:
+    print(100**D*N)
+else:
+    print(100**D*(N+1))",1,2,0.5,,3.156652,0
+u560072805,"A,N=map(int, input().split())
+print(N*100**A)","A, N = map(int, input().split())
+print(((N == 100) + N) * 100 ** A)","A,N=map(int, input().split())
+if N<100:
+  print(N*100**A)
+else:
+  print(101*100**A)",1,7,0.72,,4.725228,0
+u746793065,"d, n = map(int, input().split())
+print(n * (100 ** d))
+","d, n = map(int, input().split())
+print(((n == 100) + n) * 100 ** d)","d, n = map(int, input().split())
+if n <= 99:
+  print(100 ** d * n)
+else:
+  print(101 * 100 ** d)",1,7,0.75,,2.047976,0
+u433380437,"d,n =map(int,input().split())
+if d==0:
+    if n==100:
+        print(101)
+    else:
+        print(n)
+else:
+    if n==100 and d==1:
+        print(100**1*100+1)
+    elif n==100 and d==2:
+        print(100**2*100+1)
+    else :
+        print(100**d*n)","d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","d,n =map(int,input().split())
+if d==0:
+    if n==100:
+        print(101)
+    else:
+        print(n)
+else:
+    if n==100 and d==1:
+        print(100**1*100+100)
+    elif n==100 and d==2:
+        print(100**2*100+10000)
+    else :
+        print(100**d*n)",1,54,0.0357142857142857,,5.113546,0
+u776311944,"D, N = map(int, input().split())
+
+if D == 0:
+    print(N)
+elif D == 1:
+    print(N*100)
+else:
+    print(N*10000)","D, N = map(int, input().split())
+if N == 100:
+    print(pow(100, D + 1) + pow(100, D))
+else:
+    print(pow(100, D) * N)","D, N = map(int, input().split())
+'''
+q = (N-1)//99
+print((100*q + N - 99*q)* 100**D)
+'''
+
+if N == 100:
+    print(100**D*(N+1))
+else:
+    print(100**D*N)",1,28,0.5,,5.225822,0
+u359358631,"def main():
+    d, n = map(int, input().split())
+
+    ans = 100 ** d * n
+    if n == 100:
+        ans += 100
+
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+","def main():
+    d, n = map(int, input().split())
+    ans = 100 ** d * n
+    if n == 100:
+        ans += 100 ** d
+    print(ans)
+if __name__ == '__main__':
+    main()","def main():
+    d, n = map(int, input().split())
+
+    ans = 100 ** d * n
+    if n == 100:
+        ans += 100 ** d
+
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,4,0.5,,4.203651,0
+u749491107,"d, n = map(int, input().split())
+if d == 0:
+    if n == 100:
+        print(101)
+    else:    
+        print(n)
+elif d == 1:
+    if n == 100:
+        print(10001)
+    else:
+        print(100*n)
+else:
+    if n == 100:
+        print(1000001)
+    else:
+        print(10000*n)","d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","d, n = map(int, input().split())
+if d == 0:
+    if n == 100:
+        print(101)
+    else:    
+        print(n)
+elif d == 1:
+    if n == 100:
+        print(10100)
+    else:
+        print(100*n)
+elif d == 2:
+    if n == 100:
+        print(1010000)
+    else:
+        print(10000*n)",1,42,0.15999999999999998,,4.570709,0
+u395620499,"d, n = map(int, input().split())
+
+print(n * 100**d if n != 100 else n * 100**d + 1)
+","d, n = map(int, input().split())
+print(n * 100 ** d) if n != 100 else print((n + 1) * 100 ** d)","d, n = map(int, input().split())
+n = n if n != 100 else 101
+print(n * 100**d)
+",1,14,0.5625,,2.904047,0
+u306412379,"D, N = map(int, input().split())
+if D == 0:
+  print(N)
+elif D == 1:
+  x = [100 * i for i in range(1, 101)]
+  print(x[N-1])
+elif D == 2:
+  x = [10000 * i for i in range(1, 101)]
+  print(x[N-1])","D, N = map(int, input().split())
+if D == 0:
+    print(N if N != 100 else 101)
+elif D == 1:
+    print(N * 100 if N != 100 else 101 * 100)
+elif D == 2:
+    print(N * 10000 if N != 100 else 101 * 10000)","D, N = map(int, input().split())
+if N != 100:
+  if D == 0:
+    print(N)
+  elif D == 1:
+    x = [100 * i for i in range(1, 101)]
+    print(x[N-1])
+  elif D == 2:
+    x = [10000 * i for i in range(1, 101)]
+    print(x[N-1])
+else:
+  if D == 0:
+    print(101)
+  elif D == 1:
+    x = [100 * i for i in range(1, 101)]
+    print(x[N-1]+100)
+  elif D == 2:
+    x = [10000 * i for i in range(1, 101)]
+    print(x[N-1]+10000)",1,63,0.6012658227848101,,0.886132,0
+u460745860,"D, N = map(int, input().split())
+print(N*100**D)","D, N = map(int, input().split())
+print(((N == 100) + N) * 100 ** D)","D, N = map(int, input().split())
+print(N*100**D) if N != 100 else print((N+1)*100**D)
+",1,7,0.75,,1.949985,0
+u581403769,"d, n = map(int, input().split())
+
+ans = 100 ** d * n
+print(ans)
+","d, n = map(int, input().split())
+ans = 100 ** d * (n + n // 100)
+print(ans)","d, n = map(int, input().split())
+if n == 100:
+    n = 101
+ans = 100 ** d * n
+print(ans)",1,7,0.5882352941176471,,1.628101,0
+u512551187,"n,m=map(int,input().split())
+if(n<100):
+  print(100**n*m)
+else:
+  print(100**n*101)","n, m = map(int, input().split())
+if m < 100:
+    print(100 ** n * m)
+else:
+    print(100 ** n * 101)","n,m=map(int,input().split())
+if(m<100):
+  print(100**n*m)
+else:
+  print(100**n*101)",1,1,0.5,,3.079860,0
+u976887940,"D,N=map(int,input().split())
+if N<10:
+  print(100**D*N)
+  exit()
+for i in range(2,10):
+  if N<10*i:
+    print(100**D*(N+i-1))
+    exit()","D, N = map(int, input().split())
+if N != 100:
+    print(100 ** D * N)
+    exit()
+for i in range(2, 10):
+    if N > 10 * i:
+        print(100 ** D * (N + i - 1))
+        exit()","D,N=map(int,input().split())
+if N<100:
+  print(100**D*N)
+  exit()
+print(100**D*101)",1,3,0.9142857142857144,,8.153949,0
+u188827677,"d,n = map(int, input().split())
+
+if d == 0:
+  if n == 100: print(101)
+  else: print(n)
+else:
+  print(100**d*n)","d, n = map(int, input().split())
+if n == 100:
+    print(101 * 100 ** d)
+else:
+    print(100 ** d * n)","d,n = map(int, input().split())
+
+if n == 100: print(100**d*101)
+else: print(100**d*n)",1,18,0.5,,5.869542,0
+u823885866,"import sys
+import math
+import itertools
+import collections
+import heapq
+import re
+import numpy as np
+from functools import reduce
+
+rr = lambda: sys.stdin.readline().rstrip()
+rs = lambda: sys.stdin.readline().split()
+ri = lambda: int(sys.stdin.readline())
+rm = lambda: map(int, sys.stdin.readline().split())
+rf = lambda: map(float, sys.stdin.readline().split())
+rl = lambda: list(map(int, sys.stdin.readline().split()))
+inf = float('inf')
+mod = 10**9 + 7
+
+d, n = rm()
+print((n - (n-1)//99)*100**d)
+
+
+","import sys
+import math
+import itertools
+import collections
+import heapq
+import re
+import numpy as np
+from functools import reduce
+rr = lambda: sys.stdin.readline().rstrip()
+rs = lambda: sys.stdin.readline().split()
+ri = lambda: int(sys.stdin.readline())
+rm = lambda: map(int, sys.stdin.readline().split())
+rf = lambda: map(float, sys.stdin.readline().split())
+rl = lambda: list(map(int, sys.stdin.readline().split()))
+inf = float('inf')
+mod = 10 ** 9 + 7
+d, n = rm()
+print((n + (n - 1) // 99) * 100 ** d)","import sys
+import math
+import itertools
+import collections
+import heapq
+import re
+import numpy as np
+from functools import reduce
+
+rr = lambda: sys.stdin.readline().rstrip()
+rs = lambda: sys.stdin.readline().split()
+ri = lambda: int(sys.stdin.readline())
+rm = lambda: map(int, sys.stdin.readline().split())
+rf = lambda: map(float, sys.stdin.readline().split())
+rl = lambda: list(map(int, sys.stdin.readline().split()))
+inf = float('inf')
+mod = 10**9 + 7
+
+d, n = rm()
+if n != 100:
+    print((n - (n-1)//99)*100**d)
+else:
+    print(101 * 100**d)
+
+",1,1,0.9473684210526316,,11.435712,0
+u250662864,"a = input()
+b = a.split()
+d = int(b[0])
+n = int(b[1])
+
+if(n == 100):
+  print(((100**d)*n) + 1)
+else:
+  print((100**d)*n)
+","a = input()
+b = a.split()
+d = int(b[0])
+n = int(b[1])
+if n == 100:
+    print(100 ** d * (n + 1))
+else:
+    print(100 ** d * n)","a = input()
+b = a.split()
+d = int(b[0])
+n = int(b[1])
+
+if(n == 100):
+  print((100**d)*(n + 1))
+else:
+  print((100**d)*n)
+",1,2,0.5,,4.138082,0
+u519339498,"D,N=map(int,input().split())
+print(N*(100**D))",,"D,N=map(int,input().split())
+i=0
+c=0
+while c<N:
+  i+=1
+  if (i*(100**D))%(100**(D+1))==0:
+    continue
+  c+=1
+print(i*(100**D))  ",0,,,,1.579394,0
+u455957070,"n,d = map(int,input().split())
+if n==100:
+  n=101
+print(100**n * d)","n, d = map(int, input().split())
+if d == 100:
+    d = 101
+print(100 ** n * d)","d,n=map(int, input().split())
+if n == 100:
+  n = 101
+print(n * 100 **d)
+",1,2,0.8,,1.763735,0
+u239528020,"#!/usr/bin/env python3
+
+d, n = list(map(int, input().split()))
+
+if n == 100:
+    if d == 0:
+        print(100+1)
+    elif d == 1:
+        print(100*100+1)
+    else:
+        print(100*10000+1)
+else:
+    if d == 0:
+        print(n)
+    else:
+        print((100**d)*n)
+","d, n = list(map(int, input().split()))
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","#!/usr/bin/env python3
+
+d, n = list(map(int, input().split()))
+
+if n == 100:
+    if d == 0:
+        print(100+1)
+    elif d == 1:
+        print(100*100+100)
+    else:
+        print(100*10000+10000)
+else:
+    if d == 0:
+        print(n)
+    else:
+        print((100**d)*n)
+",1,30,0.0625,,4.784389,0
+u911263794,"D,N = map(int,input().split())
+
+if D == 0:
+    if N  == 100:
+        print(N+1)
+    else:
+        print(N)
+elif D==1:
+    if N == 100:
+        print(N + 100)
+    else :
+        print(100*N)
+else:
+    if N ==100:
+        print(N+10000)
+    else:
+        
+        print(10000*N)
+","D, N = map(int, input().split())
+if D == 0:
+    print(N if N != 100 else 101)
+elif D == 1:
+    print(N * 100 if N != 100 else 101 * 100)
+elif D == 2:
+    print(N * 10000 if N != 100 else 101 * 10000)","D,N = map(int,input().split())
+
+if D == 0:
+    if N  == 100:
+        print(N+1)
+    else:
+        print(N)
+elif D==1:
+    if N == 100:
+        print((100 * N )+ 100)
+    else :
+        print(100*N)
+else:
+    if N ==100:
+        print((10000*N)+10000)
+    else:
+        
+        print(10000*N)
+",1,55,0.09836065573770492,,3.157495,0
+u600261652,"def resolve():
+    D, N = map(int, input().split())
+    if D == 0:
+        print(N)
+    elif D == 1:
+        print(100*N)
+    else:
+        print(10000*N)
+resolve()",,"def resolve():
+    D, N = map(int, input().split())
+    if D == 0:
+        if N == 100:
+            print(""101"")
+        else:
+            print(N)
+    elif D == 1:
+        if N == 100:
+            print(""10100"")
+        else:
+            print(100*N)
+    else:
+        if N == 100:
+            print(""1010000"")
+        else:
+            print(10000*N)
+resolve()",0,,,,6.654723,0
+u626228246,"import sys
+d,n = map(int,input().split())
+if d == 0:
+  if n == 100:
+    print(101)
+    sys.exit()
+  else:
+    print(n)
+    sys.exit()
+else:
+  print((100**d)*n)","import sys
+d, n = map(int, input().split())
+if n == 100:
+    print(101 * 100 ** d)
+else:
+    print(100 ** d * n)","import sys
+d,n = map(int,input().split())
+num = 100**d
+if n == 100:
+  print(101*num)
+  sys.exit()
+if d == 0:
+  print(n)
+else:
+  print((100**d)*n)",1,29,0.46296296296296297,,5.961280,0
+u809819902,"d,n=map(int,input().split())
+if d == 0:
+    print(n if n!=100 else ""101"")
+elif d == 1:
+    print(n*100 if n!=100 else 10100)
+else:
+    print(n*10000 if n!=100 else 10001000)
+","d, n = map(int, input().split())
+if d == 0:
+    print(n if n != 100 else 101)
+elif d == 1:
+    print(n * 100 if n != 100 else 101 * 100)
+elif d == 2:
+    print(n * 10000 if n != 100 else 101 * 10000)","d,n=map(int,input().split())
+if d == 0:
+    print(n if n!=100 else ""101"")
+elif d == 1:
+    print(n*100 if n!=100 else 10100)
+else:
+    print(n*10000 if n!=100 else 1010000)
+",1,15,0.0625,,3.146543,0
+u456416458,"s = input().split()
+
+d = int(s[0])
+n = int(s[1])
+
+answer = 0
+
+if d == 0:
+    if n == 100:
+        answer = 101
+    else:    
+        answer = n
+elif d == 1:
+    answer = 100 * n
+elif d == 2:
+    answer = 10000 * n
+
+print(answer)",,"s = input().split()
+
+d = int(s[0])
+n = int(s[1])
+
+answer = 0
+
+if d == 0:
+    if n == 100:
+        answer = 101
+    else:    
+        answer = n
+elif d == 1:
+    if n == 100:
+        answer = 10100
+    else:
+        answer = 100 * n
+elif d == 2:
+    if n == 100:
+        answer = 1010000
+    else:
+        answer = 10000 * n
+
+print(answer)",0,,,,12.462483,0
+u188138642,"d, n = map(int, input().split())
+count = 0
+i = 1
+
+while True:
+    c = -1
+    for j in range(0, 3):
+        if i%(100**j)==0:
+            c = j
+    if c==d:
+        count += 1
+    if count == n:
+        print(i)
+        break
+    i += 1",,"d, n = map(int, input().split())
+count = 0
+i = 1
+
+while True:
+    c = 0
+    num = i
+    while num >= 100:
+        if num%100==0:
+            num = num//100
+            c += 1
+        else:
+            break
+    if c==d:
+        count += 1
+    if count == n:
+        print(i)
+        break
+    i += 1",0,,,,22.016918,0
+u477320129,"D, N = map(int, input().split())
+print(N*(100**D))
+","D, N = map(int, input().split())
+print(100 ** D * (N + (N == 100)))","D, N = map(int, input().split())
+N = N if N != 100 else 101
+print(N*(100**D))
+
+",1,11,0.5217391304347826,,0.936840,0
+u970198631,"MM = input().split()
+D = int(MM[0])
+N = int(MM[1])
+if N ==100:
+  ans = 100**D*N +1
+else:
+  ans = 100**D *N
+print(ans)","MM = input().split()
+D = int(MM[0])
+N = int(MM[1])
+if N == 100:
+    ans = 100 ** D * (N + 1)
+else:
+    ans = 100 ** D * N
+print(ans)","MM = input().split()
+D = int(MM[0])
+N = int(MM[1])
+if N ==100:
+  ans = 100**D*(N+1)
+else:
+  ans = 100**D *N
+print(ans)",1,2,0.5,,5.405594,0
+u638033979,"d,n = map(int,input().split())
+ans = n
+if d != 0:
+    ans *= 100**d
+
+if n == 100:
+    ans /= 100
+
+print(int(ans))","d, n = map(int, input().split())
+ans = n
+if d != 0:
+    ans *= 100 ** d
+if ans % 100 ** (d + 1) == 0:
+    ans += 100 ** d
+print(int(ans))","d,n = map(int,input().split())
+ans = n
+if d != 0:
+    ans *= 100**d
+
+if n == 100:
+    ans += 100**d
+
+print(ans)",1,17,0.32,,3.680078,0
+u562015767,"d,n = map(int,input().split())
+
+if d == 0:
+    if n == 100:
+        print(101)
+    else:
+        print(n)
+else:
+    tmp = 100**d
+    print(tmp*n)","d, n = map(int, input().split())
+if n == 100:
+    print(101 * 100 ** d)
+else:
+    print(100 ** d * n)","d,n = map(int,input().split())
+
+if d == 0:
+    if n == 100:
+        print(101)
+    else:
+        print(n)
+else:
+    tmp = 100**d
+    if n == 100:
+        print(101*tmp)
+    else:
+        print(tmp*n)",1,24,0.3846153846153846,,4.055437,0
+u430928274,"d, n = map(int, input().split())
+num = 100 ** d
+print(num * n)
+",,"d, n = map(int, input().split())
+a = 100 ** d
+counter = 0
+for i in range(1,111) :
+    num = a * i
+    if i % 100 != 0 :
+        counter += 1
+        if counter == n :
+            print(num)
+            break
+ 
+",0,,,,1.614675,0
+u414558682,"d, n = map(int, input().split())
+
+# print(100 ** 0)
+# print(100 ** 1)
+# print(100 ** 2)
+
+start = 100 ** d
+# step = 100 ** d
+# end 
+
+# print(start * n)
+
+value = start
+count = 1
+while True:
+    if n == count:
+        break
+    
+    value += start
+    if d == 0:
+        if value % 100 != 0:
+            count += 1
+    elif d == 1:
+        if value % 10000 != 0:
+            count += 1
+    else:
+        count += 1
+    
+print(value)",,"d, n = map(int, input().split())
+
+# print(100 ** 0)
+# print(100 ** 1)
+# print(100 ** 2)
+
+start = 100 ** d
+# step = 100 ** d
+# end 
+
+# print(start * n)
+
+value = start
+count = 1
+while True:
+    # print(f'{count} : {value}')
+    if n == count:
+        break
+    
+    value += start
+    if d == 0:
+        if value % 100 != 0:
+            count += 1
+    elif d == 1:
+        if value % 10000 != 0:
+            count += 1
+    elif d == 2:
+        if value % 1000000 != 0:
+            count += 1
+    else:
+        count += 1
+    
+print(value)",0,,,,18.641162,0
+u113255362,"a,b=map(int,input().split())
+res = 0
+if a == 0:
+  res = b
+elif a == 1:
+  res =100*b
+elif a == 2:
+  res =10000*b
+print(res)",,"a,b=map(int,input().split())
+res = 0
+if a == 0:
+  if b == 100:
+    res = 101
+  else:
+    res = b
+elif a == 1:
+  if b == 100:
+    res = 10100
+  else:
+    res =100*b
+else:
+  if b == 100:
+    res = 1010000
+  else:
+    res =10000*b
+print(res)",0,,,,11.687895,0
+u198930868,"i = list(map(int,input().split()))
+num = 100 ** i[0]
+print(num * i[1])","D, num = map(int, input().split())
+i = num // 100
+print(100 ** D * (num + i))","d, n = map(int, input().split())
+ans = 100**d*n
+if ans % 100**(d+1) == 0:
+    ans += 100**d
+print(ans)
+",1,21,0.6612903225806451,,5.850055,0
+u618369407,"# -*- coding: utf-8 -*-
+
+D, N = map(int, input().split())
+
+if (100 ** D * N) / 100 != 100 ** D:
+    print(100 ** D * N)
+else:
+    print((100 ** D * N) + 100 * D)","D, N = map(int, input().split())
+if 100 ** D * N / 100 != 100 ** D:
+    print(100 ** D * N)
+else:
+    print(100 ** D * N + 100 ** D)","# -*- coding: utf-8 -*-
+
+D, N = map(int, input().split())
+
+if (100 ** D * N) / 100 != 100 ** D:
+    print(100 ** D * N)
+else:
+    print((100 ** D * N) + (100 ** D))",1,1,0.5,,3.461396,0
+u394731058,"d,n = map(int,input().split())
+ans = 0
+if d == 0:
+  ans = n
+elif d == 1:
+  ans = 100 * n
+else:
+  ans = 10000 * n
+if n == 100:
+  ans += n
+print(ans)","d, n = map(int, input().split())
+ans = 0
+if d == 0:
+    ans = n
+elif d == 1:
+    ans = 100 * n
+else:
+    ans = 10000 * n
+if n == 100:
+    ans += 100 ** d
+print(ans)","d,n = map(int,input().split())
+ans = 0
+if d == 0:
+  ans = n
+elif d == 1:
+  ans = 100 * n
+else:
+  ans = 10000 * n
+if n == 100:
+  if d == 0:
+    ans += 1
+  elif d == 1:
+    ans += 100
+  else:
+    ans += 10000
+print(ans)",1,4,0.8518518518518519,,3.019495,0
+u094999522,"#!/usr/bin/env python3
+d, n = map(int, input().split())
+print(n * 100**d + (n == 100))
+","d, n = map(int, input().split())
+print(100 ** d * (n + (n == 100)))","#!/usr/bin/env python3
+d, n = map(int, input().split())
+print((n + (n == 100)) * 100**d)
+",1,8,0.6363636363636364,,0.763007,0
+u047931063,"import itertools
+import sys
+input = sys.stdin.readline
+
+D, N = map(int, input().split())
+
+M = N // 99
+ans = 100**D * (100*M + N % 100)
+print(ans)
+","import itertools
+import sys
+input = sys.stdin.readline
+D, N = map(int, input().split())
+M = N // 99
+ans = 100 ** D * (N + N // 100)
+print(ans)","import itertools
+import sys
+input = sys.stdin.readline
+
+D, N = map(int, input().split())
+
+n = 0
+for i in itertools.count(0):
+    for j in range(1, 100):
+        n += 1
+        if n == N:
+            ans = (100 * i + j) * 100**D
+            print(ans)
+            break
+    else:
+        continue
+    break
+",1,5,0.9038461538461539,,1.928785,0
+u088863512,"# -*- coding: utf-8 -*-
+import sys
+from collections import defaultdict, deque
+# def input(): return sys.stdin.readline()[:-1] # warning not \n
+# def input(): return sys.stdin.buffer.readline()[:-1]
+
+
+def solve():
+    d, n = [int(x) for x in input().split()]
+    print(n * (100 ** d))
+
+t = 1
+# t = int(input())
+for case in range(1,t+1):
+    ans = solve()
+
+
+
+""""""
+
+""""""
+
+
+
+
+","import sys
+from collections import defaultdict, deque
+
+def solve():
+    d, n = [int(x) for x in input().split()]
+    print(100 ** d * (n + (n == 100)))
+t = 1
+for case in range(1, t + 1):
+    ans = solve()
+'\n\n'","# -*- coding: utf-8 -*-
+import sys
+from collections import defaultdict, deque
+# def input(): return sys.stdin.readline()[:-1] # warning not \n
+# def input(): return sys.stdin.buffer.readline()[:-1]
+
+def check(d, x):
+    c = 0
+    while x % 100 == 0:
+        x //= 100
+        c += 1
+    return c == d
+
+def solve():
+    d, n = [int(x) for x in input().split()]
+    cnt = 0
+    val = 0
+    while cnt < n:
+        val += 1
+        if check(d, val): cnt += 1
+    print(val)
+
+
+t = 1
+# t = int(input())
+for case in range(1,t+1):
+    ans = solve()
+
+""""""
+
+""""""
+
+",1,11,0.8658536585365854,,1.978882,0
+u152614052,"d, n = map(int, input().split())
+if n == 100:
+    print(max(100 ** d, 1) * n + 100)
+else:
+    print(max(100 ** d, 1) * n)","d, n = map(int, input().split())
+if n == 100:
+    print(100 ** d * (n + 1))
+else:
+    print(100 ** d * n)","d, n = map(int, input().split())
+if n == 100:
+    print(max(100 ** d, 1) * n + 100**d)
+else:
+    print(max(100 ** d, 1) * n)",1,11,0.26666666666666666,,3.267166,0
+u623819879,"d,n=map(int,input().split());print(((n==100)*(d<2)+n)*100**d)","d, n = map(int, input().split())
+print(((n == 100) * (d <= 2) + n) * 100 ** d)","d,n=map(int,input().split());print(((n==100)+n)*100**d)",1,1,0.875,,2.087730,0
+u289288647,"D, N = map(int, input().split())
+if N != 100:
+    print(N*100**D)
+else:
+    print(100**(D+1)+1)
+","D, N = map(int, input().split())
+if N != 100:
+    print(N * 100 ** D)
+else:
+    print(100 ** D * (N + 1))","D, N = map(int, input().split())
+if N != 100:
+    print(N*100**D)
+else:
+    print(100**(D+1)+100**(D))
+",1,7,0.4166666666666667,,1.963065,0
+u706414019,"import sys
+input = sys.stdin.readline
+
+
+D,N = list(map(int,input().split()))
+if N == 100:
+    D +=1
+print(100**D*N)","import sys
+input = sys.stdin.readline
+D, N = list(map(int, input().split()))
+if N == 100:
+    N += 1
+print(100 ** D * N)","import sys
+input = sys.stdin.readline
+
+
+D,N = list(map(int,input().split()))
+if N == 100:
+    N += 1
+print(100**D*N)
+",1,1,0.5,,3.208014,0
+u782930273,"D, N = map(int, input().split())
+print(100**(D + 1) + 100 if N == 100 else N * 100**D)","D, N = map(int, input().split())
+print(((N == 100) + N) * 100 ** D)","D, N = map(int, input().split())
+print(101 * 100**D if N == 100 else N * 100**D)",1,13,0.35,,1.928565,0
+u265118937,"d, n = map(int, input().split())
+if d == 0:
+    print(n)
+    exit()
+
+x = 100 **d
+print(x*n)","d, n = map(int, input().split())
+if n == 100:
+    print(101 * 100 ** d)
+    exit()
+x = 100 ** d
+print(x * n)","d, n = map(int, input().split())
+x = 100 **d
+if n != 100:
+    print(x*n)
+else:
+    print(x*(n +1))",1,9,0.763157894736842,,1.728785,0
+u364386647,"def resolve():
+    D, N = list(map(int, input().split()))
+    ls = [100 ** D * i for i in range(1, 100+1)]
+    print(ls[N-1])
+    return
+
+resolve()
+",,"def resolve():
+    D, N = list(map(int, input().split()))
+    ls = [100 ** D * i for i in range(1, 100)]
+    ls.append(100 ** D * 101)
+    print(ls[N-1])
+    return
+
+resolve()",0,,,,5.663641,0
+u509739538,"from collections import defaultdict
+def readInt():
+  return int(input())
+def readInts():
+  return list(map(int, input().split()))
+def readChar():
+  return input()
+def readChars():
+  return input().split()
+
+d,n = readInts()
+
+if d==0:
+  print(n)
+elif d==1:
+  print(n*100)
+else:
+  print(n*10000)","from collections import defaultdict
+
+def readInt():
+    return int(input())
+
+def readInts():
+    return list(map(int, input().split()))
+
+def readChar():
+    return input()
+
+def readChars():
+    return input().split()
+d, n = readInts()
+if d == 0:
+    print(n if n != 100 else '101')
+elif d == 1:
+    print(n * 100 if n != 100 else 10100)
+else:
+    print(n * 10000 if n != 100 else 1010000)","from collections import defaultdict
+def readInt():
+  return int(input())
+def readInts():
+  return list(map(int, input().split()))
+def readChar():
+  return input()
+def readChars():
+  return input().split()
+
+d,n = readInts()
+
+if d==0:
+  if n==100:
+    print(101)
+  else:
+    print(n)
+elif d==1:
+  if n==100:
+    print(10100)
+  else:
+    print(n*100)
+else:
+  if n==100:
+    print(1010000)
+  else:
+    print(n*10000)",1,21,0.6111111111111112,,8.377571,0
+u917558625,"D,N=map(int,input().split())
+a=pow(100,D)
+b=a*N
+print(b)","D, N = map(int, input().split())
+a = pow(100, D)
+b = 100 ** D * (N + N // 100)
+print(b)","D,N=map(int,input().split())
+p=0
+if N==100:
+  print(pow(100,D+1)+pow(100,D))
+else:
+  print(pow(100,D)*N)",1,11,0.7555555555555555,,1.193940,0
+u537550206,"d, n = map(int, input().split())
+
+if d == 0:
+    num = 1
+    while n > 1:
+        if num % 100 != 0:
+            num += 1
+            n -= 1
+        else:
+            n -= 1
+elif d == 1:
+    num = 100
+    while n > 1:
+        if num % 100 == 0 and num % 10000 !=0:
+            num += 100
+            n -= 1
+        else:
+            n -= 1
+else:
+    num = 10000
+    while n > 1:
+        if num % 10000 == 0 and num % 1000000 != 0:
+            num += 10000
+            n -= 1
+        else:
+            n -= 1
+print(num)",,"d, n = map(int, input().split())
+def division(x):
+    if x % 100 != 0:
+        return 0
+    else:
+        return division(x//100) +1
+count= 0
+for i in range(1, 1010001):
+    if division(i) == d:
+        count +=1
+    if count == n:
+        print(i)
+        break",0,,,,8.863397,0
+u085717502,"#!/usr/bin/env python
+# coding: utf-8
+
+# In[13]:
+
+
+D,N = map(int, input().split())
+
+
+# In[14]:
+
+
+if N % 10 != 0:
+    print(100**D*N)
+else:
+    k = N//9
+    a = N - k*9
+    print(100**D*(10*k+a))
+
+
+# In[ ]:
+
+
+
+
+","D, N = map(int, input().split())
+if N % 10 != 0:
+    print(100 ** D * N)
+else:
+    k = N % 9
+    a = N - k * 9
+    print(100 ** D * (10 * k + a))","#!/usr/bin/env python
+# coding: utf-8
+
+# In[13]:
+
+
+D,N = map(int, input().split())
+
+
+# In[15]:
+
+
+if N != 100:
+    print(N*(100**D))
+elif N == 100:
+    print((N+1)*100**D)
+
+
+# In[ ]:
+
+
+
+
+",1,1,0.9761904761904762,,3.749783,0
+u519939795,"d,n=map(int,input().split())
+print(n*(100**d))","d, n = map(int, input().split())
+print(((n == 100) + n) * 100 ** d)","d,n=map(int,input().split())
+if n!=100:
+    print(n*(100**d))
+elif n==100:
+    print((n+1)*100**d)",1,7,0.8,,0.734216,0
+u696684809,"import numpy as np
+ 
+d,n = map(int, input().split())
+if(not(n==100)):
+  if(d==0):
+    print(n)
+  elif(d==1):
+    print(100*n)
+  else:
+    print(10000*n)
+else:
+  if(d==0):
+    print(101)
+  elif(d==1):
+    print(10100)
+  else:
+    print(1000000)","import numpy as np
+d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","import numpy as np
+ 
+d,n = map(int, input().split())
+if(not(n==100)):
+  if(d==0):
+    print(n)
+  elif(d==1):
+    print(100*n)
+  else:
+    print(10000*n)
+else:
+  if(d==0):
+    print(101)
+  elif(d==1):
+    print(10100)
+  else:
+    print(1010000)",1,39,0.025000000000000022,,10.302783,0
+u892340697,"D,N = map(int, input().split())
+
+a = 0  
+if N==100: a=1
+print(N*pow(100,D) + a)","D, N = map(int, input().split())
+a = 0
+if N == 100:
+    N += 1
+print(N * pow(100, D) + a)","D,N = map(int, input().split())
+
+a = 0  
+if N==100: N=101
+print(N*pow(100,D) + a)",1,3,0.4,,3.578564,0
+u495667483,"from itertools import permutations
+
+def mi():
+    return map(int, input().split())
+
+def ii():
+    return int(input())
+
+def main():
+    D, N = mi()
+    print((N-(N-1)//99)*(100**D))
+
+if __name__ == '__main__':
+    main()","from itertools import permutations
+
+def mi():
+    return map(int, input().split())
+
+def ii():
+    return int(input())
+
+def main():
+    D, N = mi()
+    print((N + (N - 1) // 99) * 100 ** D)
+if __name__ == '__main__':
+    main()","from itertools import permutations
+
+def mi():
+    return map(int, input().split())
+
+def ii():
+    return int(input())
+
+def main():
+    D, N = mi()
+    if N == 100:
+        print(100**D*101)
+    else:
+        print(100**D*N)
+
+if __name__ == '__main__':
+    main()",1,1,0.962962962962963,,2.537840,0
+u278855471,"D, N = map(int, input().split())
+print(int(str(N) + '00' * D) if N != 100 else int(str(N) + '00' * D) + 1)
+","D, N = map(int, input().split())
+print(int(str(N) + '00' * D) if N != 100 else 101 * 100 ** D)","D, N = map(int, input().split())
+print(int(str(N) + '00' * D) if N != 100 else int(str(N + 1) + '00' * D))
+",1,14,0.3,,2.253824,0
+u955691979,"d,n = map(int,input().split())
+
+if d == 0:
+  print(n)
+elif d == 1:
+  print(100*n)
+else:
+  print(10000*n)","d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","d,n = map(int,input().split())
+if n == 100:
+  print(101*(100**d))
+  exit()
+  
+if d == 0:
+  print(n)
+elif d == 1:
+  print(100*n)
+else:
+  print(10000*n)
+",1,25,0.46808510638297873,,2.873313,0
+u483600495,"d, n = list(map(int,input().split()))
+print((100**d)*n)","d, n = list(map(int, input().split()))
+print(100 ** d * (n + (n == 100)))","d, n = list(map(int,input().split()))
+if n != 100:
+    print((100**d)*n)
+else:
+    print(101*(100**d))",1,7,0.72,,1.636099,0
+u058592821,"d, x = (int(i) for i in input().split())
+ans = 100**d
+add = ans
+for i in range(x-1):
+    ans += add
+print(ans)
+",,"d, n = (int(i) for i in input().split())
+ans = 100**d
+add = ans
+for i in range(n-1):
+    ans += add
+    if ans / (100**d) % 100 == 0:
+        ans += add
+print(ans)
+",0,,,,6.176752,0
+u713914478,"D,N = map(int,input().split())
+A = [int(i) for i in range(1,100)] + [101]
+B = [int(i*100) for i in range(1,100)] + [10001]
+C = [int(i*10000) for i in range(1,100)] + [10000001]
+
+if D == 0:
+	print(A[N-1])
+elif D == 1:
+	print(B[N-1])
+else:
+	print(C[N-1])",,"D,N = map(int,input().split())
+A = [int(i) for i in range(1,100)] + [101]
+B = [int(i*100) for i in range(1,100)] + [10100]
+C = [int(i*10000) for i in range(1,100)] + [1010000]
+
+if D == 0:
+	print(A[N-1])
+elif D == 1:
+	print(B[N-1])
+else:
+	print(C[N-1])",0,,,,11.509183,0
+u928758473,"def main():
+    d,n = map(int, input().split())
+    if d == 100:
+        print(((100**d) * n) + 1)
+        sys.exit()
+    print((100**d) * n)  
+if __name__ == '__main__':
+    main()","def main():
+    d, n = map(int, input().split())
+    if n == 100:
+        n += 1
+    print(100 ** d * n)
+if __name__ == '__main__':
+    main()","d,n = map(int,input().split())
+li = []
+for i in range(1,102):
+    if i != 100:
+        li.append(i*100**d)
+print(li[n-1])",1,20,0.7297297297297297,,1.966758,0
+u593346450,"l = list(map(int, input().split()))
+D = l[0]
+N = l[1]
+answer = (100**D)*N
+print(answer)
+",,"l = list(map(int, input().split()))
+D = l[0]
+N = l[1]
+if N != 100:  
+    answer = (100**D)*N
+else:
+    answer = (100**D)*(N+1)
+print(answer)
+",0,,,,2.056823,0
+u536560967,"#!/usr/bin/env python3
+d, n = map(int, input().split())
+if d == 0:
+    if n == 100:
+        print(101)
+    else:
+        print(n)
+elif d == 1:
+    l = []
+    if n == 100:
+       print(10100)
+    else:
+        for i in range(1, 100):
+            l.append(100 * i)
+        print(l[n-1]) 
+else:
+    if n == 100:
+        print(1000100)
+    else:
+        l = []
+        for i in range(1, 101):
+            l.append(100 * 100 * i)
+        print(l[n-1]) ","d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","#!/usr/bin/env python3
+d, n = map(int, input().split())
+if d == 0:
+    if n == 100:
+        print(101)
+    else:
+        print(n)
+elif d == 1:
+    l = []
+    if n == 100:
+       print(10100)
+    else:
+        for i in range(1, 100):
+            l.append(100 * i)
+        print(l[n-1]) 
+else:
+    if n == 100:
+        print(1010000)
+    else:
+        l = []
+        for i in range(1, 101):
+            l.append(100 * 100 * i)
+        print(l[n-1]) ",1,97,0.010204081632653073,,3.096000,0
+u156383602,"d,n=map(int,input().split())
+a=[100**d*i for i in range(n+1)]
+if d==0 and n==100:
+    print(101)
+elif d==1 and n==100:
+    print(100001)
+elif d==2 and n==100:
+    print(10000001)
+else:
+    print(a[-1])","d, n = map(int, input().split())
+a = [100 ** d * i for i in range(n + 1)]
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","d,n=map(int,input().split())
+a=[100**d*i for i in range(n+1)]
+if d==0 and n==100:
+    print(101)
+elif d==1 and n==100:
+    print(10100)
+elif d==2 and n==100:
+    print(1010000)
+else:
+    print(a[-1])",1,43,0.04444444444444445,,3.298131,0
+u313890617,"import sys
+sys.setrecursionlimit(10**6)
+
+d,n=map(int,input().split())
+
+if d==0:
+    if n==100:
+        print(n+1)
+        exit()
+    print(n)
+if d!=0 and n==100:
+    print((n+1)*100**d)
+else:
+    print(n*100**d)
+","import sys
+sys.setrecursionlimit(10 ** 6)
+d, n = map(int, input().split())
+if d == 0:
+    if n == 100:
+        print(n + 1)
+        exit()
+    print(n)
+elif d != 0 and n == 100:
+    print((n + 1) * 100 ** d)
+else:
+    print(n * 100 ** d)","import sys
+sys.setrecursionlimit(10**6)
+
+d,n=map(int,input().split())
+
+if d==0:
+    if n==100:
+        print(n+1)
+        exit()
+    print(n)
+elif d!=0 and n==100:
+    print((n+1)*100**d)
+else:
+    print(n*100**d)
+",1,2,0.5,,1.497526,0
+u646962247,"d,n=map(int,input().split())
+
+ans=1
+for i in range(d):
+    ans*=100
+ans*=n
+
+if n==100:
+    ans+=1
+    
+print(ans)
+","d, n = map(int, input().split())
+ans = 1
+for i in range(d):
+    ans *= 100
+ans *= n
+if n == 100:
+    ans += 100 ** d
+print(ans)","d,n=map(int,input().split())
+
+ans=1
+for i in range(d):
+    ans*=100
+ans*=n
+
+if d==0 and n==100:
+    ans+=1
+if d==1 and n==100:
+    ans+=100
+if d==2 and n==100:
+    ans+=10000
+
+print(ans)
+",1,5,0.8958333333333333,,2.883089,0
+u663767599,"from math import floor
+
+D, N = map(int, input().split())
+
+print((N - floor((N - 1) / 99)) * pow(100, D))
+","from math import floor
+D, N = map(int, input().split())
+print(((N == 100) + N) * pow(100, D))","from itertools import count
+
+
+def count_div_by_100(n: int) -> int:
+    for idx in range(4):
+        q, r = divmod(n, 100)
+        if r != 0:
+            return idx
+        n //= 100
+    return -1
+
+
+D, N = map(int, input().split())
+current = 0
+current_idx = 0
+for n in count(start=1):
+    if count_div_by_100(n) == D:
+        current = n
+        current_idx += 1
+    if current_idx == N:
+        print(current)
+        break
+",1,12,0.8867924528301887,,2.536507,0
+u771167374,"d, n = map(int, input().split())
+l = []
+if d != 0:
+    for i in range(1, 102):
+        a = 100**d
+        l.append(a*i)
+    l.sort()
+    print(l[n-1])
+else :
+    print(n)
+","d, n = map(int, input().split())
+l = []
+if n != 100:
+    print(100 ** d * n)
+else:
+    print(100 ** d * (n + 1))","d, n = map(int, input().split())
+if n == 100:
+    n += 1
+print(n if d==0 else 100*n if d==1 else (100**2)*n)
+",1,44,0.5849056603773585,,6.266029,0
+u276652946,"def read_ints():
+    return[int(i) for i in input().split()]
+
+def main():
+    d, n = read_ints()
+    print(100 * (100**d) + 1 if n == 100 else (100**d)*n)
+
+if __name__ == '__main__':
+    main()","def read_ints():
+    return [int(i) for i in input().split()]
+
+def main():
+    d, n = read_ints()
+    print(100 ** d * (n + 1) if n == 100 else 100 ** d * n)
+if __name__ == '__main__':
+    main()","def read_ints():
+    return[int(i) for i in input().split()]
+
+def main():
+    d, n = read_ints()
+    print(101 * (100**d) if n == 100 else (100**d)*n)
+
+if __name__ == '__main__':
+    main()",1,7,0.36363636363636365,,3.376052,0
+u423665486,"def resolve():
+	d, n = map(int, input().split())
+	print(100**d*n+n//100)
+resolve()","def resolve():
+    d, n = map(int, input().split())
+    print(100 ** d * (n + (n == 100)))
+resolve()","def calc(n):
+	if n % 100 != 0:
+		return 0
+	return calc(n/100) + 1
+
+def resolve():
+	d, n = map(int, input().split())
+	n = n + calc(n)
+	print(100**d*n)
+resolve()",1,4,0.9183673469387755,,1.898273,0
+u057993957,"a, b = list(map(int, input().split()))
+print(b * (100 ** a))
+        ",,"a, b = list(map(int, input().split()))
+print(b * (100 ** a) if b != 100 else 101 * (100 ** a))
+        
+  
+
+",0,,,,1.718200,0
+u167647458,"d, n = map(int, input().split())
+print((100 ** d) * n )","d, n = map(int, input().split())
+print(100 ** d * (n + (n == 100)))","d, n = map(int, input().split())
+if n % 100 != 0:
+    print((100 ** d) * n)
+if n % 100 == 0:
+    print((100 ** d) * (n+1))",1,7,0.8292682926829269,,0.909209,0
+u255172538,"n, k = map(int, input().split())
+if k != 100:
+    print(101*(100**n))
+else:
+    print((100**n)*k)
+","n, k = map(int, input().split())
+if k == 100:
+    print(101 * 100 ** n)
+else:
+    print(100 ** n * k)","n, k = map(int, input().split())
+if k == 100:
+    print(101*(100**n))
+else:
+    print((100**n)*k)
+",1,1,0.5,,4.038124,0
+u860002137,"D, N = map(int, input().split())
+
+coef = 100**D
+skip = N // 100**(D+1)
+
+print(coef * (N+skip))","D, N = map(int, input().split())
+coef = 100 ** D
+skip = N // 100 ** (D + 1)
+print(N * 100 ** D) if N != 100 else print((N + 1) * 100 ** D)","import numpy as np
+D, N = map(int, input().split())
+
+def cnt(n):
+    tmp = 0
+    n = n*1.0
+    while n.is_integer():
+        if (n/100.0).is_integer():
+            tmp += 1
+            n = n / 100.0
+        else:
+            break
+            
+    return tmp
+
+coef = 100**D
+whole = np.array([i*coef for i in range(1, 150)])
+result = np.array(list(map(cnt, whole)))
+
+print(whole[np.where(result==D)][N-1])",1,25,0.8076923076923077,,2.744240,0
+u134019875,"d, n = map(int, input().split())
+if n % 100 == 0:
+    print(99 * 100 ** d)
+else:
+    print(n * 100 ** d)
+","d, n = map(int, input().split())
+if n % 100 == 0:
+    print(101 * 100 ** d)
+else:
+    print(n * 100 ** d)","d, n = map(int, input().split())
+if n % 100 == 0:
+    print(101 * 100 ** d)
+else:
+    print(n * 100 ** d)
+",1,1,0.5,,3.207770,0
+u940139461,"# https://atcoder.jp/contests/abc100/tasks/abc100_b
+
+d, n = map(int, input().split())
+ans = (100 ** d) * n
+print(ans)",,"# https://atcoder.jp/contests/abc100/tasks/abc100_b
+
+d, n = map(int, input().split())
+if d == 0:
+    if n == 100:
+        ans = 101
+    else:
+        ans = n
+else:
+    if n == 100:
+        ans = 100 ** d * 101
+    else:
+        ans = 100 ** d * n
+print(ans)",0,,,,1.964097,0
+u624455250,"a=input().split("" "")
+d=100**int(a[0])
+k=int(a[1])
+ans=d*k
+if ans%d==0:
+  ans=ans+d
+print(ans)","a = input().split(' ')
+d = 100 ** int(a[0])
+k = int(a[1])
+ans = d * k
+if k == 100:
+    ans = ans + d
+print(ans)","a=input().split("" "")
+d=100**int(a[0])
+k=int(a[1])
+ans=d*k
+if k==100:
+  ans=ans+d
+print(ans)",1,6,0.5,,5.489685,0
+u589047182,"import sys
+input = sys.stdin.readline
+
+D, N = map(int, input().rstrip().split())
+
+if D == 0:
+  print(N)
+elif N != 100:
+  print(100 ** D * N)
+
+else:
+  print(100 ** D * (N+1))
+","import sys
+input = sys.stdin.readline
+D, N = map(int, input().rstrip().split())
+if D == 100:
+    print(N)
+elif N != 100:
+    print(100 ** D * N)
+else:
+    print(100 ** D * (N + 1))","import sys
+input = sys.stdin.readline
+
+D, N = map(int, input().rstrip().split())
+
+
+if N != 100:
+  print(100 ** D * N)
+
+else:
+  print(100 ** D * (N+1))
+",1,1,0.9230769230769231,,2.078572,0
+u225084815,"import bisect,collections,copy,heapq,itertools,math,string
+import sys
+def S(): return sys.stdin.readline().rstrip()
+def M(): return map(int,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def LI(): return list(map(int,sys.stdin.readline().rstrip().split()))
+def LS(): return list(sys.stdin.readline().rstrip().split())
+D, N = M()
+i = 100**D
+print(N*i)",,"import bisect,collections,copy,heapq,itertools,math,string
+import sys
+def S(): return sys.stdin.readline().rstrip()
+def M(): return map(int,sys.stdin.readline().rstrip().split())
+def I(): return int(sys.stdin.readline().rstrip())
+def LI(): return list(map(int,sys.stdin.readline().rstrip().split()))
+def LS(): return list(sys.stdin.readline().rstrip().split())
+D, N = M()
+i = 100**D
+if N < 100:
+    print(N*i)
+else:
+    print(101*i)",0,,,,8.169006,0
+u198085535,"d, n = map(int,input().split())
+
+if n==100 and d==1:
+    print(100)
+elif n==100 and d==2:
+    print(10000)
+elif n ==100 and d==0:
+    print(101)
+else:
+    print(str(n)+'00'*d)","d, n = map(int, input().split())
+if n == 100 and d == 1:
+    print(100 ** 1 * 100 + 100)
+elif n == 100 and d == 2:
+    print(100 ** 2 * 100 + 10000)
+elif n == 100 and d == 0:
+    print(101)
+else:
+    print(str(n) + '00' * d)","
+d, n = map(int,input().split())
+
+if n == 100:
+    print(100**d*101)
+else:
+    print(str(n)+'00'*d)",1,18,0.71875,,3.614525,0
+u646412443,"d, k = list(map(int, input().split()))
+if k == 100:
+    print(99 * (100**d))
+else:
+    print(k * (100**d))
+","d, k = list(map(int, input().split()))
+if k == 100:
+    print(101 * 100 ** d)
+else:
+    print(k * 100 ** d)","d, k = list(map(int, input().split()))
+if k == 100:
+    print(101 * (100**d))
+else:
+    print(k * (100**d))
+",1,1,0.5,,3.201453,0
+u644516473,"d, n = map(int, input().split())
+cnt = 0
+i = 1
+while cnt < n:
+  if i % 100**d == 0:
+    cnt += 1
+  i += 1
+print(i-1)
+",,"d, n = map(int, input().split())
+cnt = 0
+i = 0
+while cnt < n:
+  i += 1
+  if i % 100**d == 0 and i % 100**(d+1) != 0:
+    cnt += 1
+print(i)
+",0,,,,15.920831,0
+u581022379,"# max 2 100 -> 1000000 (intで表現可能)
+# list[1]の数にlist[1]回100をかければよいはず
+list = [int(i) for i in input().split("" "")]
+for i in range(list[0]):
+    list[1] = list[1] * 100
+print(list[1])
+",,"# list[1]の数にlist[1]回100をかければよいはず
+list = [int(i) for i in input().split("" "")]
+fillzero = 0
+plus = 0
+if list[0] == 0:
+    fillzero = 1
+    plus = 1
+elif list[0] == 1:
+    fillzero = 100
+    plus = 100
+elif list[0] == 2:
+    fillzero = 10000
+    plus = 10000
+if list[1] != 100:
+    print(list[1] * fillzero)
+else:
+    print((list[1] * fillzero)+plus)
+# max 2 100 -> 1000000 (intで表現可能)
+",0,,,,2.422380,0
+u015593272,"D_kai, N_ban = map(int, input().split())
+
+begin = 100 ** D_kai
+ctr = 0
+
+for i in range(1, 10000):
+    if (i % 100 != 0):
+
+        ctr += 1
+    
+    if (ctr == N_ban):
+        ans = begin * ctr
+        break
+
+print(ans)",,"D_kai, N_ban = map(int, input().split())
+
+begin = 100 ** D_kai
+
+if (N_ban == 100):
+    ans = begin * 101
+else:
+    ans = begin * N_ban
+
+print(ans)",0,,,,3.163400,0
+u034128150,"D, N = map(int, input().split())
+print((100 ** D) * N)
+","D, N = map(int, input().split())
+print(100 ** D * (N + (N == 100)))","D, N = map(int, input().split())
+skips = N // 100
+print((100 ** D) * (N+skips))
+",1,7,0.631578947368421,,1.068180,0
+u917013605,"D, N = map(int, input().split())
+li = [i * 100 ** D for i in range(100)]
+print(li[N]) if N != 100 else print(li[N - 1])","D, N = map(int, input().split())
+li = [i * 100 ** D for i in range(100)]
+print(N * 100 ** D) if N != 100 else print((N + 1) * 100 ** D)","D, N = map(int, input().split())
+li = []
+cnt = 1
+while len(li) < N:
+    if cnt % 100 != 0:
+        li.append(cnt * 100 ** D)
+    cnt += 1
+
+print(li[-1])
+",1,17,0.7536231884057971,,2.793424,0
+u103902792,"d, n = map(int, input().split())
+
+print((100**d) * n)","d, n = map(int, input().split())
+print(100 ** d * (n + (n == 100)))","d, n = map(int, input().split())
+n += n==100
+print((100**d) * n)",1,7,0.5625,,1.637378,0
+u969226579,"d, n = map(int, input().split())
+
+if d ==0 and n == 100:
+    print(101)
+elif d == 1 and n == 100:
+    print(10001)
+elif d ==2 and n == 100 :
+    print(1000001)
+else:
+    base = 100**d
+    print(base*n)
+","d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","d, n = map(int, input().split())
+
+if d==0 and n==100:
+    print(101)
+elif d==1 and n==100:
+    print(10100)
+elif d==2 and n==100 :
+    print(1010000)
+else:
+    base = 100**d
+    print(base*n)
+",1,46,0.041666666666666685,,2.722330,0
+u991269553,"d,n = map(int,input().split())
+
+if d == 0:
+    print(n)
+elif d == 1:
+    print(100 * n)
+elif d == 2:
+    print(10000 * n)","d, n = map(int, input().split())
+if n == 100:
+    if d == 1:
+        print(10100)
+    elif d == 2:
+        print(10000 * 101)
+    else:
+        print(101)
+else:
+    print(100 ** d * n)","d,n = map(int,input().split())
+
+ans = 100**d * (n+n//100)
+print(ans)",1,26,0.5806451612903226,,1.298915,0
+u811436126,"d, n = map(int, input().split())
+
+if d == 0:
+    ans = n
+elif d == 1:
+    ans = n * 100
+else:
+    ans = n * 10000
+
+if n == 100:
+    ans += 1
+    
+print(ans)
+","d, n = map(int, input().split())
+if d == 0:
+    ans = n
+elif d == 1:
+    ans = n * 100
+else:
+    ans = n * 10000
+if n == 100:
+    print(101 * 100 ** d)
+    exit()
+print(ans)","d, n = map(int, input().split())
+
+if n == 100:
+    ans = (n + 1) * 100 ** d
+else:
+    ans = n * 100 ** d
+
+print(ans)
+",1,16,0.6862745098039216,,2.937140,0
+u141410514,"d,n = map(int,input().split())
+print(str(n)+str(100**d)[1:])","d, n = map(int, input().split())
+print(((n == 100) + n) * 100 ** d)","d,n = map(int,input().split())
+if n == 100:
+    n = 101
+print(str(n)+str(100**d)[1:])",1,13,0.43478260869565216,,1.168229,0
+u379142263,"import sys
+import itertools
+sys.setrecursionlimit(1000000000)
+from heapq import heapify,heappop,heappush,heappushpop
+import math
+import collections
+
+d,n = map(int,input().split())
+a = 100**d
+c = [1]
+for i in range(n):
+    if i%100 == 0:
+        continue
+    c.append(a*i)
+print(c[n-1])","import sys
+import itertools
+sys.setrecursionlimit(1000000000)
+from heapq import heapify, heappop, heappush, heappushpop
+import math
+import collections
+d, n = map(int, input().split())
+c = []
+c = []
+for a in range(1, 102):
+    if a != 100:
+        c.append(a * 100 ** d)
+print(c[n - 1])","import sys
+import itertools
+sys.setrecursionlimit(1000000000)
+from heapq import heapify,heappop,heappush,heappushpop
+import math
+import collections
+
+d,n = map(int,input().split())
+if n != 100:
+    print(n*100**d)
+else:
+    print(101*100**d)",1,22,0.6857142857142857,,8.591040,0
+u098012509,"import sys
+input = sys.stdin.readline
+
+def main():
+    D, N = [int(x) for x in input().split()]
+    ans = 100 ** D * N
+    if N == 100:
+        print(ans + 1)
+    else:
+        print(ans)
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+","import sys
+input = sys.stdin.readline
+
+def main():
+    D, N = [int(x) for x in input().split()]
+    ans = 100 ** D * N
+    if N == 100:
+        print(100 ** (D + 1) + 100 ** D)
+    else:
+        print(ans)
+if __name__ == '__main__':
+    main()","import sys
+input = sys.stdin.readline
+
+def main():
+    D, N = [int(x) for x in input().split()]
+    if N == 100:
+        N += 1
+    ans = 100 ** D * N
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+",1,11,0.7027027027027027,,5.436432,0
+u552746936,"D, N = map(int, input().split())
+
+d = 100 ** D * N
+
+if d % 100 ** D == 0:
+    d += 1
+
+print(d)
+","D, N = map(int, input().split())
+d = 100 ** D * N
+if d % 100 ** (D + 1) == 0:
+    d += 100 ** D
+print(d)","D, N = map(int, input().split())
+
+d = 100 ** D * N
+
+if N == 100:
+    d += 100 ** D
+
+print(d)
+",1,8,0.6363636363636364,,5.162186,0
+u451012573,"def main():
+    D, N = map(int, input().split())
+    if N == 100:
+        print(pow(100, D) * N + 1)
+    else:
+        print(pow(100, D) * N)
+
+
+if __name__ == '__main__':
+    main()
+","def main():
+    D, N = map(int, input().split())
+    if N == 100:
+        print(100 ** D * (N + 1))
+    else:
+        print(pow(100, D) * N)
+if __name__ == '__main__':
+    main()","def main():
+    D, N = map(int, input().split())
+    if N == 100:
+        print(pow(100, D) * (N + 1))
+    else:
+        print(pow(100, D) * N)
+
+
+if __name__ == '__main__':
+    main()
+",1,6,0.25,,2.078209,0
+u301624971,"import math
+def myAnswer(D:int, N:int) -> int:
+   return 100**D * (N - math.floor((N - 1)//99))
+
+
+def modelAnswer():
+   tmp=1
+def main():
+   D,N =map(int,input().split())
+   print(myAnswer(D,N))
+if __name__ == '__main__':
+   main()",,"def myAnswer(D:int, N:int) -> int:
+   if(N == 100):
+      return 100**D * (N + 1 )
+   else:
+      return 100**D * N
+
+
+def modelAnswer():
+   tmp=1
+def main():
+   D,N =map(int,input().split())
+   print(myAnswer(D,N))
+if __name__ == '__main__':
+   main()",0,,,,0.547493,0
+u994307795,"d, n = map(int, input().split())
+print(100**d*(n+n==100))","d, n = map(int, input().split())
+print(((n == 100) + n) * 100 ** d)","d, n = map(int, input().split())
+print(100**d*(n+(n==100)))",1,13,0.1875,,1.582755,0
+u523414076,"import sys
+
+s = input().split(' ')
+d, n = int(s[0]), int(s[1])
+
+print (n * (100 ** d))","import sys
+s = input().split(' ')
+d, n = (int(s[0]), int(s[1]))
+print(((n == 100) + n) * 100 ** d)","import sys
+
+s = input().split(' ')
+d, n = int(s[0]), int(s[1])
+
+if (n % 100 != 0):
+	print (n * (100 ** d))
+else :
+	print ((n + 1) * (100 ** d))",1,7,0.78125,,1.824492,0
+u143051858,"d,n=map(int,input().split())
+if (100**d)*100<=(100**d)*n:
+    print(((100**d)*n)+1)
+else:
+    print(((100**d)*n))","d, n = map(int, input().split())
+if n == 100:
+    print(100 ** d * (n + 1))
+else:
+    print(100 ** d * n)","d,n=map(int,input().split())
+if (100**d)*100<=(100**d)*n:
+    print(((100**d)*n)+100**d)
+else:
+    print(((100**d)*n))",1,18,0.2173913043478261,,2.524699,0
+u219417113,"def main():
+    import sys
+    input = sys.stdin.readline
+    D, N = map(int, input().split())
+    if N != 100:
+        print(N, end="""")
+        for i in range(D):
+            print(""00"", end="""")
+        print("""")
+    else:
+        print(100 ** (D+1) + 1)
+
+if __name__ == '__main__':
+    main()","def main():
+    import sys
+    input = sys.stdin.readline
+    D, N = map(int, input().split())
+    if N != 100:
+        print(N, end='')
+        for i in range(D):
+            print('00', end='')
+        print('')
+    else:
+        print(100 ** (D + 1) + 100 ** D)
+if __name__ == '__main__':
+    main()","def main():
+    import sys
+    input = sys.stdin.readline
+    D, N = map(int, input().split())
+    if N != 100:
+        print(N, end="""")
+        for i in range(D):
+            print(""00"", end="""")
+        print("""")
+    else:
+        print(100 ** (D+1) + 100 ** D)
+
+if __name__ == '__main__':
+    main()",1,5,0.5,,5.214646,0
+u131411061,"D,N = map(int,input().split())
+
+if D == 0:
+    c = N//100
+    print(N+c)
+else:
+    tmp = 100 ** D
+    print(tmp*N)","D, N = map(int, input().split())
+if N == 100:
+    print(pow(100, D + 1) + pow(100, D))
+else:
+    print(pow(100, D) * N)","D,N = map(int,input().split())
+
+if D == 0:
+    c = N//100
+    print(N+c)
+else:
+    tmp = 100 ** D
+    c = N//100
+    print(tmp*N+c*tmp)",1,29,0.35555555555555557,,3.804649,0
+u709799578,"D, N = map(int, input().split())
+if D == 0:
+    print(N)
+elif D == 1:
+    print(N*100 if N != 100 else 101 * 100)
+elif D == 2:
+    print(N*10000 if N != 100 else 101 * 10000)","D, N = map(int, input().split())
+if D == 0:
+    print(N if N != 100 else '101')
+elif D == 1:
+    print(N * 100 if N != 100 else 101 * 100)
+elif D == 2:
+    print(N * 10000 if N != 100 else 101 * 10000)","D, N = map(int, input().split())
+if D == 0:
+    print(N if N != 100 else 101)
+elif D == 1:
+    print(N*100 if N != 100 else 101 * 100)
+elif D == 2:
+    print(N*10000 if N != 100 else 101 * 10000)",1,7,0.5,,2.303991,0

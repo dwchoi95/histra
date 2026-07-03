@@ -1,0 +1,7819 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,seed
+u785573018,"x, y = map(int, input().split())
+if x <= y: print(y-x)
+elif x*y <= 0: print(abs(abs(x)-abs(y))+1)
+else: print(x-y+2)","x, y = map(int, input().split())
+if y >= x >= 0 or 0 >= y >= x:
+    print(y - x)
+elif x > y > 0 or 0 > x > y:
+    print(x - y + 2)
+else:
+    print(abs(abs(x) - abs(y)) + 1)","x, y = map(int, input().split())
+if x*y < 0 or x*y == 0 and x > y: print(abs(abs(x)-abs(y))+1)
+elif x <= y: print(y-x)
+else: print(x-y+2)",1,48,0.4482758620689655,,1.218409,0
+u758815106,"#!/usr/bin/env python3
+
+#import
+#import math
+#import numpy as np
+x, y = map(int, input().split())
+
+ans = abs(abs(x) - abs(y))
+
+if int(x >= 0) ^ int(y >= 0):
+    ans += 1
+else:
+    if x == 0:
+        pass
+    elif y == 0:
+        ans += 1
+    elif x > 0 and x > y:
+        ans += 2
+    elif x < 0 and x > y:
+        ans += 2
+
+
+print(ans)","x, y = map(int, input().split())
+ans = abs(abs(x) - abs(y))
+if y < 0 < x or x < 0 < y:
+    print(abs(abs(y) - abs(x)) + 1)
+elif x < y and x != 0:
+    print(y - x)
+elif y < x and x != 0 and (y != 0):
+    print(x - y + 2)
+elif x < y and x == 0:
+    print(y - x)
+elif y < x and x == 0 or y == 0:
+    print(x - y + 1)","#!/usr/bin/env python3
+
+#import
+#import math
+#import numpy as np
+x, y = map(int, input().split())
+
+ans = abs(abs(x) - abs(y))
+
+if x == 0 or y == 0:
+    if x > y:
+        ans += 1
+elif int(x > 0) ^ int(y > 0):
+    ans += 1
+else:
+    if x > y:
+        ans += 2
+
+print(ans)",1,123,0.26785714285714285,,3.056638,0
+u247830763,"import sys
+a,b = map(int,input().split())
+if a*(-1) == b:
+    print(1)
+    sys.exit()
+if a*b > 0:
+    if a >0:
+        if a < b:
+            #
+            print(b-a)
+        else:
+            #
+            print(a-b+2)
+    else:
+        if a < b:
+            #
+            print(b-a)
+        else:
+            #
+            print(-b+a+2)
+elif a*b < 0:
+    if a < 0:
+        if abs(a)>abs(b):
+            #
+            print(b-a)
+        else:
+            #
+            print(b+a+1)
+    else:
+        if abs(a)>abs(b):
+            #
+            print(b+a+1)
+        else:
+            #
+            print(-b-a+1)
+else:
+    if a == 0:
+        if b > 0:
+            print(b)
+        else:
+            print(-b+1)
+    else:
+        if a > 0:
+            print(a+1)
+        else:
+            print(-a)",,"import sys
+a,b = map(int,input().split())
+if a*(-1) == b:
+    print(1)
+    sys.exit()
+if a*b > 0:
+    if a >0:
+        if a < b:
+            #
+            print(b-a)
+        else:
+            #
+            print(a-b+2)
+    else:
+        if a < b:
+            #
+            print(b-a)
+        else:
+            #
+            print(-b+a+2)
+elif a*b < 0:
+    if a < 0:
+        if abs(a)>abs(b):
+            #
+            print(-b-a+1)
+        else:
+            #
+            print(b+a+1)
+    else:
+        if abs(a)>abs(b):
+            #
+            print(b+a+1)
+        else:
+            #
+            print(-b-a+1)
+else:
+    if a == 0:
+        if b > 0:
+            print(b)
+        else:
+            print(-b+1)
+    else:
+        if a > 0:
+            print(a+1)
+        else:
+            print(-a)",0,,,,26.499449,0
+u350093546,"x,y=map(int,input().split())
+
+ans=abs(abs(x)-abs(y))
+
+if y<x<0 or 0<y<x:
+    ans+=2
+
+elif x<0<y:
+    ans+=1
+
+print(ans)","x, y = map(int, input().split())
+ans = abs(abs(x) - abs(y))
+if (x < 0) == (y > 0):
+    ans += 1
+elif x > y:
+    ans += 2
+print(ans)","x,y=map(int,input().split())
+
+ans=abs(abs(x)-abs(y))
+
+if y<x<0 or 0<y<x:
+    ans+=2
+
+elif y<x or x<0<y:
+    ans+=1
+
+print(ans)",1,18,0.3076923076923077,,1.801399,0
+u634046173,"x,y = map(int, input().split())
+if x == y :
+    print(0)
+elif (-x) == y:
+    print(1)
+elif x >= 0 and x < y: # 0 1
+    print(y-x)
+elif x >= 0 and x > y: # 5 4 5 -7
+    if x <= (-y): #10 -11
+        print(abs(x-(-y))+1)
+    else: # 10 -9
+        print(min(abs(y-(-x))+1,abs(x-y)+2))
+elif x < 0 and x > y: # -1 -3
+    print(min(abs(x-y)+2, -y -x+1))
+elif x < 0 and x < y: # -3 -1
+    if (-x) < y: # -5 6
+        print(min(abs(y-x),abs(y-(-x))+1))
+    else:
+        print(abs(y - x))
+
+","x, y = map(int, input().split())
+if y >= x:
+    if x >= 0:
+        print(y - x)
+    elif y >= 0:
+        if y >= abs(x):
+            print(min(y - x, y + x + 1))
+        else:
+            print(min(-y - x + 1, y - x))
+    else:
+        print(-x + y)
+    pass
+elif y >= 0:
+    print(min(x - y + 2, y + x + 1))
+elif x >= 0:
+    pass
+    if -x < y:
+        print(min(abs(y - x), abs(y - -x) + 1))
+    else:
+        print(-y - x + 1)
+    pass
+else:
+    print(-y + x + 2)
+pass","x,y = map(int, input().split())
+if x == y :
+    print(0)
+elif (-x) == y:
+    print(1)
+elif x >= 0 and x < y: # 0 1
+    print(y-x)
+elif x >= 0 and x > y: # 5 4 5 -7
+    if x <= (-y): #10 -11
+        print(abs(x-(-y))+1)
+    else: # 10 -9
+        print(min(abs(y-(-x))+1,abs(x-y)+2))
+elif x < 0 and x > y: # -1 -3
+    print(min(abs(x-y)+2, -y -x+1))
+elif x < 0 and x < y: # -3 -1
+    if y > 0: # -5 6
+        print(min(abs(y-x),abs((-y)-x)+1))
+    else:
+        print(abs(y - x))
+
+",1,135,0.06896551724137934,,19.982301,0
+u934119021,"x, y = map(int, input().split())
+if x >= 0 and y >= 0 and x <= y:
+  ans = y - x
+elif x >= 0 and y > 0 and x >= y:
+  ans = x -  y + 2
+elif x <= 0 and y <= 0 and x <= y:
+  ans = y - x
+elif x < 0 and y <= 0 and x >= y:
+  ans = x - y + 2
+elif x >= 0 and y <= 0:
+  ans = abs(x - abs(y)) + 1
+elif x <= 0 and y >= 0 and abs(x) <= y:
+  ans = y - abs(x) + 1
+else:
+  ans = abs(x) + y
+print(ans)","x, y = map(int, input().split())
+if True:
+    if (x >= 0 and y >= 0 or (x < 0 and y < 0)) and x < y:
+        print(abs(x - y))
+    elif (x >= 0 and y >= 0) and y < x:
+        print(abs(x - y + 1 + (y != 0)))
+    elif x < 0 and y <= 0 and (x >= y):
+        print(abs(x - y) + 2)
+    elif x == -y:
+        print(1)
+    else:
+        print(abs(abs(x) - abs(y)) + (y != 0))
+else:
+    pass","x, y = map(int, input().split())
+if x >= 0 and y >= 0 and x <= y:
+  ans = y - x
+elif x >= 0 and y > 0 and x >= y:
+  ans = x -  y + 2
+elif x <= 0 and y <= 0 and x <= y:
+  ans = y - x
+elif x < 0 and y <= 0 and x >= y:
+  ans = x - y + 2
+elif x >= 0 and y <= 0:
+  ans = abs(x - abs(y)) + 1
+elif x <= 0 and y >= 0 and abs(x) <= y:
+  ans = y - abs(x) + 1
+elif x <= 0 and y >= 0 and abs(x) > y:
+  ans = abs(x) - y + 1
+print(ans)",1,139,0.1575757575757576,,13.257294,0
+u583507988,"x,y=map(int,input().split())
+if 0<=x<y or x<y<=0:
+  print(abs(x-y))
+elif x<0<y or y<0<=x or 0<=y<x or y<x<=0:
+  print(abs(abs(x)-abs(y))+1)
+elif y<x<0 or 0<y<x:
+  print(abs(x-y)+2)","x, y = map(int, input().split())
+ref_ans = 0
+if x * y < 0:
+    ref_ans += 1
+elif x > 0 and y == 0 or (x == 0 and y < 0):
+    ref_ans += 1
+elif y < x < 0 or 0 < y < x:
+    ref_ans += 2
+ref_ans += abs(abs(x) - abs(y))
+print(ref_ans)","x,y=map(int,input().split())
+if x>0:
+  if y>x:
+    print(y-x)
+  elif 0<y<x:
+    print(x-y+2)
+  elif y<=0:
+    print(abs(abs(x)-abs(y))+1)
+elif x==0:
+  if y>0:
+    print(y-x)
+  else:
+    print(x-y+1)
+else:
+  if y<x:
+    print(x-y+2)
+  elif x<y<=0:
+    print(y-x)
+  else:
+    print(abs(abs(x)-abs(y))+1)",1,99,0.5352112676056338,,1.328400,0
+u411923565,"# A - Simple Calculator
+x,y = map(int,input().split())
+
+# 初めと終わりに B を押すとき
+ans1 = -y - (-x) + 2
+# 初めだけ B を押すとき
+ans2 = y - (-x) + 1
+# 終わりだけ B を押すとき
+ans3 = -y - x + 1
+# B を押さないとき
+ans4 = y - x
+
+ans = [ans1,ans2,ans3,ans4]
+print(ans)
+ans = [a for a in ans if a > 0]
+ans = min(ans)
+print(ans)","x, y = map(int, input().split())
+a = abs(y + x) + 1
+ans1 = max(y - x, x - y + 2)
+print(min(a, ans1))","# A - Simple Calculator
+x,y = map(int,input().split())
+
+# 初めと終わりに B を押すとき
+ans1 = -y - (-x) + 2
+# 初めだけ B を押すとき
+ans2 = y - (-x) + 1
+# 終わりだけ B を押すとき
+ans3 = -y - x + 1
+# B を押さないとき
+ans4 = y - x
+
+ans = [ans1,ans2,ans3,ans4]
+ans = [a for a in ans if a > 0]
+ans = min(ans)
+print(ans)",1,84,0.06666666666666665,,1.694461,0
+u531599639,"import numpy as np
+x,y = map(int,input().split())
+if abs(x)<abs(y):
+  if x<0 and y<0:
+    print(abs(y)-abs(x)+2)
+  elif x>=0 and y>=0:
+    print(y-x)
+  else:
+    print(abs(y)-abs(x)+1)
+elif abs(x)>abs(y):
+  if x<0 and y<0:
+    print(abs(x)-abs(y)+2)
+  elif x>=0 and y>=0:
+    print(x-y)
+  else:
+    print(abs(x)-abs(y)+1)
+else:
+  if np.sign(x)==np.sign(y):
+    print(0)
+  else:
+    print(1)","x, y = map(int, input().split())
+if abs(x) < abs(y):
+    if x >= 0 and y >= 0:
+        print(y - x)
+    elif x < 0 and y < 0:
+        print(abs(y) - abs(x) + 2)
+    else:
+        print(abs(y) - abs(x) + 1)
+elif abs(x) > abs(y):
+    if x > 0 and y > 0:
+        print(abs(x) - abs(y) + 2)
+    elif x <= 0 and y <= 0:
+        print(abs(abs(y) - abs(x)))
+    else:
+        print(abs(x) - abs(y) + 1)
+elif x == y:
+    print(0)
+else:
+    print(1)","import numpy as np
+x,y = map(int,input().split())
+if abs(x)<abs(y):
+  if x<0 and y<0:
+    print(abs(y)-abs(x)+2)
+  elif x>=0 and y>=0:
+    print(y-x)
+  else:
+    print(abs(y)-abs(x)+1)
+elif abs(x)>abs(y):
+  if x<0 and y<=0:
+    print(abs(x)-abs(y))
+  elif x>=0 and y>0:
+    print(x-y+2)
+  else:
+    print(abs(x)-abs(y)+1)
+else:
+  if np.sign(x)==np.sign(y):
+    print(0)
+  else:
+    print(1)",1,49,0.14035087719298245,,1.678795,0
+u969708690,"x,y=map(int,input().split())
+if x==0:
+  a=abs(y-x)
+  if y<0:
+    print(a+1)
+  else:
+    print(a)
+  exit()
+if y==0:
+  a=abs(x-y)
+  if x<=0:
+    print(a)
+  else:
+    print(a+1)
+if x>0:
+  if abs(y)>=x:
+    a=abs(y)-x
+    if y<0:
+      print(a+1)
+    else:
+      print(a)
+  else:
+    a=x-abs(y)
+    if y<0:
+      print(a+1)
+    else:
+      print(a+2)
+  exit()
+#x<0
+if abs(y)>abs(x):
+  a=abs(y)-abs(x)
+  if y>0:
+    print(a+1)
+  else:
+    print(a+2)
+else:
+  a=abs(abs(y)-abs(x))
+  if y<0:
+    print(a)
+  else:
+    print(a+1)",,"x,y=map(int,input().split())
+if x==0:
+  a=abs(y-x)
+  if y<0:
+    print(a+1)
+  else:
+    print(a)
+  exit()
+if y==0:
+  a=abs(x-y)
+  if x<=0:
+    print(a)
+  else:
+    print(a+1)
+  exit()
+if x>0:
+  if abs(y)>=x:
+    a=abs(y)-x
+    if y<0:
+      print(a+1)
+    else:
+      print(a)
+  else:
+    a=x-abs(y)
+    if y<0:
+      print(a+1)
+    else:
+      print(a+2)
+  exit()
+#x<0
+if abs(y)>abs(x):
+  a=abs(y)-abs(x)
+  if y>0:
+    print(a+1)
+  else:
+    print(a+2)
+else:
+  a=abs(abs(y)-abs(x))
+  if y<0:
+    print(a)
+  else:
+    print(a+1)",0,,,,38.147183,0
+u536034761,"x, y = map(int, input().split())
+if abs(y) > abs(x):
+    if (x >= 0 and y > 0):
+        print(abs(y - x))
+    elif x * y <= 0:
+        print(abs(y) - abs(x) + 1)
+    else:
+        print(abs(y) - abs(x) + 2)
+else:
+    if x > 0 and y > 0:
+        print(x - y + 2)
+    elif x * y < 0:
+        print(abs(x) - abs(y) + 1)
+    else:
+        print(abs(x - y))","x, y = map(int, input().split())
+ref_X = abs(x)
+ref_Y = abs(y)
+if x < y:
+    if x * y > 0:
+        print(abs(y - x))
+    elif x * y == 0:
+        print(abs(ref_X - ref_Y))
+    else:
+        print(abs(ref_X - ref_Y) + 1)
+elif x * y > 0:
+    print(x - y + 2)
+elif x * y < 0:
+    print(abs(ref_X - ref_Y) + 1)
+else:
+    print(abs(ref_X - ref_Y) + 1)","x, y = map(int, input().split())
+if abs(y) > abs(x):
+    if (x >= 0 and y > 0):
+        print(abs(y - x))
+    elif x * y <= 0:
+        print(abs(y) - abs(x) + 1)
+    else:
+        print(abs(y) - abs(x) + 2)
+else:
+    if x > 0 and y > 0:
+        print(x - y + 2)
+    elif x * y < 0 or (y == 0 and x > 0):
+        print(abs(x) - abs(y) + 1)
+    else:
+        print(abs(x - y))",1,63,0.18181818181818182,,2.656942,0
+u327466606,"x,y = map(int,input().split())
+
+f = lambda x,y: y-x if y >= x else float('inf')
+
+print(min(f(x,y), 1+f(-x,y), 2+f(-x,-y)))","x, y = map(int, input().split())
+f = lambda x: 10 ** 10 if x < 0 else x
+print(min(f(y - x), f(y + x) + 1, f(-y - x) + 1, f(-y + x) + 2))","x,y = map(int,input().split())
+
+f = lambda x,y: y-x if y >= x else float('inf')
+
+print(min(f(x,y), 1+f(-x,y), 2+f(-x,-y), 1+f(x,-y)))",1,45,0.21052631578947367,,0.804712,0
+u456353530,"x, y = list(map(int, input().split()))
+
+if x == y == 0:
+  print(0)
+  exit()
+
+ans = abs(abs(x) - abs(y))
+
+if (x < 0) == (y > 0):
+  ans += 1
+elif (x < 0) and (x > y):
+  ans += 2
+
+print(ans)",,"x, y = list(map(int, input().split()))
+
+ans = abs(abs(x) - abs(y))
+
+if (x < 0) == (y > 0):
+  ans += 1
+elif (x > y):
+  ans += 2
+
+print(ans)",0,,,,1.784466,0
+u554784585,"x,y=map(int,input().split())
+
+if y<0<x or x<0<y:
+    print(abs(abs(y)-abs(x))+1)
+elif x<y:
+    print(y-x)
+elif y<x:
+    print(x-y+2)
+else:
+    print(0)
+","x, y = map(int, input().split())
+ref_a_cnt = abs(abs(x) - abs(y))
+if x + ref_a_cnt == y:
+    print(ref_a_cnt)
+elif x + ref_a_cnt == -y:
+    print(ref_a_cnt + 1)
+elif x - ref_a_cnt == -y:
+    print(ref_a_cnt + 1)
+else:
+    print(ref_a_cnt + 2)","x,y=map(int,input().split())
+
+if y<0<x or x<0<y:
+    print(abs(abs(y)-abs(x))+1)
+elif x<y and x!=0:
+    print(y-x)
+elif y<x and x!=0 and y!=0:
+    print(x-y+2)
+elif x<y and x==0:
+    print(y-x)
+elif y<x and x==0 or y==0:
+    print(x-y+1)
+",1,70,0.5104895104895105,,2.163716,0
+u357751375,"x,y = map(int,input().split())
+if 0 <= x < y or x < y <= 0:
+    print(abs(y-x))
+elif 0 <= y < x or y < x <= 0:
+    print(abs(x-y) + 1)
+elif 0 < y < x or y < x < 0:
+    print(abs(x-y) + 2)
+elif x < y:
+    if y < abs(x):
+        print(abs(x)-y + 1)
+    else:
+        print(y-abs(x) + 1)
+else:
+    if x < abs(y):
+        print(abs(y)-x + 1)
+    else:
+        print(x-abs(y) + 1)","x, y = map(int, input().split())
+if x * y < 0:
+    if False:
+        if x * y < 0:
+            pass
+        pass
+    print(abs(abs(x) - abs(y)) + 1)
+elif x * y == 0:
+    pass
+    if x < y:
+        print(y - x)
+    else:
+        print(x - y + 1)
+    pass
+elif x < y:
+    print(y - x)
+else:
+    print(x - y + 2)
+pass","x,y = map(int,input().split())
+if 0 <= x < y or x < y <= 0:
+    print(abs(y-x))
+elif 0 < y < x or y < x < 0:
+    print(abs(x-y) + 2)
+elif x < y:
+    if y < abs(x):
+        print(abs(x)-y + 1)
+    else:
+        print(y-abs(x) + 1)
+else:
+    if x < abs(y):
+        print(abs(y)-x + 1)
+    else:
+        print(x-abs(y) + 1)",1,119,0.2272727272727273,,20.791015,0
+u794448346,"x,y = map(int,input().split())
+ax = abs(x)
+ay = abs(y)
+if ax == ay and x != y:
+    a = 1
+elif x > y and 0 <= y:
+    a = ax - ay + 2
+elif x > y and 0 > y:
+    if ay > ax and x >= 0:
+        a = ay - ax + 1
+    elif ay > ax and x < 0:
+        a = ay - ax + 2
+    elif ax > ay:
+        a = ax - ay + 1
+elif y > x and x < 0 and ay > ax:
+    a = ay - ax + 1
+elif y > x and x < 0 and y > 0 and ax > ay:
+    a = ax - ay + 1
+else:
+    a = y-x
+print(a)","x, y = map(int, input().split())
+ax = abs(x)
+ay = abs(y)
+if ax == ay and x != y:
+    pass
+elif x > y and 0 <= y:
+    pass
+pass
+if abs(y) > abs(x):
+    pass
+    if x >= 0 and y > 0:
+        print(abs(y - x))
+    elif x * y <= 0:
+        print(abs(y) - abs(x) + 1)
+    else:
+        print(abs(y) - abs(x) + 2)
+    pass
+elif x > 0 and y > 0:
+    print(x - y + 2)
+elif x * y < 0 or (y == 0 and x > 0):
+    print(abs(x) - abs(y) + 1)
+else:
+    print(abs(x - y))","x,y = map(int,input().split())
+ax = abs(x)
+ay = abs(y)
+if ax == ay and x != y:
+    a = 1
+elif x > y and 0 < y:
+    a = ax - ay + 2
+elif x > y and y == 0:
+    a = ax - ay + 1
+elif x > y and 0 > y:
+    if ay > ax and x >= 0:
+        a = ay - ax + 1
+    elif ay > ax and x < 0:
+        a = ay - ax + 2
+    elif ax > ay:
+        a = ax - ay + 1
+elif y > x and x < 0 and ay > ax:
+    a = ay - ax + 1
+elif y > x and x < 0 and y > 0 and ax > ay:
+    a = ax - ay + 1
+else:
+    a = y-x
+print(a)",1,151,0.15168539325842695,,19.777381,0
+u397384480,"x,y = map(int,input().split())
+if y == x:
+    print(0)
+else:
+    if abs(y) >= abs(x):
+        tmp = abs(y)-abs(x)
+        if x>=0 and y>=0:
+            print(tmp)
+        elif x>=0 and y<0:
+            print(tmp+1)
+        elif x<0 and y>=0:
+            print(tmp+1)
+        else:
+            print(tmp+2)
+    else:
+        if x>=0 and y>=0:
+            print(-y+x+2)
+        elif x>=0 and y<0:
+            print(x+y+1)
+        elif x<0 and y>=0:
+            print(-y-x+1)
+        else:
+            print(y-x)","x, y = map(int, input().split())
+if y == x:
+    pass
+else:
+    pass
+if x <= y:
+    if 0 <= x or y <= 0:
+        print(y - x)
+    elif abs(x) >= abs(y):
+        print(abs(x) - abs(y) + 1)
+    else:
+        print(1 + abs(y) - abs(x))
+    pass
+elif 0 < y or x < 0:
+    print(-y + x + 2)
+elif x == 0 or y == 0:
+    print(abs(x - y) + 1)
+elif abs(x) >= abs(y):
+    print(1 + abs(x) - abs(y))
+else:
+    print(abs(y) - abs(x) + 1)
+pass","x,y = map(int,input().split())
+if y == x:
+    print(0)
+elif y == 0:
+    if x > 0:
+        print(x+1)
+    else:
+        print(-x)
+else:
+    if abs(y) >= abs(x):
+        tmp = abs(y)-abs(x)
+        if x>=0 and y>=0:
+            print(tmp)
+        elif x>=0 and y<0:
+            print(tmp+1)
+        elif x<0 and y>=0:
+            print(tmp+1)
+        else:
+            print(tmp+2)
+    else:
+        if x>=0 and y>=0:
+            print(-y+x+2)
+        elif x>=0 and y<0:
+            print(x+y+1)
+        elif x<0 and y>=0:
+            print(-y-x+1)
+        else:
+            print(y-x)",1,142,0.1695906432748538,,18.588203,0
+u349449706,"x, y = map(int, input().split())
+if x>=0 and y>=0 or x<0 and y<0:
+    if x<=y:
+        print(abs(abs(y)-abs(x)))
+    else:
+        print(abs(abs(y)-abs(x))+2)
+else:
+    print(abs(abs(y)-abs(x))+1)
+","x, y = map(int, input().split())
+if x * y < 0 or (x * y == 0 and x > y):
+    pass
+    if x <= y:
+        pass
+    print(abs(abs(x) - abs(y)) + 1)
+elif x <= y:
+    print(y - x)
+else:
+    print(x - y + 2)
+pass","x, y = map(int, input().split())
+ans = []
+if y-x>=0:
+    ans.append(y-x)
+if -y-x>=0:
+    ans.append(-y-x+1)
+if y+x>=0:
+    ans.append(y+x+1)
+if -y+x>=0:
+    ans.append(-y+x+2)
+print(min(ans))
+",1,57,0.6524390243902439,,12.922848,0
+u289288647,"x, y = map(int, input().split())
+
+if y >= x:
+    if x >= 0:
+        print(y-x)
+    elif y >= 0:
+        if y >= abs(x):  
+            print(min(y-x, y+x+1))
+        else:
+            print(-y-x+1)
+    else:
+        print(-x+y)
+else:
+    if y >= 0:
+        print(min(x-y+2, y+x+1))
+    elif x >= 0:
+        if x >= abs(y):  
+            print(min(x-y, x+y+1))
+        else:
+            print(-y-x+1)
+    else:
+        print(-y+x+2)
+    
+",,"x, y = map(int, input().split())
+
+if y >= x:
+    if x >= 0:
+        print(y-x)
+    elif y >= 0:
+        if y >= abs(x):  
+            print(min(y-x, y+x+1))
+        else:
+            print(min(-y-x+1, y-x))
+    else:
+        print(-x+y)
+else:
+    if y >= 0:
+        print(min(x-y+2, y+x+1))
+    elif x >= 0:
+        if x >= abs(y):  
+            print(min(x-y, x+y+1))
+        else:
+            print(-y-x+1)
+    else:
+        print(-y+x+2)
+    
+",0,,,,18.009949,0
+u072717685,"import sys
+read = sys.stdin.read
+readlines = sys.stdin.readlines
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        if y == 0:
+            print(-x)
+        elif x == 0:
+            print(y)
+        elif 0 < x and 0 < y:
+            print(y - x)
+        elif x < 0 and 0 < y:
+            print(y - abs(x) + 1)
+        else:
+            print(y - x)
+    else:
+        if y == 0:
+            print(x + 1)
+        elif x == 0:
+            print(-y + 1)
+        elif 0 < y and 0 < x:
+            print(x - y + 2)
+        elif y < 0 and 0 < x:
+            print(x - abs(y) + 1)
+        else:
+            print((x - y) + 2)
+
+if __name__ == '__main__':
+    main()
+",,"import sys
+read = sys.stdin.read
+readlines = sys.stdin.readlines
+def main():
+    x, y = map(int, input().split())
+    if x < y:
+        if y == 0:
+            print(-x)
+        elif x == 0:
+            print(y)
+        elif 0 < x and 0 < y:
+            print(y - x)
+        elif x < 0 and 0 < y:
+            print(abs(y - abs(x)) + 1)
+        else:
+            print(y - x)
+    else:
+        if y == 0:
+            print(x + 1)
+        elif x == 0:
+            print(-y + 1)
+        elif 0 < y and 0 < x:
+            print(x - y + 2)
+        elif y < 0 and 0 < x:
+            print(abs(x - abs(y)) + 1)
+        else:
+            print((x - y) + 2)
+
+if __name__ == '__main__':
+    main()
+",0,,,,0.850209,0
+u501451051,"x, y = map(int, input().split())
+
+if x >= 0 and y >= 0:
+    if y > x:
+        print(y-x)
+    else:
+        print(x+y)
+elif x >= 0 and y < 0:
+    if abs(y) < x:
+        print(1+x-abs(y))
+    else:
+        print(1+abs(y)-x)
+elif x < 0 and y >= 0:
+    if abs(x) == y:
+        print(1)
+    elif abs(x) < y:
+        print(1+y-abs(x))
+    else:
+        t1 = abs(x)+y
+        t2 = abs(x)-y+1
+        print(min(t1,t2))
+else:
+    if x < y:
+        print(abs(x)-abs(y))
+    else:
+        print(1+abs(y)-abs(x)+1)","x, y = map(int, input().split())
+if x >= 0 and y >= 0:
+    pass
+if abs(y) > abs(x):
+    if True:
+        pass
+    pass
+    if x >= 0 and y >= 0:
+        print(y - x)
+    elif x < 0 and y < 0:
+        print(abs(y) - abs(x) + 2)
+    else:
+        print(abs(y) - abs(x) + 1)
+    pass
+elif abs(y) < abs(x):
+    pass
+    if x > 0 and y > 0:
+        print(x - y + 2)
+    elif x <= 0 and y <= 0:
+        print(abs(abs(y) - abs(x)))
+    else:
+        print(abs(abs(y) - abs(x)) + 1)
+    pass
+elif x == y:
+    print(abs(x) - abs(y))
+else:
+    print('1')
+pass","x, y = map(int, input().split())
+
+if x >= 0 and y >= 0:
+    if y > x:
+        print(y-x)
+    else:
+        print(x+1)
+elif x >= 0 and y < 0:
+    if abs(y) < x:
+        print(1+x-abs(y))
+    else:
+        print(1+abs(y)-x)
+elif x < 0 and y >= 0:
+    if abs(x) == y:
+        print(1)
+    elif abs(x) < y:
+        print(1+y-abs(x))
+    else:
+        t1 = abs(x)+y
+        t2 = abs(x)-y+1
+        print(min(t1,t2))
+else:
+    if x < y:
+        print(abs(x)-abs(y))
+    else:
+        print(1+abs(y)-abs(x)+1)",1,157,0.012578616352201255,,21.950894,0
+u397953026,"x,y = map(int,input().split())
+ch = max(abs(x),abs(y)) - min(abs(x),abs(y))
+if x <= 0 and y >= 0 or x == y:
+    print(ch)
+elif x*y <= 0:
+    print(ch+1)
+elif x*y >= 0 and x >= y:
+    print(ch+2)
+else:
+    print(ch)","x, y = map(int, input().split())
+ch = max(abs(x), abs(y)) - min(abs(x), abs(y))
+if x + ch == y:
+    print(ch)
+elif x * y <= 0:
+    print(ch + 1)
+elif x - ch == -y:
+    print(ch + 2)
+else:
+    print(ch + 2)","x,y = map(int,input().split())
+ch = max(abs(x),abs(y)) - min(abs(x),abs(y))
+if x <= 0 and y == 0 or x == y or x == 0 and y > 0:
+    print(ch)
+elif x*y <= 0:
+    print(ch+1)
+elif x*y >= 0 and x >= y:
+    print(ch+2)
+else:
+    print(ch)",1,28,0.3170731707317073,,1.481769,0
+u981931040,"x, y = map(int, input().split())
+ans = 0
+if x <= y:
+    if x >= 0 and y >= 0:
+        ans = y - x
+    elif x < 0 and y < 0:
+        ans = abs(x - y)
+    else:
+        if abs(x) <= y:
+            ans = min(y - abs(x) + 1, y - x)
+        else:
+            ans = min(abs(x) - y + 1, y - x)
+else:
+    if x >= 0 and y >= 0:
+        ans = x - y + 2
+    elif x < 0 and y < 0:
+        ans = abs(y - x) + 2
+    else:
+        if abs(x) <= abs(y):
+            ans = abs(y) - x + 1
+        else:
+            ans = x - abs(y) + 1
+print(ans)","x, y = map(int, input().split())
+ans = 0
+if x >= 0:
+    if y >= x:
+        print(y - x)
+    elif -x <= y <= 0:
+        print(y - -x + 1)
+    elif 0 < y < x:
+        print(x - y + 2)
+    else:
+        print(-y - x + 1)
+elif y >= abs(x):
+    print(y - -x + 1)
+elif x <= y <= 0:
+    print(y - x)
+elif 0 < y < abs(x):
+    print(abs(x) - y + 1)
+else:
+    print(abs(y) - abs(x) + 2)","x, y = map(int, input().split())
+ans = 0
+if x <= y:
+    if x >= 0 and y >= 0:
+        ans = y - x
+    elif x < 0 and y < 0:
+        ans = abs(x - y)
+    else:
+        if abs(x) <= y:
+            ans = min(y - abs(x) + 1, y - x)
+        else:
+            ans = min(abs(x) - y + 1, y - x)
+else:
+    if x >= 0 and y >= 0:
+        ans = min(y + x + 1, x - y + 2)
+    elif x < 0 and y < 0:
+        ans = abs(y - x) + 2
+    else:
+        if abs(x) <= abs(y):
+            ans = abs(y) - x + 1
+        else:
+            ans = x - abs(y) + 1
+print(ans)",1,137,0.08053691275167785,,3.578085,0
+u576335153,"def solver(x, y):
+    ans1 = abs(x) + abs(y)
+    ans2 = abs(abs(x) - abs(y))
+    res = 0
+    if x < y:
+        if x * y >= 0:
+            res = ans2
+        else:
+            res = 1 + ans2
+    else:
+        if 0 < y:
+            res = 1 + ans1
+        elif x * y <= 0:
+            res = 1 + ans2
+        else:
+            if abs(x) <= abs(y):
+                res = 2 + ans2
+            else:
+                res = 1 + ans1
+    return res
+
+x, y = map(int, input().split())
+print(solver(x, y))",,"def solver(x, y):
+    ans1 = abs(x) + abs(y)
+    ans2 = abs(abs(x) - abs(y))
+    res = 0
+    if x < y:
+        if x * y >= 0:
+            res = ans2
+        else:
+            res = 1 + ans2
+    else:
+        if 0 < y:
+            res = 2 + ans2
+        elif x * y <= 0:
+            res = 1 + ans2
+        else:
+            if abs(x) <= abs(y):
+                res = 2 + ans2
+            else:
+                res = 1 + ans1
+    return res
+
+x, y = map(int, input().split())
+print(solver(x, y))",0,,,,0.779632,0
+u503111914,"x,y = map(int,input().split())
+if x <= y:
+  print(y - x)
+else:
+  print(abs(-x-y)+ 1)","x, y = map(int, input().split())
+if x <= y:
+    print(min(y - x, abs(y + x) + 1))
+else:
+    print(min(abs(y + x) + 1, abs(y - x) + 2))","x,y = map(int,input().split())
+if abs(x) == abs(y):
+  print(0 if x == y else 1)
+elif x < y:
+  print(min(y - x,abs(y + x) + 1))
+else:
+  print(min(abs(y+x),abs(y-x))+ 1 if x * y <= 0 else min(abs(y+x),abs(y-x))+ 2)
+",1,35,0.7222222222222222,,1.184864,0
+u776014292,"x, y = map(int, input().split());
+
+if (x >= 0 and y >= 0):
+  if (y >= x):
+    print(y - x);
+  else:
+    print(x - y + 2);
+elif (x >= 0 and y <= 0):
+  if (abs(y) >= x):
+    print(abs(y) - x + 1);
+  else:
+    print(x + y + 1);
+elif (x <= 0 and y >= 0):
+  if (y >= abs(x)):
+    print(y - abs(x) + 1);
+  else:
+    print(abs(x) - y + 1);
+elif (x <= 0 and y <= 0):
+  if (abs(y) == abs(x)):
+    print(0);
+  elif (abs(y) > abs(x)):
+    print(abs(y) - abs(x) + 2);
+  else:
+    print(y - x);
+else:
+  print(0);","x, y = map(int, input().split())
+if x >= 0 and y >= 0:
+    pass
+    if y >= x:
+        pass
+pass
+if x >= 0 and y >= 0:
+    pass
+    if abs(y) >= x:
+        print(y - x)
+    else:
+        print(x + 1)
+    pass
+elif x >= 0 and y < 0:
+    pass
+    if abs(y) < x:
+        print(1 + x - abs(y))
+    else:
+        print(1 + abs(y) - x)
+    pass
+elif x < 0 and y >= 0:
+    pass
+    if abs(y) == abs(x):
+        print(1)
+    elif abs(y) > abs(x):
+        print(1 + y - abs(x))
+    else:
+        ref_t1 = abs(x) + y
+        ref_t2 = abs(x) - y + 1
+        print(min(ref_t1, ref_t2))
+    pass
+elif x < y:
+    print(abs(x) - abs(y))
+else:
+    print(1 + abs(y) - abs(x) + 1)
+pass","x, y = map(int, input().split());
+
+MAX = 100000000000000;
+
+# どれが最小かを考える
+# そのまま近づける
+a = y - x;
+if (a < 0):
+  a = MAX;
+# xを反転させて近づける
+b = y + x;
+if (b < 0):
+  b = MAX;
+# yを反転
+c = y * (-1) - x;
+if (c < 0):
+  c = MAX;
+# xとyの両方を反転させて近づける
+d = y * (-1) + x;
+if (d < 0):
+  d = MAX;
+
+# 最小を求める
+ans = min(a, b + 1, c + 1, d + 2);
+print(ans);",1,152,0.5644699140401146,,22.689228,0
+u349444371,"x,y=map(int,input().split())
+ans=0
+if x>=0 and y>=0 and y>=x:
+    print(y-x)
+elif x>=0 and y>=0 and y<x:
+    x*=-1
+    ans=+1#xを負にする
+    ans+=abs(x)-y
+    ans+=1#xを正に戻す
+    print(ans)
+elif x>y and x>0 and y<0:
+    if abs(x)>=abs(y):
+        x*=-1
+        ans=+1#xを負にする
+        ans+=abs(x)-abs(y)
+        print(ans)
+    elif abs(x)<abs(y):
+        ans+=abs(y)-abs(x)
+        ans+=1#xを負にする
+        print(ans)
+elif x==0 and y<0:
+    print(-y)
+elif x<0 and y>0:
+    if abs(x)>=abs(y):
+        ans+=abs(x)-abs(y)
+        ans+=1#xを正にする
+        print(ans)
+    elif abs(x)<abs(y):
+        x*=-1
+        ans+=1#xを正にする
+        ans+=(y-x)
+        print(ans)
+elif x<0 and y==0:
+    print(y-x)
+elif x<0 and y<0:
+    if x<=y:
+        print(y-x)
+    elif x>y:
+        x*=-1#xを正にする
+        ans+=1
+        ans+=abs(y)-abs(x)
+        ans+=1#xを負に戻す
+        print(ans)","x, y = map(int, input().split())
+ans = 0
+if x >= 0 and y >= 0 and (y >= x):
+    ans = abs(y) - abs(x)
+elif x >= 0 and y >= 0 and (y < x):
+    pass
+pass
+if x == -y:
+    ans = 1
+elif x == 0 and x < y:
+    ans = abs(y) - abs(x)
+elif x < 0 and 0 < y and (abs(x) < abs(y)):
+    ans = 1 + abs(y) - abs(x)
+elif x < 0 and 0 < y and (abs(x) > abs(y)):
+    ans = 1 + abs(x) - abs(y)
+elif x < y and y < 0:
+    ans = abs(x) - abs(y)
+elif x < y and y == 0:
+    ans = abs(x) - abs(y)
+elif 0 < y and y < x:
+    ans = 2 + abs(x) - abs(y)
+elif y == 0 and y < x:
+    ans = 1 + abs(x) - abs(y)
+elif y < 0 and 0 < x and (abs(x) > abs(y)):
+    ans = 1 + abs(x) - abs(y)
+elif y < 0 and 0 < x and (abs(x) < abs(y)):
+    ans = 1 + abs(y) - abs(x)
+elif y < x and x < 0:
+    ans = 2 + abs(y) - abs(x)
+elif x > y:
+    ans = 1 + abs(y)
+print(ans)","x,y=map(int,input().split())
+ans=0
+if x>=0 and y>=0 and y>=x:
+    print(y-x)
+elif x>=0 and y>0 and y<x:
+    x*=-1
+    ans=+1#xを負にする
+    ans+=abs(x)-y
+    ans+=1#xを正に戻す
+    print(ans)
+elif x>0 and y==0:
+    print(x+1)
+elif x>y and x>0 and y<0:
+    if abs(x)>=abs(y):
+        x*=-1
+        ans=+1#xを負にする
+        ans+=abs(x)-abs(y)
+        print(ans)
+    elif abs(x)<abs(y):
+        ans+=abs(y)-abs(x)
+        ans+=1#xを負にする
+        print(ans)
+elif x==0 and y<0:
+    print(-y+1)
+elif x<0 and y>0:
+    if abs(x)>=abs(y):
+        ans+=abs(x)-abs(y)
+        ans+=1#xを正にする
+        print(ans)
+    elif abs(x)<abs(y):
+        x*=-1
+        ans+=1#xを正にする
+        ans+=(y-x)
+        print(ans)
+elif x<0 and y==0:
+    print(y-x)
+elif x<0 and y<0:
+    if x<=y:
+        print(y-x)
+    elif x>y:
+        x*=-1#xを正にする
+        ans+=1
+        ans+=abs(y)-abs(x)
+        ans+=1#xを負に戻す
+        print(ans)",1,297,0.08049535603715169,,40.018735,0
+u678167152,"def solve():
+  x, y = map(int, input().split())
+  if y==0:
+    return abs(x)+(x>0)
+  if y<x and x<0:
+    return abs(abs(y)-abs(x))+2
+  if x>y and y>0:
+    return abs(abs(y)-abs(x))+2
+  return abs(abs(y)-abs(x))+(x*y<0)
+print(solve())","ref_a, ref_b = map(int, input().split())
+ans = abs(abs(ref_a) - abs(ref_b))
+if ref_a * ref_b < 0:
+    ans += 1
+if ref_b < ref_a < 0 or 0 < ref_b < ref_a:
+    ans += 2
+pass
+if ref_a == 0 and ref_b < 0:
+    ans += 1
+pass
+if ref_b == 0 and 0 < ref_a:
+    ans += 1
+elif True:
+    pass
+print(ans)","def solve():
+  x, y = map(int, input().split())
+  if y==0:
+    return abs(x)+(x>0)
+  if x==0:
+    return abs(y)+(y<0)
+  if y<x and x<0:
+    return abs(abs(y)-abs(x))+2
+  if x>y and y>0:
+    return abs(abs(y)-abs(x))+2
+  return abs(abs(y)-abs(x))+(x*y<0)
+print(solve())",1,112,0.14503816793893132,,28.472618,0
+u603958124,"from math import ceil,floor,factorial,gcd,sqrt,log2,cos,sin,tan,acos,asin,atan,degrees,radians,pi,inf,comb
+from itertools import accumulate,groupby,permutations,combinations,product,combinations_with_replacement
+from collections import deque,defaultdict,Counter
+from bisect import bisect_left,bisect_right
+from operator import itemgetter
+from heapq import heapify,heappop,heappush
+from queue import Queue,LifoQueue,PriorityQueue
+from copy import deepcopy
+from time import time
+from functools import reduce
+import string
+import sys
+sys.setrecursionlimit(10 ** 7)
+def input() : return sys.stdin.readline().strip()
+def INT()   : return int(input())
+def MAP()   : return map(int,input().split())
+def LIST()  : return list(MAP())
+
+x, y = MAP()
+
+if 0 <= x < y:
+    ans = y - x
+elif 0 <= y < x:
+    ans = y + x + 1
+elif x <= 0 <= y:
+    if abs(x) <= abs(y):
+        ans = min(y-x, y+x+1)
+    else:
+        ans = min(y-x, -y-x+1)
+elif y <= 0 <= x:
+    if abs(x) <= abs(y):
+        ans = - y - x + 1
+    else:
+        ans = y + x + 1
+elif x < y <= 0:
+    ans = y - x
+elif y < x <= 0:
+    ans = min(-y-x+1, -y+x+2)
+
+print(ans)",,"from math import ceil,floor,factorial,gcd,sqrt,log2,cos,sin,tan,acos,asin,atan,degrees,radians,pi,inf,comb
+from itertools import accumulate,groupby,permutations,combinations,product,combinations_with_replacement
+from collections import deque,defaultdict,Counter
+from bisect import bisect_left,bisect_right
+from operator import itemgetter
+from heapq import heapify,heappop,heappush
+from queue import Queue,LifoQueue,PriorityQueue
+from copy import deepcopy
+from time import time
+from functools import reduce
+import string
+import sys
+sys.setrecursionlimit(10 ** 7)
+def input() : return sys.stdin.readline().strip()
+def INT()   : return int(input())
+def MAP()   : return map(int,input().split())
+def LIST()  : return list(MAP())
+
+x, y = MAP()
+
+if 0 <= x < y:
+    ans = y - x
+elif 0 <= y < x:
+    ans = min(y+x+1, -y+x+2)
+elif x <= 0 <= y:
+    if abs(x) <= abs(y):
+        ans = min(y-x, y+x+1)
+    else:
+        ans = min(y-x, -y-x+1)
+elif y <= 0 <= x:
+    if abs(x) <= abs(y):
+        ans = - y - x + 1
+    else:
+        ans = y + x + 1
+elif x < y <= 0:
+    ans = y - x
+elif y < x <= 0:
+    ans = min(-y-x+1, -y+x+2)
+
+print(ans)",0,,,,20.157693,0
+u299172013,"def solve(x: int, y: int) -> int:
+
+    if x < 0 and y < 0 and x < y:
+        return abs(abs(x) - abs(y))
+    if x > 0 and y > 0 and x > y:
+        return abs(abs(x) - abs(y)) + 2
+    m = 0
+    if x < 0:
+        m += 1
+    if y < 0:
+        m += 1
+    return abs(abs(x) - abs(y)) + m
+
+
+if __name__ == ""__main__"":
+
+    x, y = [int(x) for x in input().split("" "")]
+
+    print(solve(x, y))
+",,"def solve(x: int, y: int) -> int:
+    if abs(x) > abs(y):
+        return solve(-y, -x)
+    m = 0
+    if x < 0:
+        m += 1
+    if y < 0:
+        m += 1
+    return abs(y) - abs(x) + m
+
+
+def test():
+    assert solve(1, 10) == 9
+    assert solve(-1, 10) == 10
+    assert solve(1, -10) == 10
+    assert solve(-1, -10) == 11
+
+    assert solve(10, 1) == 11
+    assert solve(-10, 1) == 10
+    assert solve(-10, -1) == 9
+    assert solve(10, -1) == 10
+
+    assert solve(10, 20) == 10
+    assert solve(10, -10) == 1
+    assert solve(-10, -20) == 12
+    assert solve(-10, 10) == 1
+
+
+if __name__ == ""__main__"":
+
+    x, y = [int(x) for x in input().split("" "")]
+
+    print(solve(x, y))",0,,,,0.759659,0
+u989306199,"x, y = map(int, input().split())
+ans = 10**9 + 10
+if x == y:
+    ans = 0
+elif y > x:
+    ans = y - x
+else:
+    #1
+    ans1 = y-x
+    ans2 = (-y)-(-x) + 2
+    ans3 = y-(-x) + 1
+    ans4 = (-y)-x + 1
+    if ans1 > 0:
+        ans = min(ans, ans1)
+    if ans2 > 0:
+        ans = min(ans, ans2)
+    if ans3 > 0:
+        ans = min(ans, ans3)
+    if ans4 > 0:
+        ans = min(ans, ans4)
+
+print(ans)
+",,"x, y = map(int, input().split())
+ans = 10**9 + 10
+if x == y:
+    ans = 0
+else:
+    #1
+    ans1 = y-x
+    ans2 = (-y)-(-x) + 2
+    ans3 = y-(-x) + 1
+    ans4 = (-y)-x + 1
+    if ans1 > 0:
+        ans = min(ans, ans1)
+    if ans2 > 0:
+        ans = min(ans, ans2)
+    if ans3 > 0:
+        ans = min(ans, ans3)
+    if ans4 > 0:
+        ans = min(ans, ans4)
+
+print(ans)
+",0,,,,14.090117,0
+u835283937,"def main():
+    x, y = map(int, input().split())
+
+    if x == y:
+        print(0)
+
+    elif abs(x) == abs(y):
+        print(1)
+
+    elif x < y:
+        if abs(y) > abs(x):
+            print(abs(y) - abs(x))
+        else:
+            print(abs(x) - abs(y) + 1)
+
+    elif x > y:
+        if x <= 0 and y <= 0:
+            c1 = abs(y) - x + 1
+            c2 = abs(y) - abs(x) + 2
+            print(min(c1, c2))
+
+        elif x <= 0 and y >= 0:
+            pass
+
+        elif x >= 0 and y <= 0:
+            print(max(abs(x), abs(y)) - min(abs(x), abs(y)) + 1)
+            
+        elif x >= 0 and y >= 0:
+            print(x - y + 2)
+
+if __name__ == ""__main__"":
+    main()","x, y = map(int, input().split())
+if abs(x) <= abs(y):
+    ref_c = abs(abs(x) - abs(y))
+    if True:
+        if x >= 0 and y >= 0:
+            print(ref_c)
+        elif x < 0 and y < 0:
+            print(ref_c + 2)
+        else:
+            print(ref_c + 1)
+        pass
+else:
+    ref_c = abs(abs(x) - abs(y))
+    if x <= 0 and y <= 0:
+        print(ref_c)
+    elif y == 0 and x >= 0:
+        print(ref_c + 1)
+    elif x >= 0 and y >= 0:
+        print(ref_c + 2)
+    elif x >= 0 and y >= 0:
+        print(x - y + 2)
+    else:
+        print(ref_c + 1)
+    pass","def main():
+    x, y = map(int, input().split())
+
+    if x == y:
+        print(0)
+
+    elif abs(x) == abs(y):
+        print(1)
+
+    elif x < y:
+        if x >= 0 and y >= 0:
+            print(y - x)
+
+        elif x >= 0 and y <= 0:
+            pass
+
+        elif x <= 0 and y >= 0:
+            if y == 0:
+                print(abs(x))
+            else:
+                if abs(y) > abs(x):
+                    print(abs(y) - abs(x) + 1)
+                else:
+                    print(abs(x) - abs(y) + 1)
+
+        elif x <= 0 and y <= 0:
+            print(abs(x) - abs(y))
+
+    elif x > y:
+        if x <= 0 and y <= 0:
+            c1 = abs(y) - x + 1
+            c2 = abs(y) - abs(x) + 2
+            print(min(c1, c2))
+
+        elif x <= 0 and y >= 0:
+            pass
+
+        elif x >= 0 and y <= 0:
+            print(max(abs(x), abs(y)) - min(abs(x), abs(y)) + 1)
+            
+        elif x >= 0 and y >= 0:
+            print(x - y + 2)
+
+if __name__ == ""__main__"":
+    main()",1,179,0.35144927536231885,,21.691336,0
+u131464432,"x,y = map(int,input().split())
+if ((x >= 0 and y >= 0) or (x < 0 and y < 0)) and x < y:
+    print(abs(x-y))
+elif (x >= 0 and y >= 0) and y < x:
+    print(abs(x-y+2))
+elif (x < 0 and y < 0) and y < x:
+    print(abs(x-y)+2)
+elif x == -y:
+    print(1)
+else:
+    print(abs(abs(x)-abs(y))+(y != 0))",,"x,y = map(int,input().split())
+if ((x >= 0 and y >= 0) or (x < 0 and y < 0)) and x < y:
+    print(abs(x-y))
+elif (x >= 0 and y >= 0) and y < x:
+    print(abs(x-y+1+(y != 0)))
+elif (x < 0 and y < 0) and y < x:
+    print(abs(x-y)+2)
+elif x == -y:
+    print(1)
+else:
+    print(abs(abs(x)-abs(y))+(y != 0))",0,,,,1.762615,0
+u509739538,"from collections import defaultdict
+from collections import deque
+from collections import Counter
+import itertools
+import math
+
+def readInt():
+  return int(input())
+def readInts():
+  return list(map(int, input().split()))
+def readChar():
+  return input()
+def readChars():
+  return input().split()
+
+x,y = readInts()
+
+if abs(x)==abs(y):
+  if x==y:
+    print(0)
+  else:
+    print(1)
+elif x==0:
+  if y>0:
+    print(y)
+  else:
+    print(y+1)
+elif y==0:
+  if x>0:
+    print(1+x)
+  else:
+    print(abs(x))
+elif abs(x)<abs(y):
+  if x>0 and y>0:
+    print(y-x)
+  elif x>0 and y<0:
+    print(abs(y)-x+1)
+  elif x<0 and y>0:
+    print(x+y+1)
+  else:
+    print(abs(y)-abs(x)+2)
+else:
+  if x>0 and y>0:
+    print(2+x-y)
+  elif x>0 and y<0:
+    print(1+x+y)
+  elif x<0 and y>0:
+    print(1+abs(x)-y)
+  else:
+    print(y-x)",,"from collections import defaultdict
+from collections import deque
+from collections import Counter
+import itertools
+import math
+
+def readInt():
+  return int(input())
+def readInts():
+  return list(map(int, input().split()))
+def readChar():
+  return input()
+def readChars():
+  return input().split()
+
+x,y = readInts()
+
+if abs(x)==abs(y):
+  if x==y:
+    print(0)
+  else:
+    print(1)
+elif x==0:
+  if y>0:
+    print(y)
+  else:
+    print(abs(y)+1)
+elif y==0:
+  if x>0:
+    print(1+x)
+  else:
+    print(abs(x))
+elif abs(x)<abs(y):
+  if x>0 and y>0:
+    print(y-x)
+  elif x>0 and y<0:
+    print(abs(y)-x+1)
+  elif x<0 and y>0:
+    print(x+y+1)
+  else:
+    print(abs(y)-abs(x)+2)
+else:
+  if x>0 and y>0:
+    print(2+x-y)
+  elif x>0 and y<0:
+    print(1+x+y)
+  elif x<0 and y>0:
+    print(1+abs(x)-y)
+  else:
+    print(y-x)",0,,,,40.918526,0
+u572193732,"x, y = map(int, input().split())
+
+count1 = abs(y + x) + 1
+count2 = max(abs(y - x), abs(x - y) + 2)
+
+print(min(count1, count2))
+","x, y = map(int, input().split())
+count1 = min(abs(x + y) + 1, max(y - x, x - y + 2))
+print(count1)","x, y = map(int, input().split())
+
+count1 = abs(y + x) + 1
+count2 = max(y - x, x - y + 2)
+
+print(min(count1, count2))",1,21,0.2222222222222222,,1.495912,0
+u212328220,"x, y = map(int,input().split())
+
+ans = 0
+# 正正
+if x >= 0 and y >= 0:
+    if x <= y:
+        ans = abs(x-y)
+        print(ans)
+        exit()
+    else:
+        print(abs(x-y)+2)
+
+# 正負
+if x >= 0 and y < 0:
+    if abs(x) >= abs(y):
+        x = x * -1
+        ans += 1
+        ans += abs(x - y)
+        print(ans)
+        exit()
+    else:
+        print(abs(y)-x + 1)
+# 負正
+if y >= 0 and x < 0:
+    print(min(abs(x-y), abs(x*-1 - y)+1))
+
+# 負負
+if x < 0 and y < 0:
+    if x > y:
+        print(abs(x - y)+2)
+    else:
+        print(abs(x-y))
+","x, y = map(int, input().split())
+ref_dif = abs(abs(x) - abs(y))
+if x < 0 and y < 0:
+    pass
+    if x <= y:
+        ans = abs(x - y)
+        print(ans)
+        exit()
+    else:
+        print(ref_dif + 2)
+        exit()
+    pass
+pass
+if x >= 0 and y >= 0:
+    pass
+    if True:
+        if x > y:
+            if y == 0:
+                print(ref_dif + 1)
+                exit()
+            print(ref_dif + 2)
+            exit()
+        else:
+            print(ref_dif)
+            exit()
+        pass
+    pass
+pass
+if x > y:
+    print(ref_dif + 1)
+elif y == 0:
+    print(abs(x - y))
+else:
+    print(ref_dif + 1)
+pass","x, y = map(int,input().split())
+
+ans = 0
+# 正正
+if x >= 0 and y >= 0:
+    
+    if x <= y:
+        ans = abs(x-y)
+        print(ans)
+        exit()
+    else:
+        if y != 0:
+            print(abs(x-y)+2)
+        else:
+            print(abs(x - y) + 1)
+
+# 正負
+if x >= 0 and y < 0:
+    if abs(x) >= abs(y):
+        x = x * -1
+        ans += 1
+        ans += abs(x - y)
+        print(ans)
+        exit()
+    else:
+        print(abs(y)-x + 1)
+# 負正
+if y >= 0 and x < 0:
+    print(min(abs(x-y), abs(x*-1 - y)+1))
+
+# 負負
+if x < 0 and y < 0:
+    if x > y:
+        print(abs(x - y)+2)
+    else:
+        print(abs(x-y))
+",1,153,0.12571428571428572,,48.311435,0
+u094999522,"#!/usr/bin/env python3
+x, y = map(int, input().split())
+c = 0
+if x * y < 0:
+    x = abs(x)
+    y = abs(y)
+    c = 1
+
+if y < x:
+    print(1 + (y != 0) + x - y - c)
+else:
+    print(y - x + c)
+",,"#!/usr/bin/env python3
+x, y = map(int, input().split())
+c = 0
+if x * y < 0:
+    x = abs(x)
+    y = abs(y)
+    c = 1
+
+if y < x:
+    print(1 + (y != 0 and x != 0) + x - y - c)
+else:
+    print(y - x + c)
+",0,,,,1.839120,0
+u933341648,"x, y = map(int, input().split())
+
+d = abs(abs(y) - abs(x))
+
+if (x >= 0 and y < 0) or (x < 0 and y > 0):
+    d += 1
+elif x > y:
+    d += 2
+
+print(d)
+","x, y = map(int, input().split())
+d = abs(abs(y) - abs(x))
+if (x < 0) == (y > 0):
+    d += 1
+elif x > y:
+    d += 2
+print(d)","x, y = map(int, input().split())
+
+d = abs(abs(y) - abs(x))
+
+if (x > 0 and y <= 0) or (x >= 0 and y < 0) or (x < 0 and y > 0):
+    d += 1
+elif x > y:
+    d += 2
+
+print(d)
+",1,17,0.41379310344827586,,1.215454,0
+u482157295,"x,y = map(int,input().split())
+ans = 0
+if x > y:
+    if x >= 0 and y >= 0: # x,yが両方とも正
+        print(x-y+2)
+    elif x < 0 and y < 0: # x,yが両方とも負
+        print(x-y+2)
+    else:                 # xが正、yが負
+        if x > -y:
+            print(x+y+1)
+        elif x < -y:
+            print(-y-x+1)
+        else:
+            print(1)
+else:
+    if x >= 0 and y >= 0: # x,yが両方とも正
+        print(y-x)
+    elif x < 0 and y < 0: # x,yが両方とも負
+        print(y-x)
+    else:                 # xが負、yが正
+        if -x > y:
+            print(-x-y+1)
+        elif -x < y:
+            print(y+x+1)
+        else:
+            print(1)
+","x, y = map(int, input().split())
+ans = 0
+if x > 0:
+    pass
+    if y > x:
+        print(y - x)
+    elif 0 < y < x:
+        print(x - y + 2)
+    elif y <= 0:
+        print(abs(abs(x) - abs(y)) + 1)
+elif x == 0:
+    if y > 0:
+        print(y - x)
+    else:
+        print(x - y + 1)
+elif y < x:
+    print(x - y + 2)
+elif x < y <= 0:
+    print(y - x)
+else:
+    print(abs(abs(x) - abs(y)) + 1)
+pass","x,y = map(int,input().split())
+ans = 0
+if x > y:
+    if x >= 0 and y >= 0: # x,yが両方とも正
+        if y == 0:
+            print(x-y+1)
+        else:
+            print(x-y+2)
+    elif x < 0 and y < 0: # x,yが両方とも負
+        print(x-y+2)
+    else:                 # xが正、yが負
+        if x > -y:
+            print(x+y+1)
+        elif x < -y:
+            print(-y-x+1)
+        else:
+            print(1)
+else:                     # yの方が大きい
+    if x >= 0 and y >= 0: # x,yが両方とも正
+        print(y-x)
+    elif x < 0 and y < 0: # x,yが両方とも負
+        print(y-x)
+    else:                 # xが負、yが正
+        if -x > y:
+            if y == 0:
+                print(-x-y)
+            else:
+                print(-x - y + 1)
+        elif -x < y:
+            print(y+x+1)
+        else:
+            print(1)
+",1,128,0.22424242424242424,,22.083279,0
+u591503175,"def resolve():
+    '''
+    code here
+    '''
+    x, y = [int(item) for item in input().split()]
+
+    if abs(x) == abs(y):
+        res = 1
+    elif abs(x) > abs(y):
+        if x < 0:
+            res = abs(x) - abs(y)
+            if y < 0:
+                pass
+            else:
+                res += 1
+        else:
+            res = 1
+            res += abs(x) - abs(y)
+            if y < 0:
+                pass
+            else:
+                res += 1
+    else:
+        if x < 0:
+            res = 1
+            res += abs(abs(x) - abs(y))
+            if y < 0:
+                res += 1
+            else:
+                pass
+        else:
+            res = abs(abs(x) - abs(y))
+            if y < 0:
+                res += 1
+            else:
+                pass
+    print(res)
+
+if __name__ == ""__main__"":
+    resolve()
+","if False:
+    pass
+x, y = map(int, input().split())
+ref_diff = abs(abs(x) - abs(y))
+ref_bs = abs(y) - abs(x)
+if x == 0 or y == 0:
+    ref_reverse = 0
+else:
+    ref_reverse = 1
+pass
+if x >= 0 and y >= 0:
+    if ref_bs >= 0:
+        ref_ans = ref_diff
+    else:
+        ref_ans = ref_reverse + ref_diff + 1
+    pass
+elif x >= 0 and y <= 0:
+    if y < 0:
+        ref_ans = ref_diff + 1
+    else:
+        res += 1
+    pass
+elif x <= 0 and y >= 0:
+    if y < 0:
+        res += 1
+    else:
+        ref_ans = ref_diff + ref_reverse
+    pass
+elif x <= 0 and y <= 0:
+    if ref_bs >= 0:
+        ref_ans = ref_reverse + ref_diff + 1
+    else:
+        ref_ans = ref_diff
+print(ref_ans)","def resolve():
+    '''
+    code here
+    '''
+    x, y = [int(item) for item in input().split()]
+    res = 0
+
+    if x < 0 and abs(y) - abs(x) >= 0:
+        res += 1
+    elif x > 0 and abs(y) - abs(x) <= 0:
+        res += 1
+
+    res += abs(abs(x) - abs(y))
+
+
+    if y > 0 and abs(y) - abs(x) < 0:
+        res += 1
+    elif y < 0 and abs(y) - abs(x) > 0:
+        res += 1
+
+    print(res)
+
+if __name__ == ""__main__"":
+    resolve()
+",1,174,0.3807829181494662,,36.775017,0
+u409306788,"import sys
+input = sys.stdin.readline
+
+# A - Simple Calculator
+x, y = map(int, input().split())
+
+if x < y:
+	if x >= 0:
+		print(y - x)
+	elif x <= 0 and y > 0:
+		count = y - abs(x) + 1
+		
+		if count > 0:
+			print(min(count, abs(x) + y))
+		else:
+			print(abs(x) + y)
+	else:
+		print(abs(x) - abs(y))
+else:
+	if y > 0:
+		print(x- y + 2)
+	elif y == 0:
+		print(x + 1)
+	elif x >= 0 and x >= abs(y):
+		print(x - abs(y) + 1)
+	elif x >= 0 and x < abs(y):
+		print(abs(y) - x + 1)
+	else:
+		print(abs(y) - abs(x) + 2)",,"import sys
+input = sys.stdin.readline
+
+# A - Simple Calculator
+x, y = map(int, input().split())
+
+if x < y:
+	if x >= 0:
+		print(y - x)
+	elif x <= 0 and y > 0:
+		if abs(x) > y:
+			print(abs(x) - y + 1)
+		else:	
+			count = y - abs(x) + 1
+		
+			if count > 0:
+				print(min(count, abs(x) + y))
+			else:
+				print(abs(x) + y)
+	else:
+		print(abs(x) - abs(y))
+else:
+	if y > 0:
+		print(x- y + 2)
+	elif y == 0:
+		print(x + 1)
+	elif x >= 0 and x >= abs(y):
+		print(x - abs(y) + 1)
+	elif x >= 0 and x < abs(y):
+		print(abs(y) - x + 1)
+	else:
+		print(abs(y) - abs(x) + 2)",0,,,,21.340874,0
+u917013605,"x, y = map(int, input().split())
+ans = []
+if x < y:
+    ans.append(y - x)
+x *= -1
+if x < y:
+    ans.append(y - x + 1)
+y *= -1
+if x < y:
+    ans.append(y - x + 2)
+print(min(ans))
+",,"x, y = map(int, input().split())
+if x <= y:
+    print(min(y - x, abs(y + x) + 1))
+else:
+    print(min(abs(y + x) + 1, abs(y - x) + 2))
+",0,,,,2.202337,0
+u088863512,"# -*- coding: utf-8 -*-
+import sys
+from collections import deque, defaultdict
+from math import sqrt, factorial, gcd
+# def input(): return sys.stdin.readline()[:-1] # warning not \n
+# def input(): return sys.stdin.buffer.readline().strip() # warning bytes
+# def input(): return sys.stdin.buffer.readline().decode('utf-8')
+
+
+def solve():
+    x, y = [int(x) for x in input().split()]
+    a, b = abs(x), abs(y)
+    ans = abs(a - b)
+    if x > 0 and y > 0:
+        if a > b:
+            ans += 2
+    
+    elif x < 0 and y < 0:
+        if a < b:
+            ans += 2
+    else:
+        ans += 1
+    print(ans)
+
+
+
+        
+    
+
+    
+    
+
+t = 1
+# t = int(input())
+for case in range(1,t+1):
+    ans = solve()
+
+
+""""""
+
+
+""""""
+","x, y = [int(x) for x in input().split()]
+a, b = (abs(x), abs(y))
+ans = abs(a - b)
+if x * y >= 0:
+    pass
+    if True:
+        if x > y:
+            ans = x - y + 2
+            if True:
+                pass
+                if x * y == 0:
+                    ans = x - y + 1
+                pass
+            pass
+        else:
+            ans = abs(y - x)
+else:
+    ans = abs(abs(x) - abs(y)) + 1
+print(ans)","# -*- coding: utf-8 -*-
+import sys
+from collections import deque, defaultdict
+from math import sqrt, factorial, gcd
+# def input(): return sys.stdin.readline()[:-1] # warning not \n
+# def input(): return sys.stdin.buffer.readline().strip() # warning bytes
+# def input(): return sys.stdin.buffer.readline().decode('utf-8')
+
+
+def solve():
+    x, y = [int(x) for x in input().split()]
+    a, b = abs(x), abs(y)
+    ans = abs(a - b)
+    if x >= 0 and y > 0:
+        if a > b:
+            ans += 2
+    elif x < 0 and y <= 0:
+        if a < b:
+            ans += 2
+    else:
+        ans += 1
+    
+    print(ans)
+
+
+
+        
+    
+
+    
+    
+
+t = 1
+# t = int(input())
+for case in range(1,t+1):
+    ans = solve()
+
+
+""""""
+
+
+""""""
+",1,101,0.01941747572815533,,19.637738,0
+u940831163,"x, y = map(int, input().split())
+
+if x*y <= 0:
+    print(abs(abs(x)-abs(y))+1)
+else:
+    if x < y:
+        print(y-x)
+    else:
+        print(x-y+2)
+","x, y = map(int, input().split())
+if x * y < 0 or (x * y == 0 and x > y):
+    print(abs(abs(x) - abs(y)) + 1)
+elif x < y:
+    print(y - x)
+else:
+    print(x - y + 2)","x, y = map(int, input().split())
+
+if x*y < 0:
+    print(abs(abs(x)-abs(y))+1)
+elif x*y == 0:
+    if x < y:
+        print(y-x)
+    else:
+        print(x-y+1)
+else:
+    if x < y:
+        print(y-x)
+    else:
+        print(x-y+2)
+",1,20,0.6721311475409836,,1.049394,0
+u370721525,"x, y = map(int, input().split())
+
+if x * y < 0:
+  ans = abs(x+y) + 1
+elif x < y:
+  ans = abs(y-x)
+else:
+  ans = abs(x-y) + 2
+  
+print(ans)","x, y = map(int, input().split())
+if x * y < 0 or (x * y == 0 and x > y):
+    print(abs(abs(x) - abs(y)) + 1)
+elif x < y:
+    print(y - x)
+else:
+    print(x - y + 2)","x, y = map(int, input().split())
+ans = min(abs(x+y)+1, max(y-x, x-y+2))
+print(ans)",1,47,0.39743589743589747,,0.921122,0
+u781262926,"x, y = map(int, input().split())
+d = abs(abs(x) - abs(y))
+if 0 <= x < y:
+  print(d)
+elif 0 <= y < x:
+  print(d+2)
+elif y <= 0 <= x:
+  print(d+1)
+elif x <= 0 <= y:
+  print(d+1)
+elif x < y <= 0:
+  print(d)
+elif y < x <= 0:
+  print(d+2)
+else:
+  raise Exception","x, y = map(int, input().split())
+d = abs(abs(x) - abs(y))
+if 0 <= x < y:
+    pass
+elif 0 <= y < x:
+    pass
+if (x >= 0 and y >= 0 or (x < 0 and y < 0)) and x < y:
+    print(abs(x - y))
+elif (x >= 0 and y >= 0) and y < x:
+    print(abs(x - y + 1 + (y != 0)))
+elif (x < 0 and y < 0) and y < x:
+    print(abs(x - y) + 2)
+elif x == -y:
+    print(1)
+else:
+    print(abs(abs(x) - abs(y)) + (y != 0))
+pass","x, y = map(int, input().split())
+d = abs(abs(x) - abs(y))
+if 0 <= x < y or x < y <= 0:
+  print(d)
+elif y < 0 < x or x < 0 < y:
+  print(d+1)
+elif 0 < y < x or y < x < 0:
+  print(d+2)
+elif y == 0 < x or y < x == 0:
+  print(d+1)
+else:
+  raise Exception",1,132,0.3160621761658031,,13.194847,0
+u597455618,"def main():
+    x, y = map(int, input().split())
+    print(min(x+y, ~x+y)+1)
+if __name__ == '__main__':
+    main()","pass
+if True:
+    ref_a, ref_b = map(int, input().split())
+    print(min(max(ref_b - ref_a, -ref_b + ref_a + 2), abs(ref_a + ref_b) + 1))
+elif False:
+    pass","def main():
+    x, y = map(int, input().split())
+    print(min(abs(x+y), abs(~x+y))+1)
+if __name__ == '__main__':
+    main()",1,38,0.13636363636363635,,8.382210,0
+u628335443,"x, y = map(int, input().split())
+ans = 0
+if abs(x) == abs(y):
+    ans = 1
+elif abs(x) < abs(y):
+    ans = abs(y) - abs(x)
+    if y < 0:
+        ans += 1
+    if x < 0:
+        ans += 1
+else:
+    if y >= 0:
+        ans = abs(x) + abs(y)
+    else:
+        ans = abs(x) - abs(y)
+    if x > 0:
+        ans += 1
+
+print(ans)
+","x, y = map(int, input().split())
+ans = 0
+ans += abs(abs(y) - abs(x))
+if abs(x) <= abs(y):
+    if True:
+        if y < 0:
+            pass
+        pass
+        if x < 0:
+            ans += 1
+        pass
+        if y < 0:
+            ans += 1
+        pass
+else:
+    pass
+    if x >= 0:
+        ans += 1
+    pass
+    if y > 0:
+        ans += 1
+    pass
+print(ans)","x, y = map(int, input().split())
+ans = 0
+if abs(x) == abs(y):
+    ans = 1
+elif abs(x) < abs(y):
+    ans = abs(y) - abs(x)
+    if y < 0:
+        ans += 1
+    if x < 0:
+        ans += 1
+else:
+    if y == 0:
+        ans = abs(x) + abs(y)
+    else:
+        ans = abs(x) - abs(y)
+    if x > 0:
+        ans += 1
+    if y > 0:
+        ans += 1
+
+print(ans)
+",1,69,0.14814814814814814,,21.984121,0
+u417096287,"def INT():
+    return int(input())
+
+def MI():
+    return map(int, input().split())
+
+def LI():
+    return list(map(int, input().split()))
+
+x, y = MI()
+ans = 0
+
+if abs(x) == abs(y):
+    ans = int(x * y < 0)
+
+elif abs(x) < abs(y):
+    ans = abs(abs(y) - abs(x)) + int(x < 0) + int(y < 0)
+
+else:
+    ans = abs(abs(y) - abs(x)) + int(x * y <= 0) + int(x > 0 and y > 0)
+    if x < 0 and y == 0:
+        ans -= 1
+
+print(ans)",,"def INT():
+    return int(input())
+
+def MI():
+    return map(int, input().split())
+
+def LI():
+    return list(map(int, input().split()))
+
+x, y = MI()
+ans = 0
+
+if abs(x) == abs(y):
+    ans = int(x * y < 0)
+
+elif abs(x) < abs(y):
+    ans = abs(abs(y) - abs(x)) + int(x < 0) + int(y < 0)
+
+else:
+    ans = abs(abs(y) - abs(x)) + int(x * y <= 0) + int(x > 0 and y > 0) * 2
+    if x < 0 and y == 0:
+        ans -= 1
+
+print(ans)",0,,,,25.373978,0
+u437215432,"
+def f(x, y):
+    if y >= x:
+        print(y - x)
+    elif x >= 0:
+        x = -x
+        print(1 + (y - x))
+    elif x < 0:
+        x = -x
+        y = -y
+        print(2 + (y - x))
+
+x, y = map(int, input().split())
+f(x, y)
+","x, y = map(int, input().split())
+if y >= x >= 0 or 0 >= y >= x:
+    if False:
+        pass
+    print(abs(y - x))
+elif x > y > 0 or 0 > x > y:
+    x = -x
+    y = -y
+    print(2 + (y - x))
+else:
+    print(abs(abs(x) - abs(y)) + 1)","# AGC008A
+
+def func(x, y):
+    if y >= x:
+        if x >= 0:
+            return y - x
+        else:
+            if y > 0:
+                if abs(x) > abs(y):
+                    return 1 - x - y
+                else:
+                    return 1 + x + y
+            elif y <= 0:
+                return y - x
+    else:
+        if x >= 0:
+            if y < 0:
+                if abs(x) > abs(y):
+                    return 1 + x + y
+                else:
+                    return 1 - x - y
+            elif y == 0 or y == 1:
+                return x + 1
+            else:
+                if abs(x) > abs(y):
+                    return 1 + x + y
+                else:
+                    return 1 + y - x
+        else:
+            return 2 + x - y
+
+x, y = map(int, input().split())
+print(func(x, y))
+",1,86,0.6277056277056277,,11.698551,0
+u962718741,"def main():
+    x, y = map(int, input().split())
+    A = abs(abs(x) - abs(y))
+
+    if x < 0 and y < 0:
+        if x < y:
+            B = 0
+        else:
+            B = 2
+    elif x >= 0 and y >= 0:
+        if x < y:
+            B = 0
+        else:
+            B = 2
+    else:
+        if y == 0:
+            B = 0
+        else:
+            B = 1
+
+    print(A + B)
+
+
+if __name__ == ""__main__"":
+    main()
+",,"def main():
+    x, y = map(int, input().split())
+    A = abs(abs(x) - abs(y))
+
+    if x * y > 0:
+        if x < y:
+            B = 0
+        else:
+            B = 2
+    elif x == 0:
+        if x < y:
+            B = 0
+        else:
+            B = 1
+    elif y == 0:
+        if x < y:
+            B = 0
+        else:
+            B = 1
+    else:
+        B = 1
+
+    print(A + B)
+
+
+if __name__ == ""__main__"":
+    main()
+",0,,,,14.132003,0
+u690781906,"x, y = map(int, input().split())
+ans = 0
+ans += abs(abs(y) - abs(x))
+if abs(x) <= abs(y):
+    if x < 0:
+        ans += 1
+    if y < 0:
+        ans += 1
+else:
+    if x >= 0:
+        ans += 1
+    if y >= 0:
+        ans += 1
+print(ans)
+","x, y = map(int, input().split())
+ans = 10 ** 9 + 10
+if x == y:
+    ans = 0
+ref_ans1 = y - x
+ref_ans2 = -y - -x + 2
+ref_ans3 = y - -x + 1
+ref_ans4 = -y - x + 1
+if True:
+    if ref_ans1 > 0:
+        ans = min(ans, ref_ans1)
+    pass
+    if ref_ans2 > 0:
+        ans = min(ans, ref_ans2)
+    pass
+    if ref_ans3 > 0:
+        ans = min(ans, ref_ans3)
+    pass
+    if ref_ans4 > 0:
+        ans = min(ans, ref_ans4)
+    print(ans)","x, y = map(int, input().split())
+ans = 0
+ans += abs(abs(y) - abs(x))
+if abs(x) <= abs(y):
+    if x < 0:
+        ans += 1
+    if y < 0:
+        ans += 1
+else:
+    if x >= 0:
+        ans += 1
+    if y > 0:
+        ans += 1
+print(ans)
+",1,108,0.009174311926605505,,51.205255,0
+u193927973,"x, y=map(int, input().split())
+c1=x<=y
+c2=x*y>=0
+a=0
+if c1 and c2: # 正正か負負でｘ＜Y
+  print(y-x)
+elif c1 and not c2: # 負正でx<y
+  print(abs(y-abs(x))+1)
+elif not c1 and c2: # 正正か負負でx>y
+  if x*y==0:
+    a=0
+  else:
+    a=2
+  print(x-y+a)
+elif not c1 and not c2: # 正負でx>y
+  print(abs(x-abs(y))+1)
+","x, y = map(int, input().split())
+c1 = x <= y
+c2 = x * y >= 0
+a = 0
+if c1 and c2:
+    print(y - x)
+elif 0 < y < x or y < x < 0:
+    print(2 + x - y)
+elif x < 0 < y or y < 0 < x:
+    print(1 + abs(x + y))
+if x == 0 and y < 0:
+    print(abs(y) + 1)
+if False:
+    pass
+if y == 0 and x > 0:
+    print(abs(x - abs(y)) + 1)
+pass","x, y=map(int, input().split())
+c1=x<=y
+c2=x*y>=0
+a=0
+if c1 and c2: # 正正か負負でｘ＜Y
+  print(y-x)
+elif c1 and not c2: # 負正でx<y
+  print(abs(y-abs(x))+1)
+elif not c1 and c2: # 正正か負負でx>y
+  if x*y==0:
+    a=1
+  else:
+    a=2
+  print(x-y+a)
+elif not c1 and not c2: # 正負でx>y
+  print(abs(x-abs(y))+1)
+",1,93,0.010638297872340441,,30.290637,0
+u209275335,"x,y = map(int,input().split())
+if x > y:
+    if x < 0 and y < 0:
+        print(abs(abs(y)-abs(x))+2)
+    if x >= 0 and y < 0:
+        print(abs(abs(y)-abs(x))+1)
+    if x >= 0 and y >= 0:
+        if y == 0:
+            print(abs(abs(y)-abs(x))+1)
+        else:
+            print(abs(abs(y)-abs(x))+2)
+elif x < y:
+    if x < 0 and y < 0:
+        print(abs(abs(y)-abs(x)))
+    if x < 0 and y >= 0:
+        print(abs(abs(y)-abs(x))+1)
+    if x >= 0 and y >= 0:
+        print(abs(abs(y)-abs(x)))",,"x,y = map(int,input().split())
+if x > y:
+    if x < 0 and y < 0:
+        print(abs(abs(y)-abs(x))+2)
+    if x >= 0 and y < 0:
+        print(abs(abs(y)-abs(x))+1)
+    if x >= 0 and y >= 0:
+        if y == 0:
+            print(abs(abs(y)-abs(x))+1)
+        else:
+            print(abs(abs(y)-abs(x))+2)
+elif x < y:
+    if x < 0 and y < 0:
+        print(abs(abs(y)-abs(x)))
+    if x < 0 and y >= 0:
+        if y == 0:
+            print(abs(abs(y)-abs(x)))
+        else:
+            print(abs(abs(y)-abs(x))+1)
+    if x >= 0 and y >= 0:
+        print(abs(abs(y)-abs(x)))",0,,,,60.124958,0
+u075304271,"import math
+import collections
+import fractions
+import itertools
+
+def solve():
+    a, b = map(int, input().split())
+    if abs(a) == abs(b):
+        print(1)
+        exit()
+    if a < b:
+        if a == 0 or b == 0:
+            print(b-a)
+        elif abs(a) < b and a < 0:
+            print(1+b-abs(a))
+        else:
+            print(b - a)
+    else:
+        if b == 0:
+            print(a - b + 1)
+        elif a < 0:
+            print(2+a-b)
+        else:
+            if b < 0:
+                print(1+b+a)
+            else:
+                print(1+a-b)
+    return 0
+
+if __name__ == ""__main__"":
+    solve()
+",,"import math
+import collections
+import fractions
+import itertools
+
+def solve():
+    a, b = map(int, input().split())
+    if abs(a) < abs(b):
+        ans = abs(b)-abs(a)
+        if a < 0:
+            ans += 1
+        if b < 0:
+            ans += 1
+        print(ans)
+    else:
+        ans = abs(a)-abs(b)
+        if 0 < a:
+            ans += 1
+        if 0 < b:
+            ans += 1
+        print(ans)
+    return 0
+
+if __name__ == ""__main__"":
+    solve()
+",0,,,,22.546981,0
+u388463553,"x,y=(map(int,input().split()))
+if x<0 and y<0 and x>y:
+    print(2+x-y)
+elif x<0 and y<0 and x<y:
+    print(y-x)
+elif x<0 and y==0:
+    print(y-x)
+elif x<0 and y>0:
+    print(1+x+y)
+elif x==0 and y>0:
+    print(1+x-y)
+elif x==0 and y==0 or x==y:
+    print(0)
+elif x==0 and y>0:
+    print(y-x)
+elif x>0 and y>0 and x<y:
+    print(y-x)
+elif x>0 and y>0 and x>y:
+    print(1+x-y)
+elif x>0 and y==0:
+    print(1+x-y)
+elif x>0 and y<0:
+    print(1+x+y)",,"x,y=map(int, input().split())
+if y>=x>=0 or 0>=y>= x:
+  print(abs(y-x))
+elif x>y>0 or 0>x>y:
+  print(x-y+2)
+else:
+  print(abs(abs(x)-abs(y))+1)",0,,,,24.840401,0
+u185424824,"x,y = map(int,input().split())
+if abs(x) == abs(y):
+  print(1)
+  exit()
+if x*y > 0:
+  if x < y:
+    print(y-x)
+  else:
+    print(x-y+2)
+elif x*y < 0:
+  if x < y:
+    print(y-x)
+  else:
+    print(abs(abs(x)-abs(y))+1)
+else:
+  if x < y:
+    print(y-x)
+  else:
+    print(abs(x+y)+1)",,"x,y = map(int,input().split())
+if abs(x) == abs(y):
+  print(1)
+  exit()
+if x*y > 0:
+  if x < y:
+    print(y-x)
+  else:
+    print(x-y+2)
+elif x*y < 0:
+  print(abs(abs(x)-abs(y))+1)
+else:
+  if x < y:
+    print(y-x)
+  else:
+    print(abs(x+y)+1)",0,,,,19.190086,0
+u750651325,"import sys
+import math
+import itertools
+import bisect
+from copy import copy
+from collections import deque,Counter
+from decimal import Decimal
+def s(): return input()
+def i(): return int(input())
+def S(): return input().split()
+def I(): return map(int,input().split())
+def X(): return list(input())
+def L(): return list(input().split())
+def l(): return list(map(int,input().split()))
+def lcm(a,b): return a*b//math.gcd(a,b)
+def gcd(*numbers): reduce(math.gcd, numbers)
+sys.setrecursionlimit(10 ** 9)
+mod = 10**9+7
+count = 0
+ans = 0
+
+x,y = I()
+ans = abs(abs(x)-abs(y))
+if x*y<0:
+    ans += 1
+elif (x > 0 and y == 0) or (y > 0 and x == 0):
+    ans += 1
+elif x > y:
+    ans += 2
+print(ans)
+",,"import sys
+import math
+import itertools
+import bisect
+from copy import copy
+from collections import deque,Counter
+from decimal import Decimal
+def s(): return input()
+def i(): return int(input())
+def S(): return input().split()
+def I(): return map(int,input().split())
+def X(): return list(input())
+def L(): return list(input().split())
+def l(): return list(map(int,input().split()))
+def lcm(a,b): return a*b//math.gcd(a,b)
+def gcd(*numbers): reduce(math.gcd, numbers)
+sys.setrecursionlimit(10 ** 9)
+mod = 10**9+7
+count = 0
+ans = 0
+
+x,y = I()
+ans = abs(abs(x)-abs(y))
+if x*y<0:
+    ans += 1
+elif (x > 0 and y == 0) or (y < 0 and x == 0):
+    ans += 1
+elif x > y:
+    ans += 2
+print(ans)
+",0,,,,101.984863,0
+u285681431,"x, y = map(int, input().split())
+if x > 0:
+    if y >= x:
+        print(y - x)
+    elif -x <= y and y <= 0:
+        print(1 + x + y)
+    elif 0 < y and y < x:
+        print(x - y + 2)
+    elif y < -x:
+        print(-y - x + 1)
+elif x == 0:
+    if y >= 0:
+        print(y)
+    elif y < 0:
+        print(-y + 1)
+elif x < 0:
+    if x <= y and 0:
+        print(y - x)
+    elif 0 < y and y < -x:
+        print(-y - x + 1)
+    elif y >= -x:
+        print(1 + x + y)
+    elif y < x:
+        print(x - y + 2)
+",,"x, y = map(int, input().split())
+if x > 0:
+    if y >= x:
+        print(y - x)
+    elif -x <= y and y <= 0:
+        print(1 + x + y)
+    elif 0 < y and y < x:
+        print(x - y + 2)
+    elif y < -x:
+        print(-y - x + 1)
+elif x == 0:
+    if y >= 0:
+        print(y)
+    elif y < 0:
+        print(-y + 1)
+elif x < 0:
+    if x <= y and y <= 0:
+        print(y - x)
+    elif 0 < y and y < -x:
+        print(-y - x + 1)
+    elif y >= -x:
+        print(1 + x + y)
+    elif y < x:
+        print(x - y + 2)
+",0,,,,41.806562,0
+u848263468,"x,y=map(int,input().split())
+#if abs(x),abs(y)>pow(10,9):
+    #exit()
+if x == y:
+    exit()
+s=abs(y)
+p=abs(x)
+d=s-p
+buttona=d
+buttonb=0
+if y < 0:
+    buttonb+=1
+if x < 0:
+    buttonb+=1
+print(buttona+buttonb)
+","x, y = map(int, input().split())
+buttona = abs(y) - abs(x)
+if x == y:
+    exit()
+s = abs(y)
+p = abs(x)
+buttona = s - p
+buttona = buttona
+buttonb = 0
+if buttona < 0 and x > 0 or (buttona > 0 and x < 0):
+    buttonb += 1
+    x = -x
+x += abs(buttona)
+if x != y:
+    buttonb += 1
+print(abs(buttona) + buttonb)","x, y = map(int, input().split())
+ans = 0
+if x * y >= 0:
+    if x > y:
+        ans = x - y + 2
+        if x * y == 0:
+            ans = x - y + 1
+    else:
+        ans = abs(y - x)
+else:
+    ans = abs(abs(x) - abs(y)) + 1
+print(ans)",1,61,0.5642857142857143,,5.279735,0
+u000085263,"x, y = map(int, input().split())
+button = 0
+if x<0 and y<0:
+  button+=0
+elif x<0 and y>=0:
+  button+=1
+elif x>=0 and y < 0:
+  button+=1
+if x<0 and y<0:
+    button+=abs(y-x)
+else:
+    button+=abs(y)-abs(x)
+print(button) ","x, y = map(int, input().split())
+button = 0
+if x * y >= 0:
+    if x > y:
+        ans = x - y + 2
+        if x * y == 0:
+            ans = x - y + 1
+        pass
+    else:
+        ans = abs(y - x)
+else:
+    ans = abs(abs(x) - abs(y)) + 1
+print(ans)","from math import fabs
+x,y = map(int, input().split())
+if y >= x >= 0: 
+    print(int(fabs(y-x)))
+elif 0 >= y >= x:
+    print(int(fabs(y-x))) 
+elif x > y > 0: 
+    print(int(x - y + 2))
+elif 0 > x > y:
+    print(int(x - y + 2)) 
+else:
+    print(int(fabs(fabs(x)-fabs(y)) + 1))",1,73,0.6294416243654822,,22.663129,0
+u021916304,"def ii():return int(input())
+def iim():return map(int,input().split())
+def iil():return list(map(int,input().split()))
+
+x,y = iim()
+if y>=x:
+    if x*y>=0:
+        ans = y-x
+    else:
+        ans = y-abs(x)+1
+else:
+    if y == 0:
+        ans = x+1
+    elif x*y>0:
+        ans = x-y+2
+    else:
+        ans = abs(y+x)+1
+print(ans)
+","pass
+if True:
+    pass
+x, y = map(int, input().split())
+if abs(x) == abs(y):
+    print(1)
+    exit()
+elif True:
+    pass
+if x * y > 0:
+    pass
+    if x < y:
+        print(y - x)
+    else:
+        print(x - y + 2)
+    pass
+elif x * y < 0:
+    print(abs(abs(x) - abs(y)) + 1)
+elif x < y:
+    print(y - x)
+else:
+    print(abs(x + y) + 1)","def ii():return int(input())
+def iim():return map(int,input().split())
+def iil():return list(map(int,input().split()))
+
+x,y = iim()
+if y>=x:
+    if x*y>=0:
+        ans = y-x
+    else:
+        ans = abs(x+y)+1
+else:
+    if y == 0:
+        ans = x+1
+    elif x*y>0:
+        ans = x-y+2
+    else:
+        ans = abs(y+x)+1
+print(ans)
+",1,118,0.055999999999999994,,21.626265,0
+u699089116,"a, b = map(int, input().split())
+
+if a > 0 and b > 0 or a < 0 and b < 0:
+    if a > b:
+        print(a-b+2)
+    else:
+        print(b-a)
+elif abs(a) == abs(b):
+    print(1)
+else:
+    if b == 0 and a > b:
+        print(abs(abs(a)-abs(b))+1)
+    elif b == 0:
+        print(abs(abs(a)-abs(b)))
+    elif a == 0:
+        print(abs(abs(a)-abs(b)))
+    else:
+        print(abs(abs(a)-abs(b))+1)
+",,"a, b = map(int, input().split())
+
+if a > 0 and b > 0 or a < 0 and b < 0:
+    if a > b:
+        print(a-b+2)
+    else:
+        print(b-a)
+elif abs(a) == abs(b):
+    print(1)
+else:
+    if b == 0 and a > b:
+        print(abs(abs(a)-abs(b))+1)
+    elif b == 0:
+        print(abs(abs(a)-abs(b)))
+    elif a == 0 and b > 0:
+        print(abs(abs(a)-abs(b)))
+    else:
+        print(abs(abs(a)-abs(b))+1)
+",0,,,,24.068631,0
+u179169725,"# https://atcoder.jp/contests/agc008/tasks/agc008_a
+# どう見ても符号反転は1回するのが最適
+# ひたすら場合分け
+
+
+x, y = map(int, input().split())
+if x * y < 0:  # 異符号ならば答えは一つ
+    print(abs(abs(x) - abs(y)) + 1)
+    exit()
+elif 0 <= x < y:
+    print(y - x)
+    exit()
+elif 0 < y < x:
+    print(x + y + 1)
+    exit()
+elif y == 0 and y < x:
+    print(1 + x)
+    exit()
+elif x < y <= 0:
+    print(y - x)
+    exit()
+elif y < x < 0:
+    print(2 + x - y)
+    exit()
+elif x == 0 and y < x:
+    print(1 - y)
+    exit()
+raise ValueError()
+","x, y = map(int, input().split())
+if x >= 0 and y >= 0 and (x <= y):
+    ref_ans = y - x
+elif x >= 0 and y > 0 and (x >= y):
+    ref_ans = x - y + 2
+elif x <= 0 and y <= 0 and (x <= y):
+    ref_ans = y - x
+elif x < 0 and y <= 0 and (x >= y):
+    ref_ans = x - y + 2
+elif x >= 0 and y <= 0:
+    ref_ans = abs(x - abs(y)) + 1
+elif x <= 0 and y >= 0 and (abs(x) <= y):
+    ref_ans = y - abs(x) + 1
+elif x <= 0 and y >= 0 and (abs(x) > y):
+    ref_ans = abs(x) - y + 1
+print(ref_ans)","# https://atcoder.jp/contests/agc008/tasks/agc008_a
+# どう見ても符号反転は1回するのが最適
+# ひたすら場合分け
+
+
+x, y = map(int, input().split())
+if x * y < 0:  # 異符号ならば答えは一つ
+    print(abs(abs(x) - abs(y)) + 1)
+    exit()
+elif 0 <= x < y:
+    print(y - x)
+    exit()
+elif 0 < y < x:
+    print(2 + x - y)
+    exit()
+elif y == 0 and y < x:
+    print(1 + x)
+    exit()
+elif x < y <= 0:
+    print(y - x)
+    exit()
+elif y < x < 0:
+    print(2 + x - y)
+    exit()
+elif x == 0 and y < x:
+    print(1 - y)
+    exit()
+raise ValueError()
+",1,191,0.030456852791878153,,2.505952,0
+u630511239,"x, y = map(int, input().split())
+if y == 0:
+  if x <= 0:
+    ans = -x
+  else:
+    ans = x
+elif y >= x:
+  if x * y < 0:
+    if y >= -x:
+      ans = x + y + 1
+    else:
+      ans = -x - y + 1
+  else:
+    ans = y - x
+else:
+  if x * y < 0:
+    if -y >= x:
+      ans = -x - y + 1
+    else:
+      ans = x + y + 1
+  else:
+    ans = 2 + x - y
+print(ans)
+  ",,"x, y = map(int, input().split())
+a = 2000000000
+if y >= x:
+  a = y - x
+if -y >= x:
+  b = -x - y + 1
+  if b < a:
+    a = b
+if y >= -x:
+  b = x + y + 1
+  if b < a:
+    a = b
+if -y >= -x:
+  b = x - y + 2
+  if b < a:
+    a = b
+print(a)",0,,,,45.485380,0
+u263824932,"x,y=map(int,input().split())
+if abs(x) == abs(y):
+    print(1)
+elif x==0:
+    if y < 0:
+        print(1+abs(y))
+    else:
+        print(abs(y))
+elif x > 0:
+    if abs(y) < x:
+        if y >= 0:
+            print(1+y+x)
+        else:
+            print(y+x+1)
+    else:
+        if y > 0:
+            print(y-x)
+        else:
+            print(abs(y)-x+1)
+else:
+    if abs(y) <abs(x):
+        if y >0 :
+            print(1+abs(abs(x)-abs(y)))
+        elif y==0:
+            print(abs(x))
+        else:
+            print(abs(-x+y))
+    else:
+        if y >0:
+            print(1+y+x)
+        else:
+            print(2+x-y)
+","x, y = map(int, input().split())
+if x == 0:
+    if False:
+        pass
+    else:
+        pass
+    pass
+    if y < 0:
+        print(1 + abs(y))
+    else:
+        print(abs(y))
+    pass
+elif x > 0:
+    pass
+    if abs(y) < x:
+        pass
+        if y <= 0:
+            print(1 + y + x)
+        else:
+            print(x - y + 2)
+        pass
+    elif y > 0:
+        print(y - x)
+    else:
+        print(abs(y) - x + 1)
+    pass
+elif abs(y) < abs(x):
+    pass
+    if y <= 0:
+        print(y - x)
+    else:
+        print(-1 * y - x + 1)
+    pass
+elif y < x:
+    print(-1 * y + x + 2)
+else:
+    print(y + x + 1)
+pass","x,y=map(int,input().split())
+if abs(x) == abs(y):
+    print(1)
+elif x==0:
+    if y < 0:
+        print(1+abs(y))
+    else:
+        print(abs(y))
+elif x > 0:
+    if abs(y) < x:
+        if y == 0:
+            print(1+y+x)
+        elif y>0:
+            print(abs(abs(y)-abs(x))+2)
+        else:
+            print(y+x+1)
+    else:
+        if y > 0:
+            print(y-x)
+        else:
+            print(abs(y)-x+1)
+else:
+    if abs(y) <abs(x):
+        if y >0 :
+            print(1+abs(abs(x)-abs(y)))
+        elif y==0:
+            print(abs(x))
+        else:
+            print(abs(-x+y))
+    else:
+        if y >0:
+            print(1+y+x)
+        else:
+            print(2+x-y)
+",1,89,0.2457627118644068,,20.377147,0
+u531436689,"import math,string,itertools,fractions,heapq,collections,re,array,bisect,sys,random,time,copy,functools
+from collections import deque
+
+sys.setrecursionlimit(10**7)
+inf = 10**20
+mod = 10**9 + 7
+
+DR = [1, -1, 0, 0]
+DC = [0, 0, 1, -1]
+
+def LI(): return [int(x) for x in sys.stdin.readline().split()]
+def LI_(): return [int(x)-1 for x in sys.stdin.readline().split()]
+def LF(): return [float(x) for x in sys.stdin.readline().split()]
+def LS(): return sys.stdin.readline().split()
+def I(): return int(sys.stdin.readline())
+def F(): return float(sys.stdin.readline())
+def S(): return input()
+     
+def main():
+    x, y = LI()
+    diff = abs(abs(x) - abs(y))
+    if abs(x) < abs(y):
+        if x < 0 and y < 0:
+            diff += 2
+        elif x > 0 and y > 0:
+            diff += 0
+        else:
+            diff += 1
+    else:
+        if x < 0 and y < 0:
+            diff += 0
+        elif x > 0 and y > 0:
+            diff += 2
+        else:
+            diff += 1
+    print(diff)
+
+main()
+
+","x, y = map(int, input().split())
+ref_cnt = abs(abs(x) - abs(y))
+if True:
+    pass
+    if abs(x) < abs(y):
+        pass
+        if x >= 0 and y >= 0:
+            print(ref_cnt)
+        elif x < 0 and y < 0:
+            print(ref_cnt + 2)
+        else:
+            print(ref_cnt + 1)
+        pass
+    if abs(x) > abs(y):
+        pass
+        if x >= 0 and y > 0:
+            print(ref_cnt + 2)
+        elif x < 0 and y <= 0:
+            print(ref_cnt)
+        else:
+            print(ref_cnt + 1)
+        pass
+    elif abs(x) == abs(y):
+        if x * y >= 0:
+            diff += 2
+        else:
+            print(ref_cnt + 1)","import math,string,itertools,fractions,heapq,collections,re,array,bisect,sys,random,time,copy,functools
+from collections import deque
+
+sys.setrecursionlimit(10**7)
+inf = 10**20
+mod = 10**9 + 7
+
+DR = [1, -1, 0, 0]
+DC = [0, 0, 1, -1]
+
+def LI(): return [int(x) for x in sys.stdin.readline().split()]
+def LI_(): return [int(x)-1 for x in sys.stdin.readline().split()]
+def LF(): return [float(x) for x in sys.stdin.readline().split()]
+def LS(): return sys.stdin.readline().split()
+def I(): return int(sys.stdin.readline())
+def F(): return float(sys.stdin.readline())
+def S(): return input()
+     
+def main():
+    x, y = LI()
+    diff = abs(abs(x) - abs(y))
+    if x == 0:
+        if y < 0:
+            diff = -y + 1
+        else:
+            diff = y - x
+        print(diff)
+        return
+    if y == 0:
+        if x <= 0:
+            diff = -x
+        else:
+            diff = x + 1
+        print(diff)
+        return
+
+    if abs(x) < abs(y):
+        if x < 0 and y < 0:
+            diff += 2
+        elif x > 0 and y > 0:
+            diff += 0
+        else:
+            diff += 1
+    else:
+        if x < 0 and y < 0:
+            diff += 0
+        elif x > 0 and y > 0:
+            diff += 2
+        else:
+            diff += 1
+    print(diff)
+
+main()
+
+",1,266,0.21301775147928992,,32.569825,0
+u940139461,"# https://atcoder.jp/contests/agc008/tasks/agc008_a
+x, y = map(int, input().split())
+
+ans = abs(abs(x) - abs(y))
+if x < 0 and y < 0 and abs(x) < abs(y):
+    ans += 2
+elif x < 0 and y > 0:
+    ans += 1
+elif x > 0 and y < 0:
+    ans += 1
+print(ans)","x, y = map(int, input().split())
+ans = 0
+if x * y < 0:
+    ans += 1
+elif x > 0 and y == 0 or (x == 0 and y < 0):
+    ans += 1
+elif y < x:
+    ans += 2
+ans += abs(abs(x) - abs(y))
+print(ans)","# https://atcoder.jp/contests/agc008/tasks/agc008_a
+x, y = map(int, input().split())
+
+ans = float('inf')
+for i in range(4):
+    t = 0
+    if i == 0:
+        tx = -1 * x
+        ty = y
+        t += 1
+    elif i == 1:
+        tx = x
+        ty = -1 * y
+        t += 1
+    elif i == 2:
+        tx = -1 * x
+        ty = -1 * y
+        t += 2
+    else:
+        tx = x
+        ty = y
+    if tx <= ty:
+        t += ty - tx
+        ans = min(ans, t)
+
+print(ans)",1,73,0.6294416243654822,,2.454978,0
+u983853152,"def main():
+    x,y = map(int, input().split())
+
+    if x == y :
+        print(0)
+    elif x == -y:
+        print(1)
+    elif x < 0 and y < 0:
+        if abs(x) < abs(y):
+            print(-y+x+2)
+        else:
+            print(-y+x)
+    elif x>=0 and y>=0:
+        if x < y:
+            print(y-x)
+        else:
+            print(min(x-y+2,y-x+1))
+    elif x < y:
+        print(min(y-x,y-abs(x)+1))
+    else:
+        print(min(y-x+2,x+y+1))
+
+
+
+if __name__ == '__main__':
+    main()","x, y = map(int, input().split())
+if y == 0:
+    if True:
+        pass
+    pass
+    if x <= 0:
+        print(abs(x))
+    else:
+        print(abs(x) + 1)
+    pass
+elif x == 0:
+    pass
+    if y < 0:
+        print(-y + 1)
+    else:
+        print(y)
+    pass
+elif x * y < 0:
+    ref_r = []
+    x, y = sorted([x, y])
+    ref_r.append(abs(y - x))
+    ref_r.append(abs(y + x) + 1)
+    print(min(ref_r))
+elif x > y:
+    print(abs(y - x) + 2)
+else:
+    print(abs(y - x))","def main():
+    x,y = map(int, input().split())
+
+    if y>=x:
+        print(min(y-x,abs(y+x)+1))
+    else:
+        print(min(abs(y+x)+1,abs(y-x)+2))
+
+
+if __name__ == '__main__':
+    main()",1,154,0.5,,21.137664,0
+u738898077,"x,y = map(int,input().split())
+ans = 0
+if x*y < 0:
+    ans += 1
+elif x>0 and y==0:
+    ans += 1
+elif y < x:
+    ans += 2
+ans += abs(abs(x)-abs(y))
+print(ans)",,"x,y = map(int,input().split())
+ans = 0
+if x*y < 0:
+    ans += 1
+elif (x>0 and y==0) or (x==0 and y<0):
+    ans += 1
+elif y < x:
+    ans += 2
+ans += abs(abs(x)-abs(y))
+print(ans)",0,,,,10.538996,0
+u075303794,"x,y = map(int, input().split())
+ans = 0
+
+if (x==0 and y>0) or (y==0 and x<0):
+  ans = abs(abs(y)-abs(x))
+elif (x==0 and y<0) or (y==0 and x>0):
+  ans = abs(abs(y)-abs(x))+1
+else:
+  if abs(x) > abs(y):
+    x,y = y,x
+  ans = abs(y)-abs(x)
+  if x>0 and y<0:
+    ans += 1
+  elif x<0 and y>0:
+    ans += 1
+  elif x<0 and y<0:
+    ans += 2
+
+print(ans)
+
+
+","x, y = map(int, input().split())
+ans = 10 ** 18
+ref_X, ref_Y = (-x, -y)
+if ref_X <= ref_Y:
+    ans = min(ans, ref_Y - ref_X + 2)
+ref_X, ref_Y = (x, -y)
+if ref_X <= ref_Y:
+    ans = min(ans, ref_Y - ref_X + 1)
+ref_X, ref_Y = (-x, y)
+if ref_X <= ref_Y:
+    ans = min(ans, ref_Y - ref_X + 1)
+ref_X, ref_Y = (x, y)
+if ref_X <= ref_Y:
+    ans = min(ans, ref_Y - ref_X)
+print(ans)","x,y = map(int, input().split())
+ans = 0
+
+if (x==0 and y>0) or (y==0 and x<0):
+  ans = abs(abs(y)-abs(x))
+elif (x==0 and y<0) or (y==0 and x>0):
+  ans = abs(abs(y)-abs(x))+1
+else:
+  ans = abs(abs(y)-abs(x))
+  if x>0 and y>0:
+    if x>y:
+      ans += 2
+  elif x>0 and y<0:
+    ans += 1
+  elif x<0 and y>0:
+    ans += 1
+  elif x<0 and y<0:
+    if x>y:
+      ans += 2
+
+print(ans)
+
+
+",1,172,0.20370370370370372,,30.626705,0
+u453642820,"x,y=map(int,input().split())
+count=abs(abs(x)-abs(y))
+if x==-y:
+    print(1)
+elif x*y:
+    if x<y:print(count)
+    else:print(count+2)
+elif x*y<0:
+    print(count+1)
+else:
+    if x<y:
+        print(count)
+    else:
+        print(count+1)
+",,"x,y=map(int,input().split())
+count=abs(abs(x)-abs(y))
+if x==-y:
+    print(1)
+elif x*y<0:
+    print(count+1)
+elif x<y:
+    print(count)
+elif x*y:
+    print(count+2)
+else:
+    print(count+1)
+",0,,,,16.345620,0
+u555767343,"x, y = map(int, input().split())
+
+diff = abs(abs(x)-abs(y))
+bs = abs(y) - abs(x)
+if x == 0 or y == 0:
+    reverse = 0
+else:
+    reverse = 1
+
+
+if x >= 0 and y >= 0:
+    if bs >= 0:
+        ans = diff
+    else:
+        ans = reverse + diff + 1
+elif x >= 0 and y <= 0:
+    if bs >= 0:
+        ans = diff + reverse
+    else:
+        ans = reverse + diff
+elif x <= 0 and y >= 0:
+    if bs >= 0:
+        ans = reverse + diff
+    else:
+        ans = diff + reverse
+elif x <=0 and y <=0:
+    if bs >= 0:
+        ans = reverse + diff + 1
+    else:
+        ans = diff
+print(ans)",,"x, y = map(int, input().split())
+
+diff = abs(abs(x)-abs(y))
+bs = abs(y) - abs(x)
+if x == 0 or y == 0:
+    reverse = 0
+else:
+    reverse = 1
+
+
+if x >= 0 and y >= 0:
+    if bs >= 0:
+        ans = diff
+    else:
+        ans = reverse + diff + 1
+elif x >= 0 and y <= 0:
+    if bs >= 0:
+        ans = diff + 1
+    else:
+        ans = reverse + diff
+elif x <= 0 and y >= 0:
+    if bs >= 0:
+        ans = reverse + diff
+    else:
+        ans = diff + reverse
+elif x <=0 and y <=0:
+    if bs >= 0:
+        ans = reverse + diff + 1
+    else:
+        ans = diff
+print(ans)",0,,,,17.645270,0
+u780475861,"x, y = map(int, input().split())
+if x == - y:
+  print(1)
+elif x < y:
+  print(abs(abs(x) - abs(y)))
+elif x >= 0 and y >= 0:
+  print(x - y + 2)
+elif x * y <= 0:
+  print(abs(x - abs(y)) + 1)
+else:
+  print(abs(abs(x) - abs(y)) + 2)
+",,"x, y = map(int, input().split())
+if x == - y:
+  print(1)
+elif x * y < 0:
+  print(abs(abs(x) - abs(y)) + 1)
+elif x < y:
+  print(y - x)
+elif x * y:
+  print(abs(abs(x) - abs(y)) + 2)
+else:
+  print(abs(abs(x) - abs(y)) + 1)
+
+",0,,,,1.284310,0
+u821989875,"st, gl = map(int, input().split())
+ans = 0
+
+if gl == st:
+  ans = 0
+elif gl == -st:
+  ans = 1
+elif st >= 0:
+  if gl > st:
+    ans = gl - st
+  elif gl < -st:
+    ans = - st - gl + 1
+  elif gl > 0:
+    ams = st - gl + 2
+  else:
+    ans = gl + st + 1
+elif st < 0:
+  if gl > -st:
+    ans = gl + st + 1
+  elif gl < st:
+    ans = st - gl + 2
+  elif gl > 0:
+    ans = - st - gl + 1
+  else:
+    ans = gl - st
+  
+print(ans)
+",,"st, gl = map(int, input().split())
+ans = 0
+
+if gl == -st:
+  ans = 1
+elif st >= 0:
+  if gl > st:
+    ans = gl - st
+  elif gl < -st:
+    ans = - st - gl + 1
+  elif gl > 0:
+    ans = st - gl + 2
+  else:
+    ans = gl + st + 1
+elif st < 0:
+  if gl > -st:
+    ans = gl + st + 1
+  elif gl < st:
+    ans = st - gl + 2
+  elif gl > 0:
+    ans = - st - gl + 1
+  else:
+    ans = gl - st
+  
+print(ans)
+",0,,,,19.471525,0
+u830054172,"import numpy as np
+
+x, y = map(int, input().split())
+
+B = [(0, 0), (1, 0), (0, 1), (1, 1)]
+
+ans = float(""inf"")
+for i, j in B:
+    if i:
+        x *= -1
+    if j:
+        y *= -1
+    if y >= x:
+        ans = min(ans, abs(y)-abs(x) + i + j)
+
+print(ans)","B, ref_y = map(int, input().split())
+ref_cand = [(-B, ref_y, 1), (B, ref_y, 0), (-B, -ref_y, 2), (B, -ref_y, 1)]
+ans = 10000000000.0
+for ref_a, y, ref_c in ref_cand:
+    pass
+    if True:
+        pass
+    pass
+    if ref_a <= y:
+        if ans > y - ref_a + ref_c:
+            pass
+            if True:
+                ans = y - ref_a + ref_c
+            pass
+    pass
+print(ans)","import numpy as np
+
+xx, yy = map(int, input().split())
+
+B = [(0, 0), (1, 0), (0, 1), (1, 1)]
+
+ans = float(""inf"")
+for i, j in B:
+    x, y = xx, yy
+    # print(f""i, j, {i}{j}"")
+    if i:
+        x *= -1
+    if j:
+        y *= -1
+    if y >= x:
+        ans = min(ans, y-x + i + j)
+    # print(ans)
+
+print(ans)",1,92,0.18584070796460178,,34.456780,0
+u488884575,"a,b = map(int, input().split())
+ans = abs(abs(a) - abs(b))
+sign = inc = 0
+if a*b < 0:
+    sign = 1
+if a-b < 0:
+    inc = 1
+
+if a==0 and b==0:
+    print(0)
+    exit()
+elif a==0:
+    if inc == 0:
+        ans += 1
+        print(ans)
+        exit()
+else:
+    if inc == 0:
+        ans += 1
+        print(ans)
+        exit()
+
+if sign == 0 and inc == 0:
+    ans += 2
+elif sign == 0 and inc == 1:
+    pass
+else:
+    ans += 1
+print(ans)","a, b = map(int, input().split())
+ref_num = abs(b) - abs(a)
+if a * b < 0:
+    pass
+pass
+if ref_num == 0:
+    ans = 1
+pass
+if ref_num > 0:
+    if a >= 0 and b >= 0:
+        ans = ref_num
+    elif a < 0 and b < 0:
+        ans = ref_num + 2
+    else:
+        ans = ref_num + 1
+    pass
+elif ref_num < 0:
+    if a > 0 and b > 0:
+        ans = -ref_num + 2
+    elif a <= 0 and b <= 0:
+        ans = -ref_num
+    else:
+        ans = -ref_num + 1
+print(ans)","a,b = map(int, input().split())
+ans = abs(abs(a) - abs(b))
+sign = inc = 0
+if a*b < 0:
+    sign = 1
+if a-b < 0:
+    inc = 1
+
+if a==0 and b==0:
+    print(0)
+    exit()
+elif a==0:
+    if inc == 0:
+        ans += 1
+        print(ans)
+        exit()
+elif b==0:
+    if inc == 0:
+        ans += 1
+        print(ans)
+        exit()
+
+if sign == 0 and inc == 0:
+    ans += 2
+elif sign == 0 and inc == 1:
+    pass
+else:
+    ans += 1
+print(ans)",1,115,0.049586776859504134,,21.165650,0
+u871841829,"x, y = map(int, input().split())
+
+ans = 0
+if x == y:
+    ans = 0
+
+elif abs(x) == abs(y):
+    ans = 1
+
+elif x < y:
+    if x >= 0 and y >= 0:
+        ans = y - x
+    elif y >= 0 and x < 0:
+        if abs(x) > y:
+            ans = abs(y - x)
+        else:
+            ans = min([abs(y-x), y-abs(x)+1])
+else:
+    # x > y
+    if x >= 0 and y >= 0:
+        ans = min([1 + x + y, 1 + x - y + 1])
+    elif x >= 0 and y < 0:
+        ans = 1 + x - abs(y)
+    else:
+        # x < 0 and y < 0
+        ans = 1 + abs(y) - abs(x) + 1
+
+print(ans)",,"x, y = map(int, input().split())
+
+cand = [(-x, y, 1), (x, y, 0), (-x, -y, 2), (x, -y, 1)] 
+
+ans = 10e9
+for a, b, c in cand:
+    if a <= b:
+        if ans > b - a + c:
+            ans = b - a + c
+
+print(ans)
+
+
+",0,,,,18.129835,0
+u485319545,"x,y=map(int,input().split())
+
+ans =0
+
+if 0<x and x<y:
+    ans=abs(y) - abs(x)
+elif x==0 and x<y:
+    ans =abs(y) - abs(x)    
+elif x<0 and 0<y and (abs(x) < abs(y)):
+    ans = 1 + abs(y) - abs(x)
+elif x<0 and 0<y and (abs(x) > abs(y)):
+    ans = 1 + abs(x) - abs(y)
+elif x<y and y<0:
+    ans = abs(x) - abs(y)
+elif x<y and y==0:
+    ans = abs(x) - abs(y)
+elif 0<y and y<x:
+    ans = 2 + abs(x) - abs(y)
+elif y==0 and y<x:
+    ans = 1 + abs(x) - abs(y)
+elif y<0 and 0<x and (abs(x) > abs(y)):
+    ans = 1 + abs(x) - abs(y)
+elif y<0 and 0<x and (abs(x) < abs(y)):
+    ans = 1 + abs(y) - abs(x)
+elif y<x and x<0:
+    ans = 2 + abs(y) - abs(x)
+elif y<x and x==0:
+    ans = 1 + abs(y)
+
+print(ans)
+",,"x,y=map(int,input().split())
+
+ans =0
+
+if 0<x and x<y:
+    ans=abs(y) - abs(x)
+elif x==-y:
+    ans =1
+elif x==0 and x<y:
+    ans =abs(y) - abs(x)    
+elif x<0 and 0<y and (abs(x) < abs(y)):
+    ans = 1 + abs(y) - abs(x)
+elif x<0 and 0<y and (abs(x) > abs(y)):
+    ans = 1 + abs(x) - abs(y)
+elif x<y and y<0:
+    ans = abs(x) - abs(y)
+elif x<y and y==0:
+    ans = abs(x) - abs(y)
+elif 0<y and y<x:
+    ans = 2 + abs(x) - abs(y)
+elif y==0 and y<x:
+    ans = 1 + abs(x) - abs(y)
+elif y<0 and 0<x and (abs(x) > abs(y)):
+    ans = 1 + abs(x) - abs(y)
+elif y<0 and 0<x and (abs(x) < abs(y)):
+    ans = 1 + abs(y) - abs(x)
+elif y<x and x<0:
+    ans = 2 + abs(y) - abs(x)
+elif y<x and x==0:
+    ans = 1 + abs(y)
+print(ans)
+",0,,,,109.799921,0
+u941047297,"def main():
+    x, y = list(map(int, input().split()))
+    ans = abs(y) - abs(x)
+    if x >= 0 and y >= 0 or x < 0 and y < 0:
+        if x > y:
+            print(x - y + 2)
+        else:
+            print(y - x)
+    elif x < 0 and y >= 0:
+        print(min(y - x, abs(y - abs(x)) + 1))
+    elif x >= 0 and y < 0:
+        print(abs(x - abs(y)) + 1)
+
+
+if __name__ == '__main__':
+    main()
+","x, y = map(int, input().split())
+ans = abs(abs(x) - abs(y))
+if x == 0 or y == 0:
+    pass
+    if x > y:
+        if True:
+            ans += 1
+        pass
+    elif x < 0 and y >= 0:
+        pass
+elif int(x > 0) ^ int(y > 0):
+    ans += 1
+elif x > y:
+    ans += 2
+print(ans)","def main():
+    x, y = list(map(int, input().split()))
+    ans = abs(y) - abs(x)
+    if x > 0 and y > 0 or x < 0 and y < 0:
+        if x > y:
+            print(x - y + 2)
+        else:
+            print(y - x)
+    elif x < 0 and y >= 0:
+        print(min(y - x, abs(y - abs(x)) + 1))
+    elif x >= 0 and y < 0:
+        print(abs(x - abs(y)) + 1)
+    elif x == 0 and y > 0:
+        print(y - x)
+    else:
+        print(x + 1)
+
+
+if __name__ == '__main__':
+    main()
+",1,115,0.22818791946308725,,13.554561,0
+u888092736,"x, y = map(int, input().split())
+a_cnt = abs(abs(x) - abs(y))
+
+if x + a_cnt == y:
+    print(a_cnt)
+elif x + a_cnt == -y:
+    print(a_cnt + 1)
+elif x - a_cnt == y:
+    print(a_cnt + 1)
+else:
+    print(a_cnt + 2)
+","x, y = map(int, input().split())
+a_cnt = abs(abs(x) - abs(y))
+if x + a_cnt == y:
+    print(a_cnt)
+elif x * y <= 0:
+    print(a_cnt + 1)
+elif x - a_cnt == y:
+    print(a_cnt + 2)
+else:
+    print(a_cnt + 2)","x, y = map(int, input().split())
+a_cnt = abs(abs(x) - abs(y))
+
+if x + a_cnt == y:
+    print(a_cnt)
+elif x + a_cnt == -y:
+    print(a_cnt + 1)
+elif x - a_cnt == -y:
+    print(a_cnt + 1)
+else:
+    print(a_cnt + 2)
+",1,8,0.2,,1.562810,0
+u098012509,"import sys
+
+sys.setrecursionlimit(10 ** 8)
+
+input = sys.stdin.readline
+
+
+def main():
+    X, Y = [int(x) for x in input().split()]
+    ans = float(""inf"")
+    if Y >= X:
+        ans = Y - X
+
+    if Y >= -X:
+        ans = min(ans, Y + X + 1)
+
+    if X < 0 and Y >= 0 and abs(X) > abs(Y):
+        ans = min(ans, abs(X) - abs(Y) + 1)
+
+    if ans == float(""inf""):
+        if X > 0 and Y < 0:
+            ans = min(ans, abs(Y) - X + 1)
+        ans = min(ans, abs(Y) - abs(X) + 2)
+
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+","X, Y = [int(x) for x in input().split()]
+ans = float('inf')
+if Y >= X:
+    pass
+pass
+if X == Y:
+    ans = min(ans, Y + X + 1)
+else:
+    ref_ans1 = Y - X
+    ref_ans2 = -Y - -X + 2
+    ref_ans3 = Y - -X + 1
+    ref_ans4 = -Y - X + 1
+    if ref_ans1 > 0:
+        ans = min(ans, ref_ans1)
+    pass
+    if ans == float('inf'):
+        ans = min(ans, ref_ans2)
+    if ref_ans3 > 0:
+        ans = min(ans, ref_ans3)
+    if ref_ans4 > 0:
+        ans = min(ans, ref_ans4)
+print(ans)","import sys
+
+sys.setrecursionlimit(10 ** 8)
+
+input = sys.stdin.readline
+
+
+def main():
+    X, Y = [int(x) for x in input().split()]
+    ans = float(""inf"")
+
+    if Y - X >= 0:
+        ans = min(ans, Y - X)
+
+    if Y - -X >= 0:
+        ans = min(ans, Y - -X + 1)
+
+    if -Y - X >= 0:
+        ans = min(ans, -Y - X + 1)
+
+    if -Y - -X >= 0:
+        ans = min(ans, -Y - -X + 2)
+
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+",1,162,0.3545816733067729,,53.019319,0
+u413165887,"x, y = map(int, input().split())
+if y == 0:
+    if x <= 0:
+        print(abs(x))
+    else:
+        print(abs(x)+1)
+elif x*y < 0:
+    r = []
+    r.append(abs(x-y))
+    r.append(abs(y+x)+1)
+    print(min(r))
+elif x > y:
+    print(abs(y-x)+2)
+else:
+    print(abs(y-x))",,"x, y = map(int, input().split())
+if y == 0:
+    if x <= 0:
+        print(abs(x))
+    else:
+        print(abs(x)+1)
+elif x==0:
+    if y < 0:
+        print(-y+1)
+    else:
+        print(y)
+elif x*y < 0:
+    r = []
+    x, y = sorted([x, y])
+    r.append(abs(y-x))
+    r.append(abs(y+x)+1)
+    print(min(r))
+elif x > y:
+    print(abs(y-x)+2)
+else:
+    print(abs(y-x))",0,,,,15.937682,0
+u178079174,"x,y = list(map(int,input().split()))
+MIN = float('inf')
+for i in [1,-1]:
+    for j in [1,-1]:
+        ans = 0
+        tmpx = x
+        if i == -1:
+            tmpx = i*tmpx
+            ans += 1
+        tmpx += abs(abs(x)-abs(y))
+        ans += abs(abs(x)-abs(y))
+        if j == -1:
+            tmpx = i*tmpx
+            ans += 1
+        if tmpx == y:
+            MIN = min(MIN,ans)
+print(MIN)","x, y = map(int, input().split())
+ref_B = [(0, 0), (1, 0), (0, 1), (1, 1)]
+MIN = float('inf')
+if len(ref_B) > 0:
+    pass
+    for ref_i, j in ref_B:
+        ref_x, ref_y = (x, y)
+        if ref_i:
+            ref_x *= -1
+        elif True:
+            pass
+        if j:
+            ref_y *= -1
+        pass
+        if ref_y >= ref_x:
+            MIN = min(MIN, ref_y - ref_x + ref_i + j)
+        pass
+    pass
+print(MIN)","x,y = list(map(int,input().split()))
+MIN = float('inf')
+for i in [1,-1]:
+    for j in [1,-1]:
+        ans = 0
+        tmpx = x
+        if i == -1:
+            tmpx = i*tmpx
+            ans += 1
+        tmpx += abs(abs(x)-abs(y))
+        ans += abs(abs(x)-abs(y))
+        if j == -1:
+            tmpx = j*tmpx
+            ans += 1
+        if tmpx == y:
+            MIN = min(MIN,ans)
+print(MIN)",1,130,0.007633587786259555,,48.649557,0
+u189487046,"X, Y = map(int, input().split())
+
+if 0 < X < Y or X < Y < 0:
+    print(Y-X)
+elif 0 < Y < X or Y < X < 0:
+    print(2+X-Y)
+elif X < 0 < Y or Y < 0 < X:
+    print(1+abs(X+Y))
+
+if X == 0 and Y < 0:
+    print(abs(Y)+1)
+elif Y == 0 and X > 0:
+    print(abs(X)+1)
+","X, Y = map(int, input().split())
+if True:
+    ref_a_cnt = abs(abs(X) - abs(Y))
+    if X + ref_a_cnt == Y:
+        print(ref_a_cnt)
+    elif X + ref_a_cnt == -Y:
+        print(1 + abs(X + Y))
+    elif X - ref_a_cnt == -Y:
+        print(ref_a_cnt + 1)
+    else:
+        print(ref_a_cnt + 2)
+pass","X, Y = map(int, input().split())
+
+if 0 <= X < Y or X < Y <= 0:
+    print(Y-X)
+elif 0 < Y < X or Y < X < 0:
+    print(2+X-Y)
+elif X < 0 < Y or Y < 0 < X:
+    print(1+abs(X+Y))
+
+if X == 0 and Y < 0:
+    print(abs(Y)+1)
+elif Y == 0 and X > 0:
+    print(abs(X)+1)
+",1,104,0.018867924528301883,,19.044563,0
+u674959776,"x,y=map(int,input().split())
+if 0<=x<=y or x<=y<=0:
+    print(y-x)
+elif 0<=y<=x or y<=x<=0:
+    print(2+x-y)
+else:
+    print(min(abs(x)+abs(y),1+abs(x+y)))","x, y = map(int, input().split())
+if 0 <= x <= y or x <= y <= 0:
+    print(y - x)
+elif x > y > 0 or 0 > x > y:
+    print(2 + x - y)
+else:
+    print(abs(abs(x) - abs(y)) + 1)","x,y=map(int,input().split())
+if 0<=x<y or x<y<=0:
+    print(y-x)
+elif 0<y<x or y<x<0:
+    print(2+x-y)
+elif x<0<y or y<0<x:
+    print(1+abs(x+y))
+
+if x==0 and y<0 :
+    print(abs(y)+1)
+if y==0 and x>0:
+    print(x+1)",1,27,0.7403846153846154,,1.135324,0
+u346395915,"x, y = map(int, input().split())
+
+ans = 0
+
+if x >= 0 and y >= 0:
+    if y >= x:
+        ans = y - x
+    else:
+        ans = abs(y-x) + 2
+elif x >= 0 and y < 0:
+    ans = abs(abs(y)-abs(x)) + 1
+
+elif x < 0 and y >= 0:
+    ans = abs(abs(y)-abs(x)) + 1
+
+else:
+    if y >= x:
+        ans = abs(y-x)
+    else:
+        ans = abs(y-x) + 2
+
+print(ans)","x, y = map(int, input().split())
+ans = 0
+if x <= y:
+    if x >= 0 and y >= 0 or (x <= 0 and y <= 0):
+        ans = y - x
+    else:
+        ans = abs(abs(x) - y) + 1
+elif x > 0 and y > 0 or (x < 0 and y < 0):
+    ans = min(abs(x) + abs(y) + 1, abs(abs(y) - abs(x)) + 2)
+elif x < 0 and y >= 0:
+    ans = abs(abs(y) - abs(x)) + 1
+elif y >= x:
+    ans = abs(y - x)
+else:
+    ans = abs(x - abs(y)) + 1
+print(ans)","x, y = map(int, input().split())
+
+ans = 0
+
+if x >= 0 and y >= 0:
+    if y >= x:
+        ans = y - x
+    else:
+        ans = abs(y-x) + 2
+elif x >= 0 and y < 0:
+    ans = abs(abs(y)-abs(x)) + 1
+
+elif x < 0 and y >= 0:
+    ans = abs(abs(y)-abs(x)) + 1
+
+else:
+    if y >= x:
+        ans = abs(y-x)
+    else:
+        ans = abs(y-x) + 2
+
+if y == 0:
+    ans -= 1
+
+print(ans)",1,66,0.14285714285714285,,1.834202,0
+u208713671,"X,Y = list(map(int,input().split()))
+
+if X==Y:
+    print(0)
+if X<Y:
+    if X<0 and Y>0:
+        print(1+abs(Y+X))
+    else:
+        print(Y-X)
+
+if X>Y:
+    if X>=0 and Y<0:
+        print(1+abs(X+Y))
+    elif X>0 and Y>0:
+        print(2+X-Y)
+    elif X<0 and Y<0:
+        print(2+X-Y)
+    else:
+        print(X-Y)
+","X, Y = map(int, input().split())
+ref_a = 2000000000
+if Y >= X:
+    ref_a = Y - X
+pass
+if -Y >= X:
+    ref_b = -X - Y + 1
+    if ref_b < ref_a:
+        ref_a = ref_b
+    else:
+        pass
+    pass
+pass
+if Y >= -X:
+    ref_b = X + Y + 1
+    if ref_b < ref_a:
+        ref_a = ref_b
+    elif X > 0 and Y > 0:
+        pass
+    pass
+if -Y >= -X:
+    ref_b = X - Y + 2
+    if ref_b < ref_a:
+        ref_a = ref_b
+    pass
+print(ref_a)","X,Y = list(map(int,input().split()))
+
+if X==Y:
+    print(0)
+if X<Y:
+    if X<0 and Y>0:
+        print(1+abs(Y+X))
+    else:
+        print(Y-X)
+
+if X>Y:
+    if X>=0 and Y<=0:
+        print(1+abs(X+Y))
+    elif X>0 and Y>0:
+        print(2+X-Y)
+    elif X<0 and Y<0:
+        print(2+X-Y)
+    else:
+        print(X-Y)",1,144,0.006896551724137945,,35.119747,0
+u813174766,"a,b=map(int,input().split())
+if(0>a>b):
+  print(a-b+2)
+else:
+  print(min(abs(a-b),abs(a+b)+1))","a, b = map(int, input().split())
+if a <= b:
+    print(min(b - a, abs(b + a) + 1))
+else:
+    print(min(abs(b + a) + 1, abs(b - a) + 2))","a,b=map(int,input().split())
+print(min(max(b-a,-b+a+2),abs(a+b)+1))",1,30,0.53125,,1.292660,0
+u871980676,"x,y=map(int,input().split())
+res = 0
+if 0<=x<=y:
+    res = y-x
+elif 0<y<x:
+    res = x-y+2
+elif y==0 and x>0:
+    res = x+1
+elif y==0 and x<0:
+    res = x
+elif x==0 and y>0:
+    res = y
+elif x==0 and y<0:
+    res = abs(y)+1
+elif x<0<y:
+    res = abs(x+y)+1
+elif y<0<x:
+    res = abs(x+y)+1
+elif x<=y<=0:
+    res = y-x
+elif y<x<=0:
+    res = x-y+2
+print(res)
+",,"x,y=map(int,input().split())
+res = 0
+if 0<=x<=y:
+    res = y-x
+elif 0<y<x:
+    res = x-y+2
+elif y==0 and x>0:
+    res = x+1
+elif y==0 and x<0:
+    res = abs(x)
+elif x==0 and y>0:
+    res = y
+elif x==0 and y<0:
+    res = abs(y)+1
+elif x<0<y:
+    res = abs(x+y)+1
+elif y<0<x:
+    res = abs(x+y)+1
+elif x<=y<=0:
+    res = y-x
+elif y<x<=0:
+    res = x-y+2
+print(res)
+",0,,,,52.376779,0
+u860002137,"import sys
+x, y = map(int, input().split())
+
+# aが正なら絶対値を増やすべき、そうでなければ減らすべき
+a = abs(y) - abs(x)
+
+# 符号が違うだけなら符号反転して終わり
+if a == 0 and x != y:
+    print(1)
+    sys.exit()
+
+# 最初に符号反転するべきか
+push = 0
+if (a < 0 and x > 0) or (a > 0 and x < 0):
+    push += 1
+    x = -x
+
+# 加算
+x += abs(a)
+    
+# 最後に符号反転するべきか
+if x != y:
+    push += 1
+
+print(a + push)",,"import sys
+x, y = map(int, input().split())
+
+# aが正なら絶対値を増やすべき、そうでなければ減らすべき
+a = abs(y) - abs(x)
+
+# 符号が違うだけなら符号反転して終わり
+if a == 0 and x != y:
+    print(1)
+    sys.exit()
+
+# 最初に符号反転するべきか
+push = 0
+if (a < 0 and x > 0) or (a > 0 and x < 0):
+    push += 1
+    x = -x
+
+# 加算
+x += abs(a)
+
+# 最後に符号反転するべきか
+if x != y:
+    push += 1
+
+print(abs(a) + push)",0,,,,1.794430,0
+u502731482,"x, y = map(int, input().split())
+ans = 10 ** 10
+for i in range(2):
+    for j in range(2):
+        a = x
+        b = y
+        cnt = 0
+        if i == 1:
+            a *= -1
+            cnt = 1
+        if j == 1:
+            b *= -1
+            cnt += 1
+        if a >= b:
+            continue
+        cnt += b - a
+        a += b - a
+        if a == b:
+            ans = min(ans, cnt)
+
+print(ans)
+","x, y = map(int, input().split())
+ans = 10 ** 10
+for i in [1, -1]:
+    for j in [1, -1]:
+        if i == 1:
+            pass
+        ref_ans = 0
+        ref_tmpx = x
+        if i == -1:
+            ref_tmpx = i * ref_tmpx
+            ref_ans += 1
+        ref_tmpx += abs(abs(x) - abs(y))
+        ref_ans += abs(abs(x) - abs(y))
+        if j == -1:
+            ref_tmpx = j * ref_tmpx
+            ref_ans += 1
+        if ref_tmpx == y:
+            ans = min(ans, ref_ans)
+print(ans)","x, y = map(int, input().split())
+ans = 10 ** 10
+for i in range(2):
+    for j in range(2):
+        a = x
+        b = y
+        cnt = 0
+        if i == 1:
+            a *= -1
+            cnt = 1
+        if j == 1:
+            b *= -1
+            cnt += 1
+        if a > b:
+            continue
+        cnt += b - a
+        a += b - a
+        #print(cnt, a, b)
+        if a == b:
+            ans = min(ans, cnt)
+
+print(ans)
+",1,100,0.00990099009900991,,10.713400,0
+u213580455,"def answer(x, y):
+    absX = abs(x)
+    absY = abs(y)
+    a = abs(absY - absX)
+    # 0인 경우는 좀 다르게 취급된다
+    if x == 0:
+        if y > 0:
+            return y-x
+        else:
+            return -y+1
+    if y == 0:
+        if x > 0:
+            return 1+x
+        else:
+            return -x
+        
+    # 둘다 양수
+    if (x > 0 and y > 0):
+        if absX < absY:
+            return y-x
+        else:
+            return 1+(x-y)+1
+    if (x < 0 and y > 0):
+        if absX < absY:
+            return 1+(y+x)
+        else:
+            return (y-x)
+    if (x > 0 and y < 0):
+        if absX < absY:
+            return -(y+x)+1
+        else:
+            return 1+(x+y)
+    if (x < 0 and y < 0):
+        if absX < absY:
+            return 1+(y+x)*-1+1
+        else:
+            return y-x
+
+x, y = map(int, input().split())
+print(answer(x, y))",,"def answer(x, y):
+    absX = abs(x)
+    absY = abs(y)
+    a = abs(absY - absX)
+    # 0인 경우는 좀 다르게 취급된다
+    if x == 0:
+        if y > 0:
+            return y
+        else:
+            return -y+1
+    if y == 0:
+        if x > 0:
+            return 1+x
+        else:
+            return -x
+        
+    # 둘다 양수
+    if (x > 0 and y > 0):
+        if absX < absY:
+            return y-x
+        else:
+            return 1+(x-y)+1
+    if (x < 0 and y > 0):
+        if absX < absY:
+            return 1+(y+x)
+        else:
+            return -(x+y)+1
+    if (x > 0 and y < 0):
+        if absX < absY:
+            return -(y+x)+1
+        else:
+            return 1+(x+y)
+    if (x < 0 and y < 0):
+        if absX < absY:
+            return 1+(x-y)+1
+        else:
+            return y-x
+
+x, y = map(int, input().split())
+print(answer(x, y))",0,,,,96.646232,0
+u391819434,"X,Y=map(int,input().split())
+
+if X>=0:
+    if Y>=X:
+        print(Y-X)
+    elif -X<=Y<X:
+        print(Y-(-X)+1)
+    else:
+        print(-Y-X+1)
+else:
+    if Y>=abs(X):
+        print(Y-(-X)+1)
+    elif X<=Y<=0:
+        print(Y-X)
+    elif 0<Y<abs(X):
+        print(abs(X)-Y+1)
+    else:
+        print(abs(Y)-abs(X)+2)","X, Y = map(int, input().split())
+if X <= Y:
+    if 0 <= X or Y <= 0:
+        print(Y - X)
+    elif abs(X) >= abs(Y):
+        print(abs(X) - abs(Y) + 1)
+    else:
+        print(1 + abs(Y) - abs(X))
+elif 0 < Y or X < 0:
+    print(1 + abs(X - Y) + 1)
+elif X <= Y <= 0:
+    print(Y - X)
+elif abs(X) >= abs(Y):
+    print(1 + abs(X) - abs(Y))
+else:
+    print(abs(Y) - abs(X) + 1)","X,Y=map(int,input().split())
+
+if X>=0:
+    if Y>=X:
+        print(Y-X)
+    elif -X<=Y<=0:
+        print(Y-(-X)+1)
+    elif 0<Y<X:
+        print(X-Y+2)
+    else:
+        print(-Y-X+1)
+else:
+    if Y>=abs(X):
+        print(Y-(-X)+1)
+    elif X<=Y<=0:
+        print(Y-X)
+    elif 0<Y<abs(X):
+        print(abs(X)-Y+1)
+    else:
+        print(abs(Y)-abs(X)+2)",1,80,0.23809523809523808,,1.886874,0
+u442877951,"x,y = map(int,input().split())
+count = 1
+
+if x*y > 0:
+  if x < y:
+    count = y - x
+  elif x > y:
+    count = 2 + abs(y-x)
+  elif abs(x) == abs(y):
+    count = 0
+elif x*y < 0:
+  if x > y or x < y:
+    count = 1 + abs(abs(x) - abs(y))
+  elif abs(x) == abs(y):
+    count = 0
+else:
+  if x > y:
+    count = x
+  elif x < y:
+    count = y
+  else:
+    count = 0
+    
+print(count)
+","x, y = map(int, input().split())
+count = 1
+if x > 0:
+    pass
+    if x < y:
+        print(y - x)
+    elif x > y:
+        pass
+    pass
+    if 0 < y < x:
+        print(x - y + 2)
+    elif y <= 0:
+        print(abs(abs(x) - abs(y)) + 1)
+    pass
+elif x == 0:
+    pass
+    if y > 0:
+        print(y - x)
+    else:
+        print(x - y + 1)
+    pass
+elif x > y:
+    print(x - y + 2)
+elif x < y <= 0:
+    print(y - x)
+else:
+    print(abs(abs(x) - abs(y)) + 1)","x,y = map(int,input().split())
+count = 1
+
+if x*y > 0:
+  if x < y:
+    count = y - x
+  elif x > y:
+    count = 2 + abs(y-x)
+  elif abs(x) == abs(y):
+    count = 0
+elif x*y < 0:
+  if x > y or x < y:
+    count = 1 + abs(abs(x) - abs(y))
+  elif abs(x) == abs(y):
+    count = 0
+else:
+  if x != 0:
+    count = abs(x)
+    if x > 0:
+      count += 1
+  elif y != 0:
+    count = abs(y)
+    if y < 0:
+      count += 1
+  else:
+    count = 0
+
+print(count)
+",1,147,0.1923076923076923,,20.750827,0
+u001769145,"# AGC008 A Simple Calculator
+
+x, y = map(int, input().split())
+_x = abs(x)
+_y = abs(y)
+
+if x >= 0 and y >= 0:
+    if x <= y:
+        print(y-x)
+    else:
+        print(x-y+2)
+elif x * y <= 0:
+    print(abs(_y-_x)+1)
+else:
+    if _x < _y:
+        print(_y-_x+2)
+    else:
+        print(_x-_y)",,"# AGC008 A Simple Calculator
+
+x, y = map(int, input().split())
+_x = abs(x)
+_y = abs(y)
+
+if x > 0 and y > 0:
+    if x <= y:
+        print(y-x)
+    else:
+        print(x-y+2)
+elif x * y < 0:
+    print(abs(_y-_x)+1)
+elif x == 0:
+    if y >= 0:
+        print(y)
+    else:
+        print(_y+1)
+elif y == 0:
+    if x > 0:
+        print(x+1)
+    else:
+        print(_x)
+else:
+    if _x < _y:
+        print(_y-_x+2)
+    else:
+        print(_x-_y)",0,,,,14.390782,0
+u215630013,"x, y = map(int, input().split())
+dif = abs(abs(x) - abs(y))
+if x < 0 and y < 0:
+    if x < y:
+        print(dif)
+        exit()
+    else:
+        print(dif+2)
+        exit()
+if x >= 0 and y >= 0:
+    if x > y:
+        print(dif+2)
+        exit()
+    else:
+        print(dif)
+        exit()
+if x >= 0:
+    print(dif+1)
+else:
+    if y == 0:
+        print(dif)
+    else:
+        print(dif+1)",,"x, y = map(int, input().split())
+dif = abs(abs(x) - abs(y))
+if x < 0 and y < 0:
+    if x < y:
+        print(dif)
+        exit()
+    else:
+        print(dif+2)
+        exit()
+if x >= 0 and y >= 0:
+    if x > y:
+        if y == 0:
+            print(dif+1)
+            exit()
+        print(dif+2)
+        exit()
+    else:
+        print(dif)
+        exit()
+if x >= 0:
+    print(dif+1)
+else:
+    if y == 0:
+        print(dif)
+    else:
+        print(dif+1)
+",0,,,,2.292160,0
+u496821919,"x,y = map(int,input().split())
+if x >= 0 and y >= 0:
+    if x > y:
+        print(2+x-y)
+    else:
+        print(y-x)
+elif x >= 0 and y < 0:
+    if x >= -y:
+        print(1+x+y)
+    else:
+        print(1-x-y)
+elif x < 0 and y >= 0:
+    if -x >= y:
+        print(1-y-x)
+    else:
+        print(1+x+y)
+else:
+    if -x > -y:
+        print(y-x)
+    else:
+        print(2+x-y)","x, y = map(int, input().split())
+if x >= 0 and y >= 0:
+    pass
+if x >= 0 and y >= 0:
+    if y > x:
+        print(y - x)
+    else:
+        print(x + 1)
+    pass
+elif x >= 0 and y < 0:
+    pass
+    if x >= -y:
+        print(1 + x + y)
+    else:
+        print(1 - x - y)
+    pass
+elif x < 0 and y >= 0:
+    pass
+    if abs(x) == y:
+        print(1)
+    elif abs(x) < y:
+        print(1 + y - abs(x))
+    else:
+        ref_t1 = abs(x) + y
+        ref_t2 = abs(x) - y + 1
+        print(min(ref_t1, ref_t2))
+    pass
+elif -x > -y:
+    print(y - x)
+else:
+    print(2 + x - y)
+pass","x,y = map(int,input().split())
+if x*y >= 0:
+    if x == 0:
+        if y < 0:
+            print(1-y)
+        else:
+            print(y)
+    elif y == 0:
+        if x > 0:
+            print(1+x)
+        else:
+            print(-x)
+    elif x > y:
+        print(2+x-y)
+    else:
+        print(y-x)
+else:
+    if x >= -y:
+        print(1+x+y)
+    else:
+        print(1-x-y)",1,88,0.4913294797687861,,19.228995,0
+u301624971,"def myAnswer(X:int,Y:int) -> int:
+   if(X == Y):return 0
+   if(X == 0):return Y if(Y >= 0) else abs(Y) + 1
+   if(X > 0):
+      if(Y == 0):
+         return X + 1
+      return abs(Y - X) if (Y > 0) else abs(abs(Y) - X) + 1
+   if(X < 0):
+      if(Y == 0):
+         return abs(X)
+      return 2 + abs(Y - X) if(Y < 0) else abs(Y - abs(X)) + 1
+
+def modelAnswer():
+   return
+def main():
+   X,Y = map(int,input().split())
+   print(myAnswer(X,Y))
+if __name__ == '__main__':
+   main()",,"def myAnswer(X:int,Y:int) -> int:
+   result = []
+   for i in range(2):
+      tmpX = X
+      ans = 0
+      if(i==1):
+         tmpX *= -1
+         ans += 1
+      for j in range(2):
+         tmpY = Y
+         if(j==1):
+            tmpY *= -1
+            ans += 1
+         if(tmpX <= tmpY):
+            result.append(ans + (tmpY - tmpX))
+   return min(result)
+def modelAnswer():
+   return
+def main():
+   X,Y = map(int,input().split())
+   print(myAnswer(X,Y))
+if __name__ == '__main__':
+   main()",0,,,,74.907753,0
+u276204978,"x, y = map(int, input().split())
+if x <= y:
+    if x * y > 0:
+        print(y - x)
+    else:
+        print(1+x+y)
+else:
+    if abs(x) == abs(y):
+        print(1)
+    elif x * y > 0:
+        print(2+x-y)
+    elif x > 0 and y < 0:
+        print(1+abs(y+x))","if True:
+    x, y = map(int, input().split())
+    ans = abs(abs(x) - abs(y))
+    if x == 0 or y == 0:
+        if x > y:
+            ans += 1
+        pass
+    elif int(x > 0) ^ int(y > 0):
+        ans += 1
+    elif x > y:
+        ans += 2
+    print(ans)
+elif x > 0 and y < 0:
+    pass
+pass","x, y = map(int, input().split())
+
+f = lambda x: 10**10 if x < 0 else x
+
+print(min(f(y-x), f(y+x)+1, f(-y-x)+1, f(-y+x)+2))",1,98,0.4869109947643979,,13.671520,0
+u474423089,"A,B=map(int,input().split(' '))
+print(min([i if i>=0 else 10**9+2 for i in [B-A,A+B+1,-B+A+2]]))","A, B = map(int, input().split())
+print(min(max(B - A, -B + A + 2), abs(A + B) + 1))","A,B=map(int,input().split(' '))
+print(min([i if i>0 else 10**10 for i in [B-A,A+B+1,-B+A+2,-B-A+1]]))",1,35,0.3137254901960784,,1.300954,0
+u888337853,"import sys
+import re
+import math
+import collections
+import decimal
+import bisect
+import itertools
+import fractions
+import functools
+import copy
+import heapq
+import decimal
+
+sys.setrecursionlimit(10000001)
+INF = sys.maxsize
+MOD = 10 ** 9 + 7
+
+ni = lambda: int(sys.stdin.readline())
+ns = lambda: map(int, sys.stdin.readline().split())
+na = lambda: list(map(int, sys.stdin.readline().split()))
+
+
+# ===CODE===
+def main():
+    x, y = ns()
+
+    ans = abs(abs(x) - abs(y))
+
+    if 0 < y < x and 0 < x:
+        ans += 2
+    elif 0 > x > y and 0 > y:
+        ans += 2
+    elif (x > 0) != (y > 0):
+        ans += 1
+    elif x > 0 and y == 0:
+        ans += 1
+    elif x == 0 and y < 0:
+        ans += 1
+
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+","x, y = map(int, input().split())
+ans = abs(abs(x) - abs(y))
+if x == 0 or y == 0:
+    if x > y:
+        ans += 1
+    pass
+elif int(x > 0) ^ int(y > 0):
+    ans += 1
+elif x > y:
+    ans += 2
+print(ans)","import sys
+import re
+import math
+import collections
+import decimal
+import bisect
+import itertools
+import fractions
+import functools
+import copy
+import heapq
+import decimal
+
+sys.setrecursionlimit(10000001)
+INF = sys.maxsize
+MOD = 10 ** 9 + 7
+
+ni = lambda: int(sys.stdin.readline())
+ns = lambda: map(int, sys.stdin.readline().split())
+na = lambda: list(map(int, sys.stdin.readline().split()))
+
+
+# ===CODE===
+def main():
+    x, y = ns()
+
+    ans = abs(abs(x) - abs(y))
+
+    if 0 < y < x:
+        ans += 2
+    elif 0 > x > y:
+        ans += 2
+    elif x > 0 and y < 0:
+        ans += 1
+    elif x < 0 and y > 0:
+        ans += 1
+    elif x > 0 and y == 0:
+        ans += 1
+    elif x == 0 and y < 0:
+        ans += 1
+
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+",1,179,0.13106796116504854,,11.438239,0
+u371385198,"import sys
+input = sys.stdin.readline
+
+
+def readstr():
+    return input().strip()
+
+
+def readint():
+    return int(input())
+
+
+def readnums():
+    return map(int, input().split())
+
+
+def readstrs():
+    return input().split()
+
+
+def main():
+    x, y = readnums()
+    '''
+    x <= yかx > yか
+    x, yの正負
+    x, yの差
+    x, y
+    1, 3 2
+    -1, 3 3
+    1, -3 3
+    -1, -3 4
+    3, 1 4
+    -3, 1 3
+    3, -1 3
+    -3, -1 2
+    '''
+    ans = 0
+    if (x >= 0 and y >= 0) or (x < 0 and y < 0):
+        ans = y - x if x <= y else abs(abs(x) - abs(y)) + 2
+    else:
+        ans = abs(abs(y) - abs(x)) + 1
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+","x, y = map(int, input().split())
+if 0 <= x < y or x < y <= 0:
+    print(y - x)
+elif 0 < y < x or y < x < 0:
+    print(2 + x - y)
+elif x < 0 < y or y < 0 < x:
+    print(1 + abs(x + y))
+if x == 0 and y < 0:
+    print(abs(y) + 1)
+pass
+if y == 0 and x > 0:
+    print(x + 1)","import sys
+input = sys.stdin.readline
+
+
+def readstr():
+    return input().strip()
+
+
+def readint():
+    return int(input())
+
+
+def readnums():
+    return map(int, input().split())
+
+
+def readstrs():
+    return input().split()
+
+
+def main():
+    x, y = readnums()
+    '''
+    x <= yかx > yか
+    x, yの正負
+    x, yの差
+    x, y
+    1, 3 2
+    -1, 3 3
+    1, -3 3
+    -1, -3 4
+    3, 1 4
+    -3, 1 3
+    3, -1 3
+    -3, -1 2
+
+    10, 0 11
+    -10, 0 10
+    0, 10 10
+    0, -10 11
+    '''
+    ans = 0
+    if x == 0 or y == 0:
+        ans = abs(x - y) if x < 0 or y > 0 else abs(x - y) + 1
+    elif (x >= 0 and y >= 0) or (x < 0 and y < 0):
+        ans = y - x if x <= y else abs(abs(x) - abs(y)) + 2
+    else:
+        ans = abs(abs(y) - abs(x)) + 1
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,163,0.23831775700934582,,28.708676,0
+u325282913,"x, y = map(int, input().split())
+flg = 0
+if x > y:
+    if (x >= 0 and y >= 0) or (x <= 0 and y <= 0):
+        flg = 2
+    else:
+        flg = 1
+print(abs(abs(x)-abs(y))+flg)","if True:
+    x, y = [int(x) for x in input().split()]
+    if x == 0:
+        ref_ans = abs(y) + (y < 0)
+    else:
+        ref_ans = 1 if x < 0 and abs(x) < abs(y) or (x > 0 and abs(x) > abs(y)) else 0
+        ref_ans += abs(abs(y) - abs(x))
+        ref_ans += 1 if (-1 if x < 0 and abs(x) < abs(y) or (x > 0 and abs(x) > abs(y)) else 1) * x * y < 0 else 0
+    print(ref_ans)","x, y = map(int, input().split())
+if y == 0 and x <= 0:
+    print(abs(x-y))
+elif x >= 0 and y == 0:
+    print(abs(x-y)+1)
+elif x >= 0 and y >= 0:
+    if x <= y:
+        print(abs(x-y))
+    else:
+        print(abs(x-y)+2)
+elif x <= 0 and y >= 0:
+    print(abs(y-abs(x))+1)
+elif x >= 0 and y <= 0:
+    print(abs(x-abs(y))+1)
+elif x <= y:
+    print(abs(x-y))
+else:
+    print(abs(x-y)+2)",1,131,0.5574324324324325,,2.301755,0
+u193264896,"import sys
+readline = sys.stdin.buffer.readline
+sys.setrecursionlimit(10 ** 8)
+INF = float('inf')
+MOD = 10 ** 9 + 7
+
+def main():
+    x, y = map(int, readline().split())
+    if x>=0:
+        if x<=y:
+            print(y-x)
+        else:
+            if 0<y<x:
+                print(-y-(-x)+2)
+            elif -x<=y<=0:
+                print(y-(-x)+1)
+            else:
+                print(-y-x+1)
+    else:
+        if x<=y<-x:
+            print(y-x)
+        elif -x<=y:
+            print(y-(-x)+1)
+        else:
+            print(-y-(-x)+2)
+
+if __name__ == '__main__':
+    main()","x, y = map(int, input().split())
+if True:
+    ref_X = abs(x)
+    ref_Y = abs(y)
+    if x < y:
+        pass
+        if x <= y:
+            pass
+        if x * y > 0:
+            print(abs(ref_X - ref_Y))
+        elif x * y == 0:
+            print(abs(ref_X - ref_Y))
+        else:
+            print(abs(ref_X - ref_Y) + 1)
+        pass
+    elif x * y > 0:
+        print(abs(ref_X - ref_Y) + 2)
+    elif -x <= y:
+        print(y - -x + 1)
+    else:
+        print(abs(ref_X - ref_Y) + 1)
+    pass","import sys
+readline = sys.stdin.buffer.readline
+sys.setrecursionlimit(10 ** 8)
+INF = float('inf')
+MOD = 10 ** 9 + 7
+
+def main():
+    x, y = map(int, readline().split())
+    if x * y >= 0:
+        if x < y:
+            print(y - x)
+        else:
+            print(x - y + 2 if x * y > 0 else x - y + 1)
+    else:
+        print(abs(abs(x) - abs(y)) + 1)
+
+
+if __name__ == '__main__':
+    main()",1,147,0.42801556420233466,,19.937138,0
+u934442292,"import sys
+
+input = sys.stdin.readline
+
+
+def main():
+    x, y = map(int, input().split())
+
+    X = abs(x)
+    Y = abs(y)
+    d = abs(X - Y)
+    if x >= 0 and y >= 0 and X > Y:
+        ans = min(1 + d + 1, 1 + (x - y))
+    elif x >= 0 and y >= 0:
+        ans = d
+    elif x >= 0 and y <= 0 and X > Y:
+        ans = 1 + d
+    elif x >= 0 and y <= 0:
+        ans = d + 1
+    elif x <= 0 and y >= 0 and X > Y:
+        ans = min(d + 1, y - x)
+    elif x <= 0 and y >= 0:
+        ans = min(1 + d, y - x)
+    elif x <= 0 and y <= 0 and X > Y:
+        ans = d
+    elif x <= 0 and y <= 0:
+        ans = 1 + d + 1
+
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+","pass
+if False:
+    pass
+pass
+if True:
+    x, y = map(int, input().split())
+    if x >= 0 and y >= 0 and (x <= y):
+        ans = y - x
+    elif x >= 0 and y > 0 and (x >= y):
+        ans = x - y + 2
+    elif x <= 0 and y <= 0 and (x <= y):
+        ans = y - x
+    elif x < 0 and y <= 0 and (x >= y):
+        ans = x - y + 2
+    elif x >= 0 and y <= 0:
+        ans = abs(x - abs(y)) + 1
+    elif x <= 0 and y >= 0 and (abs(x) <= y):
+        ans = y - abs(x) + 1
+    elif x <= 0 and y >= 0 and (abs(x) > y):
+        ans = abs(x) - y + 1
+    print(ans)","import sys
+
+input = sys.stdin.readline
+
+
+def main():
+    x, y = map(int, input().split())
+
+    X = abs(x)
+    Y = abs(y)
+    d = abs(X - Y)
+    if x >= 0 and y >= 0 and X > Y:
+        ans = min(1 + d + 1, 1 + (x + y))
+    elif x >= 0 and y >= 0:
+        ans = d
+    elif x >= 0 and y <= 0 and X > Y:
+        ans = 1 + d
+    elif x >= 0 and y <= 0:
+        ans = d + 1
+    elif x <= 0 and y >= 0 and X > Y:
+        ans = min(d + 1, y - x)
+    elif x <= 0 and y >= 0:
+        ans = min(1 + d, y - x)
+    elif x <= 0 and y <= 0 and X > Y:
+        ans = d
+    elif x <= 0 and y <= 0:
+        ans = 1 + d + 1
+
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+",1,177,0.005617977528089901,,41.055568,0
+u026788530,"x,y=[int(_) for _ in input().split()]
+
+def a():
+  if y<x:
+    return 10000000000
+  return y-x
+def ba():
+  if -x>y:
+    return 10000000000
+  return y+x+1
+
+def ab():
+  if x>-y:
+    return 100000000000
+  return -x-y+t
+def bab():
+  if x<y:
+    return 10000000000
+  return x-y+2
+ans=min(a(),ba(),bab())
+print(ans)","ref_x, ref_y = map(int, input().split())
+if abs(ref_x) <= abs(ref_y):
+    ref_count = 0
+    if ref_x < 0:
+        ref_count += 1
+    pass
+    if ref_y < 0:
+        ref_count += 1
+    elif True:
+        pass
+    ref_count += abs(ref_y) - abs(ref_x)
+    if ref_x > -ref_y:
+        pass
+    print(ref_count)
+elif ref_x <= 0:
+    ref_a = ref_y - ref_x
+    ref_b = abs(ref_x) - abs(ref_y) + 1
+    print(min(ref_a, ref_b))
+else:
+    ref_a = 1 + (ref_y + ref_x)
+    ref_b = 1 + abs(ref_x) - abs(ref_y)
+    if ref_y > 0:
+        ref_b += 1
+    print(min(ref_a, ref_b))","x,y=[int(_) for _ in input().split()]
+
+def a():
+  if y<x:
+    return 10000000000
+  return y-x
+def ba():
+  if -x>y:
+    return 10000000000
+  return y+x+1
+
+def ab():
+  if x>-y:
+    return 100000000000
+  return -x-y+1
+def bab():
+  if x<y:
+    return 10000000000
+  return x-y+2
+ans=min(a(),ba(),bab(),ab())
+print(ans)",1,161,0.03012048192771083,,26.323831,0
+u293198424,"x,y = map(int,input().split())
+ans = 1<<35
+if x<=y: ans = min(ans,y-x)
+if -x<=y: ans = min(ans,1+y-(-x))
+if x<=-y: ans = min(ans,-y-x+1)
+if -x<=-y: ans = min(ans,-y-(-x)+1)
+print(ans)
+","x, y = map(int, input().split())
+ans = []
+if x <= y:
+    ans.append(y - x)
+if -y - x >= 0:
+    ans.append(-y - x + 1)
+if y + x >= 0:
+    ans.append(y + x + 1)
+if -x <= -y:
+    ans.append(-y + x + 2)
+print(min(ans))","x,y = map(int,input().split())
+ans = 10**10
+if x<=y: ans = min(ans,y-x)
+if -x<=y: ans = min(ans,1+y-(-x))
+if x<=-y: ans = min(ans,-y-x+1)
+if -x<=-y: ans = min(ans,-y-(-x)+2)
+print(ans)
+",1,60,0.0625,,1.871870,0
+u952467214,"import sys
+sys.setrecursionlimit(10 ** 7)
+input = sys.stdin.readline
+
+x, y = map(int, input().split())
+
+if x<y:
+    diff = abs(abs(x)-abs(y))
+    if x*y>=0:
+        print(diff)
+        exit()
+    else:
+        print(diff+1)
+        exit()
+
+if y<x:
+    diff = abs(abs(x)-abs(y))
+    if x*y>0:
+        print(diff+2)
+    elif x*y==0:
+        print(diff)
+    else:
+        print(diff+1)",,"import sys
+sys.setrecursionlimit(10 ** 7)
+input = sys.stdin.readline
+
+x, y = map(int, input().split())
+
+if x<y:
+    diff = abs(abs(x)-abs(y))
+    if x*y>=0:
+        print(diff)
+        exit()
+    else:
+        print(diff+1)
+        exit()
+
+
+if y<x:
+    diff = abs(abs(x)-abs(y))
+    if x*y>0:
+        print(diff+2)
+    else:
+        print(diff+1)
+",0,,,,24.152876,0
+u339503988,"x, y = map(int, input().split())
+a = abs(abs(x) - abs(y))
+if y == 0:
+    if x < 0:
+        print(a + 1)
+    else:
+        print(a)
+elif x == 0:
+    if y < 0:
+        print(a + 1)
+    else:
+        print(a)
+elif abs(x) < abs(y):
+    if x > -1 and y > -1:
+        print(a)
+    elif x < 0 and y < 0:
+        print(a + 2)
+    else:
+        print(a + 1)
+else:
+    if x > -1 and y > -1:
+        print(a + 2)
+    elif x < 0 and y < 0:
+        print(a)
+    else:
+        print(a + 1)
+","x, y = map(int, input().split())
+a = abs(x) - abs(y)
+if a == 0:
+    pass
+    if x == y:
+        if True:
+            pass
+        pass
+        if True:
+            print(a)
+    else:
+        print(1)
+    pass
+elif abs(x) < abs(y):
+    pass
+    if x < 0 and y < 0:
+        print(abs(a) + 2)
+    elif 0 <= x and 0 <= y:
+        print(abs(a))
+    else:
+        print(abs(a) + 1)
+    pass
+elif x <= 0 and y <= 0:
+    print(abs(a))
+elif 0 < x and 0 < y:
+    print(abs(a) + 2)
+else:
+    print(a + 1)
+pass","x, y = map(int, input().split())
+a = abs(abs(x) - abs(y))
+if y == 0:
+    if x < 0:
+        print(a)
+    else:
+        print(a + 1)
+elif x == 0:
+    if y < 0:
+        print(a + 1)
+    else:
+        print(a)
+elif abs(x) < abs(y):
+    if x > -1 and y > -1:
+        print(a)
+    elif x < 0 and y < 0:
+        print(a + 2)
+    else:
+        print(a + 1)
+else:
+    if x > -1 and y > -1:
+        print(a + 2)
+    elif x < 0 and y < 0:
+        print(a)
+    else:
+        print(a + 1)
+",1,103,0.05504587155963303,,20.581965,0
+u428132025,"x, y = map(int, input().split())
+
+num = abs(y) - abs(x)
+
+if num == 0:
+    ans = 1
+elif num > 0:
+    if x >= 0 and y >= 0:
+        ans = num
+    elif x < 0 and y < 0:
+        ans = num + 2
+    else:
+        ans = num + 1
+elif num < 0:
+    if x > 0 and y > 0:
+        ans = -num + 2
+    elif x < 0 and y < 0:
+        ans = -num
+    elif y == 0:
+        ans = -num
+    else:
+        ans = -num + 1
+print(ans)","x, y = map(int, input().split())
+num = abs(y) - abs(x)
+if num == 0:
+    pass
+ans = -x - y + 1
+if y == -x:
+    ans = 1
+elif x >= 0:
+    pass
+    if y > x:
+        ans = y - x
+    elif y < -x:
+        ans = -x - y + 1
+    elif y > 0:
+        ans = x - y + 2
+    else:
+        ans = y + x + 1
+    pass
+elif x < 0:
+    pass
+    if y > -x:
+        ans = y + x + 1
+    elif y < x:
+        ans = x - y + 2
+    elif y > 0:
+        ans = -x - y + 1
+    else:
+        ans = y - x
+    pass
+print(ans)","x, y = map(int, input().split())
+
+num = abs(y) - abs(x)
+
+if num == 0:
+    ans = 1
+elif num > 0:
+    if x >= 0 and y >= 0:
+        ans = num
+    elif x < 0 and y < 0:
+        ans = num + 2
+    else:
+        ans = num + 1
+elif num < 0:
+    if x > 0 and y > 0:
+        ans = -num + 2
+    elif x <= 0 and y <= 0:
+        ans = -num
+    else:
+        ans = -num + 1
+print(ans)",1,121,0.11029411764705882,,24.996812,0
+u411858517,"x, y = map(int, input().split())
+
+if x == 0 and y < 0:
+  print(abs(y) + 1)
+
+elif x < 0 and y == 0:
+  print(abs(x))
+
+elif x >= 0 or y >= 0:
+  if x == y:
+    print(0)
+
+  elif x == -y:
+    print(1)
+
+  elif x > y:
+    # (11, 7)
+    if y >= 0:
+      ans = 2
+      ans += x - y
+      print(ans)
+
+    # (11, -7)
+    else:
+      print(1 + abs(abs(x) + y))
+
+  else:
+    # (7, 11)
+    if x >= 0:
+      print(y - x)
+
+    # (-7, 11)
+    else:
+      print(1 + abs(abs(y) + x))
+
+else:
+  if x == y:
+    print(0)
+
+
+  else:
+    if x > y:
+      print(abs(y) - abs(x) + 2)
+    else:
+      print(abs(x) - abs(y))
+",,"x, y = map(int, input().split())
+
+if x == 0 and y < 0:
+  print(abs(y) + 1)
+
+elif x < 0 and y == 0:
+  print(abs(x))
+
+elif x > 0 and y == 0:
+  print(x+1)
+
+elif x >= 0 or y >= 0:
+  if x == y:
+    print(0)
+
+  elif x == -y:
+    print(1)
+
+  elif x > y:
+    # (11, 7)
+    if y >= 0:
+      ans = 2
+      ans += x - y
+      print(ans)
+
+    # (11, -7)
+    else:
+      print(1 + abs(abs(x) + y))
+
+  else:
+    # (7, 11)
+    if x >= 0:
+      print(y - x)
+
+    # (-7, 11)
+    else:
+      print(1 + abs(abs(y) + x))
+
+else:
+  if x == y:
+    print(0)
+
+
+  else:
+    if x > y:
+      print(abs(y) - abs(x) + 2)
+    else:
+      print(abs(x) - abs(y))
+",0,,,,18.467322,0
+u105124953,"x,y = map(int,input().split())
+if abs(x)<=abs(y):
+    count = 0
+    if x <0:
+        count += 1
+    if y <0:
+        count += 1
+    count += abs(y)-abs(x)
+    print(count)
+else:
+    if x <=0:
+        a = y -x
+        b = abs(x)-abs(y)+1
+        print(min(a,b))
+    else:
+        count = 1
+        count += (y+x)
+        print(count)","x, y = map(int, input().split())
+ref_ans = abs(abs(x) - abs(y))
+if x == 0 or y == 0:
+    if True:
+        if x > y:
+            ref_ans += 1
+    pass
+elif int(x > 0) ^ int(y > 0):
+    ref_ans += 1
+elif x > y:
+    ref_ans += 2
+print(ref_ans)","x,y = map(int,input().split())
+if abs(x)<=abs(y):
+    count = 0
+    if x <0:
+        count += 1
+    if y <0:
+        count += 1
+    count += abs(y)-abs(x)
+    print(count)
+else:
+    if x <=0:
+        a = y -x
+        b = abs(x)-abs(y)+1
+        print(min(a,b))
+    else:
+        a = 1 + (y+x)
+        b = 1 + abs(x) - abs(y)
+        if y > 0:
+            b+= 1
+        print(min(a,b))",1,99,0.28776978417266186,,27.743448,0
+u309141201,"x, y = map(int, input().split())
+if x == y:
+    ans = 0
+elif x == 0 and y != 0:
+    if y < 0:
+        ans = -y + 1
+    else:
+        ans = y
+elif x != 0 and y == 0:
+    if x < 0:
+        ans = -x
+    else:
+        ans = x + 1
+elif x < y:
+    if x < 0 < y:
+        if y < abs(x):
+            ans = y - x
+        else:
+            ans = y + x + 1
+    else:
+        ans = y - x
+else:
+    if y < 0 < x:
+        if x < abs(y):
+            ans = -(y + x) + 1
+        else:
+            ans = y + x + 1
+    elif 0 < y < x:
+        ans = y + x
+    else:
+        ans = -(y - x) + 2
+
+print(ans)",,"x, y = map(int, input().split())
+if x == y:
+    ans = 0
+elif x == 0 and y != 0:
+    if y < 0:
+        ans = -y + 1
+    else:
+        ans = y
+elif x != 0 and y == 0:
+    if x < 0:
+        ans = -x
+    else:
+        ans = x + 1
+elif x < y:
+    if x < 0 < y:
+        if y < abs(x):
+            ans = min(y - x, abs(x) - y + 1)
+        else:
+            ans = y + x + 1
+    else:
+        ans = y - x
+else:
+    if y < 0 < x:
+        if x < abs(y):
+            ans = -(y + x) + 1
+        else:
+            ans = y + x + 1
+    elif 0 < y < x:
+        ans = y + x
+    else:
+        ans = -(y - x) + 2
+
+print(ans)",0,,,,38.283541,0
+u872538555,"x, y = map(int, input().split())
+
+if x <= y:
+    print(y - x)
+else:
+    if 0 < x * y:
+        print(x - y + 2)
+    elif x * y <= 0:
+        print(abs(y + x) + 1)","x, y = map(int, input().split())
+ref_ans = 0
+if x * y < 0:
+    ref_ans += 1
+elif x > 0 and y == 0 or (x == 0 and y < 0):
+    ref_ans += 1
+elif y < x:
+    ref_ans += 2
+ref_ans += abs(abs(x) - abs(y))
+print(ref_ans)","x, y = map(int, input().split())
+
+if x <= y:
+    if 0 <= x * y:
+        print(y - x)
+    else:
+        print(abs(x + y) + 1)
+else:
+    if 0 < x * y:
+        print(x - y + 2)
+    elif x * y <= 0:
+        print(abs(y + x) + 1)",1,82,0.24074074074074076,,1.544472,0
+u489959379,"x, y = map(int, input().split())
+
+if x == y:
+	res = 0
+elif x < y:
+	if (x >= 0 and y >= 0) or (x <= 0 and y <= 0):
+		res = y - x
+	else:
+		res = abs(abs(x) - y) + 1
+else:
+	if (x >= 0 and y >= 0) or (x <= 0 and y >= 0):
+		res = y + x + 1
+	elif x <= 0 and y <= 0:
+		res = x - y + 2
+	else:
+		res = abs(y) - x + 1
+		
+print(res)
+		",,"x, y = map(int, input().split())
+
+if x == y:
+	res = 0
+elif x < y:
+	if (0 <= x and 0 <= y) or (x <= 0 and y <= 0):
+		res = y - x
+	else:
+		if abs(x) >= y:
+			res = abs(x) - y + 1
+		else:
+			res = y - abs(x) + 1
+else:
+	if 0 < x and 0 < y:
+		res = x - y + 2
+	elif x < 0 and y < 0:
+		res = abs(y) - abs(x) + 2
+	else:
+		if x >= abs(y):
+			res = x - abs(y) + 1
+		else:
+			res = abs(y) - x + 1
+		
+print(res)",0,,,,15.115805,0
+u459419927,"from sys import stdin
+N,Y=list(map(int,stdin.readline().strip().split()))
+count=0
+flag=False
+if abs(N)-abs(Y)==0:
+    print(1)
+    exit()
+if N>Y:
+    count+=1
+    N*=-1
+    flag=True
+if Y-N<0:
+    count+=1
+    Y*=-1
+if Y>N:
+    print(count+Y-N)
+else:
+    print(count+N-Y)
+","ref_x, ref_y = map(int, input().split())
+ref_ans = 10 ** 10
+if ref_x <= ref_y:
+    ref_ans = min(ref_ans, ref_y - ref_x)
+if -ref_x <= ref_y:
+    ref_ans = min(ref_ans, 1 + ref_y - -ref_x)
+if ref_x <= -ref_y:
+    ref_ans = min(ref_ans, -ref_y - ref_x + 1)
+if -ref_x <= -ref_y:
+    ref_ans = min(ref_ans, -ref_y - -ref_x + 2)
+else:
+    pass
+print(ref_ans)","from sys import stdin
+N,Y=list(map(int,stdin.readline().strip().split()))
+count=0
+flag=False
+if abs(N)-abs(Y)==0:
+    print(1)
+    exit()
+if N>Y and abs(N)>abs(Y) or N>Y and N<0:
+    count+=1
+    N*=-1
+    flag=True
+YY=abs(Y)
+NN=abs(N)
+ans=0
+if YY>NN:
+    ans=YY-NN
+else:
+    ans=NN-YY
+N+=ans
+if Y==N:
+    print(count+ans)
+else:
+    print(count+ans+1)",1,133,0.3926940639269406,,2.871804,0
+u086503932,"x,y = map(int,input().split())
+
+ans = 0
+if y < x:
+  if abs(x) > abs(y):
+    x = -x
+  elif abs(x) < abs(y):
+    y = -y
+  ans +=1
+    
+if x*y < 0:
+  ans += 1 + abs(x+y)
+else:
+  ans += y-x
+print(ans)","x, y = map(int, input().split())
+ans = 0
+if x <= y:
+    pass
+    if 0 <= x * y:
+        print(y - x)
+    else:
+        print(abs(x + y) + 1)
+elif 0 < x * y:
+    print(x - y + 2)
+elif x * y <= 0:
+    print(abs(y + x) + 1)","x,y = map(int,input().split())
+ans = 10**18
+dx = [1,1,-1,-1]
+dy = [1,-1,1,-1]
+
+for i in range(4):
+  tx = x * dx[i]
+  ty = y * dy[i]
+  if tx <= ty:
+    ans = min(ans,ty-tx + (2-dx[i]-dy[i])//2)
+print(ans)",1,85,0.5502645502645502,,15.442214,0
+u064434060,"x,y=map(int,input().split())
+if x==0:
+  if y<0:
+    print(-1*y+1)
+  else:
+    print(y)
+    
+elif x>0:
+  if -1*x<y<x:
+    if y<=0:
+      print(y+x+1)
+    else:
+      print(x-y+2)
+  elif x<y:
+    print(y-x)
+  else:
+    print(-1*y-x+1)
+    
+else:
+  if x<y<-1*x:
+    print(y-x)
+  elif y<x:
+    print(-1*y+x+2)
+  else:
+    print(y+x+1)
+","x, y = map(int, input().split())
+ref_dif = abs(abs(x) - abs(y))
+if x < 0 and y < 0:
+    pass
+    if x < y:
+        print(ref_dif)
+        exit()
+    else:
+        print(ref_dif + 2)
+        exit()
+    pass
+if x >= 0 and y >= 0:
+    pass
+    if -1 * x < y < x:
+        pass
+        if y <= 0:
+            print(ref_dif + 1)
+            exit()
+        print(ref_dif + 2)
+        exit()
+    else:
+        print(ref_dif)
+        exit()
+    pass
+if False:
+    pass
+pass
+if x >= 0:
+    print(ref_dif + 1)
+elif y == 0:
+    print(ref_dif)
+else:
+    print(ref_dif + 1)
+pass","x,y=map(int,input().split())
+if x==0:
+  if y<0:
+    print(-1*y+1)
+  else:
+    print(y)
+    
+elif x>0:
+  if -1*x<y<x:
+    if y<=0:
+      print(y+x+1)
+    else:
+      print(x-y+2)
+  elif x<y:
+    print(y-x)
+  else:
+    print(-1*y-x+1)
+    
+else:
+  if x<y<-1*x:
+    if y<=0:
+      print(y-x)
+    else:
+      print(-1*y-x+1)
+  elif y<x:
+    print(-1*y+x+2)
+  else:
+    print(y+x+1)
+",1,150,0.13793103448275862,,34.684903,0
+u886747123,"x, y = map(int, input().split())
+
+if x <= y:
+    if 0 <= x or y <= 0:
+        print(y-x)
+    elif abs(x) >= abs(y):
+        print(abs(x) - abs(y) + 1)
+    else:
+        print(y-x)
+else:
+    if 0 < y or x < 0:
+        print(1+abs(x-y)+1)
+    elif x == 0 or y == 0:
+        print(abs(x-y)+1)
+    elif abs(x) >= abs(y):
+        print(1+abs(x)-abs(y))
+    else:
+        print(abs(y)-abs(x)+1)",,"x, y = map(int, input().split())
+
+if x <= y:
+    if 0 <= x or y <= 0:
+        print(y-x)
+    elif abs(x) >= abs(y):
+        print(abs(x) - abs(y) + 1)
+    else:
+        print(1+abs(y)-abs(x))
+else:
+    if 0 < y or x < 0:
+        print(1+abs(x-y)+1)
+    elif x == 0 or y == 0:
+        print(abs(x-y)+1)
+    elif abs(x) >= abs(y):
+        print(1+abs(x)-abs(y))
+    else:
+        print(abs(y)-abs(x)+1)",0,,,,24.320367,0
+u151005508,"x, y = map(int, input().split())
+
+cnt = 0
+if abs(x) < abs(y):
+    if x < 0:
+        x *= -1
+        cnt += 1
+    cnt += abs(y) - x
+if x * y < 0:
+    cnt += 1
+print(cnt)",,"x, y = map(int, input().split())
+
+cnt = 0
+if abs(x) < abs(y):
+    if x < 0:
+        x *= -1
+        cnt += 1
+    cnt += abs(y) - abs(x)
+    x += abs(y) - abs(x)
+    if x != y:
+        cnt += 1
+elif abs(x) == abs(y):
+    cnt += 1
+else:
+    if x > y:
+        x *= -1
+        cnt += 1
+    cnt += abs(x) - abs(y)
+    x += abs(x) - abs(y)
+    if x != y:
+        cnt += 1
+print(cnt)
+",0,,,,14.350399,0
+u145950990,"a,b = map(int,input().split())
+ans = abs(a-b)
+if a*b<0:ans+=1
+if b<a<0 or 0<b<a:ans+=2
+if a==0 and b<0:ans+=1
+if b==0 and 0<a:ans+=1
+print(ans)","a, b = map(int, input().split())
+ref_MAX = 100000000000000
+ref_a = b - a
+if ref_a < 0:
+    ref_a = ref_MAX
+ref_b = b + a
+if ref_b < 0:
+    ref_b = ref_MAX
+ref_c = b * -1 - a
+if ref_c < 0:
+    ref_c = ref_MAX
+ref_d = b * -1 + a
+if ref_d < 0:
+    ref_d = ref_MAX
+ans = min(ref_a, ref_b + 1, ref_c + 1, ref_d + 2)
+print(ans)","a,b = map(int,input().split())
+ans = abs(abs(a)-abs(b))
+if a*b<0:ans+=1
+if b<a<0 or 0<b<a:ans+=2
+if a==0 and b<0:ans+=1
+if b==0 and 0<a:ans+=1
+print(ans)",1,102,0.05555555555555558,,6.169793,0
+u375695365,"x,y=map(int,input().split())
+
+ans=abs(x)-abs(y)
+#print(ans)
+if ans==0:
+    if x==y:
+        print(ans)
+    else:
+        print(1)
+elif ans<0:
+    if x<0 and y<0 :
+        print(abs(ans)+2)
+    else:
+        print(abs(ans))
+else:
+    if x<=0 and y<=0:
+        print(abs(ans))
+    elif 0<x and 0<y:
+        print(abs(ans)+2)
+    else: 
+        print(abs(ans)+1)
+
+","x, y = map(int, input().split())
+ans = abs(x) - abs(y)
+if y == 0:
+    if x <= 0:
+        print(ans)
+    else:
+        print(abs(x) + 1)
+elif x == 0:
+    if y < 0:
+        print(-y + 1)
+    else:
+        print(abs(ans))
+elif x * y < 0:
+    ref_r = []
+    x, y = sorted([x, y])
+    ref_r.append(abs(y - x))
+    ref_r.append(abs(y + x) + 1)
+    print(min(ref_r))
+elif x > y:
+    print(abs(ans) + 2)
+else:
+    print(abs(y - x))","x,y=map(int,input().split())
+
+ans=abs(x)-abs(y)
+#print(ans)
+if ans==0:
+    if x==y:
+        print(ans)
+    else:
+        print(1)
+elif ans<0:
+   # print(""SDFGH"")
+    if x<0 and y<0 :
+        print(abs(ans)+2)
+    elif 0<=x and 0<=y:
+        print(abs(ans))
+    else:
+        print(abs(ans)+1)
+else:
+    if x<=0 and y<=0:
+        print(abs(ans))
+    elif 0<x and 0<y:
+        print(abs(ans)+2)
+    else: 
+        
+        print(abs(ans)+1)
+
+",1,98,0.2032520325203252,,2.925994,0
+u970308980,"x, y = map(int, input().split())
+
+ans = 1 << 18
+# 最初にB押す、最後にB押す
+X, Y = -x, -y
+if X <= Y:
+    ans = min(ans, Y - X + 2)
+
+# 最初にB押さない、最後にB押す
+X, Y = x, -y
+if X <= Y:
+    ans = min(ans, Y - X + 1)
+
+# 最初にB押す、最後にB押さない
+X, Y = -x, y
+if X <= Y:
+    ans = min(ans, Y - X + 1)
+
+# 最初にB押さない、最後にB押さない
+X, Y = x, y
+if X <= Y:
+    ans = min(ans, Y - X)
+
+print(ans)","x, y = map(int, input().split())
+ans = 10 ** 10
+if x <= y:
+    ans = min(ans, y - x)
+if -x <= y:
+    ans = min(ans, 1 + y - -x)
+if x <= -y:
+    ans = min(ans, -y - x + 1)
+if -x <= -y:
+    ans = min(ans, -y - -x + 2)
+print(ans)","x, y = map(int, input().split())
+
+ans = 10 ** 18
+# 最初にB押す、最後にB押す
+X, Y = -x, -y
+if X <= Y:
+    ans = min(ans, Y - X + 2)
+
+# 最初にB押さない、最後にB押す
+X, Y = x, -y
+if X <= Y:
+    ans = min(ans, Y - X + 1)
+
+# 最初にB押す、最後にB押さない
+X, Y = -x, y
+if X <= Y:
+    ans = min(ans, Y - X + 1)
+
+# 最初にB押さない、最後にB押さない
+X, Y = x, y
+if X <= Y:
+    ans = min(ans, Y - X)
+
+print(ans)",1,105,0.01869158878504673,,2.293221,0
+u992910889,"# from scipy.sparse import csr_matrix
+# import string
+import sys
+
+sys.setrecursionlimit(10 ** 5 + 10)
+
+
+def input(): return sys.stdin.readline().strip()
+
+
+def resolve():
+    def main(x, y):
+
+        if 0 <= x <= y or x <= y <= 0:
+            return y - x
+        elif x <= 0 <= y:
+            if (-1) * x <= y:
+                return 1 + (y - (-x))
+            else:
+                return -y - x + 1
+
+        elif 0 <= y <= x:
+            return 1 + (-y - (-x)) + 1
+        elif y <= x <= 0:
+            return main(-x, y) + 1
+        elif y <= 0 <= x:
+            if (-1) * x <= y:
+                return 1 + y + x
+            else:
+                return -y - x + 1
+
+    x, y = map(int, input().split())
+
+    print(main(x, y))
+
+
+resolve()","x, y = map(int, input().split())
+if True:
+    pass
+    if True:
+        ref_ans = 0
+        if x >= 0 and y >= 0:
+            pass
+            if y >= x:
+                ref_ans = y - x
+            else:
+                ref_ans = abs(y - x) + 2
+            pass
+        elif x >= 0 and y < 0:
+            ref_ans = abs(abs(y) - abs(x)) + 1
+        elif x < 0 and y >= 0:
+            ref_ans = abs(abs(y) - abs(x)) + 1
+        elif y >= x:
+            ref_ans = abs(y - x)
+        else:
+            ref_ans = abs(y - x) + 2
+        pass
+        if y == 0:
+            ref_ans -= 1
+        print(ref_ans)","import sys
+sys.setrecursionlimit(10 ** 5 + 10)
+def input(): return sys.stdin.readline().strip()
+
+def resolve():
+
+    x,y=map(int,input().split())
+    ans=10**20
+    if -x<=-y:
+        ans=min(ans,2+-y-(-x))
+    if -x<=y:
+        ans=min(ans,1+y-(-x))
+    if x<=-y:
+        ans=min(ans,1+(-y)-x)
+    if x<=y:
+        ans=min(ans,y-x)
+    print(ans)
+
+resolve()",1,197,0.4435028248587571,,31.986189,0
+u089142196,"x,y = map(int,input().split())
+
+if x==0:
+  if y==0:
+    ans=0
+  elif y>0:
+    ans = y
+  else:
+    ans = (-1)*y +1
+elif y==0:
+  if x==0:
+    ans=0
+  elif x>0:
+    ans = 1+(-1)*x
+  else:
+    ans = (-1)*x
+else:
+  if x>0 and y>0:
+    if y>=x:
+      ans=y-x
+    else:
+      ans= 1 + (x-y) +1
+  elif x>0 and y<0:
+    if x<(-1)*y:
+      ans= (-1)*y-x +1
+    else:
+      ans= 1+(x+y)
+  elif x<0 and y>0:
+    if x<(-1)*y:
+      ans=(-1)*y-x+1
+    else:
+      ans=1+ (x+y)
+  else:
+    if x<y:
+      ans = y-x
+    else:
+      ans = 1 + ( (-1)*y+x) +1
+
+print(ans)","x, y = map(int, input().split())
+if x == 0:
+    ans = 0
+else:
+    pass
+pass
+if x == 0 and y != 0:
+    if y < 0:
+        ans = -y + 1
+    else:
+        ans = y
+    pass
+elif y == 0:
+    pass
+    if x < 0:
+        ans = -x
+    else:
+        ans = x + 1
+    pass
+elif x < y:
+    pass
+    if x < 0 < y:
+        if y < abs(x):
+            ans = min(y - x, abs(x) - y + 1)
+        else:
+            ans = y + x + 1
+    else:
+        ans = y - x
+    pass
+elif y < 0 < x:
+    pass
+    if x < -1 * y:
+        ans = -1 * y - x + 1
+    else:
+        ans = 1 + (x + y)
+    pass
+elif x < y:
+    ans = y - x
+else:
+    ans = 1 + (-1 * y + x) + 1
+print(ans)","x,y = map(int,input().split())
+
+if x==0:
+  if y==0:
+    ans=0
+  elif y>0:
+    ans = y
+  else:
+    ans = (-1)*y +1
+elif y==0:
+  if x==0:
+    ans=0
+  elif x>0:
+    ans = 1+x
+  else:
+    ans = (-1)*x
+else:
+  if x>0 and y>0:
+    if y>=x:
+      ans=y-x
+    else:
+      ans= 1 + (x-y) +1
+  elif x>0 and y<0:
+    if x<(-1)*y:
+      ans= (-1)*y-x +1
+    else:
+      ans= 1+(x+y)
+  elif x<0 and y>0:
+    if x<(-1)*y:
+      ans=(-1)*y-x+1
+    else:
+      ans=1+ (x+y)
+  else:
+    if x<y:
+      ans = y-x
+    else:
+      ans = 1 + ( (-1)*y+x) +1
+
+print(ans)",1,137,0.03521126760563381,,31.529027,0
+u995062424,"import numpy as np
+x, y = map(int, input().split())
+
+if(abs(x) >= abs(y)):
+    if(np.sign(x) == np.sign(y)):
+        if(np.sign(x) < 0):
+            print(abs(x)-abs(y))
+        else:
+            print(2+abs(x)-abs(y))
+    else:
+        print(1+abs(x)-abs(y))
+else:
+    if(np.sign(x) == np.sign(y)):
+        if(np.sign(x) > 0):
+            print(abs(y)-abs(x))
+        if(np.sign(x) < 0):
+            print(2+abs(y)-abs(x))
+    else:
+        print(1+abs(y)-abs(x))","x, y = map(int, input().split())
+if abs(x) >= abs(y):
+    pass
+if abs(y) > abs(x):
+    pass
+    if x >= 0 and y >= 0:
+        print(y - x)
+    elif x < 0 and y < 0:
+        print(abs(y) - abs(x) + 2)
+    else:
+        print(abs(y) - abs(x) + 1)
+    pass
+elif abs(y) < abs(x):
+    pass
+    if x > 0 and y > 0:
+        print(x - y + 2)
+    elif x <= 0 and y <= 0:
+        print(abs(abs(y) - abs(x)))
+    else:
+        print(abs(abs(y) - abs(x)) + 1)
+    pass
+elif x == y:
+    print('0')
+else:
+    print(1 + abs(y) - abs(x))
+pass","import numpy as np
+x, y = map(int, input().split())
+
+if(abs(x) >= abs(y)):
+    if(np.sign(x) == np.sign(y)):
+        if(np.sign(x) < 0):
+            print(abs(x)-abs(y))
+        else:
+            print(2+abs(x)-abs(y))
+    else:
+        if(y != 0):
+            print(1+abs(x)-abs(y))
+        else:
+            if(x < 0):
+                print(abs(x))
+            else:
+                print(1+abs(x))
+else:
+    if(np.sign(x) == np.sign(y)):
+        if(np.sign(x) > 0):
+            print(abs(y)-abs(x))
+        if(np.sign(x) < 0):
+            print(2+abs(y)-abs(x))
+    else:
+        if(x == 0):
+            if(y > 0):
+                print(abs(y))
+            else:
+                print(1+abs(y))
+        else:
+            print(1+abs(y)-abs(x))",1,142,0.3173076923076923,,18.031803,0
+u047102107,"x, y = map(int, input().split())
+
+ans = None
+
+if x < 0:
+    if y < x:
+        ans = x - y + 2
+    elif y <= 0:  # x <= y < 0
+        ans = y - x
+    else:
+        ans = max(abs(x), abs(y)) - min(abs(x), abs(y)) + 1
+elif x == 0:
+    ans = y - x
+    if y < 0:
+        ans += 1
+else:
+    if y >= x:
+        ans = y - x
+    elif x > y > 0:
+        ans = x - y + 2
+    elif y == 0:
+        ans = x - y + 1
+    else:
+        ans = max(abs(x), abs(y)) - min(abs(x), abs(y)) + 1
+
+print(ans)","x, y = map(int, input().split())
+ans = None
+if x <= y:
+    pass
+    if 0 <= x or y <= 0:
+        if True:
+            pass
+        print(y - x)
+    elif abs(x) >= abs(y):
+        print(abs(x) - abs(y) + 1)
+    else:
+        print(1 + abs(y) - abs(x))
+    pass
+elif 0 < y or x < 0:
+    print(1 + abs(x - y) + 1)
+elif x > y > 0:
+    ans = x - y + 2
+elif abs(x) >= abs(y):
+    print(1 + abs(x) - abs(y))
+else:
+    print(abs(y) - abs(x) + 1)","x, y = map(int, input().split())
+
+ans = None
+
+if x < 0:
+    if y < x:
+        ans = x - y + 2
+    elif y <= 0:  # x <= y < 0
+        ans = y - x
+    else:
+        ans = max(abs(x), abs(y)) - min(abs(x), abs(y)) + 1
+elif x == 0:
+    if y < x:
+        ans = x - y + 1
+    else:
+        ans = y - x
+else:
+    if y >= x:
+        ans = y - x
+    elif x > y > 0:
+        ans = x - y + 2
+    elif y == 0:
+        ans = x - y + 1
+    else:
+        ans = max(abs(x), abs(y)) - min(abs(x), abs(y)) + 1
+
+print(ans)",1,138,0.14814814814814814,,20.280026,0
+u807772568,"import sys,collections as cl,bisect as bs
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
+mod = 10**9+7
+Max = sys.maxsize
+def l(): #intのlist
+    return list(map(int,input().split()))
+def m(): #複数文字
+    return map(int,input().split())
+def onem(): #Nとかの取得
+    return int(input())
+def s(x): #圧縮
+    a = []
+    if len(x) == 0:
+        return []
+    aa = x[0]
+    su = 1
+    for i in range(len(x)-1):
+        if aa != x[i+1]:
+            a.append([aa,su])
+            aa = x[i+1]
+            su = 1
+        else:
+            su += 1
+    a.append([aa,su])
+    return a
+def jo(x): #listをスペースごとに分ける
+    return "" "".join(map(str,x))
+def max2(x): #他のときもどうように作成可能
+    return max(map(max,x))
+def In(x,a): #aがリスト(sorted)
+    k = bs.bisect_left(a,x)
+    if k != len(a) and a[k] ==  x:
+        return True
+    else:
+        return False
+
+def pow_k(x, n):
+    ans = 1
+    while n:
+        if n % 2:
+            ans *= x
+        x *= x
+        n >>= 1
+    return ans
+
+""""""
+def nibu(x,n,r):
+    ll = 0
+    rr = r
+    while True:
+        mid = (ll+rr)//2
+
+    if rr == mid:
+        return ll
+    if (ここに評価入れる):
+        rr = mid
+    else:
+        ll = mid+1
+""""""
+x,y = m()
+
+po = Max
+
+for _ in range(2):
+    if _:
+        xx = -x
+        p += 1
+    else:
+        xx = x
+    for __ in range(2):
+        p = 0
+        if __:
+            yy = -y
+            p += 1
+        else:
+            yy = y
+        if yy - xx >= 0:
+            p += abs(yy-xx)
+            po = min(p,po)
+print(po)
+
+
+
+
+",,"import sys,collections as cl,bisect as bs
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
+mod = 10**9+7
+Max = sys.maxsize
+def l(): #intのlist
+    return list(map(int,input().split()))
+def m(): #複数文字
+    return map(int,input().split())
+def onem(): #Nとかの取得
+    return int(input())
+def s(x): #圧縮
+    a = []
+    if len(x) == 0:
+        return []
+    aa = x[0]
+    su = 1
+    for i in range(len(x)-1):
+        if aa != x[i+1]:
+            a.append([aa,su])
+            aa = x[i+1]
+            su = 1
+        else:
+            su += 1
+    a.append([aa,su])
+    return a
+def jo(x): #listをスペースごとに分ける
+    return "" "".join(map(str,x))
+def max2(x): #他のときもどうように作成可能
+    return max(map(max,x))
+def In(x,a): #aがリスト(sorted)
+    k = bs.bisect_left(a,x)
+    if k != len(a) and a[k] ==  x:
+        return True
+    else:
+        return False
+
+def pow_k(x, n):
+    ans = 1
+    while n:
+        if n % 2:
+            ans *= x
+        x *= x
+        n >>= 1
+    return ans
+
+""""""
+def nibu(x,n,r):
+    ll = 0
+    rr = r
+    while True:
+        mid = (ll+rr)//2
+
+    if rr == mid:
+        return ll
+    if (ここに評価入れる):
+        rr = mid
+    else:
+        ll = mid+1
+""""""
+x,y = m()
+
+po = Max
+
+for _ in range(2):
+    p = 0
+    if _:
+        xx = -x
+        p += 1
+    else:
+        xx = x
+    for __ in range(2):
+        pp = p
+        if __:
+            yy = -y
+            pp += 1
+        else:
+            yy = y
+        if yy - xx >= 0:
+            pp += abs(yy-xx)
+            po = min(pp,po)
+print(po)
+
+
+
+
+",0,,,,96.081838,0
+u691018832,"import sys
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+
+x, y = map(int, readline().split())
+if x <= y:
+    if (x >= 0 and y >= 0) or (x <= 0 and y <= 0):
+        ans = y - x
+    else:
+        ans = y + x + 1
+else:
+    if (x > 0 and y > 0) or (x < 0 and y < 0):
+        ans = min(abs(x) + abs(y) + 1, abs(y) - abs(x) + 2)
+    elif y == 0:
+        ans = abs(x) + 1
+    elif x == 0:
+        ans = abs(y) + 1
+    else:
+        ans = - x - y + 1
+print(ans)
+","x, y = map(int, input().split())
+if (x >= 0 and y >= 0 or (x < 0 and y < 0)) and x < y:
+    if x >= 0 and y >= 0 or (x <= 0 and y <= 0):
+        print(abs(x - y))
+    else:
+        pass
+elif (x >= 0 and y >= 0) and y < x:
+    print(abs(x - y + 1 + (y != 0)))
+elif (x < 0 and y < 0) and y < x:
+    print(abs(x - y) + 2)
+elif x == -y:
+    print(1)
+else:
+    print(abs(abs(x) - abs(y)) + (y != 0))","import sys
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+
+x, y = map(int, readline().split())
+if x <= y:
+    if (x >= 0 and y >= 0) or (x <= 0 and y <= 0):
+        ans = y - x
+    else:
+        ans = abs(abs(x) - y) + 1
+else:
+    if (x > 0 and y > 0) or (x < 0 and y < 0):
+        ans = min(abs(x) + abs(y) + 1, abs(abs(y) - abs(x)) + 2)
+    elif y == 0:
+        ans = abs(x) + 1
+    elif x == 0:
+        ans = abs(y) + 1
+    else:
+        ans = abs(x - abs(y)) + 1
+print(ans)
+",1,180,0.09999999999999998,,17.511369,0
+u724844363,"x, y = map(int, input().split())
+
+
+def cal1(a, b):
+    return print(b - a)
+
+
+def cal2(a, b):
+    return print(abs(a - b) + 2)
+
+
+def cal3(a, b):
+    return print(abs(abs(a) - abs(b)) + 1)
+
+
+if x > 0 and y > 0:
+    if x > y:
+        cal2(x, y)
+    else:
+        cal1(x, y)
+
+elif x < 0 and y < 0:
+    if x > y:
+        cal2(x, y)
+    else:
+        cal1(x, y)
+
+elif x == 0:
+    if y > 0:
+        cal1(x, y)
+    else:
+        cal3(x, y)
+
+elif y == 0:
+    if x > 0:
+        cal3(x, y)
+    else:
+        cal1(x, y)
+
+elif x > 0 and y < 0:
+    if abs(x) > abs(y):
+        cal3(x, y)
+    elif abs(x) < abs(y):
+        cal3(x, y)
+    else:
+        print(1)
+
+elif x < 0 and y > 0:
+    if abs(x) > abs(y):
+        cal1(x, y)
+    elif abs(x) < abs(y):
+        cal3(x, y)
+    else:
+        print(1)
+
+else:
+    print(0)","x, y = map(int, input().split())
+if False:
+    pass
+pass
+if x == 0:
+    pass
+    if x > 0 and y > 0:
+        ans = 0
+    elif y > 0:
+        ans = y
+    else:
+        ans = -1 * y + 1
+    pass
+elif y == 0:
+    pass
+    if x == 0:
+        cal2(x, y)
+    elif x > 0:
+        ans = 1 + x
+    else:
+        ans = -1 * x
+    pass
+elif x == 0:
+    pass
+    if y > 0:
+        cal1(x, y)
+    else:
+        cal3(x, y)
+    pass
+elif x > 0 and y < 0:
+    pass
+    if x < -1 * y:
+        ans = -1 * y - x + 1
+    else:
+        ans = 1 + (x + y)
+    pass
+elif x < 0 and y > 0:
+    pass
+    if abs(x) > abs(y):
+        ans = -1 * y - x + 1
+    else:
+        ans = 1 + (x + y)
+    pass
+elif x < y:
+    ans = y - x
+else:
+    ans = 1 + (-1 * y + x) + 1
+pass
+if False:
+    pass
+print(ans)","x, y = map(int, input().split())
+
+
+def cal1(a, b):
+    return print(b - a)
+
+
+def cal2(a, b):
+    return print(abs(a - b) + 2)
+
+
+def cal3(a, b):
+    return print(abs(abs(a) - abs(b)) + 1)
+
+
+if x > 0 and y > 0:
+    if x > y:
+        cal2(x, y)
+    else:
+        cal1(x, y)
+
+elif x < 0 and y < 0:
+    if x > y:
+        cal2(x, y)
+    else:
+        cal1(x, y)
+
+elif x == 0:
+    if y > 0:
+        cal1(x, y)
+    else:
+        cal3(x, y)
+
+elif y == 0:
+    if x > 0:
+        cal3(x, y)
+    else:
+        cal1(x, y)
+
+elif x > 0 and y < 0:
+    if abs(x) > abs(y):
+        cal3(x, y)
+    elif abs(x) < abs(y):
+        cal3(x, y)
+    else:
+        print(1)
+
+else:
+    if abs(x) > abs(y):
+        cal3(x, y)
+    elif abs(x) < abs(y):
+        cal3(x, y)
+    else:
+        print(1)",1,264,0.06713780918727913,,33.125570,0
+u794910686,"x,y = map(int,input().split())
+
+cnt = abs(abs(x) - abs(y))
+if abs(x) < abs(y): 
+    if x >= 0 and y >= 0: print(cnt)
+    elif x < 0 and y < 0: print(cnt+2)
+    else: print(cnt+1)
+elif abs(x) > abs(y):
+    if x >=0 and y >= 0: print(cnt+2)
+    elif x < 0 and y < 0: print(cnt)
+    else: print(cnt+1)
+elif abs(x) == abs(y):
+    if x*y >= 0:print(cnt)
+    else: print(cnt+1)","x, y = map(int, input().split())
+cnt = abs(abs(x) - abs(y))
+if True:
+    ref_ans = abs(x) - abs(y)
+    if ref_ans == 0:
+        if x == y:
+            if ref_ans == 0:
+                pass
+            print(abs(ref_ans))
+        else:
+            print(cnt + 1)
+        pass
+    elif ref_ans < 0:
+        pass
+        if x < 0 and y < 0:
+            print(cnt + 2)
+        elif 0 <= x and 0 <= y:
+            print(cnt)
+        else:
+            print(cnt + 1)
+        pass
+    elif x <= 0 and y <= 0:
+        print(abs(ref_ans))
+    elif 0 < x and 0 < y:
+        print(abs(ref_ans) + 2)
+    else:
+        print(cnt + 1)
+    pass
+pass","x,y = map(int,input().split())
+
+cnt = abs(abs(x) - abs(y))
+if abs(x) < abs(y): 
+    if x >= 0 and y >= 0: print(cnt)
+    elif x < 0 and y < 0: print(cnt+2)
+    else: print(cnt+1)
+elif abs(x) > abs(y):
+    if x >=0 and y > 0: print(cnt+2)
+    elif x < 0 and y <= 0: print(cnt) 
+    else: print(cnt+1)
+elif abs(x) == abs(y):
+    if x*y >= 0:print(cnt)
+    else: print(cnt+1)",1,96,0.020408163265306145,,20.254920,0
+u353895424,"x, y = map(int, input().split())
+B = 0
+if x == -y:
+    print(1)
+elif x <= y:
+    if x < 0 and y >= 0:
+        B = 1
+    print(B + abs(abs(y)-abs(x)))
+elif y < x:
+    if x >= 0 and y <= 0:
+        print(1 + abs(x+y))
+    else:
+        print(2 + abs(y-x))
+""""""
+y = -x : print(1)
+
+x <= y : print(y-x)
+(ex: x=3, y=10)
+(ex: x=-3, y=-1)
+(ex: x=-3, y=1)
+
+(ex: x=-3, y=50) : 
+
+y < x : 2 + |y-x|
+(ex: x=20, y=10)
+(ex: x=20, y=-100)
+(ex: x=-20, y=-100)
+
+""""""","x, y = map(int, input().split())
+ref_ans = []
+if y - x >= 0:
+    ref_ans.append(y - x)
+elif x <= y:
+    pass
+pass
+if -y - x >= 0:
+    ref_ans.append(-y - x + 1)
+if y + x >= 0:
+    ref_ans.append(y + x + 1)
+pass
+if True:
+    if -y + x >= 0:
+        ref_ans.append(-y + x + 2)
+    print(min(ref_ans))","x, y = map(int, input().split())
+B = 0
+if x == -y:
+    print(1)
+elif x <= y:
+    if x < 0 and y > 0:
+        B = 1
+    print(B + abs(abs(y)-abs(x)))
+elif y < x:
+    if x >= 0 and y <= 0:
+        print(1 + abs(x+y))
+    else:
+        print(2 + abs(y-x))
+""""""
+y = -x : print(1)
+
+x <= y : print(y-x)
+(ex: x=3, y=10)
+(ex: x=-3, y=-1)
+(ex: x=-3, y=1)
+
+(ex: x=-3, y=50) : 
+
+y < x : 2 + |y-x|
+(ex: x=20, y=10)
+(ex: x=20, y=-100)
+(ex: x=-20, y=-100)
+
+""""""",1,114,0.008695652173913049,,28.754486,0
+u022979415,"def main():
+    x, y = map(int, input().split())
+    answer = 0
+    if abs(x) != abs(y):
+        answer += abs(abs(x) - abs(y))
+    if x < 0 and y < x < 0:
+        answer += 2
+    elif x * y < 0 or (0 < x and y == 0) or (x == 0 and y < 0):
+        answer += 1
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+
+","if True:
+    pass
+x, y = map(int, input().split())
+ref_ans = 0
+if x * y < 0:
+    ref_ans += 1
+elif x * y < 0 or (0 < x and y == 0) or (x == 0 and y < 0):
+    ref_ans += 1
+elif y < x:
+    ref_ans += 2
+ref_ans += abs(abs(x) - abs(y))
+print(ref_ans)","def main():
+    x, y = map(int, input().split())
+    answer = 0
+    if abs(x) != abs(y):
+        answer += abs(abs(x) - abs(y))
+    if (x < 0 and y < x < 0) or (0 < y < x):
+        answer += 2
+    elif x * y < 0 or (0 < x and y == 0) or (x == 0 and y < 0):
+        answer += 1
+    print(answer)
+
+
+if __name__ == '__main__':
+    main()
+
+",1,83,0.10752688172043012,,17.504383,0
+u135389999,"x,y = map(int,input().split())
+ 
+if abs(y) > abs(x):
+  if x >= 0 and y >= 0:
+    print(y-x)
+  elif x < 0 and y <0:
+    print(abs(y)-abs(x)+2)
+  else:
+    print(abs(y)-abs(x)+1)
+elif abs(y) < abs(x):
+  if x > 0 and y > 0:
+    print(x - y + 2)
+  elif x < 0 and y <0:
+    print(abs(abs(y)-abs(x)))
+  else:
+    print(abs(abs(y)-abs(x))+1)
+else:
+  if x == y:
+    print(""0"")
+  else:
+    print(""1"")","x, y = map(int, input().split())
+if abs(x) < abs(y):
+    if x < 0 and y < 0:
+        print(abs(y) - abs(x) + 2)
+    elif x >= 0 and y >= 0:
+        print(y - x)
+    else:
+        print(abs(y) - abs(x) + 1)
+elif abs(x) > abs(y):
+    if x < 0 and y <= 0:
+        print(abs(x) - abs(y))
+    elif x >= 0 and y > 0:
+        print(x - y + 2)
+    else:
+        print(abs(x) - abs(y) + 1)
+elif x == y:
+    print('0')
+else:
+    print('1')","x,y = map(int,input().split())
+ 
+if abs(y) > abs(x):
+  if x >= 0 and y >= 0:
+    print(y-x)
+  elif x < 0 and y <0:
+    print(abs(y)-abs(x)+2)
+  else:
+    print(abs(y)-abs(x)+1)
+elif abs(y) < abs(x):
+  if x > 0 and y > 0:
+    print(x - y + 2)
+  elif x <= 0 and y <=0:
+    print(abs(abs(y)-abs(x)))
+  else:
+    print(abs(abs(y)-abs(x))+1)
+else:
+  if x == y:
+    print(""0"")
+  else:
+    print(""1"")",1,58,0.033333333333333326,,1.759639,0
+u434872492,"x,y=map(int,input().split())
+ans=0
+if x<y:
+    if 0<=x:
+        ans=abs(y-x)
+    else:
+        z=abs(x)
+        ans=abs(y-x)
+        if z<=y:
+            b=abs(y-z)
+            if b<ans:
+                ans=1
+                ans+=b
+        else:
+            t=-y
+            b=abs(x-t)
+            if b<ans:
+                ans=1
+                ans+=b
+
+else:
+    if 0<=y:
+        z=-x
+        ans+=1
+        ans+=abs(y-z)
+    else:
+        if abs(x)<=abs(y):
+            t=-y
+            a=abs(t-x)
+            z=-x
+            b=abs(t-z)
+            if b<a:
+                ans+=1
+                ans+=b
+            else:
+                ans+=a
+            ans+=1
+        else:
+            ans+=1
+            z=-x
+            ans+=abs(y-z)
+print(ans)",,"x, y = [int(x) for x in input().split()]
+
+if x == 0:
+    ans = abs(y) + (y < 0)
+else:
+    ans = 1 if (x < 0 and abs(x) < abs(y)) or (x > 0 and abs(x) > abs(y)) else 0
+    ans += abs(abs(y) - abs(x))
+    ans += 1 if (-1 if (x < 0 and abs(x) < abs(y)) or (x > 0 and abs(x) > abs(y)) else 1) * x * y < 0 else 0
+
+print(ans)
+",0,,,,47.562779,0
+u020390084,"#!/usr/bin/env python3
+import sys
+import copy
+# input = sys.stdin.readline
+def INT(): return int(input())
+def MAP(): return map(int,input().split())
+def LI(): return list(map(int,input().split()))
+
+def main():
+    x,y = MAP()
+    if 0<=x<y:
+        print(y-x)
+    elif x<0<=y:
+        if abs(x) <= y:
+            print(y-abs(x)+1)
+        else:
+            print(abs(x)-y+1)
+    elif x<y<0:
+        print(y-x)
+    elif 0<y<x:
+        print(x+y)
+    elif y<=0<x:
+        if abs(y)<=x:
+            print(x-abs(y)+1)
+        else:
+            print(abs(y)-x+1)
+    elif y<x<0:
+        print(x-y+2)
+    elif y<x<=0:
+        print(x-y+1)
+
+    return
+
+if __name__ == '__main__':
+    main()
+","pass
+if False:
+    pass
+x, y = map(int, input().split())
+ref_a = abs(abs(x) - abs(y))
+if y == 0:
+    pass
+    if x < 0:
+        print(ref_a)
+    else:
+        print(ref_a + 1)
+elif x == 0:
+    pass
+    if y < 0:
+        print(ref_a + 1)
+    else:
+        print(ref_a)
+    pass
+elif abs(x) < abs(y):
+    if x > -1 and y > -1:
+        print(ref_a)
+    elif x < 0 and y < 0:
+        print(ref_a + 2)
+    else:
+        print(ref_a + 1)
+    pass
+elif x > -1 and y > -1:
+    print(x - y + 2)
+elif x < 0 and y < 0:
+    print(ref_a)
+else:
+    print(ref_a + 1)","#!/usr/bin/env python3
+import sys
+import copy
+# input = sys.stdin.readline
+def INT(): return int(input())
+def MAP(): return map(int,input().split())
+def LI(): return list(map(int,input().split()))
+
+def main():
+    x,y = MAP()
+    if 0<=x<y:
+        print(y-x)
+    elif x<0<y:
+        if abs(x) <= y:
+            print(y-abs(x)+1)
+        else:
+            print(abs(x)-y+1)
+    elif x<y<=0:
+        print(y-x)
+    elif 0<y<x:
+        print(x+y)
+    elif y<=0<x:
+        if abs(y)<=x:
+            print(x-abs(y)+1)
+        else:
+            print(abs(y)-x+1)
+    elif y<x<0:
+        print(x-y+2)
+    elif y<x<=0:
+        print(x-y+1)
+
+    return
+
+if __name__ == '__main__':
+    main()
+",1,201,0.009852216748768461,,23.702727,0
+u836737505,"x,y = map(int, input().split())
+if abs(x) <= abs(y):
+    c = abs(abs(x) - abs(y))
+    if x >= 0 and y >= 0:
+        print(c)
+    elif x < 0 and y < 0:
+        print(c+2)
+    else:
+        print(c+1)
+else:
+    c = abs(abs(x) - abs(y))
+    if y == 0:
+        print(c)
+    elif x >= 0 and y >= 0:
+        print(c+2)
+    elif x < 0 and y < 0:
+        print(c)
+    else:
+        print(c+1)",,"x,y = map(int, input().split())
+if abs(x) <= abs(y):
+    c = abs(abs(x) - abs(y))
+    if x >= 0 and y >= 0:
+        print(c)
+    elif x < 0 and y < 0:
+        print(c+2)
+    else:
+        print(c+1)
+else:
+    c = abs(abs(x) - abs(y))
+    if y == 0 and x < 0:
+        print(c)
+    elif y ==0 and x>=0:
+        print(c+1)
+    elif x >= 0 and y >= 0:
+        print(c+2)
+    elif x < 0 and y < 0:
+        print(c)
+    else:
+        print(c+1)",0,,,,19.686151,0
+u561083515,"x,y = map(int, input().split())
+
+ans = float(""inf"")
+
+if abs(x - y) > abs(x + y):
+    ans = min(ans, abs((-1) * x - y) + 1)
+
+if x <= y: ans = min(ans, y - x)
+else: ans = min(ans, x - y + 2)
+
+print(ans)","x, y = map(int, input().split())
+ref_c = 0
+if abs(x - y) > abs(x + y):
+    x = abs(x)
+    y = abs(y)
+    ref_c = 1
+if y < x:
+    print(1 + (y != 0 and x != 0) + x - y - ref_c)
+else:
+    print(y - x + ref_c)","# 解答AC
+
+x,y = map(int, input().split())
+
+ans = float(""inf"")
+for B1 in range(2):
+    x2 = -x if B1 else x
+    for B2 in range(2):
+        y2 = -y if B2 else y
+        if x2 <= y2:
+            ans = min(ans, y2 - x2 + B1 + B2)
+
+print(ans)",1,72,0.48201438848920863,,1.622412,0
+u071680334,"def main():
+    x, y = map(int, input().split())
+    if x <= y:
+        print(y-x)
+    else:
+        if x == 0 or y == 0:
+            print(x-y+1)
+        elif 0 < x and 0 < y:
+            print(x-y+2)
+        elif x < 0 and y < 0:
+            print(min(x-y+2, (-y)-x+1))
+        else:
+            if x <= -y:
+                print((-y)-x+1)
+            else:
+                print(y-(-x)+1)
+
+if __name__ == ""__main__"":
+    main()","if True:
+    x, y = map(int, input().split())
+    if y < 0 < x or x < 0 < y:
+        print(abs(abs(y) - abs(x)) + 1)
+    elif x < y and x != 0:
+        print(y - x)
+    elif y < x and x != 0 and (y != 0):
+        print(x - y + 2)
+    elif x < y and x == 0:
+        print(y - x)
+    elif y < x and x == 0 or y == 0:
+        print(x - y + 1)
+    pass
+elif False:
+    pass","def main():
+    x, y = map(int, input().split())
+    if x <= y:
+        if x == 0 or y == 0:
+            print(y-x)
+        elif 0 < x and 0 < y:
+            print(y-x)
+        elif x < 0 and y < 0:
+            print(y-x)
+        else:
+            if -x <= y:
+                print(y-(-x)+1)
+            else:
+                print((-x)-y+1)
+    else:
+        if x == 0 or y == 0:
+            print(x-y+1)
+        elif 0 < x and 0 < y:
+            print(x-y+2)
+        elif x < 0 and y < 0:
+            print(min(x-y+2, (-y)-x+1))
+        else:
+            if x <= -y:
+                print((-y)-x+1)
+            else:
+                print(y-(-x)+1)
+
+if __name__ == ""__main__"":
+    main()",1,109,0.47342995169082125,,13.827604,0
+u547608423,"x,y=map(int,input().split())
+
+X=abs(x)
+Y=abs(y)
+
+if x<y:
+    if x*y>0:
+        print(y-x)
+    elif x*y==0:
+        print(abs(X-Y))
+    else:
+        print(abs(X-Y)+1)
+else:
+    if x*y>=0:
+        print(abs(X-Y)+2)
+    elif x*y==0:
+        print(abs(X-Y)+1)
+    else:
+        print(abs(X-Y)+1)","x, y = map(int, input().split())
+X = abs(x)
+Y = abs(y)
+if abs(y) > abs(x):
+    if x >= 0 and y > 0:
+        print(y - x)
+    elif x * y <= 0:
+        print(abs(y) - abs(x) + 1)
+    else:
+        print(abs(y) - abs(x) + 2)
+elif x > 0 and y > 0:
+    print(abs(X - Y) + 2)
+elif x * y < 0 or (y == 0 and x > 0):
+    print(abs(X - Y) + 1)
+else:
+    print(abs(x - y))","x,y=map(int,input().split())
+
+X=abs(x)
+Y=abs(y)
+
+if x<y:
+    if x*y>0:
+        print(abs(X-Y))
+    elif x*y==0:
+        print(abs(X-Y))
+    else:
+        print(abs(X-Y)+1)
+else:
+    if x*y>0:
+        print(abs(X-Y)+2)
+    elif x*y==0:
+        print(abs(X-Y)+1)
+    else:
+        print(abs(X-Y)+1)",1,65,0.08450704225352113,,3.051992,0

@@ -1,0 +1,4881 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,seed
+u366886346,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+cnt1=[0]*n
+cnt2=[0]*n
+for i in range(n):
+    if a[i]>b[i]:
+        cnt2[i]=a[i]-b[i]
+    else:
+        num4=b[i]-a[i]
+        cnt1[i]=num4//2
+        cnt2[i]=num4%2
+num5=abs(sum(a)-sum(b))
+if max(sum(cnt1),sum(cnt2))+abs(sum(cnt1)-sum(cnt2))<=num5:
+    print(""Yes"")
+else:
+    print(""No"")
+",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+cnt1=[0]*n
+cnt2=[0]*n
+for i in range(n):
+    if a[i]>b[i]:
+        cnt2[i]=a[i]-b[i]
+    else:
+        num4=b[i]-a[i]
+        cnt1[i]=-(num4//-2)
+        cnt2[i]=num4%2
+num5=abs(sum(a)-sum(b))
+if max(sum(cnt1),sum(cnt2))+abs(sum(cnt1)-sum(cnt2))<=num5:
+    print(""Yes"")
+else:
+    print(""No"")
+",0,,,,11.719294,0
+u064434060,"#import sys
+#import numpy as np
+import math
+#from fractions import Fraction
+import itertools
+from collections import deque
+from collections import Counter
+import heapq
+#from fractions  import gcd
+#input=sys.stdin.readline
+import bisect
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+sa=sum(a)
+sb=sum(b)
+if sb<sa:
+    print(""No"")
+else:
+    cnt=sb-sa
+    resa=0
+    resb=0
+    for i in range(n):
+        if b[i]<a[i]:
+            resa+=a[i]-b[i]
+        else:
+            resb+=math.ceil((b[i]-a[i])/2)
+    if resa+resb>cnt:
+        print(""No"")
+    else:
+        print(""Yes"")
+",,"#import sys
+#import numpy as np
+import math
+#from fractions import Fraction
+import itertools
+from collections import deque
+from collections import Counter
+import heapq
+#from fractions  import gcd
+#input=sys.stdin.readline
+import bisect
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+sa=sum(a)
+sb=sum(b)
+if sb<sa:
+    print(""No"")
+else:
+    cnt=sb-sa
+    resa=0
+    resb=0
+    for i in range(n):
+        if b[i]<a[i]:
+            resa+=a[i]-b[i]
+        else:
+            resb+=math.ceil((b[i]-a[i])/2)
+    if resa>cnt or resb>cnt:
+        print(""No"")
+    else:
+        print(""Yes"")",0,,,,22.008880,0
+u642012866,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+x = sum(B)-sum(A)
+
+one = 0
+two = 0
+
+for i in range(N):
+    if A[i] > B[i]:
+        one += A[i]-B[i]
+    if A[i] < B[i]:
+        two += (B[i]-A[i])//2
+
+if one<=x and two<=x:
+    print(""Yes"")
+else:
+    print(""No"")",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+x = sum(B)-sum(A)
+
+one = 0
+two = 0
+
+for i in range(N):
+    if A[i] > B[i]:
+        one += A[i]-B[i]
+    if A[i] < B[i]:
+        two += (B[i]-A[i])//2
+        if (B[i]-A[i])%2 == 1:
+            one += 1
+
+if one<=x and two<=x:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,22.004938,0
+u108617242,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+sum_diffA = 0
+sum_diffB = 0
+for i, (ai, bi) in enumerate(zip(A,B)):
+    diffA = max(bi-ai, 0)
+    sum_diffA += diffA
+    if diffA == 1:
+        sum_diffB += 1
+    else:
+        sum_diffB += max(ai-bi, 0)
+if sum_diffA // 2 >= sum_diffB:
+    print('Yes')
+else:
+    print('No')
+",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+sum_diffA = 0
+sum_diffB = 0
+for i, (ai, bi) in enumerate(zip(A,B)):
+    if ai == bi:
+        continue
+    elif ai > bi:
+        sum_diffB += (ai - bi)
+    elif ai < bi:
+        diffA = (bi - ai)
+        sum_diffA += diffA // 2 + diffA % 2
+        sum_diffB += diffA % 2
+if sum_diffA >= sum_diffB:
+    print('Yes')
+else:
+    print('No')
+",0,,,,22.005795,0
+u289288647,"import sys
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+plus, minus = 0, 0
+
+if n == 1:
+    if a[0] <= b[0]:
+        print('Yes')
+    else:
+        print('No')
+    sys.exit()
+
+for i, j in zip(a, b):
+    num = j-i
+    if num == 1:
+        continue
+    elif num >= 0:
+        plus += num
+    else:
+        minus -= num
+        
+if plus >= minus*2:
+    print('Yes')
+else:
+    print('No')
+",,"import sys
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+plus, minus = 0, 0
+
+if n == 1:
+    if a[0] <= b[0]:
+        print('Yes')
+    else:
+        print('No')
+    sys.exit()
+
+for i, j in zip(a, b):
+    num = j-i
+    if num >= 0:
+        plus += num//2
+    else:
+        minus -= num
+        
+if plus >= minus:
+    print('Yes')
+else:
+    print('No')
+",0,,,,20.986643,0
+u375695365,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = []
+a_sum = 0
+b_sum = 0
+for i in range(n):
+    c.append(b[i]-a[i])
+    if c[i] < 0:
+        b_sum += c[i]//2
+    else:
+        a_sum += c[i]
+
+if a_sum < abs(b_sum):
+    print(""No"")
+else:
+    print(""Yes"")
+","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = []
+a_sum = 0
+b_sum = 0
+for i in range(n):
+    c = b[i] - a[i]
+    if c >= 0:
+        a_sum += c // 2
+    else:
+        b_sum += abs(c)
+if a_sum >= b_sum:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = []
+a_sum = 0
+b_sum = 0
+for i in range(n):
+    c.append(b[i]-a[i])
+    if c[i] < 0:
+        b_sum += c[i]
+    else:
+        a_sum += c[i]//2
+
+if a_sum < abs(b_sum):
+    print(""No"")
+else:
+    print(""Yes"")",1,26,0.1875,,21.736681,0
+u779805689,"N=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+
+K=sum(B)-sum(A)
+
+for i in range(N):
+    if A[i]>B[i]:
+        K-=(A[i]-B[i])
+    elif A[i]<B[i]:
+        K-=(B[i]-A[i]+1)//2
+if K>=0:
+    print(""Yes"")
+else:
+    print(""No"")","N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+K = sum(B) - sum(A)
+for i in range(N):
+    if A[i] > B[i]:
+        K -= A[i] - A[i]
+    elif A[i] < B[i]:
+        K -= (B[i] - A[i] + 1) // 2
+if K >= 0:
+    print('Yes')
+else:
+    print('No')","N=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+
+
+K=sum(B)-sum(A) #操作の回数はK回で確定
+
+# b[j]に+1をa[j]に-1に変換する
+Plus_Two=K
+Minus_One=K
+
+
+for i in range(N):
+    D=B[i]-A[i]
+    if D>0:
+        Plus_Two-=(D+1)//2
+        Minus_One-=D%2
+    else:
+        D=-D
+        Minus_One-=D
+
+if min(Plus_Two,Minus_One)>=0 and Plus_Two*2-Minus_One==0:
+    print(""Yes"")
+else:
+    print(""No"")
+",1,1,0.9887640449438202,,5.116139,0
+u370721525,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+p, m, cnt = 0, 0, 0
+for i in range(N):
+  if a[i]-b[i] >= 0:
+    p += a[i]-b[i]
+  else:
+    m += b[i]-a[i]
+    cnt += 1
+    
+if (2*p<=m) and (cnt<=p):
+  print('Yes')
+else:
+  print('No')",,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+plus, minus = 0, 0
+for i in range(N):
+  if a[i]-b[i] >= 0:
+    minus += a[i]-b[i]
+  else:
+    m = b[i]-a[i]
+    plus += (m+1) // 2
+    if m%2 == 1:
+      minus += 1
+    
+if plus >= minus:
+  print('Yes')
+else:
+  print('No')",0,,,,22.005043,0
+u309141201,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+ca = 0
+cb = 0
+for aa, bb in zip(a, b):
+    if aa < bb:
+        cb += (bb - aa)//2
+    if bb < aa:
+        ca += aa - bb
+# print(ca, cb)
+if cb <= ca:
+    print('Yes')
+else:
+    print('No')
+","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+ca = 0
+cb = 0
+for aa, bb in zip(a, b):
+    if aa < bb:
+        cb += (bb - aa) // 2
+    if bb < aa:
+        ca += aa - bb
+if cb >= ca:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+ca = 0
+cb = 0
+for aa, bb in zip(a, b):
+    if aa < bb:
+        cb += (bb - aa)//2
+    if bb < aa:
+        ca += aa - bb
+# print(ca, cb)
+if cb >= ca:
+    print('Yes')
+else:
+    print('No')
+",1,1,0.5,,2.541283,0
+u232873434,"N = int(input())
+
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+
+total1 = 0
+total2 = 0
+
+for i in range(N):
+    if a[i]>b[i]:
+        total1 += a[i]-b[i]
+    else:
+        total2 += b[i]-a[i]
+
+if total1 <=total2//2:
+    print('Yes')
+else:
+    print('No')",,"N = int(input())
+
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+
+total1 = 0
+total2 = 0
+
+for i in range(N):
+    if a[i]>b[i]:
+        total1 += a[i]-b[i]
+    else:
+        total2 += (b[i]-a[i])//2
+
+if total1 <=total2:
+    print('Yes')
+else:
+    print('No')",0,,,,6.167210,0
+u707498674,"def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    B = list(map(int, input().split()))
+    B.sort()
+    sum_a = sum(A)
+    sum_b = sum(B)
+    k = sum_b - sum_a
+
+    now = 0
+    while now < N and A[now] == B[now]:
+        now += 1
+
+    while k > 0 and now < N:
+        while now < N and A[now] == B[now]:
+            now += 1
+        
+        if now < N:
+            l = B[now] - A[now]
+            if k >= l:
+                k -= l
+                A[now] += 2*l
+                B[now] += l
+                now += 1
+            elif k >= -l:
+                k -= l
+                A[-1] += 2*l
+                B[now] += l
+                now += 1
+            else:
+                k = 0
+                now = -1
+                break
+    
+    if now == N:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+if __name__ == ""__main__"":
+    main()",,"def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    need = 0
+    stock = 0
+    for a, b in zip(A, B):
+        if a > b: need += (a-b)
+        if b > a: stock += (b-a)//2
+
+    if stock >= need:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+if __name__ == ""__main__"":
+    main()",0,,,,22.004668,0
+u261103969,"import sys
+
+readline = sys.stdin.readline
+MOD = 10 ** 9 + 7
+INF = float('INF')
+sys.setrecursionlimit(10 ** 5)
+
+
+def main():
+    n = int(readline())
+    a = list(map(int, readline().split()))
+    b = list(map(int, readline().split()))
+
+    cnt = 0
+    for x, y in zip(a, b):
+        diff = x - y
+        if diff < 0:
+            cnt += abs(diff) // 2
+
+    for x, y in zip(a, b):
+        diff = x - y
+        if diff > 0:
+            cnt -= diff
+
+    if cnt > 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+
+if __name__ == '__main__':
+    main()
+","import sys
+readline = sys.stdin.readline
+MOD = 10 ** 9 + 7
+INF = float('INF')
+sys.setrecursionlimit(10 ** 5)
+
+def main():
+    n = int(readline())
+    a = list(map(int, readline().split()))
+    b = list(map(int, readline().split()))
+    cnt = 1
+    for x, y in zip(a, b):
+        diff = x - y
+        if diff < 0:
+            cnt += abs(diff) // 2
+    for x, y in zip(a, b):
+        diff = x - y
+        if diff > 0:
+            cnt -= diff
+    if cnt > 0:
+        print('Yes')
+    else:
+        print('No')
+if __name__ == '__main__':
+    main()","import sys
+
+readline = sys.stdin.readline
+MOD = 10 ** 9 + 7
+INF = float('INF')
+sys.setrecursionlimit(10 ** 5)
+
+
+def main():
+    n = int(readline())
+    a = list(map(int, readline().split()))
+    b = list(map(int, readline().split()))
+
+    cnt = 0
+    for x, y in zip(a, b):
+        diff = x - y
+        if diff < 0:
+            cnt += abs(diff) // 2
+
+    for x, y in zip(a, b):
+        diff = x - y
+        if diff > 0:
+            cnt -= diff
+
+    if cnt >= 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+
+if __name__ == '__main__':
+    main()
+",1,1,0.5,,7.053596,0
+u098012509,"import sys
+
+sys.setrecursionlimit(10 ** 8)
+
+input = sys.stdin.readline
+
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+
+
+    bamari = 0
+    for i in range(N):
+        if A[i] == B[i]:
+            continue
+        elif A[i] > B[i]:
+            bamari -= A[i] - B[i]
+        else:
+            if B[i] - A[i] == 1:
+                continue
+            bamari += -(-(B[i] - A[i])) // 2
+            bamari -= (B[i] - A[i]) % 2
+
+    if bamari >= 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+
+if __name__ == '__main__':
+    main()
+",,"import sys
+
+sys.setrecursionlimit(10 ** 8)
+
+input = sys.stdin.readline
+
+
+def main():
+    N = int(input())
+    A = [int(x) for x in input().split()]
+    B = [int(x) for x in input().split()]
+
+
+    bamari = 0
+    for i in range(N):
+        if A[i] == B[i]:
+            continue
+        elif A[i] > B[i]:
+            bamari -= A[i] - B[i]
+        else:
+            bamari += -(-(B[i] - A[i]) // 2)
+            bamari -= (B[i] - A[i]) % 2
+
+    if bamari >= 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+
+if __name__ == '__main__':
+    main()
+",0,,,,22.005195,0
+u588794534,"n=int(input())
+
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+#a.sort()
+#b.sort()
+
+if a==b:
+    print(""Yes"")
+    exit()
+
+suma=sum(a)
+sumb=sum(b)
+
+
+#sum(a)+2*k=sum(b)+k
+#k=(sum(a)-sum(b))
+
+k=sumb-suma
+#
+#1 1 1 6
+#2 2 2 3
+
+cnta=0
+cntb=0
+for i in range(n):
+    if a[i]>b[i]:
+        cntb+=a[i]-b[i]
+    elif a[i]<b[i]:
+        cnta+=(-1)*((a[i]-b[i])//2)
+print(k,cntb,cnta)
+if cntb<=k and cnta<=k:
+    print(""Yes"")
+else:
+    print(""No"")
+","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+if a == b:
+    print('Yes')
+    exit()
+suma = sum(a)
+sumb = sum(b)
+k = sumb - suma
+cnta = 0
+cntb = 0
+for i in range(n):
+    if a[i] > b[i]:
+        cntb += a[i] - b[i]
+    elif a[i] < b[i]:
+        cnta += -1 * ((a[i] - b[i]) // 2)
+a.sort()
+if cntb <= k and cnta <= k:
+    print('Yes')
+else:
+    print('No')","n=int(input())
+
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+#a.sort()
+#b.sort()
+
+if a==b:
+    print(""Yes"")
+    exit()
+
+suma=sum(a)
+sumb=sum(b)
+
+
+#sum(a)+2*k=sum(b)+k
+#k=(sum(a)-sum(b))
+
+k=sumb-suma
+#
+#1 1 1 6
+#2 2 2 3
+
+cnta=0
+cntb=0
+for i in range(n):
+    if a[i]>b[i]:
+        cntb+=a[i]-b[i]
+    elif a[i]<b[i]:
+        cnta+=(-1)*((a[i]-b[i])//2)
+#print(k,cntb,cnta)
+if cntb<=k and cnta<=k:
+    print(""Yes"")
+else:
+    print(""No"")
+",1,7,0.5882352941176471,,10.221988,0
+u934442292,"import sys
+
+input = sys.stdin.readline
+
+
+def main():
+    N = int(input())
+    A = tuple(map(int, input().split()))
+    B = tuple(map(int, input().split()))
+
+    n_2 = 0
+    n_1 = 0
+    for a, b in zip(A, B):
+        if a > b:
+            n_1 += (a - b)
+        elif a < b:
+            n_2 += (b - a) // 2
+
+    diff = sum(B) - sum(A)
+    if diff < 0:
+        ans = ""No""
+    elif n_1 <= diff and n_2 <= diff:
+        ans = ""Yes""
+    else:
+        ans = ""No""
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+",,"import sys
+
+input = sys.stdin.readline
+
+
+def main():
+    N = int(input())
+    A = tuple(map(int, input().split()))
+    B = tuple(map(int, input().split()))
+
+    n_2 = 0
+    n_1 = 0
+    for a, b in zip(A, B):
+        if a > b:
+            n_1 += (a - b)
+        elif a < b:
+            n_2 += (b - a + 1) // 2
+
+    diff = sum(B) - sum(A)
+    if diff < 0:
+        ans = ""No""
+    elif n_1 <= diff and n_2 <= diff:
+        ans = ""Yes""
+    else:
+        ans = ""No""
+    print(ans)
+
+
+if __name__ == ""__main__"":
+    main()
+",0,,,,16.618315,0
+u646130340,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+result = False
+
+big_a = sum([ai - bi for ai, bi in zip(a,b) if ai > bi])
+big_b = sum([(bi - ai) / 2 for ai, bi in zip(a,b) if bi > ai])
+sum_diff = sum(b) - sum(a)
+
+if big_a <= sum_diff and big_b <= sum_diff:
+  result = True
+
+ans = ""Yes"" if result else ""No""
+print(ans)
+",,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+result = False
+
+big_a = sum([ai - bi for ai, bi in zip(a,b) if ai > bi])
+big_b = sum([(bi - ai) // 2 for ai, bi in zip(a,b) if bi > ai])
+sum_diff = sum(b) - sum(a)
+
+if big_a <= big_b:
+  result = True
+
+ans = ""Yes"" if result else ""No""
+print(ans)",0,,,,16.255315,0
+u898967808,"n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+k = sum(B)-sum(A)
+cb = sum([a-b for b,a in zip(B,A) if b<a])
+ca = sum([(b-a+1)//2 for b,a in zip(B,A) if b>a])
+if ca+cb <= k:
+  print('Yes')
+else:
+  print('No')","n = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+k = sum(B) - sum(A)
+cb = 0
+ca = sum([(b - a + 1) // 2 for b, a in zip(B, A) if b > a])
+if ca + cb <= k:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+k = sum(B)-sum(A)
+cb = sum([a-b for b,a in zip(B,A) if b<a])
+ca = sum([(b-a+1)//2 for b,a in zip(B,A) if b>a])
+if ca<=k and cb<= k:
+  print('Yes')
+else:
+  print('No')",1,30,0.21052631578947367,,6.165705,0
+u266014018,"def main():
+    import sys
+
+    def input(): return sys.stdin.readline().rstrip()
+
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    s = 0
+    sm = 0
+    for x, y in zip(a,b):
+        tmp = y-x
+        sm += tmp
+        if tmp > 0:
+            tmp //= 2
+        s += tmp
+    if s >= sm and sm >= 0:
+        print('Yes')
+    else:
+        print('No')
+
+    
+if __name__ == '__main__':
+    main()",,"def main():
+    import sys
+
+    def input(): return sys.stdin.readline().rstrip()
+
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    s = 0
+    sm = 0
+    for x, y in zip(a,b):
+        tmp = y-x
+        sm += tmp
+        if tmp > 0:
+            tmp //= 2
+        s += tmp
+    if s >= 0 and sm >= 0:
+        print('Yes')
+    else:
+        print('No')
+
+    
+if __name__ == '__main__':
+    main()",0,,,,22.005085,0
+u627803856,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+max_count = sum(b) - sum(a)
+count = 0
+for i in range(n):
+    if a[i] > b[i]:
+        count += (a[i] - b[i])
+    elif a[i] < b[i]:
+        if (b[i] - a[i]) % 2 == 0:
+            count += (b[i] - a[i]) // 2
+        else:
+            count += (b[i] - a[i]) // 2 + 1
+    else: continue
+
+if count <= max_count:
+    print('Yes')
+else:
+    print('No')
+
+",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+cnt = 0
+
+for i in range(n):
+    if a[i] > b[i]:
+        k = a[i] - b[i]
+        b[i] += k
+        cnt += k
+
+for i in range(n):
+    if a[i] < b[i]:
+        k = (b[i] - a[i]) // 2
+        a[i] += 2 * k
+        cnt -= k
+        if a[i] < b[i]:
+            a[i] += 2
+            b[i] += 1
+
+print('Yes') if cnt <= 0 else print('No')
+
+",0,,,,6.633475,0
+u941438707,"print(""No"")",,"n,*a=map(int,open(0).read().split())
+u=d=z=r=0
+for i,j in zip(a[:n],a[n:]):
+    if j-i>0:u+=(j-i)//2*2;r+=(j-i)%2
+    elif j-i==0:z+=1
+    else:d+=j-i
+print(""Yes"" if u+2*d>=0 else ""No"") ",0,,,,1.435216,0
+u288430479,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+cou = 0
+for j,k in zip(a,b):
+  if j<k:
+    cou += (k-j)//2
+  elif j>k:
+    cou -= (j-k)
+if cou>0:
+  print(""Yes"")
+else:
+  print(""No"")","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+cou = 0
+for j, k in zip(a, b):
+    if j < k:
+        cou += (k - j) // 2
+    elif j > k:
+        cou -= j - k
+if cou >= 0:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+cou = 0
+for j,k in zip(a,b):
+  if j<k:
+    cou += (k-j)//2
+  elif j>k:
+    cou -= (j-k)
+if cou>=0:
+  print(""Yes"")
+else:
+  print(""No"")",1,1,0.5,,8.712325,0
+u648881683,"import bisect, collections, copy, heapq, itertools, math, string, sys
+input = lambda: sys.stdin.readline().rstrip() 
+sys.setrecursionlimit(10**7)
+INF = float('inf')
+def I(): return int(input())
+def F(): return float(input())
+def SS(): return input()
+def LI(): return [int(x) for x in input().split()]
+def LI_(): return [int(x)-1 for x in input().split()]
+def LF(): return [float(x) for x in input().split()]
+def LSS(): return input().split()
+
+def resolve():
+    N = I()
+    a = LI()
+    b = LI()
+
+    # 操作回数
+    n = sum(b) - sum(a)
+
+    if sum([max(b[i] - a[i], 0) for i in range(N)]) <= 2 * n and sum([max(a[i] - b[i], 0) for i in range(N)]) <= n:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    resolve()
+",,"import bisect, collections, copy, heapq, itertools, math, string, sys
+input = lambda: sys.stdin.readline().rstrip() 
+sys.setrecursionlimit(10**7)
+INF = float('inf')
+def I(): return int(input())
+def F(): return float(input())
+def SS(): return input()
+def LI(): return [int(x) for x in input().split()]
+def LI_(): return [int(x)-1 for x in input().split()]
+def LF(): return [float(x) for x in input().split()]
+def LSS(): return input().split()
+
+def resolve():
+    N = I()
+    a = LI()
+    b = LI()
+
+    # 全てのiに対してa[i]<=b[i]にしていく
+    tmp = 0
+    for i in range(N):
+        if a[i] > b[i]:
+            tmp += a[i] - b[i]
+        else:
+            tmp -= (b[i] - a[i]) // 2
+
+    if tmp <= 0:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    resolve()
+",0,,,,22.005558,0
+u587589241,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+if all(a[i]==b[i] for i in range(n)):
+    print(""Yes"")
+elif sum(a)==sum(b):
+    print(""No"")
+elif sum(b)<sum(a):
+    print(""No"")
+else:
+    tmp=0
+    for i in range(n):
+        if a[i]-b[i]>0:
+            tmp-=2*(a[i]-b[i])
+        if a[i]-b[i]<0:
+            tmp+=b[i]-a[i]
+    if tmp>=0:
+        print(""Yes"")
+    else:
+        print(""No"")",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+score = 0
+for a, b in zip(A, B):
+    diff = b - a
+    if diff > 0:
+        score += diff // 2
+    else:
+        score += diff
+print(""Yes"") if score >= 0 else print(""No"")
+",0,,,,22.005423,0
+u747703115,"n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+maxC = 0
+C = 0
+for i in range(n):
+    a, b = A[i], B[i]
+    if a<b:
+        C += (b-a)//2
+    elif a>b:
+        maxC += a-b
+print('Yes' if C<=maxC else 'No')",,"n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+c = 0
+for a,b in zip(A,B):
+    c += min((b-a)//2, b-a)
+print('Yes' if c>=0 else 'No')",0,,,,20.264793,0
+u222668979,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+cnt = sum(b) - sum(a)
+ans = 0
+for ai, bi in zip(a, b):
+    ans += max(0, ai - bi, (bi - ai + 1) // 2)
+print('Yes' if ans <= cnt else 'No')
+","n = int(input())
+b = list(map(int, input().split()))
+a = list(map(int, input().split()))
+cnt = sum(a) - sum(b)
+ans = 0
+for ai in range(n):
+    ans += max((a[ai] - b[ai] + 1) // 2, 0)
+print('Yes' if ans <= cnt else 'No')","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+cnt = sum(b) - sum(a)
+ans = 0
+for ai, bi in zip(a, b):
+    ans += max(0, (bi - ai + 1) // 2)
+print('Yes' if ans <= cnt else 'No')
+",1,29,0.17142857142857143,,10.048995,0
+u940831163,"import math
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+operation_num = sum(b) - sum(a)
+x = 0 # 操作回数
+y = 0
+z = 0
+for i in range(n):
+    x += b[i]-a[i]
+    y += max(a[i]-b[i], 0)
+    z += max(math.ceil((b[i]-a[i])/2), 0)
+# print(x, y)
+if x - y < 0 and x - z < 0:
+    print('No')
+else:
+    print('Yes')
+",,"import math
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+operation_num = sum(b) - sum(a)
+x = 0 # 操作回数
+y = 0
+z = 0
+for i in range(n):
+    x += b[i]-a[i]
+    y += max(a[i]-b[i], 0)
+    z += max(math.ceil((b[i]-a[i])/2), 0)
+# print(x, y)
+if x - y < 0 or x - z < 0:
+    print('No')
+else:
+    print('Yes')
+",0,,,,11.530102,0
+u368796742,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+sa = sum(a)
+sb = sum(b)
+if sa > sb:
+    print(""No"")
+elif sa == sb:
+    if sa==sb:
+        print(""Yes"")
+    else:
+        print(""No"")
+else:
+    count = 0
+    for i,j in zip(a,b):
+        if j > i:
+            count += (j-i+1)//2
+    if count <= sb-sa:
+        print(""Yes"")
+    else:
+        print(""No"")
+",,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+sa = sum(a)
+sb = sum(b)
+counta = 0
+countb = 0
+for i,j in zip(a,b):
+    if j > i:
+        if (j-i)%2:
+            countb += 1
+        counta += (j-i+1)//2
+    elif i > j:
+        countb += i-j
+if counta <= sb-sa and countb <= sb-sa:
+    print(""Yes"")
+else:
+    print(""No"")
+",0,,,,8.505947,0
+u970197315,"# B - Two Arrays
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+sum_a=sum(a)
+sum_b=sum(b)
+a_cnt,b_cnt=0,0
+
+for aa,bb in zip(a,b):
+    if aa>bb:
+        a_cnt+=aa-bb
+    elif aa<bb:
+        b_cnt+=((bb-aa)//2)*2
+
+print('Yes') if a_cnt<=b_cnt else print('No')",,"# B - Two Arrays
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+sum_a=sum(a)
+sum_b=sum(b)
+
+a_cnt,b_cnt=0,0
+
+for aa,bb in zip(a,b):
+    if aa>bb:
+        a_cnt+=aa-bb
+    elif aa<bb:
+        b_cnt+=(bb-aa)//2
+
+print('Yes') if a_cnt<=b_cnt else print('No')",0,,,,0.785040,0
+u827202523,"import sys
+# from collections import defaultdict, deque
+# import math
+# import copy
+from bisect import bisect_left, bisect_right
+# import heapq
+
+# sys.setrecursionlimit(1000000)
+
+# input aliases
+input = sys.stdin.readline
+
+getS = lambda: input().strip()
+getN = lambda: int(input())
+getList = lambda: list(map(int, input().split()))
+getZList = lambda: [int(x) - 1 for x in input().split()]
+
+INF = 10 ** 20
+MOD = 1000000007
+
+def solve():
+    n = getN()
+    anums = getList()
+    bnums = getList()
+    if sum(anums) > sum(bnums):
+        print(""No"")
+        return
+
+    pair = []
+    for i, j in zip(anums, bnums):
+        pair.append((i, j))
+
+    pair.sort(key=lambda x:- x[0] + x[1])
+    # print(pair)
+    kosi = 0
+    for a,b in pair:
+        a += kosi
+        if b >= a:
+            print(""Yes"")
+            return
+        else:
+            kosi = (a - b) * 2
+
+    if kosi:
+        print(""No"")
+        return
+    else:
+        print(""Yes"")
+        return
+
+
+def main():
+    n = getN()
+    for _ in range(n):
+        solve()
+if __name__ == ""__main__"":
+    # main()
+    solve()
+",,"import sys
+# from collections import defaultdict, deque
+# import math
+# import copy
+from bisect import bisect_left, bisect_right
+# import heapq
+
+# sys.setrecursionlimit(1000000)
+
+# input aliases
+input = sys.stdin.readline
+
+getS = lambda: input().strip()
+getN = lambda: int(input())
+getList = lambda: list(map(int, input().split()))
+getZList = lambda: [int(x) - 1 for x in input().split()]
+
+INF = 10 ** 20
+MOD = 1000000007
+
+def solve():
+    n = getN()
+    anums = getList()
+    bnums = getList()
+    # if sum(anums) > sum(bnums):
+    #     print(""No"")
+    #     return
+
+    pair = []
+    for i, j in zip(anums, bnums):
+        pair.append((i, j))
+
+    pair.sort(key=lambda x:- x[0] + x[1])
+    # print(pair)
+    kosi = 0
+    for a,b in pair:
+        # a += kosi
+        if b >= a:
+            kosi -= (b-a) // 2 * 2
+        else:
+            kosi += (a - b) * 2
+        # print(a, b, kosi)
+
+    if kosi > 0:
+        print(""No"")
+        return
+    else:
+        print(""Yes"")
+        return
+
+
+def main():
+    n = getN()
+    for _ in range(n):
+        solve()
+if __name__ == ""__main__"":
+    # main()
+    solve()
+",0,,,,22.005645,0
+u462329577,"#!/usr/bin/env python3
+# input
+import sys
+
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+a.sort()
+b.sort()
+for i in range(n):
+    if a[i] > b[i]:
+        print(""No"")
+        exit()
+print(""Yes"")
+",,"#!/usr/bin/env python3
+# input
+import sys
+
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+res = 0
+for i in range(n):
+    if a[i] > b[i]:
+        res -= a[i] - b[i]
+    else:
+        res += (b[i] - a[i]) // 2
+if res >= 0:
+    print(""Yes"")
+else:
+    print(""No"")
+",0,,,,8.928615,0
+u229156891,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+a.sort()
+b.sort()
+
+for i in range(N):
+    if a[i] > b[i]:
+        print('No')
+        exit()
+
+print('Yes')",,"import math
+
+N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+cnt1, cnt2 = 0, 0
+for i in range(N):
+    if a[i] > b[i]:
+        cnt1 += a[i] - b[i]
+    elif a[i] < b[i]:
+        cnt2 += math.ceil((b[i]-a[i])/2)
+
+cnt = sum(b) - sum(a)
+if cnt1 <= cnt and cnt2 <= cnt:
+    print('Yes')
+else:
+    print('No')",0,,,,12.482239,0
+u502731482,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+cnt_a, cnt_b = sum(a), sum(b)
+ans = ""No""
+i = 0
+cnt = 0
+while cnt < cnt_b - cnt_a:
+    if a[i % n] < b[i % n]:
+        x = int((b[i % n] - a[i % n]) / 2 + 0.5)
+        cnt += x
+        a[i % n] += 2 * x
+    else:
+        x = a[i % n] - b[i % n]
+        cnt += x
+        b[i % n] += x
+    i += 1
+    
+    if a == b:
+        ans = ""Yes""
+        break
+
+print(ans)
+",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+x, y = 0, 0
+for i in range(n):
+    dif = b[i] - a[i]
+    if dif > 0:
+        x += dif // 2
+    else:
+        y += -dif
+
+print(""Yes"" if x >= y else ""No"")",0,,,,9.270124,0
+u793868662,"def resolve():
+    import math
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    suma = 0
+    dab = 0
+    dba = 0
+    for i in range(n):
+        suma += b[i]-a[i]
+        if a[i] < b[i]:
+            dab += math.ceil((b[i]-a[i])/2)
+        else:
+            dba += a[i]-b[i]
+    if dab+dba > suma:
+        print(""No"")
+    else:
+        print(""Yes"")
+resolve()","def resolve():
+    import math
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    suma = 0
+    dab = 0
+    dba = 0
+    for i in range(n):
+        suma += b[i] - a[i]
+        if a[i] < b[i]:
+            dab += math.ceil((b[i] - a[i]) / 2)
+        else:
+            a[i] += 2
+    if dab + dba > suma:
+        print('No')
+    else:
+        print('Yes')
+resolve()","def resolve():
+    import math
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    suma = 0
+    dab = 0
+    dba = 0
+    for i in range(n):
+        suma += b[i]-a[i]
+        if a[i] < b[i]:
+            dab += math.ceil((b[i]-a[i])/2)
+        else:
+            dba += a[i]-b[i]
+    if max(dba, dab) > suma:
+        print(""No"")
+    else:
+        print(""Yes"")
+resolve()",1,12,0.29411764705882354,,8.591402,0
+u325282913,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+if sum(A) > sum(B):
+    print('No')
+    exit()
+else:
+    cnt = sum(B)-sum(A)
+a_tmp = 0
+b_tmp = 0
+for i in range(N):
+    if A[i] == B[i]:
+        continue
+    if cnt == 0:
+        print('No')
+        exit()
+    if A[i] > B[i]:
+        b_tmp += A[i]-B[i]
+    else:
+        if (B[i]-A[i]) % 2 == 0:
+            a_tmp += (B[i]-A[i]) // 2
+        else:
+            a_tmp += ((B[i]-A[i]) // 2)+1
+            b_tmp += 1
+if (cnt-a_tmp)*2 == cnt-b_tmp:
+    print('Yes')
+else:
+    print('No')",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+if sum(A) > sum(B):
+    print('No')
+    exit()
+else:
+    cnt = sum(B)-sum(A)
+a_tmp = 0
+b_tmp = 0
+for i in range(N):
+    if A[i] == B[i]:
+        continue
+    if cnt == 0:
+        print('No')
+        exit()
+    if A[i] > B[i]:
+        b_tmp += A[i]-B[i]
+    else:
+        if (B[i]-A[i]) % 2 == 0:
+            a_tmp += (B[i]-A[i]) // 2
+        else:
+            a_tmp += ((B[i]-A[i]) // 2)+1
+            b_tmp += 1
+if a_tmp > cnt or b_tmp > cnt:
+    print('No')
+    exit()
+if (cnt-a_tmp)*2 == cnt-b_tmp:
+    print('Yes')
+else:
+    print('No')",0,,,,22.005288,0
+u113971909,"#!/usr/bin python3
+# -*- coding: utf-8 -*-
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    A.sort()
+    B.sort()
+
+    ret = 'Yes'
+    for i in range(N-1,-1,-1):
+        if A[i]<=B[i]:
+            continue
+        else:
+            ret = 'No'
+    print(ret)
+
+if __name__ == '__main__':
+    main()","def main():
+    N = int(input())
+    B = list(map(int, input().split()))
+    A = list(map(int, input().split()))
+    ret = 0
+    for i, b in zip(B, A):
+        if i < b:
+            ret += (b - i) // 2
+        else:
+            ret -= i - b
+    if ret < 0:
+        print('No')
+    else:
+        print('Yes')
+if __name__ == '__main__':
+    main()","#!/usr/bin python3
+# -*- coding: utf-8 -*-
+
+def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    cnt_P = 0
+    cnt_N = 0
+
+    for i in range(N):
+        diff = B[i]-A[i]
+        if diff>0:
+            cnt_P += diff//2
+        elif diff<0:
+            cnt_N += -diff
+
+    if sum(A)<=sum(B) and cnt_P>=cnt_N:
+        ret = 'Yes'
+    else:
+        ret = 'No'
+
+    print(ret)
+
+if __name__ == '__main__':
+    main()",1,65,0.5357142857142857,,14.851111,0
+u647999897,"def solve():
+    N = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+
+    plus2_cnt = 0
+    neg_cnt = 0
+    for i in range(N):
+        diff = b[i] - a[i]
+        if diff >= 0:
+            plus2_cnt += diff // 2
+        else:
+            neg_cnt += 1
+    
+    if plus2_cnt >= neg_cnt:
+        print('Yes')
+    else:
+        print('No')
+        
+if __name__ == '__main__':
+    solve()
+",,"def solve():
+    N = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+
+    plus2_cnt = 0
+    neg_cnt = 0
+    for i in range(N):
+        diff = b[i] - a[i]
+        if diff >= 0:
+            plus2_cnt += diff // 2
+        else:
+            neg_cnt += abs(diff)
+    
+    if plus2_cnt >= neg_cnt:
+        print('Yes')
+    else:
+        print('No')
+        
+if __name__ == '__main__':
+    solve()
+",0,,,,15.015311,0
+u923270446,"import math
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+c=sum(b)-sum(a)
+d=0
+for i in range(n):d+=a[i]-b[i]if a[i]>b[i]else math.ceil((b[i]-a[i])/2)
+print(""Yes""if c>=d else""No"")",,"import math
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+c=sum(b)-sum(a)
+d=0
+for i in range(n):
+ if a[i]>b[i]:d+=a[i]-b[i]
+ elif a[i]%2!=b[i]%2:d+=1
+print(""No""if c<d else""Yes"")",0,,,,6.917388,0
+u974792613,"n = int(input())
+
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+a_sum = sum(a)
+b_sum = sum(b)
+
+if a_sum > b_sum:
+    print(""No"")
+    exit(0)
+
+less_a_cnt = 0
+less_b_cnt = 0
+
+for i in range(n):
+    if b[i] > a[i] and (b[i] - a[i]) % 2 != 0:
+        print(""No"")
+        exit(0)
+
+    if a[i] < b[i]:
+        less_a_cnt += int((b[i] - a[i]) / 2)
+    else:
+        less_b_cnt += a[i] - b[i]
+
+if less_a_cnt < less_b_cnt:
+    print(""No"")
+else:
+    print(""Yes"")
+",,"n = int(input())
+
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+a_sum = sum(a)
+b_sum = sum(b)
+
+if a_sum > b_sum:
+    print(""No"")
+    exit(0)
+
+less_a_cnt = 0
+less_b_cnt = 0
+
+for i in range(n):
+    if a[i] < b[i]:
+        less_a_cnt += int((b[i] - a[i]) / 2)
+    else:
+        less_b_cnt += a[i] - b[i]
+
+if less_a_cnt < less_b_cnt:
+    print(""No"")
+else:
+    print(""Yes"")
+",0,,,,22.005349,0
+u135346354,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+cnt = sum(B) - sum(A)
+for i in range(N):
+    if A[i] < B[i]:
+        cnt -= (B[i]-A[i]+1)//2
+        if cnt < 0:
+            print(""No"")
+            break
+else:
+    print(""Yes"")",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+cnt = sum(B) - sum(A)
+a, b = cnt, cnt
+for i in range(N):
+    if A[i] < B[i]:
+        b -= (B[i]-A[i]+1)//2
+    elif A[i] > B[i]:
+        a -= A[i]-B[i]
+    if a < 0 or b < 0:
+        print(""No"")
+        break
+else:
+    print(""Yes"")",0,,,,22.005156,0
+u535171899,"n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+a_gap = 0
+b_gap = 0
+for i in range(n):
+    if A[i]>B[i]:
+        a_gap+=A[i]-B[i]
+    if A[i]<B[i]:
+        b_gap+=B[i]-A[i]
+
+if a_gap*2-b_gap>0:
+    print('No')
+else:
+    print('Yes')",,"n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+a_gap = 0
+b_gap = 0
+for i in range(n):
+    if A[i]>B[i]:
+        a_gap+=A[i]-B[i]
+    if A[i]<B[i]:
+        b_gap+=(B[i]-A[i])//2
+
+if b_gap-a_gap<0:
+    print('No')
+else:
+    print('Yes')",0,,,,4.565356,0
+u025501820,"import sys
+N = int(sys.stdin.readline().rstrip())
+A = list(map(int, sys.stdin.readline().rstrip().split()))
+B = list(map(int, sys.stdin.readline().rstrip().split()))
+if N == 1:
+    if A[0] <= B[0]:
+        print(""Yes"")
+    else:
+        print(""No"")
+diff = [a - b for a, b in zip(A, B)]
+minus = 0
+plus = 0
+for d in diff:
+    if d < 0:
+        minus += d
+    else:
+        plus += d
+if plus * 2 + minus > 0:
+    print(""No"")
+else:
+    print(""Yes"")",,"import sys
+N = int(sys.stdin.readline().rstrip())
+A = list(map(int, sys.stdin.readline().rstrip().split()))
+B = list(map(int, sys.stdin.readline().rstrip().split()))
+
+if A == B:
+    print(""Yes"")
+    exit()
+diff = [a - b for a, b in zip(A, B)]
+minus = []
+plus = []
+for d in diff:
+    if d < 0:
+        minus.append(-d)
+    elif d > 0:
+        plus.append(d)
+
+total = 2 * sum(plus)
+minus.sort()
+while total:
+    if not minus or sum(minus) < total:
+        break
+    if minus[-1] >= total:
+        total = 0
+    else:
+        if minus[-1] % 2 == 1:
+            total -= minus[-1] - 1
+        else:
+            total -= minus[-1]
+        minus.pop()
+else:
+    print(""Yes"")
+    exit()
+print(""No"")",0,,,,13.153383,0
+u145950990,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+
+x = y = 0
+for i in range(n):
+    dif = b[i]-a[i]
+    if dif>0:x += dif 
+    else:y += -dif
+
+print('Yes' if x>=y*2 else 'No')","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+x, y = (0, 0)
+for i in range(n):
+    dif = b[i] - a[i]
+    if dif > 0:
+        x += dif // 2
+    else:
+        y += -dif
+print('Yes' if x >= y else 'No')","n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+
+x = y = 0
+for i in range(n):
+    dif = b[i]-a[i]
+    if dif>0:x += dif//2
+    else:y += -dif
+
+print('Yes' if x>=y else 'No')",1,11,0.3529411764705882,,16.725010,0
+u838644735,"def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    # print(N, A, B)
+    expected = sum(B) - sum(A)
+    if expected < 0:
+        print('No')
+        return
+    add_a, add_b = 0, 0
+    for i in range(N):
+        a, b = A[i], B[i]
+        if a > b:
+            add_b += a - b
+        elif a < b:
+            add_a += (b - a + 1) // 2
+    if add_a + add_b <= expected:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    main()
+",,"def main():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    # print(N, A, B)
+    expected = sum(B) - sum(A)
+    if expected < 0:
+        print('No')
+        return
+    add_a, add_b = 0, 0
+    for i in range(N):
+        a, b = A[i], B[i]
+        if a > b:
+            add_b += a - b
+        elif a < b:
+            add_a += (b - a + 1) // 2
+    if add_a <= expected and add_b <= expected:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    main()
+",0,,,,9.036076,0
+u930705402,"N=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+adif,bdif=0,0
+for i in range(N):
+    if a[i]<b[i]:
+        adif+=(b[i]-a[i])//2
+    elif a[i]>b[i]:
+        bdif+=a[i]-b[i]
+if bdif*2<=adif:
+    print('Yes')
+else:
+    print('No')",,"N=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+adif,bdif=0,0
+for i in range(N):
+    if a[i]<b[i]:
+        adif+=(b[i]-a[i])//2
+    elif a[i]>b[i]:
+        bdif+=a[i]-b[i]
+if bdif<=adif:
+    print('Yes')
+else:
+    print('No')",0,,,,22.006680,0
+u089142196,"N = int(input())
+a= list(map(int,input().split()))
+b= list(map(int,input().split()))
+c = [a[i]-b[i] for i in range(N)]
+d=sum(b)-sum(a)   #c回試行する
+if d<0:
+  print(""No"")
+  exit()
+  
+must=0
+cnt=0
+for num in c:
+  if num>0:
+    must += abs(num)
+  if num>=2:
+    cnt += num//2
+if must>d:
+  print(""No"")
+  exit()
+
+#chokin = 2*must
+nokori = d-must
+if cnt<must:
+  print(""No"")
+else:
+  print(""Yes"")
+#print(chokin,nokori)
+",,"N = int(input())
+a= list(map(int,input().split()))
+b= list(map(int,input().split()))
+c = [a[i]-b[i] for i in range(N)]
+d=sum(b)-sum(a)   #c回試行する
+if d<0:
+  print(""No"")
+  exit()
+  
+must=0
+cnt=0
+for num in c:
+  if num>0:
+    must += abs(num)
+  if num*(-1) >= 2:
+    cnt += (-1)*num//2
+if must>d:
+  print(""No"")
+  exit()
+
+#nokori = d-must
+#print(must,nokori,cnt)
+
+if cnt<must:
+  print(""No"")
+else:
+  print(""Yes"")
+",0,,,,8.790470,0
+u185948224,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+na, nb = 0, 0
+
+suma = sum(a)
+sumb = sum(b)
+jdg = False
+
+for i in range(N):
+    while a[i]!= b[i]:
+        if suma + na > sumb + nb:
+            jdg = True
+            break
+        if i == N - 1:
+            a[i] += na
+            b[i] += nb
+            if a[i] > b[i]:
+                jdg = True
+            break
+        if a[i] > b[i]:
+            ab = a[i] - b[i]
+            if nb < ab:
+                na += 2 * (ab - nb)
+                nb = 0
+            else: nb -= ab
+            sumb += ab
+            b[i] += ab
+        else:
+            ba = b[i] - a[i]
+            if na < ba:
+                nb += (ba - na + 1) // 2
+            else: na -= ((ba+1)//2)*2
+            if nb > 0: nb -= ba%2
+            else: na += 2 * (ba%2)
+            suma += ((ba+1)//2)*2
+            sumb += ba%2
+            a[i] += ((ba+1)//2)*2
+            b[i] += ba%2
+    if jdg: break
+print('No' if jdg else 'Yes')",,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+na, nb = 0, 0
+
+suma = sum(a)
+sumb = sum(b)
+jdg = False
+
+for i in range(N):
+    while a[i]!= b[i]:
+        if suma + na > sumb + nb:
+            jdg = True
+            break
+        if i == N - 1:
+            a[i] += na
+            b[i] += nb
+            if a[i] > b[i]:
+                jdg = True
+            break
+        if a[i] > b[i]:
+            ab = a[i] - b[i]
+            if nb < ab:
+                na += 2 * (ab - nb)
+                nb = 0
+            else: nb -= ab
+            sumb += ab
+            b[i] += ab
+        else:
+            ba = b[i] - a[i]
+            if na < ba:
+                nb += (ba - na + 1) // 2
+                na = 0
+            else: na -= ((ba+1)//2)*2
+            if nb > 0: nb -= ba%2
+            else: na += 2 * (ba%2)
+            suma += ((ba+1)//2)*2
+            sumb += ba%2
+            a[i] += ((ba+1)//2)*2
+            b[i] += ba%2
+    if jdg: break
+print('No' if jdg else 'Yes')",0,,,,9.906147,0
+u703528810,"N=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+d=[]
+for i in range(N):
+    d.append(a[i]-b[i])
+
+cnt=-sum(d)
+p=0
+n=0
+for j in range(N):
+    if d[j]>0:
+        p+=d[j]
+    if d[j]<0:
+        n-=(d[j]+1)//2
+if p<=cnt and n<=cnt:
+    print(""Yes"")
+else:
+    print(""No"")",,"N=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+d=[]
+for i in range(N):
+    d.append(a[i]-b[i])
+
+cnt=-sum(d)
+p=0
+n=0
+for j in range(N):
+    if d[j]>0:
+        p+=d[j]
+    if d[j]<0:
+        n+=-d[j]-(-d[j])%2
+if n>=p*2:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,19.348749,0
+u541610817,"import sys
+sys.setrecursionlimit(10 ** 8)
+
+def Z(): return int(input())
+def ZZ(): return [int(_) for _ in input().split()]
+
+def main():
+    N = Z()
+    A = ZZ()
+    B = ZZ()
+    if A == B:
+        print('Yes')
+        return
+    sa, sb = sum(A), sum(B)
+    if sa >= sb:
+        print('No')
+        return
+
+    numDo = sb - sa
+    cc = 0
+    for a, b in zip(A, B):
+        if a > b: cc += (a - b)
+        elif a < b: cc += (b-a+1)//2
+    print('Yes' if cc <= numDo else 'No')
+
+    return
+
+if __name__ == '__main__':
+    main()
+","import sys
+sys.setrecursionlimit(10 ** 8)
+
+def Z():
+    return int(input())
+
+def ZZ():
+    return [int(_) for _ in input().split()]
+
+def main():
+    N = Z()
+    A = ZZ()
+    B = ZZ()
+    if A == B:
+        print('Yes')
+        return
+    sa, sb = (sum(A), sum(B))
+    if sa >= sb:
+        print('No')
+        return
+    numDo = sb - sa
+    cc = 0
+    for a, b in zip(A, B):
+        if A == B:
+            cc += a - b
+        elif a < b:
+            cc += (b - a + 1) // 2
+    print('Yes' if cc <= numDo else 'No')
+    return
+if __name__ == '__main__':
+    main()","import sys
+sys.setrecursionlimit(10 ** 8)
+
+def Z(): return int(input())
+def ZZ(): return [int(_) for _ in input().split()]
+
+def main():
+    N = Z()
+    A = ZZ()
+    B = ZZ()
+    if A == B:
+        print('Yes')
+        return
+    sa, sb = sum(A), sum(B)
+    if sa >= sb:
+        print('No')
+        return
+
+    numDo = sb - sa
+    x = y = 0
+    for a, b in zip(A, B):
+        if a > b: x += (a - b)
+        elif a < b: y += (b-a+1)//2
+    print('Yes' if x <= numDo and y <= numDo else 'No')
+
+    return
+
+if __name__ == '__main__':
+    main()
+",1,3,0.8235294117647058,,11.072194,0
+u873190923,"# input()
+# int(input())
+# map(int, input().split())
+# list(map(int, input().split()))
+import math
+import sys
+import bisect
+import heapq  # 優先度付きキュー(最小値取り出し)
+from collections import deque
+inf = 10 ** 15
+mod = 10 ** 9 + 7
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+suma = sum(a)
+sumb = sum(b)
+count = sumb-suma
+subsum = 0
+if count < 0:
+    print('No')
+    sys.exit()
+for i in range(n):
+    subsum += abs(a[i]-b[i])
+if subsum <= 3*count and subsum%2 == count%2:
+    print('Yes')
+else:
+    print('No')",,"# input()
+# int(input())
+# map(int, input().split())
+# list(map(int, input().split()))
+import math
+import sys
+import bisect
+import heapq  # 優先度付きキュー(最小値取り出し)
+from collections import deque
+inf = 10 ** 15
+mod = 10 ** 9 + 7
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+suma = sum(a)
+sumb = sum(b)
+count = sumb-suma
+suba = 0
+subb = 0
+if count < 0:
+    print('No')
+    sys.exit()
+for i in range(n):
+    if a[i] > b[i]:
+        suba+=abs(a[i]-b[i])
+    else:
+        subb+=(abs(a[i]-b[i])+1)//2
+if max(suba, subb) <= count:
+    print('Yes')
+else:
+    print('No')",0,,,,7.757717,0
+u833492079,"N = int(input())
+
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+#print(A)
+#print(B)
+
+x=y=0
+for i in range(len(A)):
+  a, b = A[i], B[i]
+
+  if a>b: y+=a-b
+  if a<b: x+=b-a
+
+ans=""Yes"" if x >= y*2 else ""No""
+print(ans)",,"N = int(input())
+
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+#print(A)
+#print(B)
+
+x=y=0
+for i in range(len(A)):
+  a, b = A[i], B[i]
+
+  if a<b: x+=(b-a)//2*2
+  if a>b: y+=a-b
+
+ans=""Yes"" if x >= y*2 else ""No""
+print(ans)",0,,,,22.005672,0
+u538632589,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+diff = 0
+for i in range(n):
+    if a[i] > b[i]:
+        diff += 2*(a[i] - b[i])
+    elif a[i] < b[i]:
+        diff += a[i] - b[i]
+
+if diff <= 0:
+    print(""Yes"")
+else:
+    print(""No"")
+",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+ca = cb = 0
+for i in range(n):
+    if a[i] > b[i]:
+        ca += a[i] - b[i]
+    elif a[i] < b[i]:
+        cb += (b[i] - a[i])//2
+if cb >= ca:
+    print(""Yes"")
+else:
+    print(""No"")
+",0,,,,22.005388,0
+u638902622,"import sys
+## io ##
+def IS(): return sys.stdin.readline().rstrip()
+def II(): return int(IS())
+def MII(): return list(map(int, IS().split()))
+def MIIZ(): return list(map(lambda x: x-1, MII()))
+#======================================================#
+def main():
+    n = II()
+    aa = MII()
+    bb = MII()
+    aa.sort()
+    bb.sort()
+    for a,b in zip(aa, bb):
+        if a > b:
+            print('No')
+            return None
+    print('Yes')
+    
+if __name__ == '__main__':
+    main()",,"import sys
+## io ##
+def IS(): return sys.stdin.readline().rstrip()
+def II(): return int(IS())
+def MII(): return list(map(int, IS().split()))
+def MIIZ(): return list(map(lambda x: x-1, MII()))
+#======================================================#
+def main():
+    n = II()
+    aa = MII()
+    bb = MII()
+    dn = sum(bb) - sum(aa)
+    if dn < 0:
+        print('No')
+        return None
+    cnta = cntb = 0
+    for a,b in zip(aa,bb):
+        if a>b: cntb += a-b
+        else: cnta += (b-a+1)//2
+    if cnta <= dn and cntb <= dn:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ == '__main__':
+    main()",0,,,,10.297851,0
+u545368057,"
+n = int(input())
+As = list(map(int, input().split()))
+Bs = list(map(int, input().split()))
+
+As.sort(reverse=True)
+Bs.sort(reverse=True)
+
+ds = [b-a for a,b in zip(As,Bs)]
+# print(ds)
+s = sum(ds)
+if s  < 0:
+    print(""No"")
+    exit()
+ds.sort(reverse=True)
+cnt = {2:0,-1:0}
+for d in ds:
+    if d % 2 == 1:
+        cnt[2] += 1
+        d += 1
+    else:
+        cnt[-1] += d//2
+
+if cnt[-1] == cnt[2] < s:
+    print(""Yes"")
+else:
+    print(""No"")    ",,"n = int(input())
+As = list(map(int, input().split()))
+Bs = list(map(int, input().split()))
+# 大きい順 or 小さい順に揃えていく
+ds = [a-b for a,b in zip(As,Bs)]
+if sum(ds) > 0:
+    print(""No"")
+    exit()
+cnt = 0
+cnts = []
+for d in ds:
+    # print(d)
+    if d < 0:
+        c = -(d//2)
+        cnt += c
+        d += c * 2
+    cnts.append(d)
+if cnt >= sum(cnts):
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,7.637663,0
+u801049006,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+sum_a = sum(a)
+sum_b = sum(b)
+if sum_a <= sum_b:
+    cnt_a = 0
+    cnt_b = 0
+    for i in range(n):
+        if a[i] >= b[i]:
+            cnt_b += a[i] - b[i]
+        else:
+            cnt_a += (b[i] - a[i]) // 2
+            if (b[i] - a[i]) % 2 == 0:
+                cnt_b += 1
+    if cnt_a >= cnt_b:
+        print(""Yes"")
+    else:
+        print(""No"")
+else:
+    print(""No"")
+",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+sum_a = sum(a)
+sum_b = sum(b)
+if sum_a <= sum_b:
+    cnt = 0
+    for i in range(n):
+        if a[i] > b[i]:
+            cnt += a[i] - b[i]
+        elif a[i] < b[i]:
+            cnt -= (b[i] - a[i]) // 2
+    if cnt <= 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+else:
+    print(""No"")
+",0,,,,18.438034,0
+u623687794,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+S=sum(b)-sum(a)
+if S<0:print(""No"")
+else:
+    cnt=0
+    for i in range(n):
+        cnt+=max((b[i]-a[i])//2,0)
+    if cnt<=S:print('Yes')
+    else:print(""No"")",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+S=sum(b)-sum(a)
+if S<0:print(""No"")
+else:
+    cnt=0
+    for i in range(n):
+        cnt+=max((b[i]-a[i]+1)//2,0)
+    if cnt<=S:print('Yes')
+    else:print(""No"")",0,,,,19.431613,0
+u940139461,"# https://atcoder.jp/contests/apc001/tasks/apc001_b
+
+n = int(input())
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+t = sum(b) - sum(a)
+c = 0
+for i in range(n):
+    d = a[i] - b[i]
+    if d > 0:
+        c += d
+    elif d < 0:
+        c += (-1 * d + 1) // 2
+
+if c <= t:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+t = sum(b) - sum(a)
+c = 0
+for i in range(n):
+    d = a[i] - b[i]
+    if a[i] < b[i]:
+        c += (b[i] - a[i] + 2 - 1) // 2
+if c <= t:
+    print('Yes')
+else:
+    print('No')","# https://atcoder.jp/contests/apc001/tasks/apc001_b
+
+n = int(input())
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+t = sum(b) - sum(a)
+pos = 0
+neg = 0
+for i in range(n):
+    d = a[i] - b[i]
+    if d > 0:
+        pos += d
+    elif d < 0:
+        neg += -1 * d // 2
+if pos <= neg:
+    print('Yes')
+else:
+    print('No')",1,32,0.2727272727272727,,6.122073,0
+u500297289,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+c = max(0, sum(B) - sum(A))
+ca = 0
+cb = 0
+
+for a, b in zip(A, B):
+    if a < b:
+        ca += (b - a + 1) // 2
+        cb += (b - a) % 2
+    if a > b:
+        cb += a - b
+
+if c < ca + cb:
+    print('No')
+else:
+    print('Yes')
+","N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+c = max(0, sum(B) - sum(A))
+ca = 0
+cb = 0
+for a, b in zip(A, B):
+    if a < b:
+        ca += (b - a + 1) // 2
+        cb += (b - a) % 2
+    if a > b:
+        cb += a - b
+if cb <= c:
+    print('Yes')
+else:
+    print('No')","N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+c = max(0, sum(B) - sum(A))
+ca = 0
+cb = 0
+
+for a, b in zip(A, B):
+    if a < b:
+        ca += (b - a + 1) // 2
+        cb += (b - a) % 2
+    if a > b:
+        cb += a - b
+
+if c < max(ca, cb):
+    print('No')
+else:
+    print('Yes')
+",1,9,0.3076923076923077,,8.861702,0
+u442877951,"N = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+countA,countB = 0,0
+
+for i in range(N):
+  if A[i] <= B[i]:
+    countA += (B[i]-A[i])//2
+  else:
+    countB += A[i]-B[i]
+if sum(B)-sum(A) >= max(countA,countB):
+  ans = ""Yes""
+else:
+  ans = ""No""
+
+print(ans)","N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+countA, countB = (0, 0)
+for i in range(N):
+    if A[i] <= B[i]:
+        countA += (B[i] - A[i] + 1) // 2
+    else:
+        countB += A[i] - B[i]
+if sum(B) - sum(A) >= max(countA, countB):
+    ans = 'Yes'
+else:
+    ans = 'No'
+print(ans)","N = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+countA,countB = 0,0
+
+for i in range(N):
+  if A[i] <= B[i]:
+    countA += (B[i]-A[i])//2
+  else:
+    countB += A[i]-B[i]
+if countA >= countB:
+  ans = ""Yes""
+else:
+  ans = ""No""
+
+print(ans)",1,3,0.8421052631578947,,10.179897,0
+u707124227,"import numpy as np
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+d,e=0,0
+for i in range(n):
+  c=a[i]-b[i]
+  if c>0:
+    d+=c
+  else:
+    e+=c
+print('Yes' if 2*d<=-e else 'No')
+","import numpy as np
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+d = e = 0
+for i in range(n):
+    c = b[i] - a[i]
+    if c > 0:
+        d += c // 2
+    else:
+        e += -c
+print('Yes' if d >= e else 'No')","import numpy as np
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+d,e=0,0
+for i in range(n):
+  c=a[i]-b[i]
+  if c>0:
+    d+=c
+  elif c%2==0:
+    e+=-c
+  else:
+    e+=-c-1
+print('Yes' if 2*d<=e else 'No')
+",1,18,0.5714285714285714,,28.102753,0
+u609061751,"import sys
+input = sys.stdin.readline
+
+n = int(input())
+a = [int(x) for x in input().split()]
+b = [int(x) for x in input().split()]
+cnt = sum(b) - sum(a)
+diff1 = [] # a > b
+diff2 = [] # b > a
+for i, j in zip(a, b):
+    if i > j:
+        diff1.append(i - j)
+    elif j > i:
+        diff2.append(j - i)
+
+if cnt < sum(diff1):
+    print(""No"")
+    sys.exit()
+else:
+    cnt -= sum(diff1)
+
+a_add = cnt + sum(diff1) # 2を足す
+b_add = cnt # 1を足す
+
+c = []
+for i in diff2:
+    if i % 2 == 0:
+        a_add -= i//2
+    else:
+        c.append(1)
+        a_add -= (i - 1)//2
+a_add -= sum(c)
+b_add -= sum(c)
+if a_add*2 == b_add:
+    print(""Yes"")
+else:
+    print(""No"")",,"import sys
+input = sys.stdin.readline
+
+n = int(input())
+a = [int(x) for x in input().split()]
+b = [int(x) for x in input().split()]
+cnt = sum(b) - sum(a)
+diff1 = [] # a > b
+diff2 = [] # b > a
+for i, j in zip(a, b):
+    if i > j:
+        diff1.append(i - j)
+    elif j > i:
+        diff2.append(j - i)
+
+if cnt < sum(diff1):
+    print(""No"")
+    sys.exit()
+else:
+    cnt -= sum(diff1)
+
+a_add = cnt + sum(diff1) # 2を足す
+b_add = cnt # 1を足す
+
+c = []
+for i in diff2:
+    if i % 2 == 0:
+        a_add -= i//2
+    else:
+        c.append(1)
+        a_add -= (i - 1)//2
+a_add -= sum(c)
+b_add -= sum(c)
+if a_add*2 == b_add and a_add >= 0 and b_add >= 0:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,18.368811,0
+u489959379,"import sys
+
+sys.setrecursionlimit(10 ** 7)
+f_inf = float('inf')
+mod = 10 ** 9 + 7
+
+
+def resolve():
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    cnt = 0
+    for i in range(n):
+        if B[i] < A[i]:
+            cnt += A[i] - B[i]
+            B[i] = A[i]
+
+    for i in range(n):
+        if B[i] > A[i]:
+            cnt -= (B[i] - A[i]) / 2
+
+    if cnt <= 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+
+if __name__ == '__main__':
+    resolve()
+",,"import sys
+
+sys.setrecursionlimit(10 ** 7)
+f_inf = float('inf')
+mod = 10 ** 9 + 7
+
+
+def resolve():
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    cnt = 0
+    for i in range(n):
+        if B[i] < A[i]:
+            cnt += A[i] - B[i]
+            B[i] = A[i]
+
+    for i in range(n):
+        if B[i] > A[i]:
+            cnt -= (B[i] - A[i]) // 2
+
+    if cnt <= 0:
+        print(""Yes"")
+    else:
+        print(""No"")
+
+
+if __name__ == '__main__':
+    resolve()
+",0,,,,1.841509,0
+u454524105,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+cnt_even = cnt_1 = cnt_0 = 0
+for a_, b_ in zip(a, b):
+    if a_ == b_:
+        cnt_0 += 1
+        continue
+    d = b_ - a_
+    if d < 0:
+        cnt_1 -= d
+    else:
+        cnt_even += d // 2
+        cnt_1 += d % 2
+print(""Yes"") if cnt_even == cnt_1 + cnt_0 else print(""No"")",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+bigger_a = bigger_b = 0
+for a_, b_ in zip(a, b):
+    if a_ > b_: bigger_a += a_ - b_
+    if b_ > a_: bigger_b += (b_ - a_) // 2
+if bigger_b >= bigger_a: print(""Yes"")
+else: print(""No"")",0,,,,14.907968,0
+u642874916,"from heapq import heappush, heappop, heapify
+from collections import deque, defaultdict, Counter
+import itertools
+from itertools import permutations, combinations, accumulate
+import sys
+import bisect
+import string
+import math
+import time
+
+
+def I(): return int(input())
+
+
+def S(): return input()
+
+
+def MI(): return map(int, input().split())
+
+
+def MS(): return map(str, input().split())
+
+
+def LI(): return [int(i) for i in input().split()]
+
+
+def LI_(): return [int(i)-1 for i in input().split()]
+
+
+def StoI(): return [ord(i)-97 for i in input()]
+
+
+def ItoS(nn): return chr(nn+97)
+
+
+def input(): return sys.stdin.readline().rstrip()
+
+
+def show(*inp, end='\n'):
+    if show_flg:
+        print(*inp, end=end)
+
+
+def print_matrix(mat):
+    for i in range(len(mat)):
+        print(*mat[i])
+
+
+yn = {False: 'No', True: 'Yes'}
+YN = {False: 'NO', True: 'YES'}
+MOD = 10**9+7
+inf = float('inf')
+IINF = 10**10
+l_alp = string.ascii_lowercase
+u_alp = string.ascii_uppercase
+ts = time.time()
+sys.setrecursionlimit(10**6)
+nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+show_flg = False
+# show_flg = True
+
+
+def main():
+    N = I()
+    a = LI()
+    b = LI()
+
+    sb = sum(b)
+    sa = sum(a)
+    expected = sb - sa
+
+    ans = 0
+    for i in range(N):
+        if a[i] > b[i]:
+            ans += a[i] - b[i]
+        else:
+            ans += ((b[i] - a[i]) + 1) // 2
+
+    print(yn[ans <= expected])
+
+
+if __name__ == '__main__':
+    main()
+",,"from heapq import heappush, heappop, heapify
+from collections import deque, defaultdict, Counter
+import itertools
+from itertools import permutations, combinations, accumulate
+import sys
+import bisect
+import string
+import math
+import time
+
+
+def I(): return int(input())
+
+
+def S(): return input()
+
+
+def MI(): return map(int, input().split())
+
+
+def MS(): return map(str, input().split())
+
+
+def LI(): return [int(i) for i in input().split()]
+
+
+def LI_(): return [int(i)-1 for i in input().split()]
+
+
+def StoI(): return [ord(i)-97 for i in input()]
+
+
+def ItoS(nn): return chr(nn+97)
+
+
+def input(): return sys.stdin.readline().rstrip()
+
+
+def show(*inp, end='\n'):
+    if show_flg:
+        print(*inp, end=end)
+
+
+def print_matrix(mat):
+    for i in range(len(mat)):
+        print(*mat[i])
+
+
+yn = {False: 'No', True: 'Yes'}
+YN = {False: 'NO', True: 'YES'}
+MOD = 10**9+7
+inf = float('inf')
+IINF = 10**10
+l_alp = string.ascii_lowercase
+u_alp = string.ascii_uppercase
+ts = time.time()
+sys.setrecursionlimit(10**6)
+nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+show_flg = False
+# show_flg = True
+
+
+def main():
+    N = I()
+    a = LI()
+    b = LI()
+
+    plus = 0
+    minus = 0
+    for i in range(N):
+        if a[i] > b[i]:
+            plus += a[i] - b[i]
+        else:
+            minus += (b[i] - a[i]) // 2
+
+    # print(plus, minus)
+    print(yn[plus <= minus])
+
+
+if __name__ == '__main__':
+    main()
+",0,,,,22.006998,0
+u995004106,"N=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+anum=0
+bnum=0
+equalflag=0
+for i in range(N):
+    if a[i]>b[i]:   #bを嵩上げしないと
+        bnum=bnum+(a[i]-b[i])
+    elif a[i]<b[i]:#aを嵩上げしないと
+        if (b[i]-a[i])%2==0:    #差が2nならaをn回嵩上げ
+            anum=anum+(b[i]-a[i])//2
+        else:                   #差が2n+1ならbを一回嵩上げしてからaをn+1回嵩上げ
+            bnum=bnum+1
+            anum=anum+((b[i]+1)-a[i])//2
+    else:
+        equalflag=1
+if equalflag==1:
+    if anum>=bnum:
+        print(""Yes"")
+    else:
+        print(""No"")
+else:
+    if anum==bnum:
+        print(""Yes"")
+    else:
+        print(""No"")","N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+anum = 0
+bnum = 0
+equalflag = 1
+for i in range(N):
+    if a[i] > b[i]:
+        bnum = bnum + (a[i] - b[i])
+    elif a[i] < b[i]:
+        if (b[i] - a[i]) % 2 == 0:
+            anum = anum + (b[i] - a[i]) // 2
+        else:
+            bnum = bnum + 1
+            anum = anum + (b[i] + 1 - a[i]) // 2
+    else:
+        equalflag = 1
+if equalflag == 1:
+    if anum >= bnum:
+        print('Yes')
+    else:
+        print('No')
+elif anum == bnum:
+    print('Yes')
+else:
+    print('No')","N=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+anum=0
+bnum=0
+equalflag=0
+for i in range(N):
+    if a[i]>b[i]:   #bを嵩上げしないと
+        bnum=bnum+(a[i]-b[i])
+    elif a[i]<b[i]:#aを嵩上げしないと
+        if (b[i]-a[i])%2==0:    #差が2nならaをn回嵩上げ
+            anum=anum+(b[i]-a[i])//2
+        else:                   #差が2n+1ならbを一回嵩上げしてからaをn+1回嵩上げ
+            bnum=bnum+1
+            anum=anum+((b[i]+1)-a[i])//2
+if N!=1:
+    if anum>=bnum:
+        print(""Yes"")
+    else:
+        print(""No"")
+else:
+    if anum==bnum:
+        print(""Yes"")
+    else:
+        print(""No"")",1,1,0.8571428571428572,,4.686099,0
+u260216890,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+a=sorted(a)
+b=sorted(b)
+ope = 0
+for i in range(n):
+    if b[i] > a[i]:
+        ope+=(b[i]-a[i]+1)//2
+
+if sum(b) - sum(a) < 0:
+    print('No')        
+elif ope <= sum(b) - sum(a):
+    print('Yes')
+else:
+    print('No')",,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+
+ope = 0
+for i in range(n):
+    if b[i] > a[i]:
+        ope+=(b[i]-a[i]+1)//2
+
+if sum(b) - sum(a) < 0:
+    print('No')        
+elif ope <= sum(b) - sum(a):
+    print('Yes')
+else:
+    print('No')",0,,,,1.731936,0
+u992910889,"import sys
+
+sys.setrecursionlimit(10 ** 9 + 10)
+
+
+def input(): return sys.stdin.readline().strip()
+
+
+def resolve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    biggerA = 0
+    biggerB=0
+
+    for i in range(N):
+        if A[i] > B[i]:
+            biggerA += A[i] - B[i]
+        if A[i] < B[i]:
+            biggerB += B[i] - A[i]
+
+    if biggerA * 2 <= biggerB:
+        print('Yes')
+    else:
+        print('No')
+
+
+resolve()",,"import sys
+sys.setrecursionlimit(10 ** 9 + 10)
+def input(): return sys.stdin.readline().strip()
+
+
+def resolve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    biggerA = 0
+    biggerB = 0
+    task = 0
+    for i in range(N):
+        # A[i]>B[i]なる全てのB[i]を埋めてA[i]<=B[i]とできれば勝ち
+        if A[i] > B[i]:  # B[i]をcnt分埋めるというタスクがある
+            task += A[i] - B[i]
+        if A[i] < B[i]:  # B[i]が優っている箇所でA[i]を埋めてタスクを解消
+            task -= (B[i] - A[i]) // 2
+
+    if task <= 0:
+        print('Yes')
+    else:
+        print('No')
+
+
+resolve()",0,,,,22.005558,0
+u298633786,"import sys
+import math  # noqa
+import bisect  # noqa
+import queue  # noqa
+
+
+def input():
+    return sys.stdin.readline().rstrip()
+
+
+def main():
+    _ = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    D = [b - a for a, b in zip(A, B)]
+    neg = 0
+    pos = 0
+    for d in D:
+        if d < 0:
+            neg -= d
+        elif d > 1:
+            pos += d
+
+    if pos < neg * 2:
+        print(""No"")
+    else:
+        print(""Yes"")
+
+
+if __name__ == '__main__':
+    main()
+",,"import sys
+import math  # noqa
+import bisect  # noqa
+import queue  # noqa
+
+
+def input():
+    return sys.stdin.readline().rstrip()
+
+
+def main():
+    _ = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    cnt = 0
+    for a, b in zip(A, B):
+        if a < b:
+            cnt += (b - a) // 2
+        else:
+            cnt -= a - b
+
+    if cnt < 0:
+        print(""No"")
+    else:
+        print(""Yes"")
+
+
+if __name__ == '__main__':
+    main()
+",0,,,,22.008254,0
+u941753895,"import math,itertools,fractions,heapq,collections,bisect,sys,queue,copy
+
+sys.setrecursionlimit(10**7)
+inf=10**20
+mod=10**9+7
+dd=[(-1,0),(0,1),(1,0),(0,-1)]
+ddn=[(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1)]
+
+def LI(): return [int(x) for x in sys.stdin.readline().split()]
+def I(): return int(sys.stdin.readline())
+def LS(): return sys.stdin.readline().split()
+def S(): return input()
+
+def main():
+  n=I()
+  l1=LI()
+  l2=LI()
+
+  sm1=sum(l1)
+  sm2=sum(l2)
+
+  nm=sm2-sm1
+  if nm<0:
+    return 'No'
+
+  nm2=0
+  for i in range(n):
+    a=l1[i]
+    b=l2[i]
+
+    if a<b:
+      _a=(b-a+1)//2
+      l1[i]+=_a*2
+      nm2+=_a
+
+  for i in range(n):
+    a=l1[i]
+    b=l2[i]
+
+    if a>b:
+      _a=a-b
+      nm2+=_a
+
+  # print(nm,nm2)
+  if nm<nm2:
+    return 'No'
+
+  return 'Yes'
+
+# main()
+print(main())
+","import math, itertools, fractions, heapq, collections, bisect, sys, queue, copy
+sys.setrecursionlimit(10 ** 7)
+inf = 10 ** 20
+mod = 10 ** 9 + 7
+dd = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+ddn = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
+
+def LI():
+    return [int(x) for x in sys.stdin.readline().split()]
+
+def I():
+    return int(sys.stdin.readline())
+
+def LS():
+    return sys.stdin.readline().split()
+
+def S():
+    return input()
+
+def main():
+    n = I()
+    l1 = LI()
+    l2 = LI()
+    sm1 = sum(l1)
+    sm2 = sum(l2)
+    nm = sm2 - sm1
+    if nm < 0:
+        return 'No'
+    nm2 = 0
+    for i in range(n):
+        a = l1[i]
+        b = l2[i]
+        if a < b:
+            _a = (b - a + 1) // 2
+            l1[i] += _a * 2
+            nm2 += _a
+    for i in range(n):
+        a = l1[i]
+        b = l2[i]
+        if a < b:
+            _a = a - b
+            nm2 += _a
+    if nm < nm2:
+        return 'No'
+    return 'Yes'
+print(main())","import math,itertools,fractions,heapq,collections,bisect,sys,queue,copy
+
+sys.setrecursionlimit(10**7)
+inf=10**20
+mod=10**9+7
+dd=[(-1,0),(0,1),(1,0),(0,-1)]
+ddn=[(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1)]
+
+def LI(): return [int(x) for x in sys.stdin.readline().split()]
+def I(): return int(sys.stdin.readline())
+def LS(): return sys.stdin.readline().split()
+def S(): return input()
+
+def main():
+  n=I()
+  l1=LI()
+  l2=LI()
+
+  sm1=sum(l1)
+  sm2=sum(l2)
+
+  nm=sm2-sm1
+  if nm<0:
+    return 'No'
+
+  nm1=0
+  for i in range(n):
+    a=l1[i]
+    b=l2[i]
+
+    if a<b:
+      _a=(b-a+1)//2
+      l1[i]+=_a*2
+      nm1+=_a
+
+  nm2=0
+  for i in range(n):
+    a=l1[i]
+    b=l2[i]
+
+    if a>b:
+      _a=a-b
+      nm2+=_a
+
+  # print(nm,nm2)
+  if nm<max(nm1,nm2):
+    return 'No'
+
+  return 'Yes'
+
+# main()
+print(main())
+",1,1,0.9166666666666667,,14.623204,0
+u198062737,"N = int(input())
+a = list(map(int, input().split("" "")))
+b = list(map(int, input().split("" "")))
+plus_one, plus_two = 0, 0
+op_num = sum(b) - sum(a)
+
+for i in range(N):
+    if a[i] > b[i]:
+        plus_one = a[i] - b[i]
+    elif a[i] < b[i]:
+        plus_two += (b[i] - a[i] + 1) // 2
+
+if plus_one < op_num and plus_two < op_num:
+    print('Yes')
+else:
+    print('No')","N = int(input())
+a = list(map(int, input().split(' ')))
+b = list(map(int, input().split(' ')))
+plus_one, plus_two = (0, 0)
+op_num = sum(b) - sum(a)
+for i in range(N):
+    if a[i] >= b[i]:
+        plus_one = a[i] - b[i]
+    elif a[i] <= b[i]:
+        plus_two += (b[i] - a[i] + 1) // 2
+if plus_one <= op_num and plus_two <= op_num:
+    print('Yes')
+else:
+    print('No')","N = int(input())
+a = list(map(int, input().split("" "")))
+b = list(map(int, input().split("" "")))
+a_cnt, b_cnt = 0, 0
+
+for i in range(N):
+    # aiをbiに近づける
+    if a[i] < b[i]:
+        num = (b[i] - a[i] + 1) // 2
+        a_cnt += num
+        a[i] += 2 * num
+
+for i in range(N):
+    # biをaiに近づける
+    if b[i] < a[i]:
+        b_cnt += (a[i] - b[i])
+
+if a_cnt >= b_cnt:
+    print(""Yes"")
+else:
+    print('No')",1,4,0.9518072289156627,,2.511596,0
+u291766461,"import math
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+sum_A = sum(A)
+sum_B = sum(B)
+cnt1 = sum_B - sum_A
+cnt2 = 0
+for a, b in zip(A, B):
+    if a > b:
+        cnt2 += a - b
+    elif a < b:
+        cnt2 += math.ceil((b - a) / 2)
+if cnt1 >= cnt2:
+    print(""Yes"")
+else:
+    print(""No"")","import math
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+sum_A = sum(A)
+sum_B = sum(B)
+cnt1 = sum_B - sum_A
+cnt2 = 0
+for a, b in zip(A, B):
+    if a > a:
+        cnt2 += a - b
+    elif a < b:
+        cnt2 += math.ceil((b - a) / 2)
+if cnt1 >= cnt2:
+    print('Yes')
+else:
+    print('No')","import math
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+sum_A = sum(A)
+sum_B = sum(B)
+cnt1 = sum_B - sum_A
+cnt2 = 0
+for a, b in zip(A, B):
+    # if a > b:
+    #     cnt2 += a - b
+    if a < b:
+        cnt2 += math.ceil((b - a) / 2)
+
+if cnt1 >= cnt2:
+    print(""Yes"")
+else:
+    print(""No"")",1,1,0.9444444444444444,,9.317492,0
+u346812984,"def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    num_a = 0
+    num_b = 0
+    for a, b in zip(A, B):
+        if a > b:
+            num_a += a - b
+        elif a < b:
+            num_b += b - a
+
+    cnt_a = num_a
+    cnt_b = (num_b + 1) // 2
+
+    if cnt_a > cnt_b:
+        return ""No""
+    else:
+        return ""Yes""
+
+
+print(solve())
+",,"def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    cnt_a = 0
+    cnt_b = 0
+    for a, b in zip(A, B):
+        if a > b:
+            cnt_a += a - b
+        elif a < b:
+            cnt_b += (b - a) // 2
+
+    if cnt_a > cnt_b:
+        return ""No""
+    else:
+        return ""Yes""
+
+
+print(solve())
+",0,,,,18.852595,0
+u345966487,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+def solve():
+    delta = sum(B) - sum(A)
+    if delta < 0:
+        return False
+    aup = [0] * N
+    bup = [0] * N
+    for i in range(N):
+        d = B[i] - A[i]
+        if d > 0:
+            aup[i] = d // 2
+            bup[i] = d % 2
+        elif d < 0:
+            bup[i] = -d
+    #print('delta:', delta)
+    #print('Aup:', aup)
+    #print('Bup:', bup)
+    adelta = delta - sum(aup)
+    bdelta = delta - sum(bup)
+    return adelta >= 0 and bdelta >= 0 and 2 * adelta == bdelta
+
+print('Yes' if solve() else 'No')",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+def solve():
+    delta = sum(B) - sum(A)
+    if delta < 0:
+        return False
+    aup = [0] * N
+    bup = [0] * N
+    for i in range(N):
+        d = B[i] - A[i]
+        if d > 0:
+            aup[i] = d // 2 + d % 2
+            bup[i] = d % 2
+        elif d < 0:
+            bup[i] = -d
+    #print('delta:', delta)
+    #print('Aup:', aup)
+    #print('Bup:', bup)
+    adelta = delta - sum(aup)
+    bdelta = delta - sum(bup)
+    return adelta >= 0 and bdelta >= 0 and 2 * adelta == bdelta
+
+print('Yes' if solve() else 'No')",0,,,,14.587042,0
+u577138895,"import math
+
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+# 総和が等しくなることが必要条件なので、操作回数は sum(B) - sum(A)
+def f():
+    a_ctr = 0
+    b_ctr = 0
+    handle = sum(B) - sum(A)
+    if handle < 0: return 0 # Aの総和が大きければ無理
+    # A に足していく
+    for i in range(N):
+        if A[i] == B[i]:
+            pass
+        if A[i] > B[i]: 
+            b_ctr += A[i] - B[i]
+        else: 
+            a_ctr += math.ceil((B[i] - A[i]) / 2)
+            if (B[i] - A[i]) % 2 == 1: b_ctr += 1
+    print(a_ctr, b_ctr, handle)
+    if a_ctr == b_ctr == handle: return 1
+    if a_ctr < handle and b_ctr < handle and (handle - a_ctr) * 2 == handle - b_ctr: return 1
+    return 0
+
+if f():
+    print(""Yes"")
+else:
+    print(""No"")",,"import math
+
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+# 総和が等しくなることが必要条件なので、操作回数は sum(B) - sum(A)
+def f():
+    a_ctr = 0
+    b_ctr = 0
+    handle = sum(B) - sum(A)
+    if handle < 0: return 0 # Aの総和が大きければ無理
+    # A に足していく
+    for i in range(N):
+        if A[i] == B[i]:
+            pass
+        if A[i] > B[i]: 
+            b_ctr += A[i] - B[i]
+        else: 
+            a_ctr += math.ceil((B[i] - A[i]) / 2)
+            if (B[i] - A[i]) % 2 == 1: b_ctr += 1
+    # print(a_ctr, b_ctr, handle)
+    if a_ctr == b_ctr == handle: return 1
+    if a_ctr < handle and b_ctr < handle and (handle - a_ctr) * 2 == handle - b_ctr: return 1
+    return 0
+
+if f():
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,19.878195,0
+u201928947,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+numa = 0
+numb = 0
+num = sum(b)-sum(a)
+for i in range(n):
+    x = b[i] - a[i]
+    if x > 0:
+        numa += -(-x//2)
+        if x % 2 == 1:
+            numb += 1
+    else:
+        numb -= x
+if (num-numa)*2 == num-numb and num > numa:
+    print(""Yes"")
+else:
+    print(""No"")","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+numa = 0
+numb = 0
+num = sum(b) - sum(a)
+for i in range(n):
+    x = b[i] - a[i]
+    if x >= 0:
+        numa += -(-x // 2)
+        if x % 2 == 1:
+            numb += 1
+    else:
+        numb -= x
+if (num - numa) * 2 == num - numb and num >= numa:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+numa = 0
+numb = 0
+num = sum(b)-sum(a)
+for i in range(n):
+    x = b[i] - a[i]
+    if x > 0:
+        numa += -(-x//2)
+        if x % 2 == 1:
+            numb += 1
+    else:
+        numb -= x
+if (num-numa)*2 == num-numb and num >= numa:
+    print(""Yes"")
+else:
+    print(""No"")",1,2,0.33333333333333337,,3.072679,0
+u010090035,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+onesum=0
+twosum=0
+for i in range(n):
+    if(a[i]>b[i]):
+        onesum+=a[i]-b[i]
+    elif(a[i]<b[i]):
+        twosum+=(b[i]-a[i])//2
+
+if(twosum<=onesum):
+    print(""Yes"")
+else:
+    print(""No"")","n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+onesum = 0
+twosum = 0
+for i in range(n):
+    if a[i] > b[i]:
+        onesum += a[i] - b[i]
+    elif a[i] < b[i]:
+        twosum += (b[i] - a[i]) // 2
+if twosum >= onesum:
+    print('Yes')
+else:
+    print('No')","n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+onesum=0
+twosum=0
+for i in range(n):
+    if(a[i]>b[i]):
+        onesum+=a[i]-b[i]
+    elif(a[i]<b[i]):
+        twosum+=(b[i]-a[i])//2
+
+if(onesum<=twosum):
+    print(""Yes"")
+else:
+    print(""No"")",1,1,0.6666666666666666,,4.116945,0
+u210827208,"n=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+if sum(A)>sum(B):
+    ans='No'
+else:
+    l=sum(B)-sum(A)
+    cnt_a=l*2
+    cnt_b=l
+    for i in range(n):
+        if A[i]>B[i]:
+            if (A[i]-B[i])%2==0:
+                cnt_b-=(A[i]-B[i])
+            else:
+                cnt_b -= (A[i] - B[i])+1
+                cnt_a -= 1
+        else:
+            cnt_a-=(B[i]-A[i])
+    if cnt_a==cnt_b and cnt_a>=0:
+        ans='Yes'
+    else:
+        ans='No'
+print(ans)",,"n=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+if sum(A)>sum(B):
+    ans='No'
+else:
+    l=sum(B)-sum(A)
+    cnt_a=l*2
+    cnt_b=l
+    for i in range(n):
+        if A[i]>B[i]:
+                cnt_b-=(A[i]-B[i])
+        else:
+            if (B[i]-A[i])%2==0:
+                cnt_a-=(B[i]-A[i])
+            else:
+                cnt_a-=(B[i]-A[i])+1
+                cnt_b-=1
+    if cnt_a==cnt_b and cnt_a>=0:
+        ans='Yes'
+    else:
+        ans='No'
+print(ans)",0,,,,22.006079,0
+u561231954,"MOD = 10 ** 9 + 7
+INF = 10 ** 10
+import sys
+sys.setrecursionlimit(100000000)
+dy = (-1,0,1,0)
+dx = (0,1,0,-1)
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    x = [i - j for i,j in zip(a,b)]
+    
+    p = 0
+    m = 0
+    for num in x:
+        if num < 0:
+            m -= num
+        else:
+            p += num
+    
+    if 2 * p <= m:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ =='__main__':
+    main()  ",,"MOD = 10 ** 9 + 7
+INF = 10 ** 10
+import sys
+sys.setrecursionlimit(100000000)
+dy = (-1,0,1,0)
+dx = (0,1,0,-1)
+
+def main():
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    x = [i - j for i,j in zip(a,b)]
+    
+    p = 0
+    m = 0
+    for num in x:
+        if num < 0:
+            m += (-num//2) * 2
+        else:
+            p += num
+    
+    if 2 * p <= m:
+        print('Yes')
+    else:
+        print('No')
+
+if __name__ =='__main__':
+    main() ",0,,,,8.458272,0
+u179169725,"# https://atcoder.jp/contests/apc001/tasks/apc001_b
+# greedyに前からシミュレーションかな
+# 都合が悪いものはすべて一番後ろの要素に追いやる
+
+# いやそれよりも、上段で何回操作が必要だったのか下段で何回操作が必要なのかメモしておけばよいのでは？(最小手順でね)
+# 最小で一致箚せられるときに、+になる分を計算して、さらに操作でそれらを一致させられるならばOK
+
+
+import sys
+sys.setrecursionlimit(1 << 25)
+read = sys.stdin.readline
+rr = range
+enu = enumerate
+
+
+def read_ints():
+    return list(map(int, read().split()))
+
+
+def read_a_int():
+    return int(read())
+
+
+N = read_a_int()
+A = read_ints()
+B = read_ints()
+
+n1 = 0  # bに+1する回数
+n2 = 0  # aに+2する回数
+for a, b in zip(A, B):
+    # print(n1, n2)
+    if b > a:
+        sa = b - a
+        n1 += sa % 2
+        n2 += sa % 2 + sa // 2
+    elif b < a:
+        n1 += a - b
+
+# 各回数に対して、余分にたさなければ行けないのだからそれを計算する
+# print(n1, n2)
+print(""Yes"" if n2 >= n1 * 2 else ""No"")
+",,"# https://atcoder.jp/contests/apc001/tasks/apc001_b
+
+
+import sys
+sys.setrecursionlimit(1 << 25)
+read = sys.stdin.readline
+rr = range
+enu = enumerate
+
+
+def read_ints():
+    return list(map(int, read().split()))
+
+
+def read_a_int():
+    return int(read())
+
+
+N = read_a_int()
+A = read_ints()
+B = read_ints()
+
+'''
+aiとbiについて
+ai<=biのとき→必ず等しくできる
+ai>biのとき→ai-biをbiに加算してやっと等しくなれる。#Aのどこかに余分な2*(ai-bi)を加算しなくてはいけない(バラけてもokだけど)
+余分な分を吸収してくれるような数字を探したい
+
+→
+まずai>biについてをai-biの合計n1を計算する(1を足した回数。これと同じ数2をAに足さないと行けない)
+次に、ai+2<=biの各要素についてbi-ai(>=2)を計算し、n1を0に消費できるか計算する。
+消費できればYes、できなればNo
+(n1を0にした時点では数列は等しくなっていないが、ai<biについて1回以上の操作を追加することで必ず等しくできることが保証できる)
+'''
+
+n1 = 0  # bに+1する回数
+for a, b in zip(A, B):
+    if a > b:
+        n1 += a - b
+
+for a, b in zip(A, B):
+    if a + 2 <= b:
+        n1 -= (b - a) // 2
+
+
+print(""Yes"" if n1 <= 0 else ""No"")
+",0,,,,22.005337,0
+u423585790,"#!/usr/bin/env python3
+from collections import defaultdict,deque
+from heapq import heappush, heappop
+from bisect import bisect_left, bisect_right
+import sys, random, itertools, math
+sys.setrecursionlimit(10**5)
+input = sys.stdin.readline
+sqrt = math.sqrt
+def LI(): return list(map(int, input().split()))
+def LF(): return list(map(float, input().split()))
+def LI_(): return list(map(lambda x: int(x)-1, input().split()))
+def II(): return int(input())
+def IF(): return float(input())
+def S(): return input().rstrip()
+def LS(): return S().split()
+def IR(n): return [II() for _ in range(n)]
+def LIR(n): return [LI() for _ in range(n)]
+def FR(n): return [IF() for _ in range(n)]
+def LFR(n): return [LI() for _ in range(n)]
+def LIR_(n): return [LI_() for _ in range(n)]
+def SR(n): return [S() for _ in range(n)]
+def LSR(n): return [LS() for _ in range(n)]
+mod = 1000000007
+inf = 1e10
+
+#solve
+def solve():
+    n = II()
+    a = LI()
+    b = LI()
+    suma = sum(a)
+    sumb = sum(b)
+    diff = sumb - suma
+    tmp = 0
+    for i in range(n):
+        tmp += max((a[i] - b[i] + 1) // 2, 0)
+    if diff >= tmp:
+        print(""Yes"")
+    else:
+        print(""No"")
+    return
+
+
+#main
+if __name__ == '__main__':
+    solve()
+","from collections import defaultdict, deque
+from heapq import heappush, heappop
+from bisect import bisect_left, bisect_right
+import sys, random, itertools, math
+sys.setrecursionlimit(10 ** 5)
+input = sys.stdin.readline
+sqrt = math.sqrt
+
+def LI():
+    return list(map(int, input().split()))
+
+def LF():
+    return list(map(float, input().split()))
+
+def LI_():
+    return list(map(lambda x: int(x) - 1, input().split()))
+
+def II():
+    return int(input())
+
+def IF():
+    return float(input())
+
+def S():
+    return input().rstrip()
+
+def LS():
+    return S().split()
+
+def IR(n):
+    return [II() for _ in range(n)]
+
+def LIR(n):
+    return [LI() for _ in range(n)]
+
+def FR(n):
+    return [IF() for _ in range(n)]
+
+def LFR(n):
+    return [LI() for _ in range(n)]
+
+def LIR_(n):
+    return [LI_() for _ in range(n)]
+
+def SR(n):
+    return [S() for _ in range(n)]
+
+def LSR(n):
+    return [LS() for _ in range(n)]
+mod = 1000000007
+inf = 10000000000.0
+
+def solve():
+    sumb = int(input())
+    b = list(map(int, input().split()))
+    a = list(map(int, input().split()))
+    diff = 0
+    tmp = 0
+    for i in range(sumb):
+        n = a[i] - b[i]
+        if n >= 0:
+            diff += n // 2
+        else:
+            tmp += abs(n)
+    if diff >= tmp:
+        print('Yes')
+    else:
+        print('No')
+if __name__ == '__main__':
+    solve()","#!/usr/bin/env python3
+from collections import defaultdict,deque
+from heapq import heappush, heappop
+from bisect import bisect_left, bisect_right
+import sys, random, itertools, math
+sys.setrecursionlimit(10**5)
+input = sys.stdin.readline
+sqrt = math.sqrt
+def LI(): return list(map(int, input().split()))
+def LF(): return list(map(float, input().split()))
+def LI_(): return list(map(lambda x: int(x)-1, input().split()))
+def II(): return int(input())
+def IF(): return float(input())
+def S(): return input().rstrip()
+def LS(): return S().split()
+def IR(n): return [II() for _ in range(n)]
+def LIR(n): return [LI() for _ in range(n)]
+def FR(n): return [IF() for _ in range(n)]
+def LFR(n): return [LI() for _ in range(n)]
+def LIR_(n): return [LI_() for _ in range(n)]
+def SR(n): return [S() for _ in range(n)]
+def LSR(n): return [LS() for _ in range(n)]
+mod = 1000000007
+inf = 1e10
+
+#solve
+def solve():
+    n = II()
+    a = LI()
+    b = LI()
+    suma = sum(a)
+    sumb = sum(b)
+    diff = sumb - suma
+    tmp = 0
+    for i in range(n):
+        tmp += max((b[i] - a[i] + 1) // 2, 0)
+    if diff >= tmp:
+        print(""Yes"")
+    else:
+        print(""No"")
+    return
+
+
+#main
+if __name__ == '__main__':
+    solve()
+",1,73,0.026666666666666672,,19.239825,0
+u877415670,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+aPlus=0
+bPlus=0
+
+for i in range(n):
+    if a[i]>b[i]:
+        aPlus+=(a[i]-b[i])
+    elif a[i]<b[i]:
+        if (b[i]-a[i])%2==0:
+            bPlus+=(b[i]-a[i])//2
+        else:
+            aPlus+=1
+            bPlus+=(b[i]+1-a[i])//2
+
+if aPlus*2==bPlus or aPlus==bPlus:
+    print(""Yes"")
+else:
+    print(""No"")",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+aPlus=0
+bPlus=0
+
+for i in range(n):
+    if a[i]>b[i]:
+        aPlus+=(a[i]-b[i])
+    elif a[i]<b[i]:
+        if (b[i]-a[i])%2==0:
+            bPlus+=(b[i]-a[i])//2
+        else:
+            aPlus+=1
+            bPlus+=(b[i]+1-a[i])//2
+
+if aPlus<=bPlus:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,22.005371,0
+u379959788,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+a = 0
+b = 0
+for i in range(N):
+    if A[i] > B[i]:
+        a += A[i] - B[i]
+    else:
+        b += (B[i] - A[i])//2
+
+print(""YES"") if a <= b else print(""NO"")",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+a = 0
+b = 0
+for i in range(N):
+    if A[i] > B[i]:
+        a += A[i] - B[i]
+    else:
+        b += (B[i] - A[i])//2
+
+print(""Yes"") if a <= b else print(""No"")",0,,,,17.956140,0
+u169138653,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+a.sort(reverse=True)
+b.sort()
+sump=0
+sumn=0
+for i in range(n):
+  if a[i]<=b[i]:
+    sump+=b[i]-a[i]
+  else:
+    sumn+=a[i]-b[i]
+if sump>=2*sumn:
+  print('Yes')
+else:
+  print('No')",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+pos=[0]*n
+s=0
+for i in range(n):
+  if b[i]-a[i]>=0:
+    pos[i]=b[i]-a[i]
+  else:
+    s+=a[i]-b[i]
+for p in pos:
+  s-=p//2
+if s<=0:
+  print('Yes')
+else:
+  print('No')",0,,,,3.871418,0
+u197078193,"N = int(input())
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+
+sum1 = 0
+sum2 = 0
+for i in range(N):
+    if a[i] > b[i]:
+        sum1 += a[i] - b[i]
+    elif a[i] + 1 < b[i]:
+        sum2 += b[i] - a[i]
+if 2*sum1 <= sum2:
+    print('Yes')
+else:
+    print('No')",,"N = int(input())
+a = [int(i) for i in input().split()]
+b = [int(i) for i in input().split()]
+
+sum1 = 0
+sum2 = 0
+for i in range(N):
+    if a[i] > b[i]:
+        sum1 += a[i] - b[i]
+    else:
+        sum2 += (b[i] - a[i])//2
+if sum1 <= sum2:
+    print('Yes')
+else:
+    print('No')",0,,,,22.005354,0
+u022979415,"from math import ceil
+
+
+def main():
+    length = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    required_operation = sum(b) - sum(a)
+    count_operation = 0
+    for i in range(length):
+        if a[i] < b[i]:
+            count_operation += ceil((b[i] - a[i]) / 2)
+        else:
+            count_operation += a[i] - b[i]
+    print(""Yes"" if required_operation >= count_operation else ""No"")
+
+
+if __name__ == '__main__':
+    main()
+
+",,"def main():
+    length = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    count_operation = 0
+    for i in range(length):
+        if a[i] < b[i]:
+            count_operation -= (b[i] - a[i]) // 2
+        else:
+            count_operation += a[i] - b[i]
+    print(""Yes"" if count_operation <= 0 else ""No"")
+
+
+if __name__ == '__main__':
+    main()
+
+",0,,,,15.196356,0
+u978178314,"N = int(input())
+A = sorted(list(map(int, input().split())))
+B = sorted(list(map(int, input().split())))
+allSousa = sum(B)-sum(A)
+atob = 0
+for a, b in zip(A, B):
+  if a < b:
+    atob += (b-a)//2
+if atob < allSousa or allSousa < 0:
+  print(""No"")
+else:
+  print(""Yes"")
+",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+
+x=sum(b)-sum(a)
+y=0
+for i in range(n):
+    if a[i]<b[i]:
+        y+=-((a[i]-b[i])//2)
+print(""No"" if x<y else ""Yes"")",0,,,,16.708762,0
+u374531474,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+n = sum(b) - sum(a)
+c = 0
+for i in range(N):
+    if a[i] > b[i]:
+        c += a[i] - b[i]
+    elif a[i] < b[i]:
+        c += (b[i] - a[i] + 2 - 1) // 2
+print('Yes' if n >= 0 and c <= n else 'No')
+",,"N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+n = sum(b) - sum(a)
+c = 0
+for i in range(N):
+    if a[i] < b[i]:
+        c += (b[i] - a[i] + 2 - 1) // 2
+print('Yes' if c <= n else 'No')
+",0,,,,2.264388,0
+u466331465,"n = int(input())
+a = [int(x) for x in input().split()]
+b = [int(x) for x in input().split()]
+k = sum(b)-sum(a)
+if k<0:
+  print(""No"")
+  exit()
+ansa=0
+ansb=0
+for i in range(n):
+  if b[i]<a[i]:
+    ansb+=a[i]-b[i]
+  else:
+    re = b[i]-a[i]
+    if re%2==0:
+      ansa+=(b[i]-a[i])//2
+    else:
+      ansa+=(b[i]+1-a[i])//2
+      ansb+=1
+if (k-ansa)*2==k-ansb and 0<k-ansa and 0<k-ansb:
+  print(""Yes"")
+else:
+  print(""No"")","n = int(input())
+a = [int(x) for x in input().split()]
+b = [int(x) for x in input().split()]
+k = sum(b) - sum(a)
+if k < 0:
+    print('No')
+    exit()
+ansa = 0
+ansb = 0
+for i in range(n):
+    if b[i] < a[i]:
+        ansb += a[i] - b[i]
+    else:
+        re = b[i] - a[i]
+        if re % 2 == 0:
+            ansa += (b[i] - a[i]) // 2
+        else:
+            ansa += (b[i] + 1 - a[i]) // 2
+            ansb += 1
+if (k - ansa) * 2 == k - ansb and k >= ansa:
+    print('Yes')
+else:
+    print('No')","n = int(input())
+a = [int(x) for x in input().split()]
+b = [int(x) for x in input().split()]
+k = sum(b)-sum(a)
+if k<0:
+  print(""No"")
+  exit()
+ansa=0
+ansb=0
+for i in range(n):
+  if b[i]<a[i]:
+    ansb+=a[i]-b[i]
+  else:
+    re = b[i]-a[i]
+    if re%2==0:
+      ansa+=(b[i]-a[i])//2
+    else:
+      ansa+=(b[i]+1-a[i])//2
+      ansb+=1
+if (k-ansa)*2==k-ansb and 0<=k-ansa and 0<=k-ansb:
+  print(""Yes"")
+else:
+  print(""No"")",1,13,0.13333333333333336,,11.966631,0
+u405256066,"from sys import stdin
+N = int(stdin.readline().rstrip())
+A = [int(x) for x in stdin.readline().rstrip().split()]
+B = [int(x) for x in stdin.readline().rstrip().split()]
+A.sort()
+B.sort()
+f = True
+for i in range(N):
+    if  A[i] - B[i] > 0:
+        f = False
+if f:
+    print(""Yes"")
+else:
+    print(""No"")",,"from sys import stdin
+N = int(stdin.readline().rstrip())
+A = [int(x) for x in stdin.readline().rstrip().split()]
+B = [int(x) for x in stdin.readline().rstrip().split()]
+
+cnt1 = 0 
+cnt2 = 0
+
+for i in range(N):
+    if A[i] > B[i]:
+        cnt1 += (A[i] - B[i])
+    else:
+        cnt2 += ((B[i]-A[i])//2)
+        
+if cnt1 <= cnt2:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,13.334787,0
+u079022693,"from sys import stdin
+from math import ceil
+def main():
+	readline=stdin.readline
+	N=int(readline())
+	a=list(map(int,readline().split()))
+	b=list(map(int,readline().split()))
+	a.sort()
+	b.sort()
+	a_count=0
+	s=sum(b)-sum(a)
+
+	for i in range(N):
+		if a[i]<b[i]:
+			a_count+=ceil((b[i]-a[i])/2)
+
+	if a_count<=s:
+		print(""Yes"")
+	else:
+		print(""No"")
+
+if __name__==""__main__"":
+	main()",,"from sys import stdin
+from math import ceil
+def main():
+	readline=stdin.readline
+	N=int(readline())
+	a=list(map(int,readline().split()))
+	b=list(map(int,readline().split()))
+	a_count=0
+	s=sum(b)-sum(a)
+
+	for i in range(N):
+		if a[i]<b[i]:
+			a_count+=ceil((b[i]-a[i])/2)
+
+	if a_count<=s:
+		print(""Yes"")
+	else:
+		print(""No"")
+
+if __name__==""__main__"":
+	main()",0,,,,18.635454,0
+u242031676,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = sum([b[i]-a[i]for i in range(n)])
+if c==sum([max(a[i]-b[i], (b[i]-a[i])/2)for i in range(n)]):
+    print(""Yes"")
+else: print(""No"")",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+x = y = 0
+for i in range(n):
+    x += b[i]-a[i]
+    if a[i]<b[i]: y+=(b[i]-a[i]+1)//2
+print(""YNeos""[y>x::2])",0,,,,0.578885,0
+u740284863,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+a.sort()
+b.sort()
+for i in range(n):
+    if b[i] < a[i]:
+        print(""No"")
+        exit()
+print(""Yes"")",,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+A = 0
+B = 0
+for i in range(n):
+    A += max(0, (b[i] - a[i]) // 2)
+    B += max(0, a[i] - b[i])
+if sum(b) >= sum(a):
+    if A >= B:
+        print(""Yes"")
+        exit()
+print(""No"")",0,,,,12.921872,0
+u572142121,"N=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+a=0
+b=0
+for i in range(N):
+  if A[i]>B[i]:
+    a+=A[i]-B[i]
+  else:
+    b+=(B[i]-A[i])//2
+if a<b:
+  print('No')
+else:
+  print('Yes')",,"N=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+a=0
+b=0
+for i in range(N):
+  if A[i]>B[i]:
+    a+=A[i]-B[i]
+  else:
+    b+=(B[i]-A[i])//2
+if b<a:
+  print('No')
+else:
+  print('Yes')",0,,,,22.005852,0
+u672475305,"import math
+
+n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+total = sum(B) - sum(A)
+cnt1, cnt2 = 0,0
+
+for i in range(n):
+    if A[i] > B[i]:
+        cnt1 += A[i] - B[i]
+    elif A[i] < B[i]:
+        cnt2 += math.floor((B[i]-A[i])/2)
+
+if max(cnt1, cnt2) <= total:
+    print('Yes')
+else:
+    print('No')","import math
+n = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+total = sum(B) - sum(A)
+cnt1, cnt2 = (0, 0)
+for i in range(n):
+    if A[i] > B[i]:
+        cnt1 += A[i] - B[i]
+    elif A[i] < B[i]:
+        cnt2 += math.floor((B[i] - A[i]) / 2)
+if cnt1 <= cnt2:
+    print('Yes')
+else:
+    print('No')","import math
+
+n = int(input())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+total = sum(B) - sum(A)
+cnt1, cnt2 = 0,0
+
+for i in range(n):
+    if A[i] > B[i]:
+        cnt1 += A[i] - B[i]
+    elif A[i] < B[i]:
+        cnt2 += math.ceil((B[i]-A[i])/2)
+
+if max(cnt1, cnt2) <= total:
+    print('Yes')
+else:
+    print('No')",1,6,0.14285714285714285,,8.660608,0
+u618002097,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+import math
+
+count = 0
+for a, b in zip(A, B):
+    if a - b >= 0:
+        continue
+    else:
+        count += math.ceil((b - a) / 2)
+
+diff = sum(A) - sum(B)
+
+# print(diff, count)
+if diff < 0 and diff % 2 == 1 and abs(diff) >= count:
+    print(""Yes"")
+else:
+    print(""No"")",,"N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+import math
+
+count_1up = 0
+count_2up = 0
+
+for a, b in zip(A, B):
+    if a - b >= 0:
+        count_1up += a - b
+    else:
+        count_2up += math.ceil((b - a) / 2)
+
+diff = sum(B) - sum(A)
+
+# print(diff, count_1up, count_2up)
+if diff < 0:
+    print(""No"")
+elif diff < count_1up or diff < count_2up:
+    print(""No"")
+else:
+    print(""Yes"")",0,,,,17.882174,0
+u575431498,"def ceil(a, b):
+    return (a + b - 1) // b
+
+
+N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+n = sum(b) - sum(a)
+cnt = 0
+for _a, _b in zip(a, b):
+    if _a > _b:
+        cnt += _a - _b
+    if _a < _b:
+        cnt += ceil(_b - _a, 2)
+if cnt <= n:
+    print('Yes')
+else:
+    print('No')
+","def ceil(a, b):
+    return (a + b - 1) // b
+N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+n = sum(b) - sum(a)
+cnt = 0
+for _a, _b in zip(a, b):
+    if _a > _b:
+        cnt += _a - _b
+    if a < b:
+        cnt += ceil(_b - _a, 2)
+if cnt <= n:
+    print('Yes')
+else:
+    print('No')","def ceil(a, b):
+    return (a + b - 1) // b
+
+
+N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+n = sum(b) - sum(a)
+cnt = 0
+for _a, _b in zip(a, b):
+    if _a < _b:
+        cnt += ceil(_b - _a, 2)
+if cnt <= n:
+    print('Yes')
+else:
+    print('No')
+",1,2,0.8947368421052632,,13.982965,0
+u225388820,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+k=0
+for i in range(n):
+    if a[i]<b[i]:
+        p=(b[i]-a[i]+1)//2
+        a[i]+=p*2
+        while p>0 and k<n:
+            if a[k]<b[k] and (a[k]-b[k])%2==1:
+                b[k]+=1
+                p-=1
+            if a[k]-b[k]>p:
+                b[k]+=p
+                p=0
+            elif a[k]-b[k]>0:
+                p-=a[k]-b[k]
+                b[k]=a[k]
+            k+=1
+            # print(a,b,k,p,i)
+        b[-1]+=p
+# print(a,b)
+if a[:-1]==b[:-1] and a[-1]<=b[-1]:
+    print(""Yes"")
+else:
+    print(""No"")",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+c,d=0,0
+for i in range(n):
+    if a[i]>b[i]:
+        c+=a[i]-b[i]
+    else:
+        d+=(b[i]-a[i])//2
+if d>=c:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,9.725209,0
+u296150111,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+need=sum(b)-sum(a)
+import math
+x=0
+a.sort()
+b.sort()
+for i in range(n):
+	if a[i]>b[i]:
+		x+=a[i]-b[i]
+	else:
+		x+=math.ceil((b[i]-a[i])/2)
+if x<=need:
+	print(""Yes"")
+else:
+	print(""No"")
+",,"n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+sousa=sum(b)-sum(a)
+cnt=0
+for i in range(n):
+	if b[i]>a[i]:
+		cnt+=(b[i]-a[i]+1)//2
+if sousa>=cnt:
+	print(""Yes"")
+else:
+	print(""No"")",0,,,,22.007148,0
+u358254559,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+suma = sum(a)
+sumb = sum(b)
+
+if suma > sumb:
+    print(""No"")
+    exit()
+
+sum_minus=0
+sum_plus=0
+for i in range(n):
+    sub = a[i] - b[i]
+    if sub < 0:
+        sum_minus+=sub
+    else:
+        sum_plus+=sub
+
+kaisuu = -(sum_minus+sum_plus)
+nokori = kaisuu - sum_plus
+
+if nokori < 0:
+    print(""No"")
+    exit()
+
+if kaisuu*2 - nokori == -sum_minus:
+    print(""Yes"")
+else:
+    print(""No"")",,"n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+suma = sum(a)
+sumb = sum(b)
+sousa = sumb-suma
+
+import math
+plus1=0
+plus2=0
+for i in range(n):
+    if a[i] < b[i]:
+        plus2+=math.ceil((b[i]-a[i])/2)
+    elif a[i] > b[i]:
+        plus1+=a[i]-b[i]
+
+if plus1<=sousa and plus2<=sousa:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,13.390253,0
+u540761833,"N = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+if sum(a) > sum(b):
+    print('No')
+elif a == b:
+    print('Yes')
+else:
+    count = 0
+    diff = 0
+    for ai,bi in zip(a,b):
+        if ai == bi:
+            continue
+        elif ai < bi:
+            diff += (bi-ai)//2
+            continue
+        else:
+            count += 2*(ai-bi)
+    if diff >= count:
+        print('Yes')
+    else:
+        print('No')
+            
+",,"N = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+if sum(a) > sum(b):
+    print('No')
+elif a == b:
+    print('Yes')
+elif sum(a) == sum(b):
+    print('No')
+else:
+    count = 0
+    diff = 0
+    for ai,bi in zip(a,b):
+        if ai == bi:
+            continue
+        elif ai < bi:
+            diff += (bi-ai)//2
+            continue
+        else:
+            count += (ai-bi)
+    if diff >= count:
+        print('Yes')
+    else:
+        print('No')",0,,,,22.005195,0
+u987164499,"from sys import stdin
+n = int(stdin.readline().rstrip())
+a = list(map(int,stdin.readline().rstrip().split()))
+b = list(map(int,stdin.readline().rstrip().split()))
+A = sum(a);B = sum(b)
+count = 0
+total = B-A
+for i,j in zip(a,b):
+    if i < j:
+        count += (j-i+1)//2
+    else:
+        count += i-j
+if count <= total:
+    print(""Yes"")
+else:
+    print(""No"")",,"from sys import stdin
+n = int(stdin.readline().rstrip())
+a = list(map(int,stdin.readline().rstrip().split()))
+b = list(map(int,stdin.readline().rstrip().split()))
+A = sum(a);B = sum(b)
+count_1 = 0
+count_2 = 0
+total = B-A
+for i,j in zip(a,b):
+    if i < j:
+        count_1 += (j-i+1)//2
+    else:
+        count_2 += i-j
+count = max(count_1,count_2)
+if count <= total:
+    print(""Yes"")
+else:
+    print(""No"")",0,,,,19.670889,0
+u905582793,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+if sum(a)>sum(b):
+  print(""No"")
+else:
+  ca = 0
+  cb = 0
+  for i in range(n):
+    if a[i]>b[i]:
+      cb += a[i]-b[i]
+    else:
+      ca += (b[i]-a[i]+1)//2
+      cb += (b[i]-a[i])%2
+  x = sum(b)-sum(a)
+  if x > ca and x > cb and (x-ca)*2 == x-cb:
+    print(""Yes"")
+  else:
+    print(""No"")",,"n = int(input())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+if sum(a)>sum(b):
+  print(""No"")
+else:
+  ca = 0
+  cb = 0
+  for i in range(n):
+    if a[i]>b[i]:
+      cb += a[i]-b[i]
+    else:
+      ca += (b[i]-a[i]+1)//2
+      cb += (b[i]-a[i])%2
+  x = sum(b)-sum(a)
+  if x >= ca and x >= cb and (x-ca)*2 == x-cb:
+    print(""Yes"")
+  else:
+    print(""No"")",0,,,,22.007066,0

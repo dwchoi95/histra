@@ -1,4 +1,10 @@
+# Core (HISTRA)
 apted>=1.0.3
-sympy>=1.12
-tqdm>=4.66.0
+numpy>=1.26
 prettytable>=3.9.0
+tqdm>=4.66.0
+
+# LLM baselines only (PaR / partraj) — not needed to run HISTRA
+openai>=1.0.0
+codebleu>=0.7.0
+rank-bm25>=0.2.2

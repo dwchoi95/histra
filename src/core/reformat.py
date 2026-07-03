@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import ast
 
 
@@ -57,4 +59,3 @@ class Reformatter(ast.NodeTransformer):
         new_org = cls(pairs).visit(anchor_org)
         ast.fix_missing_locations(new_org)
         return new_org
-        

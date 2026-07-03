@@ -1,0 +1,3461 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,seed
+u022215787,"n, a, b = map(int,input().split())
+if (b-a)%2 == 0:
+    print(int((b-a)/2))
+else:
+    ans = 0
+    if n-b < a:
+        ans += n-b
+        ans += int((b-a-1)/2)
+        print(ans)
+    else:
+        ans += a
+        ans += int((b-a-1)/2)
+        print(ans)","n, a, b = map(int, input().split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - a - b + 1) // 2))","n, a, b = map(int,input().split())
+if a % 2 == b % 2:
+    print((b-a)//2)
+else:
+    ans = min(n-b, a-1) + 1 + (b-a-1)//2
+    print(ans)",1,76,0.46099290780141844,,3.696218,0
+u503111914,"N,A,B = map(int,input().split())
+if A % 2 == B % 2:
+    print((B - A) // 2)
+else:
+    x = min(A - 1, N - B) + (B - A - 1) // 2
+    y = min(B - 1, N - A)
+    print(min(x, y))
+","N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","N,A,B = map(int, input().split())
+if A % 2 == B % 2:
+    print((B-A) // 2)
+else:
+    x = min(B - 1, N - A)
+    y = 1 + min(A - 1, N - B) + (B - A) // 2
+    print(min(x, y))
+",1,44,0.42105263157894735,,4.767955,0
+u048004795,"import sys
+
+input = sys.stdin.readline
+
+n, a, b= map(int, input().split())
+
+if (b-a)%2 ==0:
+    print(int((b-a)/2))
+
+else:
+    min_sabun = min(a-1,n-b)
+    kyori = int((b-a-1)/2)
+    print(min_sabun+kyori+1)
+","import sys
+input = sys.stdin.readline
+n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    print((b - a) // 2 + min(a - 1, n - b) + 1)","import sys
+
+input = sys.stdin.readline
+
+n, a, b= map(int, input().split())
+
+if (b-a)%2 ==0:
+    print((b-a)//2)
+
+else:
+    min_sabun = min(a-1,n-b)
+    kyori = (b-a-1)//2
+    print(min_sabun+kyori+1)",1,44,0.15384615384615385,,3.783663,0
+u023229441,"n,a,b=map(int,input().split())
+if (b-a)%2==0:
+    print((b-a)//2);exit()
+a-=1;b-=1
+print(min(b,n-1-a))
+",,"n,a,b=map(int,input().split())
+if (b-a)%2==0:
+    print((b-a)//2);exit()
+a-=1;b-=1
+# print(min(b,n-1-a))
+ans1=0; ans2=0
+ans1+= a
+aa=0 ; bb=b-a 
+ans1+= (bb//2+1)
+
+ans2=n-1-b 
+b=n-1
+a+=ans2
+ans2+= (b-a)//2+1
+
+print(min(ans1,ans2))",0,,,,2.742794,0
+u776311944,"N, A, B = map(int, input().split())
+
+if (B-A) % 2 == 0:
+    print((B-A) // 2)
+else:
+    print(min(B - 1, N - A))","N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","N, A, B = map(int, input().split())
+
+if (B-A) % 2 == 0:
+    print((B-A) // 2)
+else:
+    straight = min(B - 1, N - A)
+    wrap = 1 + min(A - 1, N - B) + (B - A) // 2
+    print(min(straight, wrap))",1,14,0.7666666666666666,,2.381363,0
+u710515311,"def solve():
+    N, A, B = [int(i) for i in input().split()]
+    if (B - A) % 2 == 0:
+        print(int((B - A) / 2))
+    else:
+        print(min(N - B, A - 1) + 1 + int((B - A - 1) / 2))
+
+if __name__ == ""__main__"":
+    solve()","def solve():
+    N, A, B = [int(i) for i in input().split()]
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)
+if __name__ == '__main__':
+    solve()","def solve():
+    N, A, B = [int(i) for i in input().split()]
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(N - B, A - 1) + 1 + (B - A - 1) // 2)
+
+if __name__ == ""__main__"":
+    solve()",1,14,0.36363636363636365,,4.672413,0
+u138083942,"# row = [int(x) for x in input().rstrip().split("" "")]
+# n = int(input().rstrip())
+# s = input().rstrip()
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+
+    n, a, b = [int(x) for x in input().rstrip().split("" "")]
+
+    if a > n - b:
+        tmp = a
+        a = n - b
+        b = n - tmp
+
+    a = a - 1
+    b = b - 1
+
+
+
+    if (b - a) % 2 == 0:
+        print(abs(a - b) // 2)
+    else:
+        count = a + 1 + ((b - a - 1) // 2)
+        print(count)
+
+
+
+if __name__ == ""__main__"":
+    resolve()
+","def resolve():
+    import sys
+    input = sys.stdin.readline
+    n, a, b = [int(x) for x in input().rstrip().split(' ')]
+    if abs(a - 1) > abs(n - b):
+        a, b = (n + 1 - b, n + 1 - a)
+    a = a - 1
+    b = b - 1
+    if (b - a) % 2 == 0:
+        print(abs(a - b) // 2)
+    else:
+        count = a + 1 + (b - a - 1) // 2
+        print(count)
+if __name__ == '__main__':
+    resolve()","# row = [int(x) for x in input().rstrip().split("" "")]
+# n = int(input().rstrip())
+# s = input().rstrip()
+
+def resolve():
+    import sys
+    input = sys.stdin.readline
+
+    n, a, b = [int(x) for x in input().rstrip().split("" "")]
+
+    if a > n - b + 1:
+        tmp = a
+        a = n - b
+        b = n - tmp
+    else:
+        a = a - 1
+        b = b - 1
+
+    if (b - a) % 2 == 0:
+        print(abs(a - b) // 2)
+    else:
+        count = a + 1 + ((b - a - 1) // 2)
+        print(count)
+
+
+
+if __name__ == ""__main__"":
+    resolve()
+",1,29,0.14705882352941174,,5.267946,0
+u357751375,"import math
+
+n,a,b = map(int,input().split())
+if (a % 2 + b % 2) % 2 == 0:
+    print(abs(a - b) // 2)
+    exit(0)
+
+if n - b < a - 1:
+    p = n - b
+    a += n - b
+    b = n
+    print(math.ceil(abs(a - b) / 2) + p)
+else:
+    p = a - 1
+    b -= a - 1
+    a = 1
+    print(math.ceil(abs(a - b) / 2) + p)","import math
+n, a, b = map(int, input().split())
+if (a % 2 + b % 2) % 2 == 0:
+    print(abs(a - b) // 2)
+    exit(0)
+if b - 1 < n - a:
+    print(b - 1 - (b - a) // 2)
+else:
+    print(n - a - (b - a) // 2)","n,a,b = map(int,input().split())
+if (a % 2 + b % 2) % 2 == 0:
+    print(abs(a - b) // 2)
+    exit(0)
+
+if n - b < a - 1:
+    p = n - b + 1
+    a += n - b
+    b = n
+    print(abs(a - b) // 2 + p)
+else:
+    p = a - 1 + 1
+    b -= a - 1
+    a = 1
+    print(abs(a - b) // 2 + p)",1,80,0.2,,5.781468,0
+u119148115,"N,A,B = map(int,input().split())
+if (B-A) % 2 == 0:
+  print(int((B-A)/2))
+elif A-1 <= N-B:
+  print(int((A+B-1)/2))
+else:
+  print(int((N+1-(B+A+1))/2))","N, A, B = map(int, input().split())
+if (A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+else:
+    print(min((A + B - 1) // 2, (2 * N - (A + B) + 1) // 2))","N,A,B = map(int,input().split())
+if (B-A) % 2 == 0:
+  print((B-A)//2)
+elif A-1 <= N-B:
+  print((A+B-1)//2)
+else:
+  print(N+1-(B+A+1)//2)",1,46,0.23333333333333334,,4.042194,0
+u485319545,"n,a,b = map(int,input().split())
+
+p = b-a-1
+
+if p%2==0:
+    print(min(b-1,n-a))
+else:
+    print((p+1)//2)","n, a, b = map(int, input().split())
+p = b - a - 1
+if p % 2 == 0:
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)
+else:
+    print((p + 1) // 2)","n,a,b = map(int,input().split())
+
+p = b-a-1
+
+if p%2==0:
+    ans=0
+    if a <=n-b:
+        k = a-1
+        a-=k
+        b-=(k+1)
+        ans+=k+1
+    else:
+        k = n-b
+        a+=(k+1)
+        b+=k
+        ans += k+1
+    p=b-a-1
+
+    print(ans + (p+1)//2)
+else:
+    print((p+1)//2)",1,19,0.8389830508474576,,4.493422,0
+u815763296,"N, A, B = map(int, input().split())
+
+if (B-A) % 2 == 0:
+    ans = (B-A+2)//2-1
+else:
+    if min(A-1, N-B) == A-1:
+        ans = B-1
+        B -= A
+        A = 1
+    else:
+        ans = N-A
+        A += N-B+1
+        B = N
+    if A != B:
+        ans = (B-A+2)//2-1
+
+print(ans)
+",,"N, A, B = map(int, input().split())
+
+if (B-A) % 2 == 0:
+    ans = (B-A+2)//2-1
+else:
+    if min(A-1, N-B) == A-1:
+        ans = B-1
+        plus=A
+        B -= A
+        A = 1
+    else:
+        ans = N-A
+        plus=N-B+1
+        A += N-B+1
+        B = N
+    if A != B:
+        ans = (B-A+2)//2-1+plus
+
+print(ans)
+",0,,,,22.004015,0
+u860002137,"N, A, B = map(int, input().split())
+
+left = B-1
+right = N-A
+mid = (B - A)//2
+
+if (B - A)%2==0:
+    print(min([left, right, mid]))
+else:
+    print(min(left, right))","N, A, B = map(int, input().split())
+left = B - 1
+right = N - A
+mid = (B - A) // 2
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","N, A, B = map(int, input().split())
+
+mid = (B - A)//2
+left = ((A-1+B-1)+1)//2
+right = ((N-B+N-A)+1)//2
+
+if (B - A)%2==0:
+    print(mid)
+else:
+    print(min(left, right))",1,30,0.5833333333333334,,5.883360,0
+u583507988,"n,a,b=map(int,input().split())
+if (b-a)%2==0:
+  print((b-a)//2)
+else:
+  c=min(b-1,n-a)
+  d=(b-a-1)//2+1
+  print(min(c,d))","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    c = min(b - 1, n - a)
+    d = (b - a - 1) // 2 + 1
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)","n,a,b=map(int,input().split())
+if (b-a)%2==0:
+  print((b-a)//2)
+else:
+  c=min(b-1,n-a)
+  e=min(a-1,n-b)
+  d=(b-a-1)//2+e+1
+  print(min(c,d))",1,26,0.44680851063829785,,6.676048,0
+u395620499,"n, a, b = map(int, input().split())
+
+x = (b-a) % 2
+if x == 1:
+    ans = 0
+    if (a-1) < (n-b):
+        d = a-1
+        y = b - a
+        ans += a
+        ans += y // 2
+    else:
+        d = n-b
+        y = a + b
+        ans += (n-b) + 1
+        ans += (n-y) // 2
+    ans = min([ans, b-1, n-a])
+    print(ans)
+else:
+    print((b-a+1)//2)
+","n, a, b = map(int, input().split())
+x = (b - a) % 2
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    ans = min(n - b, a - 1) + 1 + (b - a - 1) // 2
+    print(ans)","n, a, b = map(int, input().split())
+
+x = (b-a) % 2
+if x == 1:
+    ans = 0
+    if (a-1) < (n-b):
+        d = a-1
+        y = b - d
+        ans += d
+        ans += (y + 1) // 2
+    else:
+        d = n-b
+        y = a + d
+        ans += d
+        ans += (n-y + 1) // 2
+    ans = min([ans, b-1, n-a])
+    print(ans)
+else:
+    print((b-a+1)//2)
+",1,111,0.1328125,,5.265731,0
+u670567845,"N, A, B = map(int, input().split())
+if ((B-A)%2 == 0):
+  print((B-A)//2)
+else: 
+  print(min([B-1,N-A]))","N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","N, A, B = map(int, input().split())
+if ((B-A)%2 == 0):
+  print((B-A)//2)
+else: 
+  print(min([A+(B-A-1)//2 ,N-B+ 1 +(B-A-1)//2]))",1,15,0.6511627906976745,,2.863074,0
+u888092736,"N, A, B = map(int, input().split())
+cnt = 0
+if (A + B) % 2:
+    if A - 1 < N - B:
+        cnt += A
+        B = max(1, B - A - 2)
+        A = 1
+    else:
+        cnt += N - B + 1
+        A = min(N, A + N - B + 1)
+        B = N
+print(cnt + B - (A + B) // 2)
+","N, A, B = map(int, input().split())
+cnt = 0
+if (A + B) % 2:
+    if A - 1 < N - B:
+        cnt += A
+        B = abs(A - B)
+        A = 1
+    else:
+        cnt += N - B + 1
+        A = min(N, A + N - B + 1)
+        B = N
+print(cnt + B - (A + B) // 2)","N, A, B = map(int, input().split())
+cnt = 0
+if (A + B) % 2:
+    if A - 1 < N - B:
+        cnt += A
+        B = max(1, B - A)
+        A = 1
+    else:
+        cnt += N - B + 1
+        A = min(N, A + N - B + 1)
+        B = N
+print(cnt + B - (A + B) // 2)
+",1,7,0.3,,6.917146,0
+u835283937,"def main2():
+    N, A, B = map(int, input().split())
+
+    d = B - A - 1
+    if d % 2 ==  0:
+        print(min(B - 1, N - A))
+    else:
+        print((d + 1)//2)
+
+if __name__ == ""__main__"":
+    main2()",,"def main3():
+    N, A, B = map(int, input().split())
+    
+    d = B - A
+    if d % 2 == 0:
+        print(d // 2)
+    else:
+        print(min(((d + 1) // 2 + N - B ), ((d + 1) // 2 + A - 1)))
+         
+if __name__ == ""__main__"":
+    main3()",0,,,,3.139607,0
+u623231048,"n,a,b = map(int,input().split())
+
+if (a - b) % 2 == 0:
+    print(min(abs(a-b) // 2, max(a-1, b-1), max(n-a, n-b)))
+else:
+    print(min(max(a-1, b-1), max(n-a, n-b)))
+","n, a, b = map(int, input().split())
+if (a - b) % 2 == 0:
+    print(min(abs(a - b) // 2, max(a - 1, b - 1), max(n - a, n - b)))
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","n,a,b = map(int,input().split())
+
+if (a - b) % 2 == 0:
+    print(min(abs(a-b) // 2, max(a-1, b-1), max(n-a, n-b)))
+else:
+    print(min(max(a-1, b-1), max(n-a, n-b), (a+b-1)//2, (2 * n - a - b + 1)//2))
+",1,27,0.5344827586206896,,1.696813,0
+u891516200,"N, A, B = [int(x) for x in input().split()]
+
+if abs(A-B) % 2 == 0:
+    print(abs(A-B) // 2)
+else:
+    print(min(max(A, B) - 1, N - min(A, B)))
+","N, A, B = [int(x) for x in input().split()]
+if abs(A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","N, A, B = [int(x) for x in input().split()]
+
+if (B-A) % 2 == 0:
+    print((B-A) // 2)
+else:
+    print(min(A-1, N-B) + 1 + (B - A - 1) // 2)
+",1,18,0.6538461538461539,,5.520266,0
+u016881126,"import sys
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+read = sys.stdin.buffer.read
+sys.setrecursionlimit(10 ** 7)
+INF = float('inf')
+
+N, A, B = map(int, input().split())
+
+dis = B - A
+if dis % 2 == 0:
+    ans = dis // 2
+elif dis == 1:
+    ans = min(B - 1, N - A)
+else:
+    ans = 1 + (B - A - 1) // 2
+print(ans)
+",,"import sys
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+read = sys.stdin.buffer.read
+sys.setrecursionlimit(10 ** 7)
+INF = float('inf')
+
+N, A, B = map(int, input().split())
+
+dis = B - A
+if dis % 2 == 0:
+    ans = dis // 2
+else:
+    ans = min(A - 1, N - B) + 1 + ((B - A) // 2)
+
+print(ans)
+",0,,,,21.060474,0
+u198930868,"n,a,b = map(int,input().split())
+x = b-a
+if x % 2 == 0 : 
+  print(x//2)
+else:
+  print(int(min(a-1,n-b)+1+((b-a-1)/2)))
+","n, a, b = map(int, input().split())
+x = abs(a - b)
+if x % 2 == 0:
+    print(x // 2)
+else:
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)","n,a,b = map(int,input().split())
+x = b-a
+if x % 2 == 0 : 
+  print(x//2)
+else:
+  m = (a-1)+1+((b-a-1)//2)
+  l = (n-b)+1+((b-a-1)//2)
+  print(min(m,l))
+",1,9,0.8269230769230769,,13.792296,0
+u252828980,"n,a,b = map(int,input().split())
+if (b-a)%2 == 0:
+  print(min((b-a)//2,n-a,b-1))
+else:
+  print(min(n-a,b-1))","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print(min((b - a) // 2, n - a, b - 1))
+else:
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)","n,a,b = map(int,input().split())
+
+if (b-a)%2 == 0:
+    print((b-a)//2)
+    exit()
+
+print(min(b,n-a+1,a+(b-a)//2,n-b+1 + (b-a-1)//2) )",1,19,0.7323943661971831,,4.553932,0
+u075303794,"N,A,B=map(int,input().split())
+ans=0
+ 
+if (B-A)%2==0:
+  ans=(B-A)//2
+else:
+  if A-1<N-B:
+    if B-A==1:
+      ans=B-1
+    else:
+      ans=A+(B-A-1)//2
+  else:
+    if B-A==1:
+      ans=N-A
+    else:
+      ans=N-B-1+(A+N-B-1)//2
+print(ans)",,"N,A,B=map(int,input().split())
+ans=0
+ 
+if (B-A)%2==0:
+  ans=(B-A)//2
+else:
+  if A-1<N-B:
+    if B-A==1:
+      ans=B-1
+    else:
+      ans=A+(B-A-1)//2
+  else:
+    if B-A==1:
+      ans=N-A
+    else:
+      ans=N-B+1+(N-(A+N-B+1))//2
+print(ans)",0,,,,7.147218,0
+u758815106,"import math
+
+N, A, B= map(int, input().split())
+
+if (A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+
+else:
+
+    t1 = A - 1
+    t2 = B - 1
+    t3 = N - A
+    t4 = N - B
+
+    t = [t1, t2, t3, t4]
+
+    ti = t.index(min(t))
+
+    if ti == 0 or ti == 2:
+        res = A + (abs(A - B) - 1) // 2
+    else:
+        res = B + (abs(A - B) - 1) // 2
+    
+    print(res)","import math
+N, A, B = map(int, input().split())
+if (A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+else:
+    print(min((A + B - 1) // 2, (2 * N - (A + B) + 1) // 2))","import math
+
+N, A, B= map(int, input().split())
+
+if (A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+
+else:
+
+    t1 = A - 1
+    t2 = B - 1
+    t3 = N - A
+    t4 = N - B
+
+    t = min(t1, t2, t3, t4)
+
+    res = t + 1 + (abs(A - B) - 1) // 2
+    
+    print(res)",1,105,0.33544303797468356,,5.887673,0
+u068142202,"n, a, b = map(int, input().split())
+tables = [n] * 2
+if (a + b) % 2 == 0:
+    print(min(abs(1 - b), abs(a - b - 1) // 2, abs(a - n)))
+else:
+    print(min(abs(1 - b), abs(a - n)))
+","n, a, b = map(int, input().split())
+tables = [n] * 2
+if (a + b) % 2 == 0:
+    print(min(abs(1 - b), abs(a - b - 1) // 2, abs(a - n)))
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","def is_even(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False
+
+
+n, a, b = map(int, input().split())
+tables = [n] * 2
+if is_even(a) and is_even(b):
+    print(abs(a - b) // 2)
+elif not is_even(a) and not is_even(b):
+    print(abs(a - b) // 2)
+else:
+    print(min(abs(1 - a), abs(b - n)) + 1 + (b - a - 1) // 2)
+",1,25,0.7767857142857143,,2.320444,0
+u318427318,"#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    n,a,b = map(int,input().split())
+    ans=0
+    if (b-a) % 2 == 0:
+        print((b-a) // 2)
+    else:
+        #bから1までの移動回数
+        X = b-1
+        #aからnまでの移動回数
+        Y = n-a+1
+        print(min(X, Y))
+
+if __name__==""__main__"":
+    main()","import sys
+input = sys.stdin.readline
+
+def main():
+    n, a, b = map(int, input().split())
+    ans = 0
+    if (b - a) % 2 == 0:
+        print((b - a) // 2)
+    else:
+        print(min((b + a - 1) // 2, (2 * n - b + 1 - a) // 2))
+if __name__ == '__main__':
+    main()","#-*-coding:utf-8-*-
+import sys
+input=sys.stdin.readline
+
+def main():
+    n,a,b = map(int,input().split())
+    ans=0
+    if (b-a) % 2 == 0:
+        print((b-a) // 2)
+    else:
+        print((b-a)//2 + min(a-1,n-b) + 1)
+
+if __name__==""__main__"":
+    main()",1,33,0.484375,,3.457836,0
+u143051858,"n,a,b = map(int,input().split())
+if abs(a-b)%2:
+    print(abs(a-b)//2+1+min((abs(1-a),abs(10-a),abs(1-b),abs(10-b))))
+else:
+    print(abs(a-b)//2)",,"n,a,b = map(int,input().split())
+if abs(a-b)%2:
+    print(abs(a-b)//2+1+min((abs(1-a),abs(n-a),abs(1-b),abs(n-b))))
+else:
+    print(abs(a-b)//2)
+",0,,,,0.612390,0
+u131464432,"N,A,B = map(int,input().split())
+if (A-B)%2 == 0:
+    print(abs(A-B)//2)
+    exit()
+print(min(A+(abs(A-B)-1)//2,N-B+(abs(A-B)-1)//2))","N, A, B = map(int, input().split())
+if (A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+    exit()
+print(min([A + (B - A - 1) // 2, N - B + 1 + (B - A - 1) // 2]))","N,A,B = map(int,input().split())
+if (B-A)%2 == 0:
+    print((B-A)//2)
+    exit()
+print(min(A+(B-A-1)//2,N-B+1+(B-A-1)//2))",1,15,0.5714285714285714,,3.640918,0
+u452269253,"n,a,b = [int(i) for i in input().split()]
+if a%2==b%2:
+    print(abs(a-b)//2)
+else:
+    p1 = min(a-1,b-1)
+    p2 = min(n-a,n-b)
+    # print(p1,p2)
+    c = 0
+    if p1 > p2:
+        p = max(a-p2, b-p2)
+        c = -1
+    else:
+        p = max(a-p1, b-p1)
+    ans = p1 + c + p//2
+    print(ans)","n, a, b = [int(i) for i in input().split()]
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    ans = min(n - b, a - 1) + 1 + (b - a - 1) // 2
+    print(ans)","N,A,B = [int(i) for i in input().split()]
+if A%2 == B%2:
+    print(abs(A - B) // 2)
+    exit()
+
+print(min((N - A + N - B + 1) // 2, (A + B - 1) // 2))",1,92,0.5353535353535354,,4.883071,0
+u811176339,"import math
+n, a, b = [int(w) for w in input().split()]
+if (a + b) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    if b - 1 > n - a:
+        ans = a - 1
+        ans += (b-a)//2
+    else:
+        ans = n - b
+        ans += (b-a)//2
+print(ans)
+","import math
+n, a, b = [int(w) for w in input().split()]
+if (a + b) % 2 == 0:
+    ans = (b - a) // 2
+elif b - 1 > n - a:
+    ans = n - b + (b - a - 1) // 2 + 1
+else:
+    ans = a - 1 + (b - a - 1) // 2 + 1
+print(ans)","import math
+n, a, b = [int(w) for w in input().split()]
+if (a + b) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    ans = min(a - 1, n - b)
+    ans += 1 + (b - a) // 2
+print(ans)
+",1,30,0.5522388059701493,,7.402207,0
+u094999522,"#!/usr/bin/env python3
+n, a, b = map(int, input().split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - a - b + 1)))
+","n, a, b = map(int, input().split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","#!/usr/bin/env python3
+n, a, b = map(int, input().split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - a - b + 1) // 2))
+",1,6,0.33333333333333337,,1.598839,0
+u580316619,"n,a,b=map(int,input().split())
+ans=0
+if (b-a)%2 == 0:
+	ans = (b-a)//2
+else:
+	ans = min(n-a, b-1, (b-a-1)//2)
+print(ans)","n, a, b = map(int, input().split())
+ans = 0
+if (b - a) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    ans = min(n - b, a - 1) + 1 + (b - a - 1) // 2
+print(ans)","n,a,b=map(int,input().split())
+ans=0
+if (b-a)%2 == 0:
+	ans = (b-a)//2
+else:
+	if (b-1) < (n-a):
+		ans = min(n-a, b-1, a+(b-a-1)//2)
+	else:
+		ans = min(n-a, b-1, n-b+1+(b-a-1)//2)
+print(ans)",1,8,0.8787878787878788,,4.140716,0
+u157232135,"def main():
+    n,a,b=map(int,input().split())
+    di = 0
+    if (b-a)%2==1:
+        w = a-1
+        l = n-b
+        di = (w - l)
+        if di < 0:
+            di -= 1
+        else:
+            di += 1
+        a += di
+        if a < 1:
+            a = 1
+        b += di
+        if b > n:
+            b = n
+    #print(a,b,di)
+    print((b-a)//2 + abs(di))
+    
+if __name__ == ""__main__"":
+    main()",,"def main():
+    n,a,b=map(int,input().split())
+    di = 0
+    if (b-a)%2==1:
+        w = a-1
+        l = n-b
+        di = (w - l)
+        if di < 0:
+            di = -w-1
+        else:
+            di = l+1
+        a += di
+        if a < 1:
+            a = 1
+        b += di
+        if b > n:
+            b = n
+    #print(a,b,di)
+    print((b-a)//2 + abs(di))
+    
+if __name__ == ""__main__"":
+    main()",0,,,,7.529152,0
+u047931063,"import sys
+input = sys.stdin.readline
+
+N, A, B = map(int, input().split())
+if (A + B) % 2 == 0:
+    print(((A + B) // 2) - A)
+else:
+    print(min(B-1, N-A))
+","import sys
+input = sys.stdin.readline
+N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print((B - A) // 2 + min(A - 1, N - B) + 1)","import sys
+input = sys.stdin.readline
+
+N, A, B = map(int, input().split())
+ans = 0
+if (A + B) % 2 == 0:
+    ans = (A + B)//2 - A
+    print(ans)
+else:
+    ans = min(A, N-B+1)
+    ans += (A + B)//2 - A
+    print(ans)
+",1,26,0.6285714285714286,,9.168822,0
+u036104576,"import sys
+import itertools
+# import numpy as np
+import time
+import math
+import heapq
+from collections import defaultdict
+sys.setrecursionlimit(10 ** 7)
+ 
+INF = 10 ** 9 + 7
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+
+# map(int, input().split())
+
+MOD = 10 ** 4 + 7
+
+N, A, B = map(int, input().split())
+
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    ans = []
+    l = (A - 1)
+    r = B - l - 1
+    x = l + 1 + (r - 1) // 2
+    ans.append(x)
+    r = (N - B)
+    l = A + r
+    x = r + 1 + (r - l + 1) // 2
+    ans.append(x)
+    print(min(ans))
+","import sys
+import itertools
+import time
+import math
+import heapq
+from collections import defaultdict
+sys.setrecursionlimit(10 ** 7)
+INF = 10 ** 9 + 7
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+MOD = 10 ** 4 + 7
+N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    x = (A + B - 1) // 2
+    l = [x, N - x]
+    print(min(l))","import sys
+import itertools
+# import numpy as np
+import time
+import math
+import heapq
+from collections import defaultdict
+sys.setrecursionlimit(10 ** 7)
+ 
+INF = 10 ** 9 + 7
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+
+# map(int, input().split())
+
+MOD = 10 ** 4 + 7
+
+N, A, B = map(int, input().split())
+
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)",1,84,0.5144508670520231,,9.126588,0
+u616489782,"N,A,B = [int(x) for x in input().split()];
+#print(A);
+#print(B);
+#print(N);
+#lm = int(A + (B-A-1)/2);
+lm = A + int((B-A-1)/2);
+#print(lm);
+#rm = int(N-B+1 + (B-A-1)/2);
+rm = N-B+1 + int((B-A-1)/2);
+#print(rm);
+if (B-A)%2 == 0 :
+    print(int((B-A)/2));
+else :
+    print(min(lm,rm));","N, A, B = [int(x) for x in input().split()]
+lm = A + int((B - A - 1) / 2)
+rm = N - B + 1 + int((B - A - 1) / 2)
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","N,A,B = [int(x) for x in input().split()];
+#print(A);
+#print(B);
+#print(N);
+#lm = int(A + (B-A-1)/2);
+lm = A + (B-A-1)//2;
+#print(lm);
+#rm = int(N-B+1 + (B-A-1)/2);
+rm = N-B+1 + (B-A-1)//2;
+#print(rm);
+if (B-A)%2 == 0 :
+    print((B-A)//2);
+else :
+    print(min(lm,rm));",1,24,0.33333333333333337,,7.879496,0
+u137228327,"N,A,B = map(int,input().split())
+step = 0
+if (B-A)%2 == 0:
+    step = (B-A)/2
+    print(int(step))
+else:
+    step = min(A,N-B+1)+(B-A-1)/2
+    print(int(step))
+","N, A, B = map(int, input().split())
+step = 0
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","N,A,B = map(int,input().split())
+step = 0
+if (B-A)%2 == 0:
+    step = (B-A)//2
+    print(step)
+else:
+    step = min(A,N-B+1)+(B-A-1)//2
+    print(step)",1,30,0.21052631578947367,,3.955613,0
+u509739538,"from collections import defaultdict
+
+def readInt():
+	return int(input())
+def readInts():
+	return list(map(int, input().split()))
+def readChar():
+	return input()
+def readChars():
+	return input().split()
+
+n,a,b = readInts()
+
+if (b-a)%2==0:
+	print((b-a)//2)
+else:
+	print(min(b-1,n-a))","from collections import defaultdict
+
+def readInt():
+    return int(input())
+
+def readInts():
+    return list(map(int, input().split()))
+
+def readChar():
+    return input()
+
+def readChars():
+    return input().split()
+n, a, b = readInts()
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    print(min((b + a - 1) // 2, (2 * n - b + 1 - a) // 2))","from collections import defaultdict
+
+def readInt():
+	return int(input())
+def readInts():
+	return list(map(int, input().split()))
+def readChar():
+	return input()
+def readChars():
+	return input().split()
+
+n,a,b = readInts()
+
+if (b-a)%2==0:
+	print((b-a)//2)
+else:
+	print(min(b-1,n-a,a+(b-a-1)//2,n-(a+b-1)//2))",1,20,0.6153846153846154,,2.886586,0
+u288430479,"n,a,b = map(int,input().split())
+if (b-a)%2==0:
+  print(int((b-a)//2))
+else:
+  s = a-1
+  b -=s
+  c = (b-1)//2+1+s
+  
+  t = n-b
+  a += t
+  d = (n-a)//2+1+t
+  print(min(c,d))",,"n,a,b = map(int,input().split())
+if (b-a)%2==0:
+  print(int((b-a)//2))
+else:
+  s = a-1
+  b1 = b-s
+  c = (b1-1)//2+s+1
+  
+  t = n-b
+  a1 = a+t
+  d = (n-a1-1)//2+1+t
+  print(min(c,d))",0,,,,22.004280,0
+u131453093,"N, A, B = map(int, input().split())
+
+df = abs(A - B)
+dA = N - A
+dB = B - 1
+
+if df % 2 == 0:
+    print(int(df // 2))
+else:
+    if A == 1 or B == N:
+        print(((df - 1) // 2)+1)
+    else:
+        if dA > dB:
+            print(dB)
+        else:
+            print(dA)
+
+","N, A, B = map(int, input().split())
+df = abs(A - B)
+dA = N - A
+dB = B - 1
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","N, A, B = map(int, input().split())
+
+df = abs(A - B)
+dA = A - 1
+dB = N - B
+ans = 0
+
+if df % 2 == 0:
+    ans = int(df // 2)
+    print(ans)
+else:
+    if dA > dB:
+        #端までの距離
+        ans += dB + 1 + ((B-A) // 2)
+        print(ans)
+    else:
+        ans += dA + 1 + ((B-A) // 2)
+        print(ans)
+
+",1,57,0.544,,3.647961,0
+u761062383,"def resolve():
+    N, A, B = [int(i) for i in input().split()]
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(B - 1, N - A))
+
+
+resolve()
+","def resolve():
+    N, A, B = [int(i) for i in input().split()]
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)
+resolve()","def resolve():
+    N, A, B = [int(i) for i in input().split()]
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(A, N - B + 1) + ((B - A) // 2))
+
+
+resolve()
+",1,19,0.42424242424242425,,3.802528,0
+u425762225,"#!/usr/bin/env python3
+
+def f(n,a,b):
+    if (a + b) % 2:
+        return min(max(a,b) - 1, n - min(a,b))
+    else:
+        d = b-a
+        return d//2
+
+def main():
+    N,A,B = map(int,input().split())
+    print(f(N,A,B))
+
+if __name__ == '__main__':
+    main()","def f(n, a, b):
+    if (a + b) % 2:
+        return min((b + a - 1) // 2, (2 * n - b + 1 - a) // 2)
+    else:
+        d = b - a
+        return d // 2
+
+def main():
+    N, A, B = map(int, input().split())
+    print(f(N, A, B))
+if __name__ == '__main__':
+    main()","#!/usr/bin/env python3
+
+def f(n,a,b):
+    if (a + b) % 2:
+        return min(a-1,n-b) + 1 + (b-a-1)//2
+    else:
+        d = b-a
+        return d//2
+
+def main():
+    N,A,B = map(int,input().split())
+    print(f(N,A,B))
+
+if __name__ == '__main__':
+    main()",1,22,0.5217391304347826,,4.259084,0
+u537769530,"N,A,B=map(int,input().split())
+if (B-A)%2==0:
+    print((B-A)//2)
+else:
+    print(int(min(A-1,N-B)+1+(B-A-1)/2))
+","N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","x=[]
+N,A,B=map(int,input().split())
+if (B-A)%2==0:
+    print((B-A)//2)
+else:
+    c=(A-1)+(B-A+1)//2
+    d=(N-B)+(B-A+1)//2
+    print(min(c,d))",1,4,0.9215686274509804,,4.968824,0
+u628583308,"#!/usr/bin/env python3
+import sys
+
+
+def solve(N: int, A: int, B: int):
+    if A > B:
+        tmp = A
+        A = B
+        B = A
+    
+    count = 0
+    while True:
+        if (B - A) % 2 == 0:
+            count += (B - A) // 2
+            break
+        elif A != 1 and B != N:
+            if B-1 < N-A:
+                count += A-1
+                A = 1
+                B = B - (A-1)
+
+            else:
+                count += N-B
+                A = A + (N-B)
+                B = N
+        else:
+            if A == 1:
+                count += 1
+                B -= 1
+                
+            elif B == N:
+                count += 1
+                A += 1
+    print(count)
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+    tokens = iterate_tokens()
+    N = int(next(tokens))  # type: int
+    A = int(next(tokens))  # type: int
+    B = int(next(tokens))  # type: int
+    solve(N, A, B)
+
+if __name__ == '__main__':
+    main()",,"#!/usr/bin/env python3
+import sys
+
+
+def solve(N: int, A: int, B: int):
+    if A > B:
+        tmp = A
+        A = B
+        B = tmp
+    
+    count = 0
+    while True:
+        if (B - A) % 2 == 0:
+            count += (B - A) // 2
+            break
+        elif A != 1 and B != N:
+            if A-1 < N-B:
+                count += A-1
+                B = B - (A-1)
+                A = 1
+
+
+            else:
+                count += N-B
+                A = A + (N-B)
+                B = N
+        else:
+            if A == 1:
+                count += 1
+                B -= 1
+                
+            elif B == N:
+                count += 1
+                A += 1
+    print(count)
+    return
+
+
+# Generated by 1.1.7.1 https://github.com/kyuridenamida/atcoder-tools  (tips: You use the default template now. You can remove this line by using your custom template)
+def main():
+    def iterate_tokens():
+        for line in sys.stdin:
+            for word in line.split():
+                yield word
+    tokens = iterate_tokens()
+    N = int(next(tokens))  # type: int
+    A = int(next(tokens))  # type: int
+    B = int(next(tokens))  # type: int
+    solve(N, A, B)
+
+if __name__ == '__main__':
+    main()
+",0,,,,10.634764,0
+u900139929,"#!/usr/bin/env python3
+
+n, a, b = map(int, input().split())
+
+ans = 0
+if (b-a)%2 == 0:
+    ans = int((b-a)/2)
+else:
+    if a-1 >= n-b:
+        ans = int(n+(1-a-b)/2)
+    else:
+        ans = int(a + (b-a)/2)
+
+print(ans)
+",,"#!/usr/bin/env python3
+
+n, a, b = map(int, input().split())
+
+ans = 0
+if (b-a)%2 == 0:
+    ans = (b-a)//2
+else:
+    if a-1 >= n-b:
+        ans = n + (1-a-b)//2
+    else:
+        ans = (a+b)//2
+
+print(int(ans))
+",0,,,,22.004267,0
+u703214333,"n,a,b=map(int,input().split())
+if (b-a)%2 == 0:
+    print((b-a)//2)
+else:
+    if n-b >= a-1:
+        ans = a-1
+        ans += (b-ans-1)//2
+        print(ans+1)
+    else:
+        ans = n-b
+        ans += (b-(a+n-b))//2
+        print(ans+1)","n, a, b = map(int, input().split())
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    ans = min(n - b, a - 1) + 1 + (b - a - 1) // 2
+    print(ans)","n,a,b=map(int,input().split())
+if (b-a)%2 == 0:
+    print((b-a)//2)
+else:
+    if n-b >= a-1:
+        ans = a-1
+        ans += (b-a-1)//2
+        print(ans+1)
+    else:
+        ans = n-b
+        ans += (b-a-1)//2
+        print(ans+1)",1,72,0.1111111111111111,,2.565010,0
+u370331385,"N,A,B = map(int,input().split())
+
+dif = abs(A-B)
+if(dif%2 == 0):
+  ans = dif//2
+else:
+  #A1_diff = A-1
+  B1_diff = B-1
+  AN_diff = N-A
+  #BN_diff = N-B
+  ans = min(B1_diff, AN_diff)
+print(ans)  ","N, A, B = map(int, input().split())
+dif = abs(A - B)
+if dif % 2 == 0:
+    ans = dif // 2
+else:
+    edge = min(B - 1, N - A) + 1
+    edge += (A - B - 1) // 2
+    ans = edge
+print(ans)","N,A,B = map(int,input().split())
+
+dif = abs(A-B)
+if(dif%2 == 0):
+  ans = dif//2
+else:
+  A1_diff = A-1
+  #B1_diff = B-1
+  #AN_diff = N-A
+  BN_diff = N-B
+  ans = min(A1_diff, BN_diff)+1+(dif-1)//2
+print(ans)  ",1,30,0.3877551020408163,,10.110485,0
+u339199690,"N, A, B = map(int, input().split())
+
+ab = B - A
+
+if ab % 2 == 1:
+    print(min(B - 1, N - A))
+else:
+    print(min(B - 1, N - A, abs((A + B) // 2 - A)))
+","N, A, B = map(int, input().split())
+ab = B - A
+if ab % 2 == 1:
+    print((B - A) // 2 + 1 + min(N - B, A - 1))
+else:
+    print(min(B - 1, N - A, abs((A + B) // 2 - A)))","N, A, B = map(int, input().split())
+
+ab = B - A
+
+if ab % 2 == 1:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)
+else:
+    print(abs((A + B) // 2 - A))
+",1,20,0.5833333333333334,,3.636108,0
+u057415180,"n, a, b = map(int, input().split())
+
+if abs(b-a)%2 == 0:
+    print(abs(b-a)//2)
+else:
+    print(min(max(a,b)-1, n-min(a,b)))","n, a, b = map(int, input().split())
+if (a - b) % 2 == 0:
+    print(abs(a - b) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","n, a, b = map(int, input().split())
+
+if abs(b-a)%2 == 0:
+    print(abs(b-a)//2)
+else:
+    print(min((max(a,b)+min(a,b))//2, (2*n-max(a,b)-min(a,b)+1)//2))",1,27,0.5178571428571429,,2.297340,0
+u564589929,"import sys
+sys.setrecursionlimit(10 ** 6)
+# input = sys.stdin.readline    ####
+int1 = lambda x: int(x) - 1
+def II(): return int(input())
+
+def MI(): return map(int, input().split())
+def MI1(): return map(int1, input().split())
+
+def LI(): return list(map(int, input().split()))
+def LI1(): return list(map(int1, input().split()))
+def LLI(rows_number): return [LI() for _ in range(rows_number)]
+
+def printlist(lst, k='\n'): print(k.join(list(map(str, lst))))
+INF = float('inf')
+
+from math import ceil
+
+def solve():
+    n, a, b = MI()
+    # a -= 1
+    # b -= 1
+
+    left = max(a-1, b-1)
+    right = max(n-a, n-b)
+
+    center = INF
+    sa = abs(b - a)
+    if a % 2 == b % 2:
+        center = sa // 2
+    else:
+        t = min(a-1, n-b)
+        center = t + ceil((sa-1) / 2) + 1
+    # print(left, right, center)
+    print(min([left, right, center]))
+
+
+if __name__ == '__main__':
+    solve()
+",,"import sys
+sys.setrecursionlimit(10 ** 6)
+# input = sys.stdin.readline    ####
+int1 = lambda x: int(x) - 1
+def II(): return int(input())
+
+def MI(): return map(int, input().split())
+def MI1(): return map(int1, input().split())
+
+def LI(): return list(map(int, input().split()))
+def LI1(): return list(map(int1, input().split()))
+def LLI(rows_number): return [LI() for _ in range(rows_number)]
+
+def printlist(lst, k='\n'): print(k.join(list(map(str, lst))))
+INF = float('inf')
+
+from math import ceil
+
+def solve():
+    n, a, b = MI()
+    # a -= 1
+    # b -= 1
+
+    left = max(a-1, b-1)
+    right = max(n-a, n-b)
+
+    center = INF
+    sa = abs(b - a)
+    if a % 2 == b % 2:
+        center = sa // 2
+    else:
+        t = min(a-1, n-b)
+        center = t + (sa-1) // 2 + 1
+    # print(left, right, center)
+    print(min([left, right, center]))
+
+
+if __name__ == '__main__':
+    solve()
+",0,,,,22.004322,0
+u275242455,"
+N, A, B = map(int,input().split("" ""))
+ans = 0
+diff = abs(A-B)
+
+if diff % 2 == 0:
+    ans = diff / 2
+else:
+    edge = min(A, (N-B))
+    edge += (B-A-1)/2
+    ans = edge
+
+print(int(ans))
+
+","N, A, B = map(int, input().split(' '))
+ans = 0
+diff = abs(A - B)
+if diff % 2 == 0:
+    ans = diff // 2
+else:
+    ans = (diff - 1) // 2 + min(N - B, A - 1) + 1
+print(int(ans))","
+N, A, B = map(int,input().split("" ""))
+ans = 0
+diff = abs(A-B)
+
+if diff % 2 == 0:
+    ans = diff // 2
+else:
+    edge = min(A-1, N-B) + 1
+    edge += (B-A-1)//2
+    ans = edge
+
+print(ans)
+
+",1,33,0.25,,2.797812,0
+u491182585,"N,A,B = map(int,input().split())
+
+right = max([A,B])
+left = min([A,B])
+
+if (right-left)%2 == 0:
+    ans = [N-left,(right-left)//2,right-1]
+    print(min(ans))
+else:
+    x = ((N-right)+1)
+    y = ((left-1)+1)
+    ans = [N-left,right-1,((N-left+x)//2)+x,((right-y-1)//2)+y]
+    print(min(ans))","N, A, B = map(int, input().split())
+right = max([A, B])
+left = min([A, B])
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    x = min(A - 1, N - B)
+    print((B - A - 1) // 2 + x + 1)","N,A,B = map(int,input().split())
+
+if (B-A)%2 == 0:
+    ans = [N-A,(B-A)//2,B-1]
+    print(min(ans))
+else:
+    ans = [N-A,B-1,((B-A-1)//2)+(N-B+1),((B-A-1)//2)+A]
+    print(min(ans))",1,88,0.44654088050314467,,7.509112,0
+u776194115,"N, A, B = map(int, input().split())
+
+dif = B-A
+if dif%2 == 0:
+  print(int(dif/2))
+else:
+  print(min(A-1, N-B)+1+dif//2)
+","N, A, B = map(int, input().split())
+dif = B - A
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","N, A, B = map(int, input().split())
+
+dif = B-A
+if dif%2 == 0:
+  print(dif//2)
+else:
+  print(min(A-1, N-B)+1+dif//2)
+",1,20,0.16666666666666669,,3.548619,0
+u425834921,"s = list(map(int, input().split()))
+N = s[0]
+A = s[1]
+B = s[2]
+
+if (B - A) % 2 == 0:
+  print(int((B - A) / 2))
+elif (B - A) % 2 != 0:
+  print(int(min(A - 1,N - B) +  1 + ((B - A - 1) / 2)))","s = list(map(int, input().split()))
+N = s[0]
+A = s[1]
+B = s[2]
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","s = list(map(int, input().split()))
+N = s[0]
+A = s[1]
+B = s[2]
+
+if (B - A) % 2 == 0:
+  print((B - A) // 2)
+else:
+  print(min(A - 1,N - B) +  1 + (B - A - 1) // 2)",1,21,0.5,,5.524874,0
+u659712937,"n,a,b=map(int,input().split())
+
+if abs(a-b)%2==0:
+  print(abs(a-b)//2)
+else:
+  print(min(max(a,b)-1,(min(a,b)+(abs(a-b)-1)//2)))","n, a, b = map(int, input().split())
+if abs(a - b) % 2 == 0:
+    print(abs(a - b) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","n,a,b=map(int,input().split())
+
+if abs(a-b)%2==0:
+  print(abs(a-b)//2)
+else:
+  print(min(n-max(a,b)+1,min(a,b))+(abs(a-b)-1)//2)",1,22,0.26666666666666666,,2.617883,0
+u453306058,"n,a,b = map(int,input().split())
+s = abs(a-b)
+if s % 2 == 0:
+    print(s // 2)
+else:
+    if a > b:
+        if n-a > b-1:
+            print(a-1)
+        elif n-a <= b-1:
+            print(n-b)
+    else:
+        if n-b > a-1:
+            print(b-1)
+        elif n-b <= a-1:
+            print(n-a)","n, a, b = map(int, input().split())
+s = abs(a - b)
+if s % 2 == 0:
+    print(s // 2)
+elif b - 1 < n - a:
+    print(b - 1 - (b - a) // 2)
+else:
+    print(n - a - (b - a) // 2)","n,a,b = map(int,input().split())
+s = abs(a-b)
+if s % 2 == 0:
+    print(s // 2)
+else:
+    print(min(a-1,n-b)+1+((b-a-1) // 2))",1,75,0.5283018867924528,,3.806790,0
+u239528020,"#!/usr/bin/env python3
+
+n, a, b = list(map(int, input().split()))
+
+ans = 10**18+1
+
+if a > b:
+    a, b = b, a
+ans = []
+ans.append(max(a-1, b-1))
+ans.append(max(n-a, n-b))
+
+if abs(a-b) % 2 == 0:
+    ans.append(abs(a-b)//2)
+# else:
+#     a_tmp, b_tmp = 1, b-a
+#     ans.append(a + abs(a_tmp+b_tmp)//2)
+
+#     a_tmp, b_tmp = a+(n-b)+1, n
+#     ans.append(n-b+1 + abs(a_tmp+b_tmp)//2)
+print(min(ans))
+",,"#!/usr/bin/env python3
+
+n, a, b = list(map(int, input().split()))
+
+ans = 10**18+1
+
+if a > b:
+    a, b = b, a
+
+# print(a, b)
+ans = []
+ans.append(max(a-1, b-1))
+ans.append(max(n-a, n-b))
+
+if abs(a-b) % 2 == 0:
+    ans.append(abs(a-b)//2)
+else:
+    a_tmp, b_tmp = 1, b-a
+    ans.append(a + abs(b_tmp-a_tmp)//2)
+
+    a_tmp, b_tmp = a+(n-b)+1, n
+    ans.append(n-b+1 + abs(b_tmp-a_tmp)//2)
+# print(ans)
+print(min(ans))
+",0,,,,8.658310,0
+u038408819,"n, a, b = map(int, input().split())
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    if a > n - b + 1:
+        print(n - a)
+    else:
+        print(b - 1)
+    #print(max(a, n - b + 1) - 1)","n, a, b = map(int, input().split())
+if a % 2 == b % 2:
+    print((b - a) // 2)
+elif b - 1 < n - a:
+    print(b - 1 - (b - a) // 2)
+else:
+    print(n - a - (b - a) // 2)","n, a, b = map(int, input().split())
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    if a > n - b + 1:
+        rest = (b - a) // 2
+        print(n - a - rest)
+    else:
+        rest = (b - a) // 2
+        print(b - 1 - rest)
+    #print(max(a, n - b + 1) - 1)",1,33,0.49230769230769234,,2.751925,0
+u029000441,"#dpでできないかな？
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
+from collections import Counter, deque
+from collections import defaultdict
+from itertools import combinations, permutations, accumulate, groupby, product
+from bisect import bisect_left,bisect_right
+from heapq import heapify, heappop, heappush
+from math import floor, ceil,pi,cos,radians,sqrt
+from operator import itemgetter
+def I(): return int(input())
+def MI(): return map(int, input().split())
+def LI(): return list(map(int, input().split()))
+def LI2(): return [int(input()) for i in range(n)]
+def MXI(): return [[LI()]for i in range(n)]
+def SI(): return input().rstrip()
+def printns(x): print('\n'.join(x))
+def printni(x): print('\n'.join(list(map(str,x))))
+inf = 10**17
+mod = 10**9 + 7
+
+n,a,b=MI()
+l=b-a
+if l%2==0:
+    ans=l//2
+    print(ans)
+else:
+    edge=min(n-b,a-1)
+    ans=edge
+    ans+=1
+    l-=1
+    ans+=l//2
+","import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10 ** 7)
+from collections import Counter, deque
+from collections import defaultdict
+from itertools import combinations, permutations, accumulate, groupby, product
+from bisect import bisect_left, bisect_right
+from heapq import heapify, heappop, heappush
+from math import floor, ceil, pi, cos, radians, sqrt
+from operator import itemgetter
+
+def I():
+    return int(input())
+
+def MI():
+    return map(int, input().split())
+
+def LI():
+    return list(map(int, input().split()))
+
+def LI2():
+    return [int(input()) for i in range(n)]
+
+def MXI():
+    return [[LI()] for i in range(n)]
+
+def SI():
+    return input().rstrip()
+
+def printns(x):
+    print('\n'.join(x))
+
+def printni(x):
+    print('\n'.join(list(map(str, x))))
+inf = 10 ** 17
+mod = 10 ** 9 + 7
+n, a, b = MI()
+l = b - a
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    print(min((b + a - 1) // 2, (2 * n - b + 1 - a) // 2))","#dpでできないかな？
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**7)
+from collections import Counter, deque
+from collections import defaultdict
+from itertools import combinations, permutations, accumulate, groupby, product
+from bisect import bisect_left,bisect_right
+from heapq import heapify, heappop, heappush
+from math import floor, ceil,pi,cos,radians,sqrt
+from operator import itemgetter
+def I(): return int(input())
+def MI(): return map(int, input().split())
+def LI(): return list(map(int, input().split()))
+def LI2(): return [int(input()) for i in range(n)]
+def MXI(): return [[LI()]for i in range(n)]
+def SI(): return input().rstrip()
+def printns(x): print('\n'.join(x))
+def printni(x): print('\n'.join(list(map(str,x))))
+inf = 10**17
+mod = 10**9 + 7
+
+n,a,b=MI()
+l=b-a
+if l%2==0:
+    ans=l//2
+    print(ans)
+else:
+    edge=min(n-b,a-1)
+    #print(edge)
+    ans=edge
+    ans+=1
+    l-=1
+    ans+=l//2
+    print(ans)",1,57,0.09523809523809523,,8.589791,0
+u920103253,"
+def s0():return input()
+def s1():return input().split()
+def s2(n):return [input() for x in range(n)]
+def s3(n):return [input().split() for _ in range(n)]
+def n0():return int(input())
+def n1():return [int(x) for x in input().split()]
+def n2(n):return [int(input()) for _ in range(n)]
+def n3(n):return [[int(x) for x in input().split()] for _ in range(n)]
+def t3(n):return [tuple(int(x) for x in input().split()) for _ in range(n)]
+def p0(b,yes=""Yes"",no=""No""): print(yes) if b else print(no)
+# from collections import Counter,deque,defaultdict
+# import itertools
+# import math
+# import networkx
+# from bisect import bisect_left,bisect_right
+
+n,a,b=n1()
+
+if (b-a)%2==0:
+    print((b-a)//2)
+else:
+    print(min(n-a,b-1))","def s0():
+    return input()
+
+def s1():
+    return input().split()
+
+def s2(n):
+    return [input() for x in range(n)]
+
+def s3(n):
+    return [input().split() for _ in range(n)]
+
+def n0():
+    return int(input())
+
+def n1():
+    return [int(x) for x in input().split()]
+
+def n2(n):
+    return [int(input()) for _ in range(n)]
+
+def n3(n):
+    return [[int(x) for x in input().split()] for _ in range(n)]
+
+def t3(n):
+    return [tuple((int(x) for x in input().split())) for _ in range(n)]
+
+def p0(b, yes='Yes', no='No'):
+    print(yes) if b else print(no)
+n, a, b = n1()
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    print(min((b + a - 1) // 2, (2 * n - b + 1 - a) // 2))","
+def s0():return input()
+def s1():return input().split()
+def s2(n):return [input() for x in range(n)]
+def s3(n):return [input().split() for _ in range(n)]
+def n0():return int(input())
+def n1():return [int(x) for x in input().split()]
+def n2(n):return [int(input()) for _ in range(n)]
+def n3(n):return [[int(x) for x in input().split()] for _ in range(n)]
+def t3(n):return [tuple(int(x) for x in input().split()) for _ in range(n)]
+def p0(b,yes=""Yes"",no=""No""): print(yes) if b else print(no)
+# from collections import Counter,deque,defaultdict
+# import itertools
+# import math
+# import networkx
+# from bisect import bisect_left,bisect_right
+
+n,a,b=n1()
+
+if (a+b)%2==0:
+    print((b-a)//2)
+else:
+    print(min(a+(b-a-1)//2,n-b+1+(b-a-1)//2))",1,23,0.5818181818181818,,3.733194,0
+u562662744,"n,a,b=map(int,input().split())
+if (b-a)%2==0:
+  print((b-a)/2)
+else:
+  x=(a+b-1)//2
+  l=[x,n-x]
+  print(min(l))","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    x = (a + b - 1) // 2
+    l = [x, n - x]
+    print(min(l))","n,a,b=map(int,input().split())
+if (b-a)%2==0:
+  print((b-a)//2)
+else:
+  x=(a+b-1)//2
+  l=[x,n-x]
+  print(min(l))",1,1,0.5,,1.635960,0
+u221285045,"from sys import stdin
+import math
+import re
+import queue
+
+input = stdin.readline
+
+MOD = 1000000007
+
+def solve():
+    N,A,B = map(int, input().split())
+    if(abs(A - B)%2 == 0):
+        print(abs(A-B)//2)
+        return
+    
+    
+    print(min(max(A,B)-1,N - min(A,B)))
+    
+if __name__ == '__main__':
+    solve()
+","from sys import stdin
+import math
+import re
+import queue
+input = stdin.readline
+MOD = 1000000007
+
+def solve():
+    N, A, B = map(int, input().split())
+    if abs(A - B) % 2 == 0:
+        print(abs(A - B) // 2)
+        return
+    print(min((A + B - 1) // 2, (2 * N - (A + B) + 1) // 2))
+if __name__ == '__main__':
+    solve()","from sys import stdin
+import math
+import re
+import queue
+
+input = stdin.readline
+
+MOD = 1000000007
+
+def solve():
+    N,A,B = map(int, input().split())
+    if(abs(A - B)%2 == 0):
+        print(abs(A-B)//2)
+        return
+
+    print(min(A-1,N-B)+1+(B-A-1)//2)    
+if __name__ == '__main__':
+    solve()
+",1,20,0.5454545454545454,,8.575015,0
+u892487306,"def main():
+    N, A, B = list(map(int, input().split(' ')))
+    assert 1 <= A < B <= N
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        if B - 1 <= N - A:
+            print(A + max([0, B - A - 1]) // 2)
+        else:
+            print(N - B + max([0, B - A - 1]) // 2)
+
+
+if __name__ == '__main__':
+    main()","def main():
+    N, A, B = list(map(int, input().split(' ')))
+    assert 1 <= A < B <= N
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    elif A - 1 <= N - B:
+        print((A + B - 1) // 2)
+    else:
+        print(N + 1 - (B + A + 1) // 2)
+if __name__ == '__main__':
+    main()","def main():
+    N, A, B = list(map(int, input().split(' ')))
+    assert 1 <= A < B <= N
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        if B - 1 <= N - A:
+            print(A + max([0, B - A - 1]) // 2)
+        else:
+            print(N - B + 1 + max([0, B - A - 1]) // 2)
+
+
+if __name__ == '__main__':
+    main()",1,27,0.09999999999999998,,9.220796,0
+u558242240,"n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b-a) // 2)
+    exit()
+else:
+    print(min(b - 1, n - a))
+    exit()
+","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    print(min((b + a - 1) // 2, (2 * n - b + 1 - a) // 2))","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b-a) // 2)
+    exit()
+else:
+    c = min(a - 1, n - b)
+    print(c + (b - a + 1) // 2)
+    exit()
+",1,28,0.4814814814814815,,11.467673,0
+u515052479,"n,a,b = map(int,input().split())
+
+if a == b:
+  ans = 0
+elif abs(a-b)%2 == 0:
+  ans = abs(a-b)//2
+elif abs(a-b)%2 == 1:
+  if a > b:
+    if (a-1) > (n-b):
+      ans = (n-a) + abs(n - (b+(n-a)+1))//2
+    else:
+      ans = (b-1) + abs(1- (a-(b-1)+1))//2
+  if b > a:
+    if (b-1) > (n-a):
+      ans = (n-b) + abs(n - (a+(n-b)+1))//2
+    else:
+      ans = (a-1) + abs(1- (b-(a-1)+1))//2
+      
+print(ans)","n, a, b = map(int, input().split())
+if a == b:
+    ans = 0
+elif abs(a - b) % 2 == 0:
+    ans = abs(a - b) // 2
+elif abs(a - b) % 2 == 1:
+    if abs(a - 1) > abs(n - b):
+        a, b = (n + 1 - b, n + 1 - a)
+    if b > a:
+        if b - 1 > n - a:
+            ans = n - b + abs(n - (a + (n - b) + 1)) // 2
+        else:
+            ans = a - 1 + abs(1 - (b - (a - 1) + 1)) // 2
+print(ans)","n,a,b = map(int,input().split())
+
+if a == b:
+  ans = 0
+elif abs(a-b)%2 == 0:
+  ans = abs(a-b)//2
+elif abs(a-b)%2 == 1:
+  if a > b:
+    if (a-1) > (n-b):
+      ans = (n-a) + (a-b-1)//2 + 1
+    else:
+      ans = (b-1) + (a-b-1)//2 + 1
+  if b > a:
+    if (b-1) > (n-a):
+      ans = (n-b) + (b-a-1)//2 + 1
+    else:
+      ans = (a-1) + (b-a-1)//2 + 1
+      
+print(ans)",1,67,0.47244094488188976,,8.254725,0
+u504562455,"# N = int(input())
+N, A, B = [int(_) for _ in input().split()]
+if (B - A) % 2 == 0:
+    print((B-A) // 2)
+else:
+    print(min(N - B + 1 + N - (A + N-B+1) // 2, A + (B - A - 1)//2))
+","N, A, B = [int(_) for _ in input().split()]
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min((A + B - 1) // 2, (2 * N - (A + B) + 1) // 2))","# N = int(input())
+N, A, B = [int(_) for _ in input().split()]
+if (B - A) % 2 == 0:
+    print((B-A) // 2)
+else:
+    print(min(N - B + 1 + (N - (A + N-B+1)) // 2, A + (B - A - 1)//2))
+",1,31,0.11428571428571427,,2.298836,0
+u560867850,"from collections import Counter
+
+n, a, b = map(int, input().split())
+
+mid = b - a
+
+if mid % 2 == 0:
+    print(mid // 2)
+else:
+    print(min(a+mid//2, b+mid//2))","from collections import Counter
+n, a, b = map(int, input().split())
+mid = b - a
+if mid % 2 == 0:
+    print(mid // 2)
+else:
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)","n, a, b = map(int, input().split())
+
+mid = b - a
+
+if mid % 2 == 0:
+    print(mid // 2)
+else:
+    print(min(a - 1, n - b) + 1 + (mid - 1)//2)",1,21,0.4878048780487805,,5.110170,0
+u750058957,"N,A,B = map(int, input().split("" ""))
+distance = abs(B - A)
+res=0
+if distance % 2 == 0:
+  res = distance/2
+else:
+  a,b = [min(A,B), max(A,B)]
+  res = distance//2 + min(a-1, N-b)+1
+print(int(res))",,"N,A,B = map(int, input().split("" ""))
+distance = abs(B - A)
+res=0
+if distance % 2 == 0:
+  res = distance//2
+else:
+  res = distance//2 + min(min(A,B)-1, N-max(A,B))+1
+print(res)",0,,,,20.171534,0
+u134019875,"n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    ans = (b - a) / 2
+else:
+    ta = a + ((b - a - 1) / 2)
+    tb = n - b + 1 + ((b - a - 1) / 2)
+    ans = min(ta, tb)
+print(int(ans))
+","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    ans = (b - a) // 2
+elif a - 1 >= n - b:
+    ans = n + (1 - a - b) // 2
+else:
+    ans = (a + b) // 2
+print(int(ans))","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    ta = a + ((b - a - 1) // 2)
+    tb = n - b + 1 + ((b - a - 1) // 2)
+    ans = min(ta, tb)
+print(ans)
+",1,39,0.13333333333333336,,4.371492,0
+u729294108,"n, a, b = map(int, input().strip().split())
+
+if (b - a) % 2 == 1:
+    t1 = (a - 1) + (b - (a - 1)) // 2
+    t2 = (n - b) + (n - (a + (n - b))) // 2
+    print(min(t1, t2))
+else:
+    print((b - a) // 2)
+","n, a, b = map(int, input().strip().split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - a - b + 1) // 2))","n, a, b = map(int, input().strip().split())
+
+if (b - a) % 2 == 1:
+    dt1 = a - 1
+    dt1 += 1
+    b1 = b - dt1
+    t1 = dt1 + (b1 - 1) // 2
+
+    dt2 = n - b
+    dt2 += 1
+    a1 = a + dt2
+    t2 = dt2 + (n - a1) // 2
+    print(min(t1, t2))
+else:
+    print((b - a) // 2)
+",1,57,0.4722222222222222,,3.016771,0
+u785578220,"n,a,b = map(int,input().split())
+
+if (b-a)%2==0:
+    print((b-a)//2) 
+else:
+    m = min(b-1,n-a)
+    M = min(a-1,n-b)+(b-a-1)//2
+    print(min(m,M))","n, a, b = map(int, input().split())
+if (b - a) % 2 == 0:
+    print((b - a) // 2)
+else:
+    m = min(b - 1, n - a)
+    M = min(a - 1, n - b) + (b - a - 1) // 2
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)","n,a,b = map(int,input().split())
+
+if (b-a)%2==0:
+    print((b-a)//2) 
+else:
+    m = min(b-1,n-a)
+    M = min(a-1,n-b)+(b-a-1)//2+1
+    print(min(m,M))",1,26,0.10344827586206895,,8.215476,0
+u230621983,"n, a, b = map(int, input().split())
+if (b-a)%2 != 0:
+    if a-1 <= n-b:
+        ans = (b - a -1)//2 + 1 + a-1
+    else:
+        ans = (b - a - 1)//2 + 1 + n-b
+else:
+    ans = min((b - a) / 2, b-1, n-a)
+print(ans)","n, a, b = map(int, input().split())
+if (a + b) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    ans = min(a - 1, n - b)
+    ans += 1 + (b - a) // 2
+print(ans)","n, a, b = map(int, input().split())
+if (b-a)%2 != 0:
+    if a-1 <= n-b:
+        ans = (b - a -1)//2 + 1 + a-1
+    else:
+        ans = (b - a - 1)//2 + 1 + n-b
+else:
+    ans = min((b - a) // 2, b-1, n-a)
+print(ans)",1,64,0.015384615384615385,,3.698679,0
+u085717502,"#!/usr/bin/env python
+# coding: utf-8
+
+# In[10]:
+
+
+N, A, B = map(int, input().split())
+
+
+# In[15]:
+
+
+if (B-A)%2 == 0:
+    ans = int((B-A)/2)
+else:
+    ans = min(A-1, N-B) + 1 + int((B-A-1)/2)
+print(ans)
+
+
+# In[ ]:
+
+
+
+
+",,"#!/usr/bin/env python
+# coding: utf-8
+
+# In[10]:
+
+
+N, A, B = map(int, input().split())
+
+
+# In[17]:
+
+
+if (B-A)%2 == 0:
+    ans = (B-A)//2
+else:
+    ans = min(A-1, N-B) + 1 + (B-A-1)//2
+print(ans)
+
+
+# In[ ]:
+
+
+
+
+",0,,,,15.869773,0
+u114954806,"def main():
+    N,A,B=map(int,input().split())
+    if (A%2+B%2)%2:
+        print(int(min(A-1,N-B)+1+(B-A-1)/2))
+    else:
+        print(int((B-A)/2))
+
+main()","def main():
+    N, A, B = map(int, input().split())
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)
+main()","def main():
+    N,A,B=map(int,input().split())
+    if (B-A)%2:
+        print((B-A)//2 + 1 + min(N-B,A-1))
+    else:
+        print((B-A)//2)
+
+main()",1,38,0.5064935064935064,,3.677165,0
+u652656291,"n,a,b = map(int,input().split())
+if (a-b) % 2 == 0:
+  print(min(abs(a-b),max(a-1,b-1),max(n-a,n-b)))
+else:
+  print(min(max(a-1,b-1),max(n-a,n-b)))","n, a, b = map(int, input().split())
+if (a - b) % 2 == 0:
+    print(abs(a - b) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","N, A, B = [int(i) for i in input().split()]
+if (B-A) % 2 == 0:
+    print((B-A)//2)
+else:
+    x = min(A-1, N-B)
+    print((B-A-1)//2+x+1)
+",1,58,0.5572519083969466,,1.673590,0
+u857428111,"#!/usr/bin/env python3
+#%% for atcoder uniittest use
+import sys
+input= lambda: sys.stdin.readline().rstrip()
+sys.setrecursionlimit(10**9)
+def pin(type=int):return map(type,input().split())
+def tupin(t=int):return tuple(pin(t))
+def lispin(t=int):return list(pin(t))
+#%%code
+def resolve():
+    N,A,B=pin()
+    tt=abs(A-B)
+    if tt%2==0:
+        print(tt//2)
+        return
+    else:
+        s= max(A,B)-1
+        t=N-min(A,B)
+        print(min(s,t,(tt-1)//2+1))
+#%%submit!
+resolve()","import sys
+input = lambda: sys.stdin.readline().rstrip()
+sys.setrecursionlimit(10 ** 9)
+
+def pin(type=int):
+    return map(type, input().split())
+
+def tupin(t=int):
+    return tuple(pin(t))
+
+def lispin(t=int):
+    return list(pin(t))
+
+def resolve():
+    N, A, B = pin()
+    tt = abs(A - B)
+    if (B - A) % 2 == 0:
+        print((B - A) // 2)
+    else:
+        print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)
+resolve()","#!/usr/bin/env python3
+#%% for atcoder uniittest use
+import sys
+input= lambda: sys.stdin.readline().rstrip()
+sys.setrecursionlimit(10**9)
+def pin(type=int):return map(type,input().split())
+def tupin(t=int):return tuple(pin(t))
+def lispin(t=int):return list(pin(t))
+#%%code
+def resolve():
+    N,A,B=pin()
+    tt=abs(A-B)
+    if tt%2==0:
+        print(tt//2)
+        return
+    else:
+        s= max(A,B)-1
+        t=N-min(A,B)
+        print(min(s,t,(tt-1)//2+1)+min(min(A,B)-1,N-max(A,B)))
+#%%submit!
+resolve()",1,51,0.33766233766233766,,6.709152,0
+u846226907,"import sys
+
+input = sys.stdin.readline
+MOD = 1000000007
+
+N,A,B = map(int,input().split())
+
+if abs(A-B)%2 == 0:
+    print(abs(A-B)//2)
+else:
+    if (A-1) < (N-B):
+        print((A-1)+1+(B-A-1)//2)
+    else:
+        print((N-B)+1+(N-B-A)//2)","import sys
+input = sys.stdin.readline
+MOD = 1000000007
+N, A, B = map(int, input().split())
+if abs(A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+elif A - 1 <= N - B:
+    print((A + B - 1) // 2)
+else:
+    print(N + 1 - (B + A + 1) // 2)","import sys
+
+input = sys.stdin.readline
+MOD = 1000000007
+
+N,A,B = map(int,input().split())
+
+if abs(A-B)%2 == 0:
+    print(abs(A-B)//2)
+else:
+    if (A-1) < (N-B):
+        print((A-1)+1+(B-A-1)//2)
+    else:
+        print((N-B)+1+(B-A-1)//2)",1,25,0.13793103448275862,,5.510836,0
+u411858517,"N, A, B = map(int, input().split())
+
+if abs(A-B)%2 == 0:
+  print(abs(A-B)//2)
+else:
+  if A - 1 <= N - B:
+    print((A-1) + (B-1)//2)
+  else:
+    print((N-B) + (N-A-1)//2)
+","N, A, B = map(int, input().split())
+if abs(A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+elif A - 1 <= N - B:
+    print((A + B - 1) // 2)
+else:
+    print(N + 1 - (B + A + 1) // 2)","N, A, B = map(int, input().split())
+
+if (B - A)%2 == 0:
+  print((B - A) // 2)
+
+else:
+  if A - 1 > N - B:
+    tmp = N - B
+    B = N
+    A = A + tmp + 1
+    print((B - A) // 2 + tmp + 1)
+
+  else:
+    tmp = A - 1
+    A = 1
+    B = B - tmp - 1
+    print((B - A) // 2 + tmp + 1)",1,14,0.8556701030927836,,4.512217,0
+u506910932,"n, a, b = map(int, input().split())
+# 偶奇一致
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    left = a - 1
+    right = n - b
+
+    if left > right:
+        cnt = right + 1
+        left = min(left + cnt, n)
+        print((n - left) // 2 + cnt)
+    else:
+        cnt = left + 1
+        right = max(right - cnt, 1)
+        print((right - 1) // 2 + cnt)
+","n, a, b = map(int, input().split())
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    left = a - 1
+    right = n - b
+    if b - 1 < n - a:
+        print(b - 1 - (b - a) // 2)
+    else:
+        print(n - a - (b - a) // 2)","n, a, b = map(int, input().split())
+# 偶奇一致
+if a % 2 == b % 2:
+    print((b - a) // 2)
+else:
+    left = a - 1
+    right = n - b
+
+    if left > right:
+        cnt = right + 1
+        left = min(a + cnt, n)
+        print((n - left) // 2 + cnt)
+    else:
+        cnt = left + 1
+        right = max(b - cnt, 1)
+        print((right - 1) // 2 + cnt)
+",1,64,0.030303030303030276,,4.818617,0
+u474423089,"N,A,B=map(int,input().split(' '))
+if abs(B-A)%2==0:
+    print(abs(B-A)//2)
+else:
+    print(min(max(A-1,B-1),max(N-A,N-B)))","N, A, B = map(int, input().split(' '))
+if abs(B - A) % 2 == 0:
+    print(abs(B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","N,A,B=map(int,input().split(' '))
+if abs(B-A)%2==0:
+    print(abs(B-A)//2)
+else:
+     l = min(A-1,B-1)+1+(abs(A-B)-1)//2
+     r = min(N-A,N-B)+1+(abs(A-B)-1)//2
+     print(min(l,r))",1,23,0.7325581395348837,,3.707191,0
+u093041722,"N,A,B = (int(x) for x in input().split())
+if (B - A) % 2 == 0:
+    print((B-A)//2)
+else:
+    if B - A == 1:
+        print('2')
+    else:
+        if A <= N-B:
+            print((A+B-1)//2)
+        else:
+            print((2*N-A-B+1)//2)","N, A, B = (int(x) for x in input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+elif A - 1 <= N - B:
+    print((A + B - 1) // 2)
+else:
+    print(N + 1 - (B + A + 1) // 2)","N,A,B = (int(x) for x in input().split())
+if (B - A) % 2 == 0:
+    print((B-A)//2)
+else:
+    if B - A == 1:
+        if A == 1 or B == N:
+            print('1')
+        else:
+            print('2')
+    else:
+        if A <= N-B:
+            print((A+B-1)//2)
+        else:
+            print((2*N-A-B+1)//2)",1,29,0.3958333333333333,,6.906537,0
+u706786134,"n, a, b = map(int, input().split())
+a = min(a, b)
+b = max(a, b)
+
+if (b - a) & 1 == 0:
+    print((b - a) // 2)
+else:
+    print(min(n - a, b - 1))
+","n, a, b = map(int, input().split())
+a = min(a, b)
+b = max(a, b)
+if b - a & 1 == 0:
+    print((b - a) // 2)
+else:
+    print(min(a - 1, n - b) + 1 + (b - a - 1) // 2)","n, a, b = map(int, input().split())
+a = min(a, b)
+b = max(a, b)
+
+ret = 0
+if (b - a) & 1:
+    if n - a < b - 1:
+        ret = n - b + 1
+        a += ret
+        b = n
+    else:
+        ret = a
+        a = 1
+        b -= ret
+print(ret + (b - a) // 2)
+",1,19,0.7738095238095238,,6.582282,0
+u106778233,"n,a,b=map(int,input().split())
+if (a+b)%2==0:
+    print(abs(a-b)//2)
+else:
+    
+    temp=min(b-1,n-a)
+    if temp==b-1:
+        ans=(b+a-1)//2
+    else:
+        ans=(n-b+b-a-1)//2
+    print(ans)","n, a, b = map(int, input().split())
+if (a - b) % 2 == 0:
+    print(abs(a - b) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","n,a,b=map(int,input().split())
+if (a+b)%2==0:
+    print(abs(a-b)//2)
+else:
+    
+    temp=min(b-1,n-a)
+    if temp==b-1:
+        ans=(b+a-1)//2
+    else:
+        
+        ans=(n+1-b+n+1-a-1)//2
+    print(ans)",1,53,0.11666666666666664,,2.590212,0
+u409306788,"import sys
+input = sys.stdin.readline
+
+# A - Table Tennis Training
+def move_left():
+	f = A + (B-A-1)/2
+	return int(f)
+
+
+def move_right():
+	f = N - B + 1 + (B-A-1)/2	
+	return int(f)
+
+N, A, B = map(int, input().split())
+
+if (B-A) % 2 == 0:
+	print(int((B-A)/2))
+else:
+	l = move_left()
+	r = move_right()
+	print(min(l, r))","import sys
+input = sys.stdin.readline
+
+def move_left():
+    f = A + (B - A - 1) / 2
+    return int(f)
+
+def move_right():
+    f = N - B + 1 + (B - A - 1) / 2
+    return int(f)
+N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A, N - B + 1) + (B - A) // 2)","import sys
+input = sys.stdin.readline
+
+# A - Table Tennis Training
+def move_left():
+	return A + (B-A-1)//2
+
+
+def move_right():
+	return  N - B + 1 + (B-A-1)//2	
+
+
+N, A, B = map(int, input().split())
+
+if (B-A) % 2 == 0:
+	print(int((B-A)//2))
+else:
+	l = move_left()
+	r = move_right()
+	print(min(l, r))",1,35,0.375,,6.147339,0
+u644972721,"n, a, b = map(int, input().split())
+m = 1
+l = b - a
+x = min(n - b, a - m)
+
+if l % 2 == 0:
+    print(int(l / 2))
+else:
+    print(int((l + 2 * x + 1) / 2))","n, a, b = map(int, input().split())
+m = 1
+l = b - a
+x = min(n - b, a - m)
+if (a - b) % 2 == 0:
+    print(abs(a - b) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - (a + b) + 1) // 2))","n, a, b = map(int, input().split())
+if abs(a - b) % 2 == 0:
+    ans = abs(a - b) // 2
+else:
+    if abs(a - 1) > abs(n - b):
+        a, b = n + 1 - b, n + 1 - a
+    b -= a
+    ans = abs(b - 1) // 2 + a
+print(ans)",1,36,0.7293233082706767,,3.781794,0
+u301624971,"N, A, B = map(int, input().split())
+
+
+distance =(B - A - 1 )/2
+if( (A % 2 == 0 and B % 2 ==0) or (A%2==1 and B%2==1)):
+    ans=(B - A)//2
+else:
+    ans = min(A-1,N - B) + 1 + int(distance)
+
+print(ans)
+",,"N, A, B = map(int, input().split())
+
+
+distance =(B - A - 1 )//2
+if( (A % 2 == 0 and B % 2 ==0) or (A%2==1 and B%2==1)):
+    ans=(B - A)//2
+else:
+    ans = min(A-1,N - B) + 1 + distance
+
+print(ans)",0,,,,1.615664,0
+u153188481,"def solve(N, A, B):
+    if A % 2 == B % 2:
+        return (B - A) // 2
+    return int(min(A-1, N-B) + 1 + (B - A -1)/2)
+
+if __name__ == ""__main__"":
+    n, a, b = map(int, input().split())
+    print(int(solve(n, a, b)))
+","def solve(N, A, B):
+    if A % 2 == B % 2:
+        return (B - A) // 2
+    return int(min(A - 1, N - B) + 1 + (B - A - 1) // 2)
+if __name__ == '__main__':
+    n, a, b = map(int, input().split())
+    print(int(solve(n, a, b)))","def solve(N, A, B):
+    if A % 2 == B % 2:
+        return (B - A) // 2
+    return min(A-1, N-B) + 1 + (B - A -1)//2
+
+if __name__ == ""__main__"":
+    n, a, b = map(int, input().split())
+    print(solve(n, a, b))
+",1,1,0.875,,5.241508,0
+u803617136,"n, a, b = map(int, input().split())
+diff = abs(a - b)
+if diff % 2 == 0:
+    ans = diff // 2
+else:
+    if diff == 1:
+        ans = min(n - a, b - 1)
+    else:
+        ans = min((n - b) + (diff - 1) // 2, (a - 1) + (diff - 1) // 2)
+
+print(ans)
+","n, a, b = map(int, input().split())
+diff = abs(a - b)
+if diff % 2 == 0:
+    ans = diff // 2
+elif b - 1 > n - a:
+    ans = n - b + (b - a - 1) // 2 + 1
+else:
+    ans = a - 1 + (b - a - 1) // 2 + 1
+print(ans)","n, a, b = map(int, input().split())
+diff = abs(a - b)
+if diff % 2 == 0:
+    ans = diff // 2
+else:
+    ans = (diff - 1) // 2 + min(n - b, a - 1) + 1
+
+print(ans)
+",1,39,0.524390243902439,,5.936914,0
+u151005508,"N, A, B = map(int, input().split())
+
+if A % 2 == B % 2:
+    print((B - A) // 2)
+elif B - A == 1:
+    print(min(B - 1, N - A))
+else:
+    a = ((B - (A - 1) - 1) - 1) // 2 + (A - 1)
+    b = (N - (A + (N - B) + 1)) // 2 + (N - B)
+    #print(a)
+    #print(b)
+    print(min(a, b))","N, A, B = map(int, input().split())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","N, A, B = map(int, input().split())
+
+if A % 2 == B % 2:
+    print((B - A) // 2)
+elif B - A == 1:
+    print(min(B - 1, N - A))
+else:
+    a = ((B - (A - 1) - 1) - 1) // 2 + (A - 1) + 1
+    b = (N - (A + (N - B) + 1)) // 2 + (N - B) + 1
+    #print(a)
+    #print(b)
+    print(min(a, b))",1,85,0.06593406593406592,,2.879145,0
+u810356688,"import sys
+def input(): return sys.stdin.readline().rstrip()
+def main():
+    n,a,b=map(int,input().split())
+    if (b-a)%2==0:print((b-a)//2)
+    else:print(min((b-a+1)//2,(2*n-b+1-a)//2))
+
+if __name__=='__main__':
+    main()","import sys
+
+def input():
+    return sys.stdin.readline().rstrip()
+
+def main():
+    n, a, b = map(int, input().split())
+    if (b - a) % 2 == 0:
+        print((b - a) // 2)
+    else:
+        print((b - a) // 2 + min(a - 1, n - b) + 1)
+if __name__ == '__main__':
+    main()","import sys
+def input(): return sys.stdin.readline().rstrip()
+def main():
+    n,a,b=map(int,input().split())
+    if (b-a)%2==0:print((b-a)//2)
+    else:print(min((b+a-1)//2,(2*n-b+1-a)//2))
+
+if __name__=='__main__':
+    main()",1,26,0.07142857142857145,,1.828985,0
+u527993431,"N,A,B=map(int,input().split())
+if (A+B)%2==0:
+	P=B-(A+B)//2
+else:
+	P=float(""inf"")
+if (A+B)%2==1:
+	Q=A-1
+	B-=Q
+	Q+=1
+	B-=1
+	Q+=B-(B+1)//2
+else:
+	Q=float(""inf"")
+if (A+B)%2==1:
+	R=N-B+1
+	B=N
+	A-=R
+	R+=B-(A+B)//2
+else:
+	R=float(""inf"")
+print(min(P,Q,R))",,"N,A,B=map(int,input().split())
+if (A+B)%2==0:
+	P=(B-A)//2
+else:
+	P=float(""inf"")
+if (A+B)%2==1:
+	Q=A
+	Q+=(B-Q-(B-Q+1)//2)
+else:
+	Q=float(""inf"")
+
+if (A+B)%2==1:
+	R=N-B+1
+	B=N
+	A+=R
+	R+=B-(A+B)//2
+else:
+	R=float(""inf"")
+print(min(P,Q,R))",0,,,,7.525197,0
+u393512980,"N, A, B = map(int, input().split())
+if (A-B)%2:
+    if A > B:
+        A, B = B, A
+    a = (B-A-1)//2+A if B > A+1 else 10**20
+    b = (N-A+(N-B+1))//2+N-B+1 if N > A+(N-B+1) else 10**20
+    print(min(max(A, B)-1, N-min(A,B), a, b))
+else:
+    print(abs(A-B)//2)","N, A, B = map(int, input().split())
+if (A - B) % 2:
+    if abs(A - 1) > abs(N - B):
+        A, B = (N + 1 - B, N + 1 - A)
+    a = (B - A - 1) // 2 + A if B > A + 1 else 10 ** 20
+    b = (N - A + (N - B + 1)) // 2 + N - B + 1 if N > A + (N - B + 1) else 10 ** 20
+    print(min(max(A, B) - 1, N - min(A, B), a, b))
+else:
+    print(abs(A - B) // 2)","N, A, B = map(int, input().split())
+if (A-B)%2:
+    if A > B:
+        A, B = B, A
+    a = (B-A-1)//2+A
+    b = (B-A-1)//2+N-B+1
+    print(min(a, b))
+else:
+    print(abs(A-B)//2)",1,27,0.7096774193548387,,6.660599,0
+u760961723,"N, A, B = map(int,input().split())
+
+if (A-B)%2 == 0:
+  print(abs(A-B)//2)
+else:
+  print(min(max(N-A,N-B),max(A-1,B-1)))","N, A, B = map(int, input().split())
+if (A - B) % 2 == 0:
+    print(abs(A - B) // 2)
+else:
+    print(min(A - 1, N - B) + 1 + (B - A - 1) // 2)","N, A, B = map(int,input().split())
+
+if (A-B)%2 == 0:
+  print(abs(A-B)//2)
+else:
+  print(min((A+B-1)//2,(2*N-(A+B)+1)//2))",1,22,0.5769230769230769,,1.841268,0
+u060736237,"n, a, b = map(int, input().split())
+result = 0
+if (b - a)%2 == 1:
+    temp1 = b - 1
+    temp2 = n - a
+    if temp1 < temp2:
+        result = temp1
+    else:
+        result = temp2
+else:
+    result = (b - a) // 2
+print(result)
+",,"n, a, b = map(int, input().split())
+result = 0
+if (b - a)%2 == 1:
+    temp1 = a - 1
+    temp2 = n - b
+    work = temp1 if temp1 < temp2 else temp2
+    if (b-a)//2 == 1:
+        result = work
+    else:
+        result = work + 1 + (b-a-1)//2
+else:
+    result = (b - a) // 2
+print(result)",0,,,,17.453210,0
+u103724957,"val = input().split(' ')
+N = int(val[0])
+A = int(val[1])
+B = int(val[2].strip())
+
+if (B - A) % 2 == 0:
+    print(int((B-A)/2))
+else:
+    diff = N - B if A - 1 > N - B else A - 1
+    flip = diff + 1
+    distance = int((B - A - 1) / 2)
+    print(flip + distance)
+","val = input().split(' ')
+N = int(val[0])
+A = int(val[1])
+B = int(val[2].strip())
+if (B - A) % 2 == 0:
+    print((B - A) // 2)
+else:
+    print(min(N - B, A - 1) + 1 + (B - A - 1) // 2)","val = input().split(' ')
+N = int(val[0])
+A = int(val[1])
+B = int(val[2].strip())
+
+if (B - A) % 2 == 0:
+    print((B-A)//2)
+else:
+    diff = N - B if A - 1 > N - B else A - 1
+    flip = diff + 1
+    distance = (B - A - 1) // 2
+    print(flip + distance)
+",1,47,0.14545454545454545,,7.607565,0
+u386089355,"n, a, b = map(int, input().split())
+
+if (b - a) % 2 == 0:
+	print(int((b - a) / 2))
+elif (b - a) % 2 == 1:
+	na = n - a
+	nb = n - b
+	a1 = a - 1
+	b1 = b - 1
+	if na + nb <= a1 + b1:
+		print(int((na + nb + 1) / 2))
+	else:
+		print(int((a1 + b1 + 1) / 2))","n, a, b = map(int, input().split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - a - b + 1) // 2))","n, a, b = map(int, input().split())
+
+if (b - a) % 2 == 0:
+	print((b - a) // 2)
+elif (b - a) % 2 == 1:
+	na = n - a
+	nb = n - b
+	a1 = a - 1
+	b1 = b - 1
+	if na + nb <= a1 + b1:
+		print((na + nb + 1) // 2)
+	else:
+		print((a1 + b1 + 1) // 2)",1,95,0.11214953271028039,,2.691980,0
+u312658812,"def min_steps_v2(n, a, b):
+    if (b - a) % 2 == 0:
+        return int((b - a) / 2)
+ 
+    # odd case
+    a_diff = a - 1
+    b_diff = n - b
+ 
+    if a_diff > b_diff:
+      steps_to_even = n - b + 1
+      remain_steps = min_steps_v2(n, a + (n - b) + 1, n)
+    else:
+      steps_to_even = a
+      remain_steps = min_steps_v2(n, 1, b - a)
+ 
+    return steps_to_even + remain_steps
+
+numbers = input().split(' ')
+ 
+n = int(numbers[0])
+a = int(numbers[1])
+b = int(numbers[2])
+ 
+print(min_steps_v2(n, a, b))
+","def min_steps_v2(n, a, b):
+    if (b - a) % 2 == 0:
+        return int((b - a) // 2)
+    a_diff = a - 1
+    b_diff = n - b
+    if a_diff > b_diff:
+        steps_to_even = n - b + 1
+        remain_steps = min_steps_v2(n, a + (n - b) + 1, n)
+    else:
+        steps_to_even = a
+        remain_steps = min_steps_v2(n, 1, b - a)
+    return steps_to_even + remain_steps
+numbers = input().split(' ')
+n = int(numbers[0])
+a = int(numbers[1])
+b = int(numbers[2])
+print(min_steps_v2(n, a, b))","import numpy as np
+
+def min_steps_v2(n, a, b):
+    n = np.int64(n)
+    a = np.int64(a)
+    b = np.int64(b)
+
+    if (b - a) % 2 == 0:
+        return np.int64(int(b - a) // 2)
+ 
+    # odd case
+    a_diff = a - 1
+    b_diff = n - b
+ 
+    if a_diff > b_diff:
+      steps_to_even = n - b + 1
+      remain_steps = min_steps_v2(n, a + (n - b) + 1, n)
+    else:
+      steps_to_even = a
+      remain_steps = min_steps_v2(n, 1, b - a)
+ 
+    return steps_to_even + remain_steps
+
+numbers = input().split(' ')
+ 
+n = int(numbers[0])
+a = int(numbers[1])
+b = int(numbers[2])
+ 
+print(min_steps_v2(n, a, b))
+",1,1,0.975,,3.443247,0
+u275154104,"strargs = input()
+
+n, a, b = map(lambda x: int(x), strargs.split())
+
+if (b - a) % 2 == 0:
+  print((b - a)//2)
+  
+elif a - 1 < n - b:
+  mid = (b - a) - 1
+  print(a + mid - 1)
+
+else:
+  newA = (a + (n - b + 1))
+  mid = newA + (n - newA)//2
+  print((n - b + 1) + (n - newA)//2)","strargs = input()
+n, a, b = map(lambda x: int(x), strargs.split())
+if (b - a) % 2 < 1:
+    print((b - a) // 2)
+else:
+    print(min((a + b - 1) // 2, (2 * n - a - b + 1) // 2))","strargs = input()
+
+n, a, b = map(lambda x: int(x), strargs.split())
+
+if (b - a) % 2 == 0:
+  print((b - a)//2)
+  
+elif a - 1 < n - b:
+  newB = b - a
+  mid = (newB - 1)//2 + 1
+  print(a + mid - 1)
+
+else:
+  newA = (a + (n - b + 1))
+  mid = newA + (n - newA)//2
+  print((n - b + 1) + (n - newA)//2)",1,82,0.163265306122449,,3.721546,0
+u514390882,"n, a, b = map(int, input().split())
+ans = 0
+if (b - a) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    ans += (b - a) // 2
+    a += ans
+    b -= ans
+    ans += min(n - a, b - 1)
+print(ans)",,"n, a, b = map(int, input().split())
+ans = 0
+if (b - a) % 2 == 0:
+    ans = (b - a) // 2
+else:
+    # ans += (b - a) // 2
+    # a += ans
+    # b -= ans
+    # ans += min(n - a, b - 1)
+    if a - 1 <= n - b:
+        ans += a
+        b -= a
+        a = 1
+    else:
+        ans += n - b + 1
+        a += n - b + 1
+        b = n
+    ans += (b - a) // 2
+print(ans)",0,,,,1.351392,0
+u316341119,"N, A, B = map(int, input().split())
+
+
+d = B-A
+if d%2 == 1:
+    d = min((B + (N-B)*2 + 1) - A, B - (1 - (A-1)*2 -1))
+
+ans = d//2
+print(ans)
+","N, A, B = map(int, input().split())
+d = B - A
+if d % 2 == 1:
+    d = min(B + (N - B) * 2 + 1 - A, B - -A)
+ans = d // 2
+print(ans)","N, A, B = map(int, input().split())
+
+
+d = B-A
+if d%2 == 1:
+    d = min((B + (N-B)*2 + 1) - A, B - (A - (A-1)*2 - 1))
+
+ans = d//2
+print(ans)
+",1,12,0.14285714285714285,,2.195673,0
+u385244248,"import sys
+import math
+import string
+import fractions
+import random
+from operator import itemgetter
+import itertools
+from collections import deque
+import copy
+import heapq
+from bisect import bisect, bisect_left, bisect_right
+
+MOD = 10 ** 9 + 7
+INF = float('inf')
+input = lambda: sys.stdin.readline().strip()
+
+sys.setrecursionlimit(10 ** 8)
+
+N, A, B = map(int, input().split())
+dis = B - A - 1
+if dis % 2 == 0:
+    print(min(max(A, B) - 1, N - min(A, B)))
+else:
+    print((dis + 1) // 2)","import sys
+import math
+import string
+import fractions
+import random
+from operator import itemgetter
+import itertools
+from collections import deque
+import copy
+import heapq
+from bisect import bisect, bisect_left, bisect_right
+MOD = 10 ** 9 + 7
+INF = float('inf')
+input = lambda: sys.stdin.readline().strip()
+sys.setrecursionlimit(10 ** 8)
+N, A, B = map(int, input().split())
+dis = B - A - 1
+if (B - A) % 2:
+    print((B - A) // 2 + 1 + min(N - B, A - 1))
+else:
+    print((B - A) // 2)","import sys
+import math
+import string
+import fractions
+import random
+from operator import itemgetter
+import itertools
+from collections import deque
+import copy
+import heapq
+from bisect import bisect, bisect_left, bisect_right
+
+MOD = 10 ** 9 + 7
+INF = float('inf')
+input = lambda: sys.stdin.readline().strip()
+
+sys.setrecursionlimit(10 ** 8)
+
+N, A, B = map(int, input().split())
+dis = B - A - 1
+if dis % 2 == 0:
+    print(min((N - max(A, B) + 1) + (N - min(A, B) - (N - max(A, B) + 1)) // 2,
+          min(A, B) + ((max(A, B) - min(A, B) - 1) // 2)))
+else:
+    print((dis + 1) // 2)
+",1,33,0.6333333333333333,,6.085238,0
+u552176911,"n, a, b = list(map(int, input().split("" "")))
+
+if (a + b) % 2 == 0:
+    print((b - a) // 2)
+    exit()
+else:
+    if b - 1 < n - a:
+        print(((b - a) // 2) + b - 1)
+    else:
+        print(((b - a) // 2) + n - a)","n, a, b = list(map(int, input().split(' ')))
+if (a + b) % 2 == 0:
+    print((b - a) // 2)
+    exit()
+elif a - 1 <= n - b:
+    print((a + b - 1) // 2)
+else:
+    print(n + 1 - (b + a + 1) // 2)","n, a, b = list(map(int, input().split("" "")))
+
+if (a + b) % 2 == 0:
+    print((b - a) // 2)
+    exit()
+else:
+    if b - 1 < n - a:
+        print(b - 1 - ((b - a) // 2))
+    else:
+        print(n - a - ((b - a) // 2))",1,28,0.45098039215686275,,3.966945,0
+u432098488,"N, A, B = map(int, input().split())
+
+Abs = B - A
+if Abs % 2 == 0:
+  ans = Abs // 2
+else:
+  a, b = A-1, N-B
+  if a < b:
+    ans, B = a+1, B-(a+1)
+    ans += (B-1) // 2
+  else:
+    ans, A = b+1, A-(b+1)
+    ans += (N-A) // 2
+    
+print(ans)","N, A, B = map(int, input().split())
+Abs = B - A
+if Abs % 2 == 0:
+    ans = Abs // 2
+else:
+    a, b = (A - 1, N - B)
+    if A - 1 <= N - B:
+        ans = (B - A - 1) // 2 + 1 + A - 1
+    else:
+        ans = (B - A - 1) // 2 + 1 + N - B
+print(ans)","N, A, B = map(int, input().split())
+
+Abs = B - A
+if Abs % 2 == 0:
+  ans = Abs // 2
+else:
+  a, b = A-1, N-B
+  if a < b:
+    ans, B = a+1, B-(a+1)
+    ans += (B-1) // 2
+  else:
+    ans, A = b+1, A+(b+1)
+    ans += (N-A) // 2
+    
+print(ans)",1,67,0.01470588235294118,,7.122984,0
+u316464887,"def main():
+    N, A, B = map(int, input().split())
+    if A % 2 == B % 2:
+        return abs(A - B)//2
+    else:
+        x = A + 1 + (B - A - 1)//2
+        y = (N - B + 1) + (- A + B + 1)//2
+        return min(x, y)
+
+print(main())
+","def main():
+    N, A, B = map(int, input().split())
+    if A % 2 == B % 2:
+        return abs(A - B) // 2
+    else:
+        x = A + 1 + (B - A - 1) // 2
+        y = 1 + min(A - 1, N - B) + (B - A) // 2
+        return min(x, y)
+print(main())","def main():
+    N, A, B = map(int, input().split())
+    if A % 2 == B % 2:
+        return abs(A - B)//2
+    else:
+        x = A + (B - A - 1)//2
+        y = (N - B) + (- A + B + 1)//2
+        return min(x, y)
+
+print(main())
+",1,20,0.23076923076923078,,6.320627,0
+u858742833,"def main():
+    N, A, B = list(map(int, input().split()))
+    if (A ^ B) & 1:
+        return min(B - 1, N - A)
+    return (B - A) // 2
+
+print(main())
+","def main():
+    N, A, B = map(int, input().split())
+    if (B - A) % 2:
+        print((B - A) // 2 + 1 + min(N - B, A - 1))
+    else:
+        print((B - A) // 2)
+main()","def main():
+    N, A, B = list(map(int, input().split()))
+    if (A ^ B) & 1:
+        return min((A - 1) + 1 + (B - A - 1) // 2,
+                   (N - B) + 1 + (N - (A + N - B + 1)) // 2)
+    return (B - A) // 2
+
+print(main())
+",1,37,0.5316455696202531,,5.116009,0
+u665452497,"n, a, b = map(int, input().split())
+if (a+b)%2:
+  if a-1 <= n-b:
+    print(b-1)
+  else:
+    print(n-a)
+else:
+  print((b-a)//2)","n, a, b = map(int, input().split())
+if (a + b) % 2:
+    if b - 1 < n - a:
+        print(b - 1 - (b - a) // 2)
+    else:
+        print(n - a - (b - a) // 2)
+else:
+    print((b - a) // 2)","n, a, b = map(int, input().split())
+if (a+b)%2:
+  if a-1 <= n-b:
+    print(a+(b-a-1)//2)
+  else:
+    print(n-b+1+(n-(a+n-b+1))//2)
+else:
+  print((b-a)//2)",1,25,0.5901639344262295,,3.062037,0
+u915647268,"n, a, b = [int(i) for i in input().split()]
+a_distance = a-1
+b_distance = n-b
+ab_distance = b - a
+
+if ab_distance % 2 == 0:
+  result = ab_distance/2
+else:
+  if a_distance < b_distance:
+    result = a_distance + (ab_distance-1)/2 + 1
+  else:
+    result = b_distance + (ab_distance-1)/2 + 1
+print(int(result))
+
+",,"n, a, b = [int(i) for i in input().split()]
+a_distance = a-1
+b_distance = n-b
+ab_distance = b - a
+
+if ab_distance % 2 == 0:
+  result = ab_distance//2
+else:
+  if a_distance < b_distance:
+    result = a_distance + (ab_distance-1)//2 + 1
+  else:
+    result = b_distance + (ab_distance-1)//2 + 1
+print(result)
+
+",0,,,,22.004956,0
+u959340534,"N, A, B = map(int, input().split())
+d = A - B if A > B else B - A
+d2 = d // 2
+d3 = d % 2
+if d3 == 0:
+  ans = d2
+else:
+  bigger = B
+  smaller = A
+  if A > B:
+    bigger = A
+    smaller = B
+  distance = N - smaller if N - smaller < bigger else bigger - 1
+  ans = distance
+
+print(ans)",,"N, A, B = map(int, input().split())
+d = A - B if A > B else B - A
+d2 = d // 2
+d3 = d % 2
+if d3 == 0:
+  ans = d2
+else:
+  bigger = B
+  smaller = A
+  if A > B:
+    bigger = A
+    smaller = B
+  shortest = smaller if N - bigger + 1 > smaller else N - bigger + 1
+  ans = shortest + d2
+  
+  
+
+print(ans)",0,,,,20.855228,0

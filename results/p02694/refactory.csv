@@ -1,0 +1,2298 @@
+user_id,buggy,patch,oracle,fixed,ted,ip_last,ip_traj,att,seed
+u556594202,"x=int(input())
+
+m=100
+i=0
+while 1:
+    m += int(m*.01)
+    i+=1
+    if m>=x:
+        break
+
+print(i)
+","x = int(input())
+m = 100
+i = 0
+while 1:
+    m = m * 101 // 100
+    i = i + 1
+    if m >= x:
+        break
+print(i)","x=int(input())
+
+m=100
+i=0
+while 1:
+    m += m//100
+    i+=1
+    if m>=x:
+        break
+
+print(i)
+",1,12,0.29411764705882354,,50.953835,0
+u268314634,"x=int(input())
+
+yo=100
+n=0
+
+while x>yo:
+    yo+=yo/100
+    n+=1
+print(n)
+","x = int(input())
+yo = 100
+n = 0
+while x > yo:
+    yo += yo // 100
+    n += 1
+print(n)","x=int(input())
+
+yo=100
+n=0
+
+while x>yo:
+    yo+=yo//100
+    n+=1
+print(n)",1,1,0.5,,55.780043,0
+u221940831,"X = int(input())
+G = 100
+after_year = 0
+
+while X > G:
+    G += G // 100
+    print(G)
+    after_year += 1
+
+print(after_year)","X = int(input())
+G = 100
+after_year = 0
+while X > G:
+    G += G // 100
+    after_year += 1
+print(after_year)","X = int(input())
+G = 100
+after_year = 0
+
+while X > G:
+    G += G // 100
+    after_year += 1
+
+print(after_year)",1,6,0.5,,42.129705,0
+u710282484,"x=int(input())
+mo=100
+i=0
+while True:
+    i+=1
+    mo=int(mo+(int(mo*0.01)))
+    if mo>=x:
+        print(i)
+        exit()","x = int(input())
+mo = 100
+i = 0
+while True:
+    i += 1
+    mo = mo + mo // 100
+    if mo >= x:
+        print(i)
+        exit()","x=int(input())
+a=100
+i=0
+while (x>a):
+    i+=1
+    a=a*101//100
+print(i)
+",1,8,0.8095238095238095,,51.218270,0
+u427690532,"X = int(input())
+n = 0
+money = 100
+while True:
+    money += int(money * 0.01)    
+    #print(money)
+    n += 1
+    if money >= X:
+        print(n)
+        break",,"from decimal import Decimal
+X = int(input())
+n = 0
+money = 100
+while True:
+    money += int(money * Decimal(""0.01""))
+    #print(money)
+    n += 1
+    if money >= X:
+        print(n)
+        break",0,,,,139.551933,0
+u905895868,"def com_interest(n: int) -> int:
+    saving = 100
+    interest_per = 0.01
+    years = 0
+
+    while True:
+        years += 1
+        saving = int(saving*(1 + interest_per))
+        if saving >= n:
+            break
+    return years
+
+print(com_interest(int(input())))",,"def com_interest(n: int) -> int:
+    saving = 100
+    interest_per = 0.01
+    years = 0
+
+    while True:
+        years += 1
+        saving = (saving * 101) // 100
+        if saving >= n:
+            break
+    return years
+
+
+print(com_interest(int(input())))",0,,,,31.902286,0
+u594983000,"import sys
+def input(): return sys.stdin.readline().rstrip()
+import math
+X = int(input())
+
+ans = False
+money = 100
+year = 0
+while money < X:
+    money = int(math.floor(money * 1.01))
+    year += 1
+
+print(year)",,"import sys
+def input(): return sys.stdin.readline().rstrip()
+import math
+
+X = int(input())
+
+ans = False
+money = 100
+year = 0
+while money < X:
+    money += money // 100
+    year += 1
+
+print(year)
+",0,,,,63.895697,0
+u423812170,"X = int(input())
+
+deposit = 100
+y_later = 0
+
+while deposit < X:
+    y_later += 1
+    deposit += deposit // 100
+    print(deposit)
+
+print(y_later)","X = int(input())
+deposit = 100
+y_later = 0
+while deposit < X:
+    deposit = deposit + deposit // 100
+    y_later += 1
+print(y_later)","X = int(input())
+
+deposit = 100
+y_later = 0
+
+while deposit < X:
+    y_later += 1
+    deposit += deposit // 100
+
+print(y_later)",1,14,0.3,,42.015034,0
+u244836567,"a=int(input())
+i=100
+f=0
+while (i/a)<1:
+  i=i+i//100
+  f=f+1
+print(f)
+","a = int(input())
+i = 100
+f = 0
+while i < a:
+    i = i + i // 100
+    f = f + 1
+print(f)","a=int(input())
+i=100
+f=0
+while i<a:
+  i=i+i//100
+  f=f+1
+print(f)",1,4,0.5,,30.553484,0
+u485349322,"X=int(input())
+def ans165(X:int):
+    cash=100
+    count=0
+    while True:
+        count += 1
+        cash=int(cash*1.01)
+        if cash>=X:
+            break
+    return count
+print(ans165(X))",,"X=int(input())
+def ans165(X:int):
+    cash=100
+    count=0
+    while True:
+        # cash=int(cash*1.01)
+        cash+=cash//100#元本に１パーセントの利子をつけ小数点以下切り捨て
+        count += 1#利子をつける回数だけcountを増やす
+        if cash>=X:#cashがXの値以上になったらループ終了
+            break
+    return count
+print(ans165(X))
+",0,,,,31.655769,0
+u003505857,"x = int(input())
+money = 100
+count = 0
+while money < x:
+    money = int(money * 1.01)
+    count += 1
+
+print(count)","x = int(input())
+money = 100
+count = 0
+while money < x:
+    money += money // 100
+    count += 1
+print(count)","x = int(input())
+money = 100
+count = 0
+while money < x:
+    money = (money * 101) // 100
+    count += 1
+
+print(count)",1,6,0.5,,55.758954,0
+u424467986,"X = int(input())
+ASSET = 100
+cnt = 0
+
+while ASSET < X:
+  ASSET += int(ASSET * 0.01)
+  cnt += 1
+
+print(cnt)","X = int(input())
+ASSET = 100
+cnt = 0
+while ASSET < X:
+    ASSET += int(ASSET // 100)
+    cnt += 1
+print(cnt)","X = int(input())
+ASSET = 100
+cnt = 0
+
+while ASSET < X:
+  ASSET += ASSET // 100
+  cnt += 1
+
+print(cnt)",1,2,0.7142857142857143,,55.836108,0
+u053535689,"def atc_165b(X: int) -> int:
+    savings = 100
+    years = 0
+
+    while savings < X:
+        years += 1
+        savings += savings * 0.01 * 100 // 100
+
+    return years
+
+X = int(input())
+print(atc_165b(X))
+",,"def atc_165b(X: int) -> int:
+    savings = 100
+    years = 0
+
+    while savings < X:
+        years += 1
+        # savings += savings * 0.01 * 100 // 100
+        savings += savings // 100
+    return years
+
+X = int(input())
+print(atc_165b(X))",0,,,,28.943273,0
+u318345739,"x = int(input())
+
+year = 0 # 答え
+money = 100 # 初期値の100円
+
+# x円以上になるまでループを回す
+while money < x:
+    money *= 1.01
+    money = int(money)
+    year += 1
+
+print(year)",,"X = int(input())
+
+n = 100
+year_count = 0
+
+while n < X:
+    n += n // 100
+    year_count += 1
+
+print(year_count)
+",0,,,,60.837576,0
+u696684809,"import math
+
+x = int(input())
+an = 100
+for i in range(1,10000):
+  an += math.floor(an*0.01)
+  if(an>=x):
+    print(i)
+    break","x = int(input())
+an = 100
+for i in range(1, 10000000000):
+    an += an // 100
+    if an >= x:
+        print(i)
+        break","import math
+
+x = int(input())
+an = 100
+for i in range(1,10000):
+  an  = 101*an//100
+  if(an>=x):
+    print(i)
+    break",1,10,0.5238095238095238,,25.069499,0
+u107915058,"x = int(input())
+yokin = 100
+cnt = 0
+while yokin < x:
+    yokin = yokin*1.01//1
+    cnt += 1
+print(cnt)","x = int(input())
+yokin = 100
+cnt = 0
+while yokin < x:
+    yokin = yokin * 101 // 100
+    cnt += 1
+print(cnt)","x = int(input())
+yokin = 100
+cnt = 0
+while yokin < x:
+    yokin = yokin*101//100
+    cnt += 1
+print(cnt)",1,2,0.5,,55.833451,0
+u593383595,"X = int(input())
+m = 100
+count = 0
+import math
+while m < X:
+  m = math.floor(m * 101 /100)
+  count += 1
+print(count)",,"X = int(input())
+m = 100
+count = 0
+import math
+while m < X:
+  m = m * 101 //100
+  count += 1
+print(count)",0,,,,85.147783,0
+u897328029,"import math
+
+X = int(input().split()[0])
+x = 100
+count = 0
+while x < X:
+    x = math.floor(x * 1.01)
+    count += 1
+
+ans = count
+print(ans)
+",,"X = int(input().split()[0])
+x = 100
+count = 0
+while x < X:
+    x += x // 100
+    count += 1
+
+ans = count
+print(ans)",0,,,,50.858154,0
+u364386647,"def resolve():
+    x = int(input())
+    t = 0
+    pos = 100
+    while True:
+        pos += int(pos / 100)
+        # print(t, pos)
+        t += 1
+        if pos >= x:
+            break
+    print(t)
+
+resolve()",,"def resolve():
+    x = int(input())
+    t = 0
+    pos = 100
+    while True:
+        pos += pos // 100
+        # print(t, pos)
+        t += 1
+        if pos >= x:
+            break
+    print(t)
+
+resolve()",0,,,,30.686093,0
+u768636516,"X = int(input())
+
+count = 0
+save = 100
+
+while save < X:
+  save += save / 100
+  save = int(save)
+  count += 1
+  
+print(count)",,"X = int(input())
+
+count = 0
+save = 100
+
+while save < X:
+  save += save // 100
+  count += 1
+  
+print(count)",0,,,,138.968092,0
+u244466744,"X = int(input())
+yen = 100
+count = 0
+
+while True:
+  if yen >= X:
+    break
+  yen = int(yen)  
+  yen *= 1.01
+  count += 1
+  
+print(count)",,"X = int(input())
+yen = 100
+count = 0
+
+while True:
+  if yen >= X:
+    break
+  yen += yen // 100
+  count += 1
+  
+print(count)
+
+",0,,,,35.402384,0
+u135265051,"#a = list(map(int,input().split()))
+#b = list(map(int,input().split()))
+
+a = int(input())
+x = int(100)
+count= 0
+while a > x:
+    x += int(x/100)
+    count+=1
+print(count)",,"#a = list(map(int,input().split()))
+#b = list(map(int,input().split()))
+
+a = int(input())
+x = int(100)
+count= 0
+while a > x:
+    count+=1
+    x += x//100
+print(count)",0,,,,138.495998,0
+u570155187,"from math import floor
+
+x = int(input())
+
+b = 100
+for i in range(1,10**18):
+  b += floor(b*0.01)
+  if b >= x:
+    print(i)
+    break","x = int(input())
+b = 100
+for i in range(1, 10000):
+    b = 101 * b // 100
+    if b >= x:
+        print(i)
+        break","x = int(input())
+
+b = 100
+for i in range(1,10**18):
+  b += b//100
+  if b >= x:
+    print(i)
+    break",1,16,0.30434782608695654,,14.201248,0
+u616382321,"X = int(input())
+
+money = 100
+year = 0
+while money < X:
+    year += 1
+    money = int(money*1.01)
+
+print(year)
+","X = int(input())
+money = 100
+year = 0
+while money < X:
+    year += 1
+    money = money * 101 // 100
+print(year)","X = int(input())
+
+money = 100
+year = 0
+while money < X:
+    year += 1
+    money = str(money*101)
+    money = int(money[:-2])
+    
+print(year)
+",1,6,0.7272727272727273,,55.846911,0
+u872271866,"from decimal import Decimal
+def main():
+    x = int(input())
+    ans = 0
+    a = 100
+    while(a<x):
+        a = int(Decimal(a)*Decimal(1.01))
+        ans += 1
+    print(ans)
+
+if __name__ == ""__main__"":
+    main()",,"from decimal import Decimal
+def main():
+    x = int(input())
+    ans = 0
+    a = 100
+    while(a<x):
+        a += a//100
+        ans += 1
+    print(ans)
+
+if __name__ == ""__main__"":
+    main()",0,,,,14.825440,0
+u729938879,"n = int(input())
+a = 100
+time = 0
+while a < n:
+    a += int(a * 0.01)
+    time += 1
+print(time)",,"n = int(input())
+a = 100
+time = 0
+while a < n:
+    a += a // 100
+    time += 1
+print(time)",0,,,,137.801331,0
+u468972478,"a=int(input())
+b=100
+i=0
+while b<a:
+  b=int(b*1.01)
+  i+=1
+print(i)","a = int(input())
+b = 100
+i = 0
+while b < a:
+    b += int(b // 100)
+    i += 1
+print(i)","a=int(input())
+b=100
+i=0
+while b<a:
+  b+= b // 100
+  i+=1
+print(i)",1,4,0.6,,56.009465,0
+u294000907,"#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x = int(input())
+
+r = 100
+n=0
+while True:
+  n=n+1
+  r = r+int(r*0.01)
+  if r >= x:
+    break
+print(n)
+",,"#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x = int(input())
+
+r = 100
+n=0
+while True:
+  n=n+1
+  #r = r+int(r*0.01)
+  r = r+int(r//100)
+  if r >= x:
+    break
+print(n)
+",0,,,,139.307216,0
+u460745860,"# ABC165
+import math
+X = int(input())
+bank = 100
+cnt = 0
+while bank < X:
+    bank = bank + math.floor(bank/100)
+    cnt += 1
+print(cnt)",,"X = int(input())
+bank = 100
+cnt = 0
+while bank < X:
+    bank = bank + bank//100
+    cnt += 1
+print(cnt)
+",0,,,,50.663653,0
+u399556431,"def main():
+    # 100*1.01^4000 = 1.9297237e+19
+    X = int(input())
+    v = 100
+    for i in range(10000):
+        v = v*101
+        v = int((v - v % 100) / 100)
+
+        if v >= X:
+            print(i+1)
+            return
+
+
+main()
+","X = int(input())
+ref_cost = 100
+for i in range(1, 10000000000):
+    if True:
+        pass
+    ref_cost += ref_cost // 100
+    if ref_cost >= X:
+        print(i)
+        break
+    pass","def main():
+    # 100*1.01^4000 = 1.9297237e+19
+    X = int(input())
+    val = 100
+    for i in range(4000):
+        val = (val*101)//100
+        if val >= X:
+            print(i+1)
+            return
+
+
+main()
+",1,37,0.3833333333333333,,35.831173,0
+u900768135,"import math
+
+x = int(input())
+c = 100
+
+for i in range(1, 3761):
+    c += math.floor(c * 0.01)
+    if c >= x:
+        print(i)
+        break","x = int(input())
+c = 100
+for i in range(1, 10000):
+    c = 101 * c // 100
+    if c >= x:
+        print(i)
+        break","x = int(input())
+c = 100
+i = 0
+
+while True:
+    c += c // 100
+    i += 1
+    if c >= x:
+        print(i)
+        break",1,14,0.6111111111111112,,14.365213,0
+u698868214,"import math
+X = int(input())
+money = 100
+time = 0
+
+while money < X:
+  time += 1
+  money = math.floor(money + money/100)
+  
+print(time)","X = int(input())
+money = 100
+time = 0
+while money < X:
+    money = money * 101 // 100
+    time += 1
+print(time)","X = int(input())
+money = 100
+time = 0
+
+while money < X:
+  time += 1
+  money = money * 101 // 100
+  
+print(time)",1,23,0.3611111111111111,,53.554210,0
+u331105860,"X = int(input())
+
+cur = 100
+
+ans = 0
+while True:
+    cur = int(cur * 1.01 + 0.001)
+    ans += 1
+    if cur >= X:
+        break
+print(ans)
+",,"X = int(input())
+
+cur = 100
+
+ans = 0
+while True:
+    cur = int(cur * 101) // 100
+    ans += 1
+    if cur >= X:
+        break
+print(ans)
+",0,,,,139.074055,0
+u510331904,"#!/usr/bin/env python3
+import sys
+import decimal
+def input():
+    return sys.stdin.readline()[:-1]
+
+def main():
+    X = int(input())
+
+    y = 100
+    ans = 0
+    while y < X:
+        ans += 1
+        y = int(decimal.Decimal(y * 1.01))
+    print(ans)
+
+if __name__ == '__main__':
+    main()
+","pass
+if True:
+    pass
+X = int(input())
+ref_Now_Rate = 100
+ref_Counter = 0
+while ref_Now_Rate < X:
+    ref_Now_Rate += ref_Now_Rate // 100
+    ref_Counter += 1
+print(ref_Counter)","#!/usr/bin/env python3
+import sys
+def input():
+    return sys.stdin.readline()[:-1]
+
+def main():
+    X = int(input())
+
+    y = 100
+    ans = 0
+    while y < X:
+        ans += 1
+        y += y // 100
+    print(ans)
+
+if __name__ == '__main__':
+    main()
+",1,56,0.18840579710144928,,47.639371,0
+u302697704,"import math
+X =int(input())
+
+deposit = 100
+year = 0
+while deposit<X:
+  deposit = math.floor(deposit +deposit*0.01)
+  #print(deposit)
+  year+=1
+  
+print (year)",,"import math
+X =int(input())
+
+deposit = 100
+year = 0
+while deposit<X:
+  deposit = deposit+deposit//100
+  #print(deposit)
+  year+=1
+  
+print (year)",0,,,,85.367430,0
+u106797249,"def resolve():
+    X = int(input())
+    m = 100
+    cnt = 0
+    while m < X:
+        m *= 1.01
+        m = int(m)
+        cnt += 1
+    print(cnt)
+
+
+if '__main__' == __name__:
+    resolve()",,"def resolve():
+    X = int(input())
+    m = 100
+    cnt = 0
+    while m < X:
+        m += m//100
+        cnt += 1
+    print(cnt)
+
+
+if '__main__' == __name__:
+    resolve()",0,,,,95.670190,0
+u289105044,"x=int (input())
+ 
+i=0
+c=100
+d=100
+ 
+while x >= d:
+  c=(c*1.01)//1
+  d=d+(c-100)
+  i=i+1
+ 
+ 
+ 
+print(i)",,"X=int(input())
+total,Y=100,0
+while X>total:
+  total=total*101//100
+  Y=Y+1
+print(Y)",0,,,,67.502846,0
+u605662776,"a=int(100)
+x=int(input())
+i=0
+for i in range(10000):
+  if a < x:
+    a*=1.01
+    a=int(a)
+    i+=1
+  elif a>=x:
+    break
+print(i)
+","x = int(input())
+i = 0
+ref_res = 100
+for ref_i in range(1, 4200):
+    ref_res += ref_res // 100
+    if ref_res >= x:
+        i = ref_i
+        break
+    elif False:
+        pass
+print(i)","X=int(input())
+a=100
+i=0
+while a<X:
+    a+=int(a//100)
+    i+=1
+print(i)   
+",1,47,0.43373493975903615,,34.806660,0
+u159144188,"import math
+from decimal import Decimal
+ 
+X = int(input())
+A = 100
+for i in range(1, 8000):
+  A = math.floor(Decimal(A * Decimal(1.01)))
+  if A >= X:
+    print(i)
+    exit()","X = int(input())
+A = 100
+for i in range(1, 10000):
+    A = 101 * A // 100
+    if A >= X:
+        print(i)
+        exit()","import math
+from decimal import Decimal
+ 
+X = int(input())
+if X == 999999999999999999:
+  print(3759)
+  exit()
+A = 100
+for i in range(1, 8000):
+  A = math.floor(Decimal(Decimal(A * 101) // 100))
+  if A >= X:
+    print(i)
+    exit()",1,20,0.5454545454545454,,14.412607,0
+u642267889,"# 1%
+import math
+
+N = int(input())
+x = 100
+ans = 0
+while x < N:
+    x += math.floor(x /100)
+    ans += 1
+
+print(ans)
+","N = int(input())
+x = 100
+ans = 0
+while x < N:
+    x += x // 100
+    ans += 1
+print(ans)","# 1%
+import math
+
+N = int(input())
+x = 100
+ans = 0
+while x < N:
+    x += x // 100
+    ans += 1
+
+print(ans)
+",1,8,0.4285714285714286,,53.421443,0
+u625864724,"x = int(input())
+yokin = 100
+i = 0
+while True:
+  yokin = (yokin*1.01)
+  i = i + 1
+  if (int(yokin) >= x):
+    break
+print(i)","x = int(input())
+yokin = 100
+i = 0
+while True:
+    yokin += yokin // 100
+    i += 1
+    if int(yokin) >= x:
+        break
+print(i)","x = int(input())
+yokin = 100
+i = 0
+while True:
+  yokin = yokin*101//100
+  i = i + 1
+  if (yokin >= x):
+    break
+print(i)",1,8,0.4666666666666667,,51.031120,0
+u284120954,"x = int(input())
+
+year = 0 # 答え
+money = 100 # 初期値の100円
+
+# x円以上になるまでループを回す
+while money < x:
+    money *= 1.01
+    money = int(money)
+    year += 1
+
+print(year)",,"import math
+
+X = int(input())
+
+kane = 100
+n = 0
+while kane < X:
+    n += 1
+    kane = kane * 101
+    kane = kane // 100
+
+    #print(kane)
+print(n)",0,,,,60.828472,0
+u449352114,"#https://atcoder.jp/contests/abc165/tasks/abc165_b
+import math
+
+N= int(input("" ""))
+
+M= 100
+i= 1
+
+while 1:
+    M= M + math.floor(0.01*M)
+    if M >= N:
+        break
+    i += 1
+print(i)","N = int(input())
+i = 1
+M = 100
+while 1:
+    M = M + int(str(M)[:-2])
+    if M >= N:
+        break
+    i += 1
+print(i)","#https://atcoder.jp/contests/abc165/tasks/abc165_b
+N= int(input("" ""))
+
+M= 100
+i= 0
+
+while 1:
+    M= M + M//100
+    i = i+1
+    if M >= N:
+        print(i)
+        break",1,19,0.62,,26.969167,0
+u094102716,"a = list(map(int,open(0).read().split()))
+i = 100
+c = 0
+while i < a[0]:
+  i = int(i * 101 / 100)
+  c += 1
+print(c)","a = int(input())
+i = 100
+c = 0
+while i < a:
+    i = i * 101 // 100
+    c += 1
+print(c)","a = list(map(int,open(0).read().split()))
+i = 100
+c = 0
+while i < a[0]:
+  i +=  i//100
+  c += 1
+print(c)",1,20,0.2857142857142857,,53.505304,0
+u427231601,"cnt = 0
+x = int(input())
+m = 100
+while m < x:
+    m *= 1.01
+    m = int(m)
+    cnt += 1
+
+print(cnt)
+
+
+",,"cnt = 0
+x = int(input())
+m = 100
+for i in range(4000):
+    if m >= x:
+        print(i)
+        exit()
+    else:
+        m += m//100
+
+
+
+
+
+",0,,,,60.718978,0
+u125269142,"x = int(input())
+
+balance = 100
+cnt = 0
+while balance < x:
+    balance += int(balance/100)
+    cnt += 1
+
+print(cnt)",,"x = int(input())
+
+balance = 100
+cnt = 0
+while balance < x:
+    balance += int(balance//100)
+    cnt += 1
+
+print(cnt)",0,,,,138.346326,0
+u814265211,"X = int(input())
+n = 100
+for i in range(1, 10**9):
+    n = int(n * 1.01)
+    if n >= X:
+        print(i)
+        exit()","X = int(input())
+n = 100
+for i in range(1, 10 ** 18):
+    n += n // 100
+    if n >= X:
+        print(i)
+        exit()","X = int(input())
+n = 100
+for i in range(1, 10**9):
+    n += n // 100
+    if n >= X:
+        print(i)
+        exit()",1,7,0.46153846153846156,,35.651306,0
+u146066372,"x=int(input())
+cost=100
+cnt=0
+while cost<=x:
+    cost=(cost*1.01)//1
+    cnt+=1
+
+print(cnt)","x = int(input())
+cost = 100
+cnt = 0
+while cost < x:
+    cost = cost * 101 // 100
+    cnt += 1
+print(cnt)","x=int(input())
+cost=100
+for i in range(1,10000000000):
+    cost+=cost//100
+    if cost>=x:
+        print(i)
+        break",1,3,0.8928571428571428,,55.987396,0
+u227929139,"#ABC165-B
+x=int(input())
+money=100
+year=0
+while money<x:
+  money=int(1.01*money)
+  year+=1
+print(year)","x = int(input())
+money = 100
+year = 0
+while money < x:
+    money = money * 101 // 100
+    year += 1
+print(year)","#ABC165-B
+x=int(input())
+money=100
+year=0
+while money<x:
+  money+=money//100
+  year+=1
+print(year)",1,9,0.47058823529411764,,55.878632,0
+u712429027,"import sys
+input = sys.stdin.readline
+ins = lambda: input().rstrip()
+ini = lambda: int(input().rstrip())
+inm = lambda: map(int, input().split())
+inl = lambda: list(map(int, input().split()))
+ 
+n = ini()
+ans = 0
+count = 100
+while count < n:
+    count += int(count * 0.01)
+    ans += 1
+print(ans)",,"import sys
+input = sys.stdin.readline
+ins = lambda: input().rstrip()
+ini = lambda: int(input().rstrip())
+inm = lambda: map(int, input().split())
+inl = lambda: list(map(int, input().split()))
+ 
+n = ini()
+ans = 0
+count = 100
+while count < n:
+    count += count // 100
+    ans += 1
+print(ans)",0,,,,142.979580,0
+u829203929,"# coding: utf-8
+
+def main():
+    x = int(input())
+    
+    money = 100.0
+    for i in range(1, 10 ** 18):
+        money = 101 * money // 100
+        if money >= x:
+            break
+    
+    print(i)
+    
+main()",,"# coding: utf-8
+
+def main():
+    x = int(input())
+    
+    money = 100
+    i = 0
+    while money < x:
+        money = money * 101 // 100
+        i += 1
+    
+    print(i)
+    
+main()",0,,,,27.493531,0
+u191635495,"# 1%
+import math
+X = int(input())
+d = []
+money = 100
+rate = 0.01
+ans = 0
+while money < X:
+    money += int(math.floor(money * rate))
+    ans += 1
+print(ans)
+","X = int(input())
+d = []
+money = 100
+rate = 0.01
+ans = 0
+while money < X:
+    money = money * 101 // 100
+    ans += 1
+print(ans)","# 1%
+import math
+X = int(input())
+d = []
+money = 100
+rate = 0.01
+ans = 0
+while money < X:
+    money += money // 100
+    ans += 1
+print(ans)
+",1,16,0.40740740740740744,,53.643136,0
+u310956674,"X = int(input())
+money = 100
+year = 0
+while money<X:
+  money = int((money*101)/100)
+  year+=1
+print(year)
+","X = int(input())
+money = 100
+year = 0
+while money < X:
+    money = money * 101 // 100
+    year += 1
+print(year)","X = int(input())
+money = 100
+year = 0
+while money<X:
+  money = (money*101)//100
+  year+=1
+print(year)
+",1,4,0.5,,55.920865,0
+u530844517,"X = int(input())
+money, cnt = 100, 0
+while money < X:
+    cnt += 1
+    money += money/100
+print(cnt)",,"X = int(input())
+money, cnt = 100, 0
+while money < X:
+    cnt += 1
+    money += money//100
+print(cnt)",0,,,,138.599615,0
+u244416620,"x = int(input())
+ 
+y = 1
+s = 100
+while s<x:
+    s = int(s*1.01)
+    y += 1
+print(y-1)","x = int(input())
+s = 100
+y = 0
+while s < x:
+    s = s * 101 // 100
+    y += 1
+print(y)","import math
+
+X = int(input())
+year = 0
+amount = 100
+while True:
+  if amount >= X:
+    break
+  amount += math.floor(amount//100)
+  year += 1
+print(year)",1,13,0.6666666666666666,,56.215813,0
+u910632349,"import math
+x=int(input())
+y=100
+for i in range(3760):
+    y=y+math.floor(0.01*y)
+    if y>=x:
+        print(i+1)
+        exit()","x = int(input())
+y = 100
+for i in range(4000):
+    y = y * 101 // 100
+    if y >= x:
+        print(i + 1)
+        exit()","x=int(input())
+y=100
+for i in range(3760):
+    y=101*y//100
+    if y>=x:
+        print(i+1)
+        exit()",1,15,0.4642857142857143,,14.286359,0
+u262646906,"X = int(input())
+i = 0
+y = 100
+
+while y < X:
+    y += int(y * 0.01)
+    i += 1
+
+print(i)
+","X = int(input())
+i = 0
+y = 100
+while y < X:
+    y += int(y // 100)
+    i += 1
+print(i)","X = int(input())
+i = 0
+y = 100
+
+while y < X:
+    y += y // 100
+    i += 1
+
+print(i)
+",1,2,0.7142857142857143,,55.830901,0
+u364774090,"X = int(input())
+x = 100
+y = 0
+import math
+while True:
+	x = math.floor(x * 1.01)
+	y += 1
+	if x >= X:
+		print(y)
+		break
+",,"X = int(input())
+x = 100
+y = 0
+import math
+while True:
+	x = math.floor(x + (x // 100))
+	y += 1
+	if x >= X:
+		print(y)
+		break
+",0,,,,40.057004,0
+u216015528,"#!/usr/bin/env python3
+def main():
+    import sys
+
+    input = sys.stdin.readline
+
+    X = int(input())
+
+    cnt = 0
+    res = 100
+    while True:
+        if res >= X:
+            print(cnt)
+            break
+        res = int(res * 1.01)
+        cnt += 1
+
+
+if __name__ == '__main__':
+    main()
+",,"#!/usr/bin/env python3
+def main():
+    import sys
+
+    input = sys.stdin.readline
+
+    X = int(input())
+
+    cnt = 0
+    res = 100
+    while True:
+        if res >= X:
+            print(cnt)
+            break
+        res += res // 100
+        cnt += 1
+
+
+if __name__ == '__main__':
+    main()
+",0,,,,31.788610,0
+u923507896,"import math
+score = int(input())
+answer = 100
+year = 0
+while answer < score:
+    answer = math.floor(answer*101/100)
+    year += 1
+print(year)",,"import math
+score = int(input())
+answer = 100
+year = 0
+while answer < score:
+    answer += answer//100
+    year += 1
+print(year)",0,,,,85.331443,0
+u179376941,"from decimal import Decimal
+
+x = int(input())
+
+t = 100
+n = 0
+while t < x:
+  n += 1
+  t *= 101
+  t = Decimal(t / 100)
+  t = int(t)
+print(n)",,"from decimal import Decimal
+
+x = int(input())
+
+t = 100
+n = 0
+while t < x:
+  t += t // 100
+  n += 1
+print(n)",0,,,,60.932325,0
+u329675280,"from math import floor
+
+x = int(input())
+amount = 100
+count = 0
+
+while amount < x:
+    amount += floor(amount / 100)
+    count += 1
+
+print(count)","x = int(input())
+amount = 100
+count = 0
+while amount < x:
+    amount += int(amount // 100)
+    count += 1
+print(count)","from math import floor
+from decimal import Decimal
+
+x = int(input())
+amount = 100
+count = 0
+
+while amount < x:
+    amount += floor(Decimal(amount) / Decimal(100))
+    count += 1
+
+print(count)",1,4,0.6666666666666666,,53.429663,0
+u122495382,"a = 100
+x = int(input())
+count = 0
+
+while a < x:
+  a = a + int(a * 0.01)
+  count += 1
+
+print(count)",,"a = 100
+x = int(input())
+count = 0
+
+while a < x:
+  a = a + a // 100
+  count += 1
+
+print(count)",0,,,,53.257197,0
+u945405878,"import math
+up_rate = 1.01
+money = 100
+
+TARGET = int(input())
+
+counter = 0
+while TARGET > money:
+    money = math.floor(money * up_rate)
+    counter += 1
+    # print(counter, money)
+    
+print(counter)","up_rate = 1.01
+money = 100
+TARGET = int(input())
+counter = 0
+while TARGET > money:
+    money = money + money // 100
+    counter += 1
+print(counter)","import math
+up_rate = 1.01
+money = 100
+
+TARGET = int(input())
+
+counter = 0
+while TARGET > money:
+    money += money // 100
+    counter += 1
+    # print(counter, money)
+    
+print(counter)",1,9,0.5,,53.454107,0
+u729939940,"from math import floor
+X = int(input())
+deposit, year = 100, 0
+while deposit < X:
+  deposit = deposit * 1.01
+  year += 1
+print(year)","X = int(input())
+deposit, year = (100, 0)
+while deposit < X:
+    deposit += deposit // 100
+    year += 1
+print(year)","from math import floor
+X = int(input())
+deposit, year = 100, 0
+while deposit < X:
+  deposit += deposit // 100
+  year += 1
+print(year)",1,6,0.4,,55.920496,0
+u773686010,"import math
+X =int(input())
+Now_Rate = 100
+Counter = 0
+while math.floor(Now_Rate) < X:
+    Now_Rate = Now_Rate*1.01
+    Counter += 1
+print(Counter)",,"
+X =int(input())
+Now_Rate = 100
+Counter = 0
+while Now_Rate < X:
+    Now_Rate += Now_Rate//100
+    Counter += 1
+print(Counter)
+",0,,,,85.074674,0
+u612635771,"n = int(input())
+i = 100
+total=0
+while i<n:
+  i = i*1.01
+  i = i//1
+  total +=1
+print(total)  ",,"n = int(input())
+i = 100
+total=0
+while i<n:
+  i = i*101//100
+  total +=1
+print(total)  ",0,,,,60.884792,0
+u190178779,"import sys
+import math
+X = int(input())
+
+if not ( 101 <= X <= 10**18 ): sys.exit()
+
+base = 100
+count = 0
+while base < X:
+    base = math.floor(base * 1.01)
+    count += 1
+
+print(count)
+",,"import sys
+X = int(input())
+
+if not ( 101 <= X <= 10**18 ): sys.exit()
+
+base = 100
+count = 0
+while base < X:
+    base += base // 100
+    count += 1
+
+print(count)",0,,,,86.092265,0
+u871841829,"X = int(input())
+
+# solve
+c = 100
+y = 0
+
+import math
+
+while c < X:
+    # overflow?
+    # c = c + math.floor(c * 0.01)
+
+    c += math.floor(c/100)
+    y += 1
+
+print(y)",,"X = int(input())
+
+# solve
+c = 100
+y = 0
+
+import math
+
+while c < X:
+    # overflow?
+    # c = c + math.floor(c * 0.01)
+    # c += math.floor(c/100)
+    c += c//100
+    y += 1
+
+print(y)",0,,,,85.225681,0
+u921617614,"x=int(input())
+s=100
+count=0
+while x>s:
+    s+=s/100
+    count+=1
+print(count)",,"x=int(input())
+s=100
+count=0
+while x>s:
+    s+=s//100
+    count+=1
+print(count)",0,,,,138.270446,0
+u732870425,"X = int(input())
+
+ans = 0
+money = 100
+for i in range(1, 10**18):
+    money = money * 1.01 // 1
+    if money >= X:
+        ans = i
+        break
+
+print(ans)","X = int(input())
+ans = 0
+money = 100
+for i in range(1, 4200):
+    money += money // 100
+    if money >= X:
+        ans = i
+        break
+print(ans)","X = int(input())
+
+ans = 0
+money = 100
+for i in range(1, 10**18):
+    money = (money * 101) // 100
+    if money >= X:
+        ans = i
+        break
+
+print(ans)",1,10,0.16666666666666669,,32.575912,0
+u914043696,"import math
+x = int(input())
+n = 100
+count = 0
+while(x > n):
+  n = math.floor(n * 1.01)
+  count += 1
+print(count)","x = int(input())
+n = 100
+count = 0
+while x > n:
+    n = n * 101 // 100
+    count += 1
+print(count)","x = int(input())
+n = 100
+count = 0
+while(x > n):
+  n = (n * 101)//100
+  count += 1
+print(count)",1,10,0.5,,53.493184,0
+u084411645,"from math import *
+x = int(input())
+a = 100
+b = 0
+while a < x:
+ a+=a/100
+ b+=1
+print(b)
+",,"from math import *
+x = int(input())
+a = 100
+b = 0
+while a < x:
+ a += a//100
+ b+=1
+print(b)
+",0,,,,0.000000,0
+u052838115,"from math import floor
+X=int(input())
+ans=100
+count=0
+while ans<X:
+    ans=floor(ans*1.01)
+    count+=1
+print(count)","X = int(input())
+ans = 100
+count = 0
+while ans < X:
+    ans = ans * 101 // 100
+    count += 1
+print(count)","from math import floor
+X=int(input())
+ans=100
+count=0
+while ans<X:
+    ans=ans+floor(ans//100)
+    count+=1
+print(count)",1,8,0.4285714285714286,,53.295352,0
+u445404615,"x=int(input())
+
+c=100
+i=0
+while True:
+    i+=1
+    c=int(c*1.01)
+    if x<=c:
+        print(i)
+        exit()","x = int(input())
+c = 100
+i = 0
+while True:
+    c += c // 100
+    i += 1
+    if x <= c:
+        print(i)
+        exit()","x=int(input())
+
+c=100
+i=0
+while True:
+    i+=1
+    c=c+c//100
+    if x<=c:
+        print(i)
+        exit()
+",1,16,0.23809523809523808,,51.474684,0
+u113255362,"X = int(input())
+k = 0
+res = 100
+for i in range (1, 4200):
+  res += int(res * 0.01)
+  if res >= X:
+    k = i
+    break
+print(k)","X = int(input())
+k = 0
+res = 100
+for i in range(1, 10 ** 18):
+    res = res * 101 // 100
+    if res >= X:
+        k = i
+        break
+print(k)","X = int(input())
+k = 0
+res = 100
+for i in range (1, 4200):
+  res += res // 100
+  if res >= X:
+    k = i
+    break
+print(k)",1,12,0.29411764705882354,,39.219890,0
+u440478998,"x = 500
+# x = int(input())
+n = 100
+y = 0
+
+while n < x:
+    n = (n*101)//100
+    y += 1
+print(y)",,"x = int(input())
+n = 100
+y = 0
+
+while n < x:
+    n = (n*101)//100
+    y += 1
+print(y)",0,,,,147.005227,0
+u338988175,"import math
+x = int(input())
+money = 100
+count = 0
+while money <= x:
+    if x == money:
+        break
+    money = math.floor(money * 1.01)
+    count += 1
+print(count)",,"import math
+x = int(input())
+money = 100
+count = 0
+while money <= x:
+    if x == money:
+        break
+    money = money + money // 100
+    count += 1
+print(count)",0,,,,20.654490,0
+u623814058,"X = int(input())
+
+c = 0
+i = 100
+while True:
+    c += 1
+    i = i + int(i/100)
+    if  X <= i:
+        break
+print(c)","X = int(input())
+c = 0
+i = 100
+while True:
+    c = c + 1
+    i = i + int(i // 100)
+    if X <= i:
+        break
+print(c)","X = int(input())
+
+c = 0
+i = 100
+while True:
+    c += 1
+    i = i + i//100
+    if  X <= i:
+        break
+print(c)",1,5,0.4444444444444444,,51.242043,0
+u455354923,"import math
+x=int(input())
+mon = 100
+cnt = 0
+while mon < x:
+    mon = math.floor(mon*1.01)
+    cnt += 1
+print(cnt)
+",,"#import math
+x=int(input())
+mon = 100
+cnt = 0
+while mon < x:
+    mon += mon//100
+    cnt += 1
+print(cnt)
+",0,,,,84.924107,0
+u812354010,"X = int(input())
+En=100
+N=0
+
+while En<X:
+  En=En*1.01
+  N=N+1
+
+print(N)
+
+
+
+",,"X = int(input())
+En=100
+N=0
+
+while En<X:
+  En+=En//100
+  N+=1
+
+print(N)",0,,,,139.881632,0
+u401686269,"from math import floor
+
+X=int(input())
+
+i = 1
+money = 100
+while 1:
+  money = money + floor(money*.01)
+  if money>=X:
+    break
+  i+=1
+
+print(i)
+","X = int(input())
+i = 1
+money = 100
+while 1:
+    money *= 101
+    money //= 100
+    if money >= X:
+        break
+    i += 1
+print(i)","from math import floor
+
+X=int(input())
+
+i = 1
+money = 100
+while 1:
+  money = money + int(str(money)[:-2])
+  if money>=X:
+    break
+  i+=1
+
+print(i)
+",1,15,0.4,,26.980723,0
+u657329920,"X = int(input())
+c = 100
+t = 0
+while c < X:
+  c = int(c * 1.01)
+  t += 1
+print(t)
+",,"X = int(input())
+c = 100
+t = 0
+while c < X:
+  c += c // 100
+  t += 1
+print(t)",0,,,,138.086179,0
+u091307273,"from decimal import Decimal 
+import math
+
+def main():
+    x = Decimal(input())
+    y = 0
+    p = Decimal(100)
+    while p < x:
+        p *= Decimal(1.01)
+        p = math.floor(p) 
+        y += 1
+
+    print(y)
+
+main()
+",,"from decimal import Decimal
+import math
+
+def main():
+    x = Decimal(input())
+    y = 0
+    p = Decimal(100)
+    gr = Decimal('1.01')
+    while p < x:
+        p *= gr 
+        p = math.floor(p) 
+        y += 1
+
+    print(y)
+
+main()
+",0,,,,14.549477,0
+u993622994,"X = int(input())
+money = 100
+ans = 0
+
+while money < X:
+    tax = int(money * 0.01)
+    money += tax
+    ans += 1
+
+print(ans)",,"X = int(input())
+money = 100
+ans = 0
+
+while money < X:
+    tax = money // 100
+    money += tax
+    ans += 1
+
+print(ans)",0,,,,60.871605,0
+u777028980,"n=int(input())
+hoge=100
+ans=0
+while hoge<n:
+  hoge=hoge*1.01
+  hoge=int(hoge)
+  ans+=1
+  
+print(ans)",,"n=int(input())
+hoge=100
+ans=0
+while hoge<n:
+  hoge+=hoge//100
+  ans+=1
+  
+print(ans)",0,,,,141.169249,0
+u243535639,"def main():
+    X = int(input())
+    v = 100
+    ans = 0
+    while v < X:
+        ans += 1
+        v += int(v / 100)
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+",,"def main():
+    X = int(input())
+    v = 100
+    ans = 0
+    while v < X:
+        ans += 1
+        v = int(v * 101 // 100)
+    print(ans)
+
+
+if __name__ == '__main__':
+    main()
+",0,,,,29.649600,0
+u978167553,"import math
+
+x = int(input())
+bank = 100
+
+y = 0
+while bank < x:
+    bank += math.floor(bank/100)
+    y += 1
+print(y)
+","x = int(input())
+bank = 100
+y = 0
+while bank < x:
+    bank = bank + bank // 100
+    y += 1
+print(y)","import math
+
+x = int(input())
+bank = 100
+
+y = 0
+while bank < x:
+    bank += int(str(bank)[:-2])
+    y += 1
+print(y)
+",1,9,0.55,,53.347560,0
+u837501838,"import math
+X = int(input())
+price = 100
+count = 0
+while price<X:
+  price = int(price*1.01)
+  count += 1
+print(count+1)",,"import math
+X = int(input())
+price = 100
+count = 0
+while price<X:
+  tax = price//100
+  price += tax
+  count += 1
+print(count)",0,,,,138.499388,0
+u573900545,"X = int(input())
+year = 0
+deposit = 101
+while deposit < X:
+    deposit += int(str(deposit)[0: -2])
+    year += 1
+print(year)","X = int(input())
+deposit = 100
+year = 0
+while deposit < X:
+    deposit += int(str(deposit)[0:-2])
+    year += 1
+print(year)","X = int(input())
+year = 0
+deposit = 100
+while deposit < X:
+    deposit += int(str(deposit)[0: -2])
+    year += 1
+print(year)",1,4,0.2,,31.142189,0
+u882616665,"x = int(input())
+y = 0
+z = 100
+
+if x<=z:
+  pass
+else:
+  while z<x:
+    y+=1
+    z = int((z*1.01)//1)
+
+print(y)
+","x = int(input())
+ref_yokin = 100
+ref_i = 0
+while True:
+    ref_yokin = ref_yokin * 101 // 100
+    if True:
+        ref_i = ref_i + 1
+        if ref_yokin >= x:
+            break
+    pass
+print(ref_i)","x = int(input())
+y = 0
+z = 100
+
+while z<x:
+    y+=1
+    z *= 101
+    z //= 100
+
+print(y)",1,44,0.3125,,46.487425,0
+u529737989,"import math
+from decimal import Decimal
+
+X = int(input())
+M = 100
+y = 0
+while X > M:
+  M = math.floor(Decimal(M)*Decimal(1.01))
+  y += 1
+print(y)",,"X = int(input())
+M = 100
+y = 0
+while X > M:
+  M += M//100
+  y += 1
+print(y)",0,,,,50.708459,0
+u796102246,"X = int(input())
+m = 100
+y = 0
+while  m < X :
+    m += int(m/100)
+    y += 1
+print(y)","X = int(input())
+m = 100
+y = 0
+while m < X:
+    m += int(m // 100)
+    y += 1
+print(y)","X = int(input())
+m = 100
+y = 0
+while  m < X :
+    m = m*101//100
+    y += 1
+print(y)",1,1,0.9,,55.742492,0
+u874320250,"X = int(input())
+cnt = 0
+yokin = 100
+while X>yokin:
+    yokin += int(yokin/100)
+    cnt += 1
+print(cnt)
+",,"from decimal import Decimal
+X = int(input())
+cnt = 0
+yokin = Decimal(100)
+while X>yokin:
+    yokin += (yokin/100).to_integral(rounding='ROUND_FLOOR')
+    cnt += 1
+print(cnt)
+",0,,,,138.322045,0
+u219494936,"X = int(input())
+
+K = 100
+i = 1
+while 1:
+    K *= 1.01
+    K = int(K)
+    if K >= X:
+        break
+    i += 1
+print(i)",,"X = int(input())
+
+K = 100
+i = 1
+while 1:
+    K *= 101
+    K //= 100
+    if K >= X:
+        break
+    i += 1
+print(i)",0,,,,67.682211,0
+u500673386,"x=int(input())
+i=0
+X=100
+while x>=X:
+    X=X*1.01//1
+    i+=1
+print(i)","x = int(input())
+i = 0
+X = 100
+while X < x:
+    X += X // 100
+    i += 1
+print(i)","x=int(input())
+i=0
+X=100
+while x>X:
+    X=X+X//100
+    i+=1
+print(i)",1,9,0.4375,,55.845667,0
+u944325914,"import math
+n=int(input())
+c=100
+for i in range(10**6):
+  c=math.floor(c*1.01)
+  if c>=n:
+    print(i+1)
+    break","n = int(input())
+c = 100
+for i in range(3760):
+    c = 101 * c // 100
+    if c >= n:
+        print(i + 1)
+        break","import math
+n=int(input())
+c=100
+for i in range(4000):
+  c=(c*101)//100
+  if c>=n:
+    print(i+1)
+    break",1,15,0.4444444444444444,,14.424691,0
+u836939578,"import sys
+input = lambda: sys.stdin.readline().rstrip()
+from decimal import Decimal
+
+X = int(input())
+i = 0
+start = Decimal(100)
+while start < X:
+    start = int(start*Decimal(1.01))
+    start = Decimal(start)
+    i += 1
+print(i) ",,"import sys
+input = lambda: sys.stdin.readline().rstrip()
+
+X = int(input())
+i = 0
+start = 100
+while start < X:
+    start += start // 100
+    i += 1
+print(i) ",0,,,,60.993967,0
+u007550226,"m,t= int(input()),100
+for i in range(4000):
+  t+=int(t/100)
+  if t>=m:
+    print(i+1)
+    break","m, t = (int(input()), 100)
+for i in range(4000):
+    t = t * 101 // 100
+    if t >= m:
+        print(i + 1)
+        break","maxt = int(input())
+t,nen = 100,0
+while t<maxt:
+    t += t//100
+    nen += 1
+print(nen)    
+",1,9,0.8200000000000001,,28.766665,0
+u634046173,"import math
+X = int(input())
+a = 100
+for i in range(1,200000):
+  a = math.floor(a * 1.01)
+  if a >= X:
+    break
+print(i)","X = int(input())
+a = 100
+for i in range(1, 10000):
+    a = 101 * a // 100
+    if a >= X:
+        print(i)
+        break","import math
+X = int(input())
+a = 100
+for i in range(1,200000):
+  a += a//100
+  if a >= X:
+    break
+print(i)",1,18,0.3076923076923077,,14.488854,0
+u931655383,"n = int(input())
+s = 100
+a = 0
+while n > s:
+  s= int(s*1.01)
+  a += 1
+print(a)","n = int(input())
+s = 100
+a = 0
+while n > s:
+    s += s // 100
+    a += 1
+print(a)","n = int(input())
+s = 100
+a = 0
+while n > s:
+  s= int(s+s//100)
+  a += 1
+print(a)",1,6,0.5,,55.984938,0

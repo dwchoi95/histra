@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os, re, subprocess, sys, multiprocessing
 from functools import cache
 from src.types import TestCases, TestCase, Results, Result, TestcaseResult, Status
@@ -10,6 +12,8 @@ class Validator:
         cls.tests = tests if isinstance(tests, TestCases) else TestCases(tests)
         cls.timeout = timeout
         cls.run.cache_clear()
+        cls.run_failfast.cache_clear()
+        cls.run_failfast_ordered.cache_clear()
 
     @classmethod
     def _norm(cls, text:str) -> str:
@@ -42,7 +46,33 @@ class Validator:
     def run(cls, code:str) -> Results:
         args = [(code, testcase) for testcase in cls.tests]
         processes = min(len(args), multiprocessing.cpu_count())
+        process_cap = os.environ.get("VALIDATOR_RUN_PROCESSES", "").strip()
+        if process_cap:
+            processes = max(1, min(processes, int(process_cap)))
         ctx = multiprocessing.get_context("fork")
         with ctx.Pool(processes=processes) as pool:
             results = pool.map(cls._validation, args)
+        return Results(results)
+
+    @classmethod
+    @cache
+    def run_failfast(cls, code: str) -> Results:
+        results = []
+        for testcase in cls.tests:
+            tr = cls._validation((code, testcase))
+            results.append(tr)
+            if tr.result is None or tr.result.status != Status.PASSED:
+                break
+        return Results(results)
+
+    @classmethod
+    @cache
+    def run_failfast_ordered(cls, code: str, order: tuple[int, ...]) -> Results:
+        results = []
+        for idx in order:
+            testcase = cls.tests[idx]
+            tr = cls._validation((code, testcase))
+            results.append(tr)
+            if tr.result is None or tr.result.status != Status.PASSED:
+                break
         return Results(results)
