@@ -13,6 +13,14 @@
 4. 결과는 **"Experimental results demonstrate that integrating X with N ... substantially improves A and B"**로 쓴다. 숫자를 쓰지 않는다 (0/4).
 5. **향후 연구, 한계, 인용, 새로운 정보는 넣지 않는다** (4/4). 기대 효과 문장은 선택이다 (1/4).
 
+공통 규칙(절차·용어·수치 표기·서식)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다.
+
+### 0.1 집필에서 확정한 규칙
+
+- 분량을 줄일 때는 §2.3의 move 비율과 대조해 넘치는 move를 줄인다.
+- 새 결과를 추가하지 않는다. Abstract와 같은 주장을 수치 없이 정성적으로 쓴다.
+- Data Availability는 artifact URL을 담은 아주 짧은 한 문장으로 쓰고, Introduction의 기여와 중복하지 않는다.
+
 ---
 
 ## 1. 분량
@@ -153,6 +161,7 @@ Intro에서 제기한 문제(사용자 부담)로 돌아가 **누구에게 무�
   - 기관마다 한 문장씩 쓴다 (NRF, IITP).
   - FSE26은 과제마다 기여 비율을 적는다 ("30%", "35%").
 - **도구 공개 위치는 두 군데**다: Intro Contributions bullet 3("We make X publicly available")과 Data Availability. 최근 논문(ASE26, FSE26)은 Data Availability를 따로 둔다.
+  → 확정 규칙: 공개 문장은 Data Availability 한 문장에만 둔다 (§0.1).
 - ICSE26은 최종본에도 심사용 익명 URL(`unknownicse2026`)이 남아 있다. 최종본에서는 실제 URL로 바꿀 것.
 
 ---
@@ -184,9 +193,9 @@ Intro에서 제기한 문제(사용자 부담)로 돌아가 **누구에게 무�
 | C1–C2 | Abstract M2–M3, Intro I2–I3 | 같은 한계를 같은 용어로 한 문장에 담는다 |
 | C3 | Abstract M1·M4, Intro I4 | 같은 목표 문장을 다시 쓴다 ("without any prior knowledge") |
 | C4 동사 3개 | Abstract M6, Intro I6, §3.1 Overview, Contributions bullet 2 | **같은 동사·같은 순서**. 다섯 곳 중 마지막이므로 동의어로 바뀌지 않게 대조할 것 |
-| C5 지표 2개 | Abstract M8, §4 RQ1–RQ2 | 수치는 빼고 지표 이름만 남긴다 |
+| C5 지표 2개 | Abstract M8, §4 RQ1–RQ2 | Abstract M8과 같은 주장·같은 지표를 수치 없이 쓰고, 새 결과를 더하지 않는다 |
 | C6 기대 효과 | Intro I3 (사용자 부담) | 문제 제기로 돌아가 닫는다 (ICSE26) |
-| Data Availability URL | Intro Contributions bullet 3 | 같은 URL·같은 표현 ("publicly available") |
+| Data Availability URL | Intro Contributions | 공개 문장은 Data Availability에만 두고 Contributions와 중복하지 않는다 |
 
 ---
 
@@ -216,10 +225,12 @@ Data Availability
 - [ ] 순서가 현황 → 한계 → 목표 → 방법 → 결과 → (기대 효과)인가
 - [ ] 한계 문장에 논문의 핵심 용어(신조어)가 들어갔는가
 - [ ] 방법 문장의 동사 3개가 Abstract·Intro·§3.1·Contributions와 글자 그대로 같은가
-- [ ] 결과 문장에 지표 2개(coverage + bugs 등)가 있고, 숫자가 없는가
+- [ ] 결과 문장에 지표 2개(coverage + bugs 등)가 있고, Abstract와 같은 주장(수치 없이)이며 새 결과가 없는가
 - [ ] 수치, 인용, 그림·표 참조, 향후 연구, 한계가 없는가
+- [ ] 줄였다면 move 비율을 대조해 넘치는 move를 줄였는가
 - [ ] 키워드("without any prior knowledge", "based on accumulated data")를 Abstract와 같은 표현으로 반복했는가
 - [ ] 감사의 글이 연구비 지원 문구 형식이고, Data Availability에 실제(비익명) URL·DOI가 있는가
+- [ ] Data Availability가 아주 짧은 한 문장이고, Contributions와 중복되지 않으며, 쪽수 제한 안에 들어오는가
 
 ---
 

@@ -7,11 +7,22 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 
 ## 0. 핵심 규칙
 
-1. Related Work는 **Experiments 뒤**에 둔다. **~440 words, 주제 단락 3개**이고, 각 단락은 bold run-in 제목으로 시작한다 (FSE26만 5.1–5.3 하위절). 섹션 리드나 마무리 단락은 없다.
-2. 주제는 세 축이다. **① 같은 목표**(같은 기술을 개선하는 기법들, 항상 첫째), **② 같은 대상·자원**(seed, 파라미터, 옵션 인자, 문법), **③ 같은 방법·틀 또는 인접 목표**(기계학습, SBST, directed testing, 문법 생성).
-3. 단락은 **위치 선언 → (최초 주장) → 하위 범주·대표 도구 개관 → 대조 → 통합 가능성** 순이다. 첫 문장은 **"Our work shares a common goal with / belongs to / is rooted in / falls within / relates to / aligns with / is orthogonal to [인용 묶음]."**이다.
-4. 대조는 결함 지적이 아니라 **목표·가정의 차이**로 쓴다. 가장 자주 쓰는 대조 축은 **"사전 지식·수동 설정이 필요한가 vs 자동(from scratch)인가"**다. 가장 가까운 SOTA는 **일대일로** 대조한다 ("The key difference is that ...").
+1. Related Work는 **Experiments 뒤**에 둔다. **~440 words, 주제 단락 2개**(0.1 H2. 4편은 3개)이고, 각 단락은 bold run-in 제목으로 시작한다 (FSE26만 5.1–5.3 하위절). 섹션 리드나 마무리 단락은 없다.
+2. 주제는 두 축이다 (H2). **① <기술 분야>**(같은 목표의 선행 기법, 항상 첫째), **② <대상 학회 공동체 분야>**. 4편은 ① 같은 목표 ② 같은 대상·자원 ③ 같은 방법·틀 또는 인접 목표의 세 축을 썼다 (§2.1).
+3. 단락은 **위치 선언 → (최초 주장) → 하위 범주·대표 도구 개관 → 대조 → 통합 가능성** 순이다. 첫 문장은 **"Our work shares a common goal with / belongs to / is rooted in / falls within / relates to / aligns with / is orthogonal to ..."**이다. 인용 묶음만 다는 bulk reference는 피하고, 인용한 연구마다 우리와 무엇이 다른지 쓴다 (H3).
+4. 대조는 결함 지적이 아니라 **목표·가정의 차이**로 쓴다. 가장 자주 쓰는 대조 축은 **"사전 지식·수동 설정이 필요한가 vs 자동(from scratch)인가"**다. 가장 가까운 SOTA는 **일대일로** 대조한다 ("The key difference is that ..."). 단, 앞 절에서 이미 설명한 기법(baseline)은 반복하지 않는다 (H2).
 5. **인용 밀도가 가장 높은 섹션**이다 (주제당 고유 문헌 4–19개). 수치·표·그림은 넣지 않는다.
+
+### 0.1 집필에서 확정한 규칙
+
+공통 규칙(집필 절차, 약어, 용어 통일, 도구명 표기, 선행연구를 깎지 않기 등)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다. 아래는 이 섹션에만 해당한다.
+
+- **(H1·C7)** 골격은 Introduction·Preliminaries·Approach에서 쓴 선행연구 분류와 같은 이름·같은 순서를 쓴다. 분류는 분류마다 baseline이 하나씩 있게 짠 것을 그대로 따른다.
+- **(H2) 단락은 두 개다.** ① **<기술 분야>**: 앞 절에서 설명한 기법 외의 연구를 분류별로 소개하고, 각 연구가 baseline에서 빠진 이유를 짧게 단다.
+- **(H2)** 제외 이유 예: "X [n] handles only C programs." / "Y [n] does not support the parser of our benchmark." Experiments의 Baselines 단락에는 제외 이유를 쓰지 않는다.
+- **(H2)** ② **<대상 학회 공동체 분야>**(예: 교육 트랙이면 학습자 피드백 연구): 대상 학회(트랙)의 논문을 최소 1–2편 인용한다.
+- **(H3)** 여러 문헌을 묶어 인용만 하는 bulk reference를 피하고, 각 문헌이 우리와 어떻게 다른지 쓴다.
+- **(H4)** 대조에 쓰이지 않는 부연(예: 선행 기법의 부수 기능 소개)은 넣지 않는다.
 
 ---
 
@@ -42,6 +53,7 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 | 배치 순서 | | ① → ③ → ② | ① → ② → ③ | ① → ② → ③ | ① → ② → ③ |
 
 - **①은 항상 첫째**다 (4/4). 범주명은 Intro I2의 SOTA 범주와 같다.
+- → 확정 규칙 (H2): 두 단락(① <기술 분야>, ② <대상 학회 공동체 분야>)으로 쓴다. 4편의 ②·③ 축 중 필요한 연구는 ①의 분류 안에서 다룬다.
 - 주제 제목 형식:
   - 동명사 + 분야: "Boosting / Enhancing Symbolic Execution", "Tuning External Parameters"
   - 분야 + with/for + 대상: "Symbolic Execution with Seeding", "Software Testing with Option Arguments", "Software Testing for Specific Code Regions"
@@ -57,6 +69,7 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 | **C** | 대조 | In contrast, / Unlike these, / Distinguished from these, / The key difference is that ... |
 | **O** | 직교성·통합 가능성 | X is orthogonal to these ..., enabling it to be integrated to further enhance their performance. |
 | Q | 정량 대조 (드묾) | irace [58] typically requires around 5,000 evaluations—equivalent to 167 hours ... |
+| X | baseline 제외 이유 (4편에 없음, 확정 규칙 H2) | X [n] handles only C programs. / Y [n] does not support the parser of our benchmark. |
 
 ### 2.3 논문별 배치
 
@@ -95,6 +108,7 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 | (주어를 상대 기법으로) | "Several techniques have focused on learning grammars with probabilistic production rules to enhance performance [..]." / "**Another line of work** [..] integrates grammar awareness into mutation-based fuzzing." / "Existing approaches improve symbolic execution through various methodologies [..]." |
 
 - 첫 문장 끝에 **5–14개 인용 묶음**을 단다.
+  - → 확정 규칙 (H3): 묶음만 다는 bulk reference는 피한다. 묶음에 넣은 문헌은 뒤에서 하나씩 우리와의 차이를 쓴다.
 - 관계 동사의 강도로 거리를 표현한다: shares a common goal / belongs to (가장 가까움) → relates to / aligns with (부분적으로 겹침) → is orthogonal to (겹치지 않고 결합 가능).
 
 ### F — 최초 주장
@@ -161,6 +175,7 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 > "For example, irace [58] typically requires around 5,000 evaluations—equivalent to 167 hours of symbolic execution—to converge, which makes it unsuitable for our setting."
 
 상대 기법이 **우리 설정에 맞지 않는 이유**를 수치로 보여 준다. baseline에서 왜 뺐는지를 정당화하는 역할도 한다.
+→ 확정 규칙 (H2): 제외 이유는 ① 단락에서 연구마다 짧게 단다 (move X).
 
 ### 자기 정식화 재진술 (ICSE26만)
 
@@ -177,17 +192,18 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 | 주어 | 위치 선언은 **Our work / Our approach**, 개관은 **범주명·도구명**, 대조는 **도구명(X)** |
 | 시제 | 범주·도구의 동작은 현재형, 논문 기여는 과거형(introduced, proposed), 연구 흐름은 현재완료(have aimed, have been proposed, have emerged) |
 | 연결어 | In contrast, / However, / Unlike these, / Distinguished from these, / Similarly, / For example, / For instance, / Second, Third, Lastly, / Beyond these, / Another line of work |
-| 인용 | 문장마다 있다. 단락 첫 문장에 5–14개 묶음, 이후 예시마다 개별 인용 |
+| 인용 | 문장마다 있다. 단락 첫 문장에 5–14개 묶음, 이후 예시마다 개별 인용. → 확정 규칙: 차이를 쓰지 않는 묶음 인용은 피한다 (H3). 대상 학회 논문 1–2편 이상 (H2) |
 | 도구 표기 | 도구명 [n] (small caps는 본문 규칙대로) 또는 "저자 et al. [n]" (도구명이 없을 때) |
 | 어조 | 중립. 차이를 목표·가정으로 설명하고 평가어를 피한다 |
 | hedging | "To our knowledge"(최초 주장), "We anticipate"(통합 전망) 정도 |
-| **넣지 않는 것** | 섹션 리드·마무리 단락, 실험 수치(irace 예외), 표·그림, 우리 기법의 상세(한 줄 요약만) |
+| **넣지 않는 것** | 섹션 리드·마무리 단락, 실험 수치(irace 예외), 표·그림, 우리 기법의 상세(한 줄 요약만). → 확정 규칙: 대조에 쓰이지 않는 부연 (H4), 앞 절에서 설명한 baseline의 반복 (H2) |
 
 ---
 
 ## 5. 수식·알고리즘·플로트
 
 해당 없음 (4/4). 수식, 알고리즘, 표, 그림이 없다. 약어는 처음 쓸 때 정의한다: "search-based software testing (SBST)", "probabilistic context-sensitive grammar (PCSG)", "abstract syntax trees (ASTs)".
+→ 확정 규칙 (A3): 앞 섹션에서 정의한 약어도 이 섹션 첫 등장에서 다시 정의하고, 정의할 때 단어 첫 글자를 대문자로 쓴다 (예: Search-Based Software Testing (SBST)).
 
 ---
 
@@ -196,7 +212,9 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 | Related Work 요소 | 대응 위치 | 관계 |
 |---|---|---|
 | 주제 ①의 범주 | Intro I2 SOTA 범주, §2.1 SOTA 대응 | 같은 범주명·같은 순서 (search strategies → state-pruning → constraint-solving) |
-| 주제 ①의 도구 | §4.1 Baselines | Learch, Homi, AAQC, SymTuner 같은 baseline이 여기서 범주의 대표로 다시 나온다 |
+| 주제 ①의 도구 | §4.1 Baselines | Learch, Homi, AAQC, SymTuner 같은 baseline이 여기서 범주의 대표로 다시 나온다. → 확정 규칙 (H2): 앞 절에서 설명한 baseline은 반복하지 않고 나머지 연구만 다룬다 |
+| 제외 이유 (확정 규칙) | §4.1 Baselines | Baselines 단락은 선정 이유만 쓰고, 제외한 연구의 이유는 Related Work ① 단락에서 연구마다 단다 (H2) |
+| 분류 체계 (확정 규칙) | Intro, §2, §3 | 같은 분류 이름·순서를 쓰고, 분류마다 baseline이 하나씩 있다 (C7, H1) |
 | 대조 축 (사전 지식 vs 자동) | Abstract M4, Intro I3·I4, Conclusion | "from scratch / without prior knowledge"라는 논문 전체의 키워드를 Related Work의 대조 기준으로 쓴다 |
 | 가장 가까운 SOTA 일대일 대조 | Intro I3 (실명 지목), §4 baseline | ICSE26·ASE26 SymTuner: Intro에서 한계를 지적하고, §4에서 이기고, Related Work에서 차이를 정리한다 |
 | 최초 주장 | Contributions bullet 1 | 표현을 맞춘다 (ICSE26은 Contributions에만 둔다) |
@@ -209,38 +227,42 @@ Related Work는 짧고(~440 words) 4편 모두 주제 단락 3개뿐이라, 원�
 
 ```text
 ## 5 Related Work
-**<Improving the same technique>.** Our work shares a common goal with various existing techniques aimed at enhancing <domain> [c1–c9].
+(2단락, H2. 분류 이름·순서는 Intro·§2·§3과 같게, C7·H1. 앞 절에서 설명한 baseline은 반복하지 않는다)
+
+**<기술 분야>.** Our work shares a common goal with techniques for <domain>.
   (opt.) To our knowledge, it is the first to <unique claim> without <prior knowledge / manual effort>.
-  <Category 1> [..] <verb> ..., focusing on criteria such as <criterion> [n] and <criterion> [n].
-  In contrast, <category 2> [..] aim to ..., including <example> [n].
-  <Category 3> [..] have developed methods for ..., such as <example> [n].
-  <Tool> is orthogonal to these existing methods, enabling it to be integrated to further enhance their performance.
+  <Category 1> techniques <verb> ...: <Technique A> [a] <...>, whereas <Tool> <...>.        ← 문헌마다 차이 (H3)
+  <Technique B> [b] <...>, but handles only <C programs>.                                  ← baseline 제외 이유 (H2)
+  <Category 2> techniques ...: <Technique C> [c] <...>; it does not support <our benchmark's parser>.
+  (opt.) For example, <Technique D> [d] requires <quantity>, which makes it unsuitable for our setting.
+  (opt.) Both <Tool> and <closest SOTA, 앞 절에서 설명하지 않은 것> [n] aim to <...>. The key difference is that <Tool> <...>, whereas <closest SOTA> <...>.
+  (opt.) <Tool> is orthogonal to these techniques, enabling it to be integrated to further enhance their performance.
 
-**<Domain> with <same object/resource>.** Our work relates to techniques that <use the same object> [..], but differs in how <object> is <obtained/used>.
-  Several techniques [..] <manually define / rely on predefined> <object> to achieve <goal>. <Tool A> [n] ...; <Tool B> [n] ....
-  In contrast, <Tool> automatically <...> without prior knowledge. It further <...>.
-
-**<Same method / adjacent goal>.** Our approach belongs to / falls within the scope of <method family> [..].
-  For example, <Tool C> [n] and <Tool D> [n] employ <method> to <purpose>. <Tool E> [n] aims to ....
-  However, unlike <Tool>, which <...>, existing approaches <...>. (opt.) For example, <Tool F> [n] requires <quantity>, which makes it unsuitable for our setting.
-  Both <Tool> and <closest SOTA> [n] aim to <...>. The key difference is that <Tool> <...>, whereas <closest SOTA> <...>.
+**<대상 학회 공동체 분야>.** Our work relates to studies on <community topic> [v1], [v2].          ← 대상 학회(트랙) 논문 1–2편 이상 (H2)
+  <Study E> [v1] <finding/approach>; in contrast, <Tool> <...>. <Study F> [v2] ....
 ```
 
 ---
 
 ## 8. 작성 체크리스트
 
-- [ ] Experiments 뒤에 두었고, 주제 단락 3개(~440 words)이며 리드·마무리 단락이 없는가
-- [ ] 주제 ①(같은 목표)이 첫째이고, ②(같은 대상) ③(같은 방법·인접 목표)를 모두 다뤘는가
-- [ ] 단락 첫 문장이 관계 동사 + 인용 묶음인가 (shares a common goal with / belongs to / relates to ..., but differs in / is orthogonal to)
-- [ ] 범주 이름·순서가 Intro I2와 같은가
+- [ ] Experiments 뒤에 두었고, 주제 단락 2개(~440 words)이며 리드·마무리 단락이 없는가 (H2)
+- [ ] ① <기술 분야>가 첫째이고, ② <대상 학회 공동체 분야>에서 대상 학회(트랙) 논문을 1–2편 이상 인용했는가 (H2)
+- [ ] ①에서 앞 절에서 설명한 기법은 반복하지 않고, 나머지 연구마다 baseline에서 빠진 이유를 짧게 달았는가 (H2)
+- [ ] 단락 첫 문장이 관계 동사로 위치를 선언하는가 (shares a common goal with / belongs to / relates to ..., but differs in / is orthogonal to)
+- [ ] 묶음 인용만 하지 않고 인용한 문헌마다 우리와의 차이를 썼는가 (H3)
+- [ ] 범주 이름·순서가 Introduction·Preliminaries·Approach와 같은가 (C7, H1)
 - [ ] 예시를 "<도구> [n] <동사> ..." 한 문장씩, 기준 예를 "such as ... [n] and ... [n]"으로 들었는가
 - [ ] 단락마다 대조(C) 또는 통합(O)으로 끝나는가
 - [ ] 대조가 결함이 아니라 목표·가정의 차이로 쓰였고, 주된 축이 "사전 지식·수동 vs 자동"인가
-- [ ] 가장 가까운 SOTA를 "Both ... aim to ... The key difference is that ..., whereas ..."로 일대일 대조했는가
+- [ ] 가장 가까운 SOTA(앞 절에서 설명하지 않은 것)를 "Both ... aim to ... The key difference is that ..., whereas ..."로 일대일 대조했는가
+- [ ] 대조에 쓰이지 않는 부연이 없는가 (H4)
 - [ ] 최초 주장은 "To our knowledge"로 한정하고, Contributions와 표현이 같은가
 - [ ] "결합 가능"이라고 쓴 기법과 실제 결합 실험(§4)이 대응하는가
 - [ ] 수치·표·그림이 없는가
+- [ ] (공통 A3) 약어를 이 섹션 첫 등장에서 다시 정의했는가 (단어 첫 글자 대문자)
+- [ ] (공통 A5) 선행연구를 "tool"이 아니라 "technique"으로 부르고, 같은 대상에 한 용어만 썼는가
+- [ ] (공통 A7) "much/far" 같은 강조어로 선행연구를 깎지 않았는가
 
 ---
 

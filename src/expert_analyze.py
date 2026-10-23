@@ -1,12 +1,12 @@
 """RQ4: agreement (linear weighted Cohen's kappa) and the share of pairs in which the instructors chose HISTRA over
-HISTRA_empty, with an exact two-sided sign test. Usage: python paper/expert_analyze.py"""
+HISTRA_empty, with an exact two-sided sign test. Usage: python paper/src/expert_analyze.py"""
 import csv
 import math
 import os
 import sys
 from collections import Counter
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src", "experiments"))   # this folder is histra/paper/
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src", "experiments"))   # <repo>/paper/src/
 from common import ROOT  # noqa: E402
 
 RATINGS = os.path.join(ROOT, "output", "expert", "ratings.csv")

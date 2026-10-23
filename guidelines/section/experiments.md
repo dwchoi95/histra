@@ -8,14 +8,38 @@
 
 ## 0. 핵심 규칙
 
-1. Experiments는 **~3,200 words, RQ 4–5개**다. 구성은 **리드(RQ 목록 + 구현·장비) → 4.1 Experimental Settings → RQ별 하위절 → (추가 분석) → Threats to Validity**다.
-2. RQ 원형은 **① 주 지표(coverage) ② 부 지표(bugs) ③ 단계별 효과(ablation) ④ 일반성(다른 도구 계열)**이고, 여기에 하이퍼파라미터·분석·재사용성 중 하나를 더한다. **RQ 이름 = 하위절 제목**이다.
-3. Settings는 **Baselines. / Benchmarks. / Other Settings.** bold run-in 세 단락이다. 벤치마크는 선행 연구에서 가져오고 **명시적 필터 기준**을 둔다. 예산·반복 횟수·장비·**공정성 장치**("we ran each baseline in two ways ... and reported the better")를 밝힌다.
-4. 결과 단락은 **"Table N shows that ..." → 전체 평균 % → baseline별 수치(respectively) → Notably(최대) → Interestingly/Surprisingly(이상치 + 원인) → 통계 검정 + 표준편차 → "These results indicate ..."** 순이다.
-5. Threats to Validity는 **한 단락, (1)(2)(3)**이다. 도구 일반성·벤치마크 대표성·하이퍼파라미터를 다루고, 항목마다 **완화 근거**를 붙인다. "may"가 집중적으로 나오는 유일한 곳이다.
-6. **우열은 표로, 원인은 그림으로 보인다.** §4 플로트 36개 중 표가 26개(72%)다. 주 결과·버그·ablation·하이퍼파라미터는 **모두 표**이고, 그림은 내부 동작·집합 겹침(Venn)·분포처럼 **왜 좋아졌는지**를 설명하는 데 쓴다 (§1, §5).
-7. **평가 문장의 81%가 장점, 12%가 baseline의 약점, 6%가 도구의 단점**이다. 인정하는 단점은 논문당 1–9개이고 **모두 비임계적**이며, 같은 문장이나 다음 문장에서 바로 방어한다. 표에는 도구가 지거나 비긴 셀이 더 있지만 본문은 그중 일부만 다룬다 (§4.1–4.4).
-8. 규모는 **벤치마크 12–17개 × baseline 3–5개 × 10–24시간 × 5회**다. 계산량은 곱셈식으로 밝히고("24 hours × 5 trials × ..."), 통계 검정은 **주 결과표에만** 한다 (§3 E-1).
+1. Experiments는 **~3,200 words, RQ 4개**다 (4편은 4–5개, 5개는 많다 — F1). 구성은 **리드(RQ 목록 + 장비) → 4.1 Experimental Settings → RQ별 하위절 → (Discussion) → Threats to Validity**다. RQ로 보기 어려운 추가 분석은 Threats 앞 Discussion 하위절에 둔다 (A15).
+2. RQ 원형은 **① 주 지표(coverage) ② 부 지표(bugs) ③ 단계별 효과(ablation) ④ 일반성(다른 도구 계열)**이고, 4편은 여기에 하이퍼파라미터·분석·재사용성 중 하나를 더한다. 확정 규칙은 RQ 4개다: 부 지표를 주 지표 RQ 안의 bold run-in으로 두는 식(2/4편)으로 줄이고, 나머지 분석은 Discussion으로 보낸다. 하위절 제목은 **"RQn: 이름"**(예: RQ1: Effectiveness)이다 (4편은 이름만 — F1).
+3. Settings는 **Baselines. / Benchmarks. / Evaluation Metrics.** bold run-in 세 단락이다 (4편의 Other Settings 대신 지표만 쓰는 Evaluation Metrics — F5). Baselines에는 선정 연구·방법론 요약·선정 이유만 쓴다 (F3). 벤치마크는 선행 연구에서 가져오고 **명시적 필터 기준**을 둔 뒤 **전체**로 실험한다 (A17). 4편은 예산·반복 횟수·장비·**공정성 장치**("we ran each baseline in two ways ... and reported the better")를 밝히지만, 실행 설정은 넣지 않고 비교 조건은 한 문장으로만 쓴다 (F5, F8).
+4. 결과 단락은 **표·그림이 무엇을 보이는지 → 지표별 수치(상대 %, baseline별 respectively) → Notably(최대) → Interestingly/Surprisingly(이상치 + 원인) → 마지막에 종합 결론("These results indicate ...")** 순이다 (F6). 4편은 "Table N shows that X significantly ..." headline으로 열고 통계 검정 + 표준편차를 넣지만, headline으로 열지 않고 억지 통계 검정도 넣지 않는다 (F6, A6).
+5. Threats to Validity는 **한 단락**이고, **예상되는 지적에 대한 방어만** 쓴다 (F11). 4편은 (1)(2)(3)으로 도구 일반성·벤치마크 대표성·하이퍼파라미터를 다루고 항목마다 **완화 근거**를 붙인다. 근사의 한계, 당연한 이야기, 리뷰어가 떠올리지 않을 약점은 넣지 않는다. "may"가 집중적으로 나오는 유일한 곳이다.
+6. 4편은 **우열은 표로, 원인은 그림으로 보인다.** §4 플로트 36개 중 표가 26개(72%)다. 주 결과·버그·ablation·하이퍼파라미터는 **모두 표**이고, 그림은 내부 동작·집합 겹침(Venn)·분포처럼 **왜 좋아졌는지**를 설명하는 데 쓴다 (§1, §5). → 확정 규칙: 결과에 그래프를 섞고, 정확한 개별 수치가 필요할 때만 표를 쓴다 ([floats.md](floats.md) §0.1 G2).
+7. **평가 문장의 81%가 장점, 12%가 baseline의 약점, 6%가 도구의 단점**이다. 인정하는 단점은 논문당 1–9개이고 **모두 비임계적**이며, 같은 문장이나 다음 문장에서 바로 방어한다. 표에는 도구가 지거나 비긴 셀이 더 있지만 본문은 그중 일부만 다룬다 (§4.1–4.4). 리뷰어가 떠올리지 않을 약점은 먼저 들추지 않는다 (A8).
+8. 규모는 **벤치마크 12–17개 × baseline 3–5개 × 10–24시간 × 5회**다. 계산량은 곱셈식으로 밝히고("24 hours × 5 trials × ..."), 통계 검정은 **주 결과표에만** 한다 (§3 E-1). → 확정 규칙: 표본 대신 벤치마크 전체로, 재구현 대신 공개 구현으로 실험하고 (A17), 억지 통계 검정은 넣지 않는다 (A6).
+
+### 0.1 집필에서 확정한 규칙
+
+공통 규칙(용어·약어·비교 표현·약점 노출·분량 등)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다. 결과 서술에는 특히 A6·A7·A8·A9·A15·A17이 걸린다. 아래 규칙은 4편의 관찰과 다를 때 우선한다.
+
+- **RQ 목록 (F1)**: 리드에 짧은 질문을 "RQ1: …?" 목록으로 둔다. RQ는 4개가 적당하고(5개는 많다), RQ로 보기 어려운 추가 분석은 Discussion으로 보낸다.
+- **RQ 하위절 (F1)**: 제목은 "RQn: 이름"(예: RQ1: Effectiveness)으로 하고, 첫 단락은 그 RQ의 목적으로 시작한다.
+- **구현·장비 (F2)**: 구현 설명은 artifact에 맡기고 뺀다. 실험 장비는 OS 버전까지 쓴다.
+- **Baselines 내용 (F3)**: 선정한 연구, 그 방법론의 한두 문장 요약, 선정 이유만 쓴다. 선정 이유는 제외 이유를 따로 나열하지 않고 녹인다(예: "분류마다 최신 기법 하나씩").
+- **Baselines에 쓰지 않는 것 (F3)**: 세부 설정(옵션, 시간 예산), 모든 선행연구 언급, 다른 기법을 앞섰다는 이력, 데이터셋에 맞춘 구현 수정(래핑 등). 제외한 연구의 제외 이유는 Related Work에서 짧게 단다.
+- **LLM baseline·대조군 (F3)**: LLM 기반 baseline의 모델은 "그 기법의 평가에서 현재 사용 가능한 최고 성능 모델"이라는 근거로 고른다. 대조군(ablation 변형)은 Baselines가 아니라 쓰이는 RQ 절에서 정의한다.
+- **Benchmarks 표 (F4)**: 개수는 평균이 아니라 총 개수(#Buggy 등), 줄 수는 Avg LOC(대상 프로그램 평균)로 쓰고, 필요한 메타 정보(공식 난이도, 개념)를 함께 넣는다.
+- **Evaluation Metrics (F5)**: Settings 셋째 단락의 이름은 Evaluation Metrics이고 평가 지표만 쓴다. 실행 설정은 넣지 않는다.
+- **결과 단락 순서 (F6)**: headline으로 시작하지 않는다. 표·그림이 무엇을 보이는지 → 지표별 세부 수치 → 마지막에 종합 결론 순으로 쓴다.
+- **그림 소개 위치 (F6)**: 그림은 그 그림의 결과를 말하는 곳에서 소개한다. 첫 문장에서 표와 그림을 함께 소개하지 않는다.
+- **원인 분석 (F7)**: 결과만 나열하지 않고, 좋은 이유·좋을 수밖에 없는 근거를 분석해 넣는다.
+- **비교 조건 (F8)**: 공통 집합 비교 같은 비교 조건은 한 문장으로만 쓰고 세부는 artifact에 맡긴다.
+- **Ablation Study (F9)**: 설계 선택을 하나씩 빼는 RQ는 하위절 제목을 "RQn: Ablation Study"로 한다. 표와 서술 순서를 맞춘다(예: 설계 선택 제거 → 구성 요소 출처 교체).
+- **Ablation 결론·이름 (F9)**: 결론은 우리 주장(예: 기법 X의 정의가 대안보다 목표를 잘 달성)을 뒷받침하는 형태로 맺는다. 다른 선행 기법의 방식을 차용한 변형은 그 기법 이름으로 부르지 않는다.
+- **사람 평가 RQ (F10)**: 소제목은 직관적으로 짓는다(예: "Developers' Choice of Patches"). 평가 절차의 세부(사전 고정, 보정용 쌍, 합의 기준)는 꼭 필요한 것만 쓴다.
+- **사람 평가 그림·비교 대상 (F10)**: 선택지(No preference 등)는 꼭 필요할 때만 그림에 넣는다. 왜 그 비교 대상(대조군)인지를 질문마다 맞게 쓴다.
+- **Threats (F11)**: 한 단락으로, 예상되는 지적에 대한 방어만 쓴다(예: 대상 언어를 하나로 한 이유). 근사의 한계, 더 긴 예산 같은 당연한 이야기, 리뷰어가 떠올리지 않을 약점은 넣지 않는다.
+- **Threats 방어 (F11)**: 우려(예: 입력이 짧은 경우)를 대조군 결과로 방어할 수 있으면 한 문장으로, 독자가 결과와 우려의 연결을 이해하게 쓴다.
+- **그룹별 결과 (F12)**: 같은 데이터를 그룹별(난이도별)로 보일지 대상별로 보일지는 경향이 잘 보이고 약점이 덜 드러나는 쪽으로 정한다. 나눴을 때 약점만 드러나면 나누지 않는다.
 
 ---
 
@@ -35,7 +59,7 @@
 | ~4% | **~15%** | **~29%** | **~20%** | **~27%** | ~4% |
 
 - 2단 논문은 단 단위로 다시 추출해 셌다. 하위절 경계에서 수십 단어 정도 오차가 있다.
-- 주 결과와 ablation을 합치면 약 절반이다. 추가 분석(~27%)도 적지 않다. **RQ 목록에 없는 분석 하위절**도 둔다 (ICSE25 Discussions, ASE26 Case Study·Comparison with Fuzzing).
+- 주 결과와 ablation을 합치면 약 절반이다. 추가 분석(~27%)도 적지 않다. **RQ 목록에 없는 분석 하위절**도 둔다 (ICSE25 Discussions, ASE26 Case Study·Comparison with Fuzzing). → 확정 규칙: 이런 분석은 Threats 앞 Discussion 하위절 하나로 묶고, 가산점이 없는 내용은 넣지 않는다 (A15).
 - 플로트: §4에 표 26개(논문 전체 표의 81%)와 그림 10개(전체 그림의 59%)가 있다. 논문당 표 4–9개, 그림 1–4개다.
 
 §4 플로트를 보여 주는 결과의 종류로 나눴다 (캡션 있는 것 기준):
@@ -53,7 +77,7 @@
 | 사례 연구 코드 | 0 | 1 | 1 | ICSE25 Fig. 4 (ASE26은 캡션 없는 코드) |
 | **합계** | **26 (72%)** | **10 (28%)** | **36** | 10 / 10 / 10 / 6 |
 
-- 우열을 주장하는 플로트(벤치마크~하이퍼파라미터, 22개)는 **전부 표**다. 그림으로 주 결과를 보인 논문은 없다.
+- 우열을 주장하는 플로트(벤치마크~하이퍼파라미터, 22개)는 **전부 표**다. 그림으로 주 결과를 보인 논문은 없다. → 확정 규칙: 결과에 그래프를 섞는다 (G2).
 - 그림 10개 중 8개가 일반성·내부 동작·겹침 분석이다. 즉 그림은 "얼마나 좋은가"가 아니라 "**왜·어디서** 좋은가"를 보인다.
 
 ---
@@ -83,6 +107,7 @@
 | FSE26 | (1) Effectiveness · (2) Reduction of coverage-equivalent inputs · (3) Efficacy of each step · (4) Reusability | 4.2 · 4.3 · 4.4 · 4.5 | — (4.2 안에 Case study 2개) |
 
 **정형 순서:** 리드 → Settings → 주 지표 → 부 지표 → ablation → 일반성 → (추가 분석) → Threats. 순서가 바뀐 경우는 없다.
+→ 확정 규칙: RQ는 4개로 맞추고(부 지표는 주 지표 RQ 안으로), 추가 분석은 Discussion 하위절로 둔다: 리드 → Settings → RQ1–RQ4 → (Discussion) → Threats (F1, A15).
 
 ### 2.3 결과 하위절의 단락 역할
 
@@ -95,8 +120,10 @@
 | **T** | 통계 검정·변동 | statistically significant ... Mann-Whitney U test ... p < 0.05 / standard deviations ... |
 | **D** | 심층 분석 (bold run-in) | **Comparison with ...** / **Case study.** |
 | **C** | 함의 | These results indicate / demonstrate / highlight that ... |
+| **I** | (확정 규칙) 플로트 소개 — 무엇을 보이는지만, 주장 없이 | Table N lists / Figure N plots M of each technique on ... (M = 지표) |
 
 **정형 순서:** H → Q → N → S → T → (D) → C.
+→ 확정 규칙: **I → Q(지표별, 상대 %) → (N · S, 원인 분석) → (D) → C**. H로 열지 않고, T(억지 통계 검정)는 넣지 않는다 (F6, F7, A6).
 
 ---
 
@@ -122,11 +149,14 @@
 
 **RQ 이름**은 2–4단어 명사구다: Effectiveness / Branch Coverage / Bug-finding Ability / Efficacy of Each Stage / Generality / Reusability. **같은 이름을 하위절 제목으로 쓴다.**
 
+→ 확정 규칙 (F1): 리드의 목록은 짧은 질문 "RQ1: How ...?"로 두고, 하위절 제목은 "RQ1: Effectiveness"처럼 번호 + 이름으로 한다. 각 하위절의 첫 단락은 그 RQ의 목적("To evaluate whether ..., we ...")으로 시작한다. 설계 선택을 빼는 RQ의 이름은 "Ablation Study"다 (F9).
+
 **구현·장비 문장** (리드 끝 또는 Settings 끝):
 
 - "We implemented TopSeed on top of KLEE-2.1 [4], an actively maintained symbolic executor that incorporates diverse techniques [11], [15], [17], [18], [26]. All experiments were conducted on a single Linux machine equipped with two Intel Xeon Gold 6230R processors."
 - "We conducted our experiments using KLEE-2.1 [5], a widely used symbolic executor. All experiments were performed on a system with two Intel Xeon Gold 6230R processors and 256GB RAM."
 - 틀: **"We implemented X on top of <도구-버전> [cite], <도구에 대한 한 구절>. All experiments were conducted on <장비>."**
+- → 확정 규칙 (F2): 구현 설명은 artifact에 맡기고 장비 문장만 둔다: "All experiments were conducted on <장비> running <OS-버전>."
 
 ### E-1 Experimental Settings
 
@@ -144,6 +174,8 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
   - 기본 도구 그대로 (KLEE, Kleefix)
 - **강한 baseline임을 강조**한다: "Given that Symtuner is an arguably strong baseline, this choice ensures a rigorous evaluation for ParaSuit." / "Each enhances symbolic execution through an independent approach and has shown superior performance over its own baselines."
 - **baseline 설정의 근거**를 밝힌다: "we set k to 5, the best-performing value reported in Tribble's evaluation" / "The probabilistic fuzzer was executed with both PCFGs, and the best result was reported as ProbF."
+- → 확정 규칙 (F3): Baselines에는 선정 연구, 방법론 한두 문장, 선정 이유(예: "분류마다 최신 기법 하나씩")만 쓴다. 위의 "비교 설정 이름"·"제안 기법의 단순판" 같은 대조군은 쓰이는 RQ 절에서 정의한다.
+- → 확정 규칙 (F3, A9): "강한 baseline" 근거로 다른 기법을 앞섰다는 이력, 세부 설정(옵션·시간 예산), 구현 수정(래핑 등), 당연한 실행 방식("공개 구현을 각 논문 설정으로")은 쓰지 않는다. 설정 근거는 LLM 기반 baseline의 모델 선정("그 기법의 평가에서 현재 사용 가능한 최고 성능 모델")만 쓴다.
 
 #### Benchmarks
 
@@ -154,8 +186,11 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 - **다양성·대표성을 수치로**: "the number of options in our 15 benchmarks ranges from 15 to 158 (10×), and the number of option-related branches ranges from 30 to 8,080 (269×), ensuring a diverse and representative benchmark set." / "most benchmarks (8 out of 12) are not standalone parsers but non-trivial functionality beyond parsing."
 - **선행 연구에서 쓰였음**: "these benchmarks have also been widely used in existing works [12, 13, 18, 44, 54, 80]"
 - 끝에 벤치마크 표를 참조한다: "Table 2 presents the 15 open-source C programs used in our evaluation, along with the number of options in each program (Opt), ..."
+- → 확정 규칙 (F4, A17): 표본이 아니라 벤치마크 전체로 실험한다. 벤치마크 표의 개수는 총 개수(#Buggy 등), 줄 수는 Avg LOC로 쓰고, 필요한 메타 정보(공식 난이도, 개념)를 함께 넣는다.
 
-#### Other Settings
+#### Other Settings (→ 확정 규칙: Evaluation Metrics)
+
+→ 확정 규칙 (F5, F8, A9): 단락 이름을 **Evaluation Metrics**로 하고 아래 표의 "지표 정의"(필요하면 측정 도구)만 쓴다. 예산·반복·공정성 장치·규모 강조 같은 실행 설정은 넣지 않고, 결과 해석에 꼭 필요한 비교 조건만 쓰이는 RQ에서 한 문장으로 쓴다.
 
 | 항목 | 예 |
 |---|---|
@@ -179,13 +214,13 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 
 - 공통 규모: 벤치마크 12–17개, baseline 3–5개, 실행당 10–24시간, **5회 반복**, 단일 장비(Xeon Gold 6230/6230R 두 개).
 - 계산량은 **곱셈식으로 풀어 쓴다** ("24 hours × 5 trials × 15 benchmarks × 5 baselines"). 가장 큰 표 하나나 도구 하나 기준의 시간만 쓰고, 그래도 수만 시간 규모가 드러난다.
-- **통계 검정은 주 결과표 하나에만** 한다 (4/4). 버그·ablation·일반성에는 검정이 없다. 표준편차는 pooled 값 몇 개나 큰 프로그램 두 개 정도만 본문에 쓴다.
-- 비용이 큰 실험(ablation, 하이퍼파라미터, 분석)은 **가장 큰 프로그램 5개** 같은 부분집합에서 한다. 이유를 쓰기도 하고(ICSE26) 쓰지 않기도 한다(ICSE25).
+- **통계 검정은 주 결과표 하나에만** 한다 (4/4). 버그·ablation·일반성에는 검정이 없다. 표준편차는 pooled 값 몇 개나 큰 프로그램 두 개 정도만 본문에 쓴다. → 확정 규칙: 억지로 끼운 통계 검정(검정명·p값 나열)은 넣지 않고, 상대 %로 이점을 보인다 (A6).
+- 비용이 큰 실험(ablation, 하이퍼파라미터, 분석)은 **가장 큰 프로그램 5개** 같은 부분집합에서 한다. 이유를 쓰기도 하고(ICSE26) 쓰지 않기도 한다(ICSE25). → 확정 규칙: 가능하면 모든 RQ를 벤치마크 전체로 한다 (A17).
 - 일반성 실험은 **상대 논문(Chameleon)의 벤치마크 3–4개**를 그대로 쓴다 (SE 세 편).
 
 ### E-2 주 지표 (coverage)
 
-단락 순서 H → Q → N → S → T → (D) → C를 그대로 따른다.
+단락 순서 H → Q → N → S → T → (D) → C를 그대로 따른다. → 확정 규칙: I → Q → (N · S) → (D) → C로 쓴다 (§2.3, F6).
 
 - **H + Q:** "**Table V shows that** integrating TopSeed into each of the four baselines **significantly increased** branch coverage across all benchmarks, compared to the baselines without TopSeed. **Overall**, TopSeed covered 33.0% more branches than KLEE+Base, ... integrating TopSeed with Learch, Homi, and KLEE-Array, resulted in 38.1%, 31.6%, 40.1% increases in branch coverage, **respectively**, over each baseline without seeding."
 - **N (부분집합·최대):** "**Particularly**, TopSeed dramatically increased branch coverage achieved by four baselines on large benchmarks, which have a greater potential for improvement than smaller ones. For the five largest programs, ... **Conversely**, on the five smallest programs, the improvements were modest, ..." / "**For instance**, in the case of the largest program xorriso, ParaSuit achieved 106.6% higher branch coverage than Symtuner, the second-best baseline—making the largest difference across all benchmarks."
@@ -196,6 +231,7 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
   - "The coverage results of ParaSuit are statistically significant. This is confirmed by the **Mann-Whitney U test** [63], with p-values below 0.05 in all 48 cases (12 benchmarks × 4 baselines)."
   - 표준편차는 본문에 괄호로 쓴다: "The standard deviations of branch coverage ... were as follows: Base (38.6), RandSeed (73.1), and TopSeed (52.0). **As expected**, RandSeed showed the highest variability. **While** the standard deviation of TopSeed was slightly higher than Base, **this difference was negligible** given ..."
   - 검정: Wilcoxon signed-rank (1편), Mann-Whitney U (3편). 4편 모두 p < 0.05를 기준으로 하고, **예외를 숨기지 않는다**.
+  - → 확정 규칙 (A6): 이 T 단락은 따르지 않는다. 억지 통계 검정 대신 "X% more/fewer"로 이점을 보이고, 같은 지표 안에서 %·배수·개수를 섞지 않는다.
 - **D (심층 분석, bold run-in):**
   - ICSE26: "**Comparison with User-configured Approach.** To demonstrate how ParaSuit achieved higher branch coverage than the state-of-the-art approach (Symtuner), we analyzed the differences in selected parameters and values. Figure 3-(a) shows that ..."
   - ICSE26: "**Comparison with 24-Hour Continuous Run.** To examine whether ParaSuit's iterative approach ... limits its ability to explore deeper paths, we compared it with Klee24h ..."
@@ -218,6 +254,8 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 
 ### E-4 Ablation (단계별 효과)
 
+→ 확정 규칙 (F9): 하위절 제목은 "RQn: Ablation Study"다. 변형은 이 절에서 정의하고, 표의 열 순서와 서술 순서를 맞춘다(예: 설계 선택 제거 → 구성 요소 출처 교체). 다른 선행 기법의 방식을 차용한 변형은 그 기법 이름으로 부르지 않는다(아래 "SOTA 부품 대체"의 이름 붙이기는 따르지 않는다). 결론은 우리 주장을 뒷받침하는 형태로 맺는다.
+
 - **리드 = 변형 정의:** "We evaluated the effectiveness of the Select and Learn stages in TopSeed (Algorithm 3). Specifically, for the Select phase, we assessed TopSeed's performance without the grouping and clustering algorithms ... In this variant, **dubbed** 'TopSeed without grouping', each input ... is treated as a separate group."
 - **변형 유형:**
 
@@ -235,7 +273,7 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 - **왜 이겼는지 설명:** "**We investigated why** Orbis notably outperformed CitConst. **The key difference is their objective.** ... In contrast, Orbis continuously evaluates ..."
 - **변형이 baseline보다도 나쁜 경우를 짚는다:** "The most naive variant, which lacks both steps, ... performing even worse than the baseline fuzzers alone."
 - **마무리:** "These findings demonstrate that both the Select and Capture steps are essential for the effectiveness of RSFuzz."
-- 벤치마크: 전체(ASE26, FSE26) 또는 큰 프로그램 5개(ICSE25, ICSE26 — "covering the three largest programs ... and the three programs where bugs were identified").
+- 벤치마크: 전체(ASE26, FSE26) 또는 큰 프로그램 5개(ICSE25, ICSE26 — "covering the three largest programs ... and the three programs where bugs were identified"). → 확정 규칙: 전체로 한다 (A17).
 
 ### E-5 일반성 (Generality / Reusability)
 
@@ -259,6 +297,7 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 | 메커니즘 지표 | ICSE25 F (SMT 호출 절감), FSE26 4.3 (CE 비율) | 향상의 **원인**이 되는 내부 지표를 따로 측정한다 |
 
 - 사례 연구는 **향상이 가장 컸던 프로그램**을 고른다: "we conducted a case study on the diff program, which showed the highest improvement in terms of branch coverage."
+- → 확정 규칙 (A15, F1): RQ로 보기 어려운 추가 분석·활용 방안은 Threats 바로 앞 **Discussion** 하위절 하나에 둔다. 가산점이 없는 분석은 Discussion에도 넣지 않는다. 하이퍼파라미터처럼 RQ 4개 안에 들면 RQ로 둔다.
 
 ### E-7 Threats to Validity
 
@@ -273,6 +312,7 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 - 항목 구성: **사실(우리가 한 것) → 한계("may not ...") → 완화 근거(다른 절의 결과, 수동 조사 수치)**
 - 범주: 도구·엔진 일반성 (4/4), 벤치마크 대표성 (3/4), 하이퍼파라미터 (2/4), 방법 자체의 가정 (ASE26 2개, FSE26 1개)
 - 완화 근거는 **다른 하위절을 다시 인용**하거나 **수치**로 댄다.
+- → 확정 규칙 (F11): 한 단락에 **예상되는 지적 → 방어**(선택 이유, 대조군 결과, 수치)만 쓴다(예: 대상 언어를 하나로 한 이유). 방어 없이 한계만 적는 항목(ASE26 (2)처럼 "could further improve"), 근사의 한계, 더 긴 예산 같은 당연한 이야기, 리뷰어가 떠올리지 않을 약점은 넣지 않는다. 대조군 결과로 방어할 수 있는 우려는 결과와 우려의 연결이 보이게 한 문장으로 쓴다.
 
 ---
 
@@ -284,13 +324,13 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 | 시제 | 수행·관찰은 **과거형**(covered, identified, achieved, observed), 표가 보여 주는 것은 **현재형**(Table 2 demonstrates), 함의는 **현재형**(These results indicate) |
 | 결론 문장 | "These results / This finding indicate·demonstrate·highlight·underscore·confirm that ..." — 논문당 3–6회, "This indicates/suggests ..." 0–4회 |
 | 신호어 (논문당 빈도) | Notably, (0–5) / Interestingly, (0–3) / Surprisingly, (0–2) / Particularly·In particular, (0–3) / Overall·On average, (1–4) / respectively (3–13) |
-| 수치 | % 소수 1자리, 큰 배율은 ×("3.5 times", "66.9×"), baseline 나열은 "respectively", 표준편차는 괄호 |
-| 통계 | "statistically significant"를 논문마다 정확히 한 번 쓴다. 검정 이름 + 인용 + 기준 p < 0.05 + 예외 |
+| 수치 | % 소수 1자리, 큰 배율은 ×("3.5 times", "66.9×"), baseline 나열은 "respectively", 표준편차는 괄호. → 확정 규칙: 비교는 상대 "X% more/fewer"로, 같은 지표 안에서는 %·배수·개수를 섞지 않는다 (A6) |
+| 통계 | "statistically significant"를 논문마다 정확히 한 번 쓴다. 검정 이름 + 인용 + 기준 p < 0.05 + 예외. → 확정 규칙: 억지 통계 검정은 넣지 않는다 (A6) |
 | 공정성 | "To ensure a fair comparison," / "For a clear comparison," / "without modification" — 4/4 |
 | hedging | 결과 서술에는 거의 없다. "may / might"는 논문당 2–3회이고 대부분 Threats와 원인 추정("This might stem from")에 있다 |
-| 강조 형용사 | significantly, substantially, dramatically, remarkably, markedly, considerably, noticeably |
-| 정직성 | 예외·상대가 이긴 부분·약점을 **일부** 쓴다 ("An exception occurs ...", "while missing only one bug", "these fuzzers exclusively covered ...", "Despite the negative side effect, ..."). 단, 비임계적이고 바로 방어할 수 있는 것만 고른다 (§4.1–4.4) |
-| **넣지 않는 것** | 방법 재설명 (§3 참조로 대체), Related Work식 문헌 비교 |
+| 강조 형용사 | significantly, substantially, dramatically, remarkably, markedly, considerably, noticeably. → 확정 규칙: 선행 기법을 깎는 "much/far" 같은 강조어는 피하고 수치로 말한다("more than twice the others") (A7) |
+| 정직성 | 예외·상대가 이긴 부분·약점을 **일부** 쓴다 ("An exception occurs ...", "while missing only one bug", "these fuzzers exclusively covered ...", "Despite the negative side effect, ..."). 단, 비임계적이고 바로 방어할 수 있는 것만 고른다 (§4.1–4.4). 리뷰어가 떠올리지 않을 약점, 유리한 부분집합을 고른 것처럼 읽히는 문장("N개는 지표에서 제외")은 꼭 필요하지 않으면 뺀다 (A8) |
+| **넣지 않는 것** | 방법 재설명 (§3 참조로 대체), Related Work식 문헌 비교, 핵심 메시지 밖의 수치·설정·당연한 사실 (A9 — 세부는 artifact에) |
 
 ### 4.1 장점·단점 비율
 
@@ -324,7 +364,7 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 | (f) Threats로 미루기 | **0** | — | 결과의 약점은 Threats로 넘기지 않는다. Threats는 범위와 가정만 다룬다 (§3 E-7) |
 
 - **위치:** 단점 문장은 대부분 **문단 가운데, 장점 문장 사이**에 둔다. 문단을 단점으로 여는 경우는 하나(FSE26 입력 수)뿐이고, 그 문단도 장점으로 닫는다. **문단과 하위절의 마지막 문장은 언제나 장점이나 함의(C)다.**
-- **수치 선택:** 작은 손실은 절댓값("only 15 branches", "only one bug")으로, 큰 이득은 비율이나 배수("3.5 times more", "1,269× longer")로 쓴다. 손실과 이득을 한 문장에 나란히 두어 크기를 대비한다.
+- **수치 선택:** 작은 손실은 절댓값("only 15 branches", "only one bug")으로, 큰 이득은 비율이나 배수("3.5 times more", "1,269× longer")로 쓴다. 손실과 이득을 한 문장에 나란히 두어 크기를 대비한다. → 확정 규칙: 같은 지표 안에서는 표현 방식을 섞지 않는다 (A6).
 - **예외는 이름을 대고 하나만:** "An exception occurs in the factor program" (ICSE25), "An exception was observed for the CSV benchmarks" (FSE26). 원인 설명은 없거나 한 구절이다. 예외를 먼저 밝히는 문장은 나머지 주장을 믿게 하는 장치로 쓰인다.
 
 ### 4.3 표에는 있지만 본문이 말하지 않는 것
@@ -353,6 +393,8 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 5. **통계 검정은 주 결과에만** 하고, "statistically significant"를 논문당 한 번 쓴다.
 6. **버그 표에는 버그가 나온 프로그램만** 싣는다 (4/4). 0만 있는 행이 사라진다.
 7. **도구 자체의 실행 비용은 따로 재지 않는다** (4/4). 같은 시간 예산 안에서 비교하는 것으로 대신한다.
+
+→ 확정 규칙: 3은 따르지 않고 벤치마크 전체로 실험한다 (A17). 5는 억지 검정을 넣지 않는 쪽으로 대신한다 (A6). 같은 데이터를 그룹별(난이도별)로 보일지 대상별로 보일지는 경향이 잘 보이고 약점이 덜 드러나는 쪽으로 정하고, 나눴을 때 약점만 드러나면 나누지 않는다 (F12).
 
 **정리.** 네 편은 단점을 (1) 평가 문장의 6%에만, (2) 비임계적이고 즉시 방어할 수 있는 것으로, (3) 문단 가운데에 둔다. 더 큰 잠재적 약점(교차 비교의 손실, 오버헤드, 분산)은 문장이 아니라 **비교 프레임과 실험 범위를 고르는 단계**에서 피한다. 다만 표에는 데이터를 다 싣고, 예외 한두 개를 이름을 대고 인정한다. 리뷰어가 표를 직접 읽어도 본문과 모순되지 않는 범위 안에서 장점을 고른다.
 
@@ -394,8 +436,9 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 | 코드 | 1 | 사례 연구의 메커니즘 |
 
 - **coverage-over-time 곡선은 네 편 모두 없다.** 결과는 마지막 시점의 평균만 표로 보인다.
-- 주 결과표는 **도구 열을 모든 행에서 굵게** 한다. 비긴 행도 도구 쪽을 굵게 하는 경우가 있다 (ICSE25 Table V, FSE26 Table 5).
-- **RQ마다 플로트가 최소 1개** 있고, 결과 단락의 첫 문장이 그 플로트를 주어로 삼는다.
+- 주 결과표는 **도구 열을 모든 행에서 굵게** 한다. 비긴 행도 도구 쪽을 굵게 하는 경우가 있다 (ICSE25 Table V, FSE26 Table 5). → 확정 규칙: 굵게 = 최고값, 모든 지표 열에 일관되게 (G5).
+- **RQ마다 플로트가 최소 1개** 있고, 결과 단락의 첫 문장이 그 플로트를 주어로 삼는다. → 확정 규칙: 첫 문장은 그 플로트가 무엇을 보이는지만 말하고, 그림은 그 결과를 말하는 곳에서 소개한다 (F6, [floats.md](floats.md) §2.3).
+- → 확정 규칙 (G2, G3): 결과에는 그래프를 섞고 정확한 개별 수치가 필요할 때만 표를 쓴다. 그래프 형태는 이점이 가장 잘 드러나는 것으로 고른다 ([floats.md](floats.md) §0.1).
 
 ---
 
@@ -405,7 +448,8 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 |---|---|---|
 | RQ 목록 | Intro I7 (결과 미리보기), Contributions bullet 3 | Intro의 "We further demonstrate X's efficacy by comparing it with ..., and its generality by applying ..." 문장이 RQ와 일대일로 대응한다 |
 | 주 지표 수치 | Abstract M8, Intro I7 | 같은 수치를 쓴다 (반올림 규칙까지 일치시킬 것; [floats.md](floats.md) §7) |
-| Baselines | §2.1 SOTA 대응, §2.2 단순 대안, §5 Related Work | 같은 기법이 §2 → §4 → §5에 다시 나온다. §2의 단순 대안이 baseline이 된다 (ICSE25 Algorithm 2 → RandSeed) |
+| Baselines | §2.1 SOTA 대응, §2.2 단순 대안, §5 Related Work | 같은 기법이 §2 → §4 → §5에 다시 나온다. §2의 단순 대안이 baseline이 된다 (ICSE25 Algorithm 2 → RandSeed). 확정 규칙: baseline은 앞에서 쓴 선행연구 분류마다 하나씩 고르고, 제외한 연구의 제외 이유는 Related Work에서 단다 (F3) |
+| Discussion (확정 규칙) | Threats 바로 앞 | RQ로 보기 어려운 추가 분석·활용 방안 (A15) |
 | Benchmarks | §2.2 Table 1 (일부), Intro I7 (개수·규모 범위) | §2.2의 측정은 이 벤치마크의 일부로 한다 |
 | Ablation 변형 | §3 단계, §3 forward ref, §3 "we also considered" | §3에서 "as demonstrated in Section 4.4"로 미리 인용한 수치가 여기서 나온다 (ASE26 9.6%, 21.5%, 16.8%) |
 | 일반성 | §2.1 Algorithm 1 | 다른 도구로 옮길 때 Algorithm 1(Execute)만 바꾼다 |
@@ -420,73 +464,91 @@ bold run-in 세 단락이 기본이다 (ICSE25·ASE26: **Baselines.** / **Benchm
 ```text
 ## 4 Experiments
 In this section, we evaluate <Tool> to answer the following research questions:
-  (1) Effectiveness: How effectively does <Tool> improve <metric1> and <metric2> compared to <baselines>?
-  (2) Efficacy of Each Stage: How does each stage of <Tool> contribute to its performance?
-  (3) Generality: Is <Tool> applicable to <another tool family / setting>?
-  (4) <Extra>: <hyperparameters / reusability / analysis question>?
-We implemented <Tool> on top of <tool-version> [..], <one-phrase description>. All experiments were conducted on <machine>.
+  RQ1: How effectively does <Tool> improve <M1> and <M2> compared to state-of-the-art techniques?
+  RQ2: How does each design choice of <Tool> contribute to its performance?
+  RQ3: Is <Tool> applicable to <another tool family / setting>?
+  RQ4: <one short question: hyperparameters / human evaluation / reusability>?
+All experiments were conducted on <machine> running <OS-version>.          ← 구현 설명은 artifact로 (F2)
 
 ### 4.1 Experimental Settings
-Baselines. We compared <Tool> with <N> baselines: (1) <category> (<Name> [..]), (2) .... <Name> [..] is <one-sentence description>.
-  We evaluated each baseline in <K> settings: <Base>, <naive variant (Algorithm 2)>, and <Tool>.
-Benchmarks. We used <N> <subjects> in Table N. To construct our benchmark suite, we collected all <subjects> used by <baselines> [..].
-  We then selected <N> based on two criteria: (1) ... (e.g., <excluded>), and (2) ... (e.g., <excluded>).
-Other Settings. We allocated <budget> per <subject>. Each experiment was repeated five times, and we report the average.
-  To ensure a fair comparison, we ran each baseline in two ways ... and reported the better result. We measured <metric> using <tool> [..].
+Baselines. We compared <Tool> with <N> state-of-the-art techniques, one from each category in Section 2: <A> [..], <B> [..], and <C> [..].
+  <A> [..] <one or two sentences on its methodology>. ...                  ← 앞선 이력·세부 설정·구현 수정은 쓰지 않음 (F3)
+  For <C>, we used <model>, the best-performing model in <C>'s evaluation that is currently available.   ← LLM 기반일 때만
+Benchmarks. We used all <N> <subjects> of <benchmark> [..] (Table N). To construct it, we collected ... and selected <subjects> that (1) ... and (2) ....
+  Table N lists, for each <group>, the total number of <subjects> (#Buggy), their Avg LOC, and <official metadata>.   ← (F4, A17)
+Evaluation Metrics. We measured <M1>, the ... (e.g., the percentage of <subjects> for which ...), and <M2>, the ....   ← 지표만 (F5)
 
-### 4.2 <Metric1>
-Table N shows that <Tool> significantly improved <metric> across all <subjects>. Overall, <Tool> achieved X% higher <metric> than <SOTA>,
-  and A%, B%, and C% higher than <b1>, <b2>, and <b3>, respectively.
-Notably, on <largest subject>, .... Interestingly, <baseline> even <worse than naive>. This finding highlights a key limitation of <baseline>: ....
-An exception occurs in <subject>, where the gain was small (X%), as <property of subject> leaves little room for improvement.
-Although <Tool> <minor loss> (only N <units>), it <larger gain> (M <units>) that <baseline> failed to reach.
-Despite <cost> (e.g., X% fewer inputs, because <design reason>), <Tool> still achieved Y% higher <metric>.
-These results were statistically significant: the Mann-Whitney U test [..] yielded p-values below 0.05 in <k> of <n> cases. The standard deviations were ... (...).
-These results indicate that ....
+### 4.2 RQ1: Effectiveness
+To evaluate whether <Tool> <goal>, we compared it with the baselines on <benchmark>. <comparison condition in one sentence>.   ← 목적 (F1), 비교 조건 (F8)
+Table N lists <M1> and <M2> of each technique on <benchmark>.               ← 무엇을 보이는지 (headline 없음, F6)
+For <M1>, <Tool> achieved X% higher <M1> than <A>, and Y% and Z% higher than <B> and <C>, respectively.   ← 상대 %, 지표 안에서 표현 통일 (A6)
+For <M2>, <Tool> ... W% less than .... This is because <design property that makes it good>.   ← 원인 분석 (F7)
+Figure N plots <distribution of M2>. ...                                    ← 그림은 그 결과를 말하는 곳에서 소개 (F6)
+[If the table shows them] An exception occurs in <subject>, where .... / Although <Tool> <minor loss> (only N <units>), it ....   ← 표에 보이는 것만 (A8)
+Bug-Finding Ability. To obtain these results, we collected ..., re-executed ..., and retained only reproducible ....   ← 부 지표는 bold run-in
+  In total, <Tool> detected <N> unique bugs, <k> more than <SOTA>. All bugs were reported to the developers, and <k> were confirmed.
+These results indicate that ....                                            ← 결론은 마지막 (F6)
 
-### 4.3 <Metric2: bugs>
-To obtain these results, we collected ..., re-executed ..., and retained only reproducible .... A bug was considered unique if ....
-In total, <Tool> detected <N> unique bugs, <k> more than <SOTA>. Notably, <Tool> did not miss any bug detected by other baselines.
-All bugs were reported to the developers, and <k> were confirmed.
+### 4.3 RQ2: Ablation Study
+To evaluate how each design choice contributes to <goal>, we compared <Tool> with <k> variants:
+  <Tool>-<D1>, which omits <design choice 1> (line N of Algorithm M); ...; and <Tool>-<S>, which takes <component> from <other source>.   ← 차용 기법 이름 금지 (F9)
+Table N lists <M1> of each variant in the same order.                      ← 표 = 서술 순서 (F9)
+Removing <D1> reduced <M1> by X%, .... We investigated why ...: the key difference is ....
+These results show that <our claim, e.g., defining X from Y achieves the goal better than the alternatives>.
 
-### 4.4 Efficacy of Each Stage
-We compared <Tool> with <k> variants: <Tool>-<Stage>, which omits ...; Rand<Stage>, which replaces <F> (line N of Algorithm M) with ....
-Table N confirms the critical role of each stage: <Tool> achieved X%, Y% higher <metric> than .... We investigated why ...: the key difference is ....
-These findings demonstrate that both <A> and <B> are essential for the effectiveness of <Tool>.
+### 4.4 RQ3: Generality
+To evaluate whether <Tool> is applicable to <family>, we integrated it into <engine>, which corresponds to replacing <procedure> (Algorithm 1) ....
+On average, <Tool> increased <M1> by X% for <e1> and Y% for <e2>. These results indicate that ....
 
-### 4.5 Generality
-We examined whether <Tool> is applicable to <family>. Integrating <Tool> into <engine> corresponds to replacing the Execute procedure (Algorithm 1) ....
-On average, <Tool> increased <metric> by X% for <e1> and Y% for <e2>. These results demonstrate the generality of <Tool>.
+### 4.5 RQ4: <Intuitive name, e.g., Developers' Choice of Patches>
+To evaluate whether <users> prefer ..., we asked <k> <users> to compare ... with <control>, chosen because ....   ← 비교 대상 선정 이유 (F10)
+Figure N shows ....                                                         ← 선택지는 꼭 필요한 것만 (F10)
 
-### 4.6 Threats to Validity
-(1) We evaluated <Tool> on <engines>; its performance may vary on other engines. (2) <hyperparameters> were determined by trial and error.
-Although Section 4.x shows stable performance ..., these settings may not be optimal for .... (3) Our <N> benchmarks ... may not be representative.
+### 4.6 Discussion                                                         ← RQ로 보기 어려운 분석·활용 방안, 가산점 있을 때만 (A15)
+
+### 4.7 Threats to Validity                                                ← 한 단락, 예상 지적에 대한 방어만 (F11)
+We evaluated <Tool> only on <one language>, because .... <Concern, e.g., short inputs> is unlikely to ..., as <control> in Section 4.x, which ..., still ....
 ```
 
 ---
 
 ## 8. 작성 체크리스트
 
-- [ ] 리드에 RQ 4–5개를 "**Name**: question?" 형식으로 두고, RQ 이름과 하위절 제목이 같은가
-- [ ] RQ에 주 지표·부 지표·ablation·일반성이 모두 있는가
-- [ ] 구현 기반(도구-버전)과 장비를 한두 문장으로 밝혔는가
-- [ ] Baselines에 범주·한 줄 설명·인용이 있고, 제안 기법의 단순판(§2 단순 대안)이 baseline에 들어갔는가
+- [ ] 리드에 RQ 4개(5개는 많다)를 짧은 질문 "RQn: …?" 목록으로 두고, 하위절 제목이 "RQn: 이름"인가 (F1)
+- [ ] 각 RQ 하위절의 첫 단락이 그 RQ의 목적으로 시작하는가 (F1)
+- [ ] RQ에 주 지표·부 지표·ablation·일반성이 모두 있는가 (부 지표는 주 지표 RQ 안의 bold run-in이어도 된다)
+- [ ] RQ로 보기 어려운 추가 분석·활용 방안을 Threats 앞 Discussion에 두었고, 가산점이 없는 내용은 뺐는가 (A15)
+- [ ] 구현 설명은 artifact에 맡기고, 실험 장비를 OS 버전까지 밝혔는가 (F2)
+- [ ] Baselines에 선정 연구·방법론 한두 문장·선정 이유(예: 분류마다 최신 기법 하나)만 있는가 (F3)
+- [ ] Baselines에 세부 설정·다른 기법을 앞선 이력·데이터셋용 구현 수정·제외 이유 나열이 없고, 제외 이유는 Related Work에 있는가 (F3)
+- [ ] LLM 기반 baseline이면 "평가에서 현재 사용 가능한 최고 성능 모델"이라는 모델 선정 근거를 썼는가 (F3)
+- [ ] 대조군(단순판·ablation 변형)을 Baselines가 아니라 쓰이는 RQ 절에서 정의했는가 (F3)
+- [ ] baseline은 공개 구현으로, 실험은 표본이 아니라 벤치마크 전체로 했는가 (A17)
 - [ ] Benchmarks가 선행 연구의 합집합에서 출발하고, 필터 기준 (1)(2)와 제외 예시가 있는가
-- [ ] 예산, 5회 반복 평균, 공정성 장치, 측정 도구를 밝혔는가
-- [ ] 결과 단락이 H → Q → N → S → T → C 순이고, 첫 문장이 표·그림을 주어로 하는가
+- [ ] 벤치마크 표가 총 개수(#Buggy 등)·Avg LOC·필요한 메타 정보(공식 난이도 등)를 갖는가 (F4)
+- [ ] 셋째 단락이 Evaluation Metrics이고 지표만 있는가. 비교 조건(공통 집합 등)은 한 문장인가 (F5, F8)
+- [ ] 결과 단락이 표·그림이 무엇을 보이는지 → 지표별 수치 → 종합 결론 순이고, headline으로 열지 않는가 (F6)
+- [ ] 그림을 그 결과를 말하는 곳에서 소개했고, 첫 문장에서 표와 그림을 함께 소개하지 않았는가 (F6)
+- [ ] 결과마다 좋은 이유·좋을 수밖에 없는 근거를 분석했는가 (F7)
 - [ ] 이상치를 숨기지 않고 원인과 함의(대개 baseline의 약점)를 썼는가
-- [ ] 통계 검정 이름·인용·p 기준·예외, 표준편차를 썼는가
+- [ ] 비교를 상대 "X% more/fewer"로 쓰고, 같은 지표 안에서 %·배수·개수를 섞지 않았으며, 억지 통계 검정이 없는가 (A6)
+- [ ] 선행 기법을 "much/far" 같은 강조어로 깎지 않고 수치로 말했는가 (A7)
+- [ ] 핵심 메시지 밖의 수치·설정·당연한 사실("공개 구현을 각 논문 설정으로 실행했다")을 뺐는가 (A9)
 - [ ] 버그 집계 방법(재현, 고유성 기준)과 개발자 보고·확인을 썼는가
 - [ ] ablation 변형을 알고리즘 줄 번호로 정의하고, 왜 이겼는지 설명했는가
+- [ ] 설계 선택을 빼는 RQ 제목이 "Ablation Study"이고, 표와 서술 순서가 같은가 (F9)
+- [ ] 차용한 변형을 원 기법 이름으로 부르지 않았고, ablation 결론이 우리 주장을 뒷받침하는가 (F9)
+- [ ] 사람 평가 RQ라면 소제목이 직관적이고, 절차 세부·선택지는 꼭 필요한 것만, 비교 대상 선정 이유를 질문마다 썼는가 (F10)
+- [ ] 그룹별(난이도별)과 대상별 중 경향이 잘 보이고 약점이 덜 드러나는 쪽으로 보였는가 (F12)
 - [ ] 일반성 실험에서 이식 방법(Algorithm 1의 어디를 바꿨는지)을 밝혔는가
 - [ ] 사례 연구가 향상이 가장 큰 대상을 골라 구체적 수치 대비로 끝나는가
-- [ ] Threats가 (1)(2)(3) 한 단락이고, 항목마다 완화 근거가 있는가
+- [ ] Threats가 한 단락이고 예상되는 지적에 대한 방어만 있는가. 근사의 한계·당연한 이야기·리뷰어가 떠올리지 않을 약점이 없는가 (F11)
 - [ ] 본문 수치·표·Abstract·Intro가 모두 같은 산출물에서 나왔는가 ([floats.md](floats.md) §7)
-- [ ] 우열 결과는 표로, 원인 분석은 그림으로 나눴는가 (표가 ~70%)
-- [ ] 실험 규모(벤치마크 × baseline × 예산 × 5회)를 곱셈식으로 밝혔는가
+- [ ] 결과에 그래프를 섞었고, 정확한 개별 수치가 필요할 때만 표를 썼는가 (G2)
+- [ ] 실험 규모를 밝힐 필요가 있으면 곱셈식 한 문장으로 썼는가
 - [ ] 단점 문장이 평가 문장의 한 자릿수 %이고, 각 단점에 같은/다음 문장의 방어(원인·크기·대가)가 붙어 있는가
 - [ ] 단점 문장이 문단 가운데 있고, 문단과 하위절이 장점이나 함의로 끝나는가
-- [ ] 예외를 하나 이상 이름을 대고 인정했는가
+- [ ] 표에서 바로 보이는 예외만 이름을 대고 방어했고, 리뷰어가 떠올리지 않을 약점이나 "N개는 지표에서 제외" 같은 문장을 먼저 들추지 않았는가 (A8)
 - [ ] 표에서 도구가 지거나 비긴 셀을 모두 점검했고, 본문이 다루지 않는 셀이 본문의 주장("across all", "each baseline")과 모순되지 않는가 (리뷰어는 표를 직접 읽는다)
 
 ---

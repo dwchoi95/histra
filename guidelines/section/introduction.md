@@ -13,6 +13,22 @@
 4. Gap 단락에서 **신조어를 "In this work, we (newly) define ..."로 정의**하고, §2를 forward ref하며 **수치**로 뒷받침한다.
 5. 인용은 앞쪽 배경 단락에 몰린다. **Proposal·Algorithm·Contributions에는 인용이 없고**, Results에서는 baseline만 인용한다.
 
+공통 규칙(절차·용어·수치 표기·서식)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다.
+
+### 0.1 집필에서 확정한 규칙
+
+- 동기 수치는 사용자(예: 학생·개발자) 자신의 값을 먼저 보이고, 이어서 선행 기법의 값을 보여 "선행 기법은 Y를 잃는다"(Y: 지켜야 할 것)로 귀결한다.
+- 난제는 Goal 절이 아니라 한계를 측정한 Limitation 절을 forward ref한다. 이렇게 쓰면 I5 단락과 Preliminaries의 Goal 절을 없애고 I3에 흡수할 수 있다.
+- Introduction에서는 baseline 도구명을 쓰지 않는다. "two/three state-of-the-art techniques~\cite{..}"로 쓰고 인용만 단다.
+- baseline을 특정 범주 이름(예: LLM-based)으로 골라 부르지 않는다. "다른 범주는 왜 뺐나"로 읽힌다.
+- 결과는 baseline별로 나열하지 않고 범위("from X% to Y%")로 쓴다. 한 baseline에 설정(모델)이 여럿이면 최고 결과만 쓴다.
+- 세부 실험 재료(특정 test suite의 출처, 사용한 LLM 이름 등)를 어중간하게 언급하지 않는다.
+- 평가 절차의 세부(출처를 숨긴 제시, 합의 기준, 사전 고정 등)는 쓰지 않는다. 해당 RQ 절을 forward ref하면 충분하다.
+- Contributions에는 기술적·실증적 기여만 쓴다. 특징의 부재(예: "LLM 없이 동작")는 기여가 아니다.
+- 마지막(평가) 기여는 무엇으로 평가했는지가 아니라 결론("X outperforms ...")을 쓴다. 공개 문장은 Data Availability 한 문장으로 옮긴다.
+- 선행연구 분류는 Introduction·Preliminaries·Approach·Related Work에서 같은 이름을 쓴다. 분류마다 baseline을 하나씩 고를 수 있게 짠다.
+- 두 단락을 합칠 때는 그대로 붙이지 않고 연결 문장을 새로 쓴다.
+
 ---
 
 ## 1. 분량
@@ -116,8 +132,9 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 | (e) 선행 연구 지목 | "Existing techniques have predominantly shown their capabilities assuming no initial seeding [10], [11], [15] or ... with a predefined seed corpus [19], [20], [21]." | "many previous works [..] have depended on ... Other works [..] have manually adjusted ..." / "**For example, SymTuner [20]** relies on manually defined parameter spaces ..." | "four independent SOTA techniques—search heuristic [22], state-pruning [10], SMT solving cost reduction [42], and external parameter tuning [8]—exhibited unsatisfactory performance." | "the random fuzzer [21] ... the probabilistic fuzzer [37] ..." |
 | (f) 귀결 | "**Unfortunately**, this complementary factor has often been overlooked ..." | "Without such self-configuration, ... users must manually ..., adding complexity." | "..., **leaving** a significant portion of program functionalities untested." | "**Consequently**, these fuzzers tend to spend valuable testing time ..." |
 
-- Abstract와 달리 **선행 연구를 이름과 인용으로 지목한다**. 가장 가까운 SOTA는 실명으로 쓴다 (SymTuner).
-- 수치 근거는 **§2의 측정 결과를 미리 가져온다** ("As shown in Section 2").
+- 4편은 Abstract와 달리 선행 연구를 이름과 인용으로 지목했다. 가장 가까운 SOTA는 실명으로 썼다 (SymTuner).
+  → 확정 규칙: baseline은 이름 없이 "three state-of-the-art techniques~\cite{..}"로 지목한다 (§0.1).
+- 수치 근거는 **§2의 측정 결과를 미리 가져온다** ("As shown in Section 2"). 사용자 자신의 값 → 선행 기법의 값 순서로 쓴다 (§0.1).
 - ICSE26은 Gap을 두 단락으로 나눈다: (1) 사용자 부담 → (2) 기존 튜닝 기법의 한계. 둘째 단락에 Figure 1을 둔다.
 
 ### I4 Proposal — "In this paper, we present X, a novel ... approach that ..."
@@ -140,6 +157,7 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 - 틀: `A major/key challenge is the vast number / sheer scale of X` → 수치 (대시 삽입 또는 §2 ref) → `Even when ..., still ...` (범위를 좁혀도 여전히 큼) → `Thus, ... requires ...`
 - 다음 문장은 항상 **"To overcome/address this challenge, we (have) developed a customized/specialized algorithm"**이다 (2/2).
 - ICSE26·ASE26은 Introduction에 도전과제가 없다. ASE26은 §2.2 끝에서 "Our work thus tackles two key challenges"로 대신 제시한다.
+- → 확정 규칙: 난제의 근거는 Goal 절이 아니라 Limitation 절을 ref한다. 그러면 I5를 I3에 흡수할 수 있다 (§0.1).
 
 ### I6 Algorithm — 두 가지 서술 방식
 
@@ -166,7 +184,8 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 | (e) 부 지표 | "**Regarding** bug-finding / **For** bug detection / **In the realm of** bug detection, ... identified ten bugs in total, **whereas** ... seven" / "**while ensuring that none** detected by the pure techniques were missed" |
 | (f) 추가 평가 | "**We further demonstrate** X's efficacy **by comparing it with** a random seeding approach, **and its generality by applying** X to concolic testing ..." (3/4) / FSE26은 원인 설명: "This improvement **is attributed to** ..." |
 
-- Abstract와 달리 **baseline을 실명으로** 쓰고, baseline별 수치를 자세히 쓴다.
+- 4편은 Abstract와 달리 baseline을 실명으로 쓰고, baseline별 수치를 자세히 썼다.
+  → 확정 규칙: baseline은 이름·범주 없이 개수 + 인용으로 묶고, 수치는 범위로 쓴다 (§0.1).
 - (f)의 추가 평가 문장은 §4의 RQ(비교, Generality)와 1:1로 대응한다.
 
 ### I8 Contributions — 3 bullets
@@ -180,6 +199,7 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 | 2 | 기술 | "**Our core / key / main technical contribution is a specialized / customized / domain-specific algorithm that** ..." (3/4) |
 | 3 | 평가 + 공개 | "**We demonstrate / show the effectiveness of** X **by integrating it into** N ... **and comparing** their performance with the original ... across N programs. **We make X publicly available**." (4/4, URL은 각주 또는 인라인) |
 
+- → 확정 규칙: bullet 3은 평가 결론("X outperforms ...")으로 쓰고, 공개 문장은 Data Availability로 옮긴다. 특징의 부재는 기여로 쓰지 않는다 (§0.1).
 - bullet 2의 동사는 I6과 같아야 한다. ICSE25는 P4에서 "groups, ranks, selects", bullet 2에서 "groups, prioritizes, chooses"로 동의어가 섞였다. 따라 하지 말 것.
 
 ---
@@ -238,14 +258,14 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 | Intro 요소 | 대응 위치 | 관계 |
 |---|---|---|
 | I1 동작 원리 | §2.1 형식화 + Algorithm 1 | Intro의 서술(choose → execute → fork)을 §2.1이 튜플과 알고리즘으로 형식화한다 |
-| I2 SOTA 범주 | §2.1 끝 (ASE26), §5 Related Work | 같은 범주명(search strategy, state-pruning, ...)을 Related Work 주제 단락에서 다시 쓴다 |
+| I2 SOTA 범주 | §2.1 끝 (ASE26), §3, §5 Related Work | 같은 범주명(search strategy, state-pruning, ...)을 Preliminaries·Approach·Related Work에서 그대로 쓴다 |
 | I3 신조어·수치 | Abstract M3/M3′, §2.2 Table 1 | 수치를 공유한다. FSE26 80.3%/81.0% = Table 1, ASE26 7.9% = Table 1 (단 Abstract는 8.0%) |
 | I3 Figure 1 (ICSE26) | §2.2, §4.1 Baselines | 한 그림을 Intro, §2.2(기존 접근 설명), §4.1(Kleefix = Figure 1-(a))에서 재사용한다 |
 | I4 제안 문장 | Abstract M1 | 같은 정의를 쓰고 수식어만 바꾼다 |
 | I5 도전과제 수치 | §2.3 Table 2 | FSE26은 Intro 19,729 groups / 388 inputs, §2.3 17,567·13,143 sets / 387 inputs로 집계 기준이 달라 값이 다르다. 맞추는 편이 안전하다 |
 | I6 단계 이름 | Abstract M6, §3.1 Overview, Conclusion, Contributions bullet 2 | 같은 동사·같은 순서를 유지한다 |
 | I7 baseline·수치 | §4.1 Baselines, §4.2~ 결과, Abstract M8 | 수치를 공유한다. 추가 평가 문장이 §4의 RQ와 대응한다 |
-| I8 bullet 1 / 2 / 3 | §2.2 / §3 / §4 + Data Availability | bullet 순서가 논문 섹션 순서와 같다 |
+| I8 bullet 1 / 2 / 3 | §2.2 / §3 / §4 | bullet 순서가 논문 섹션 순서와 같다. 공개 문장은 Data Availability에만 둔다 |
 
 ---
 
@@ -257,21 +277,26 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 [I2] In practice, <Domain> faces two open challenges: <A> and <B>. The former ... The latter ...
      Recent advances have significantly improved <...>. These include <category1> [..], <category2> [..], and <category3> [..], among others.
 [I3] However, our observation is that <SOTA> still <fail to ...|produce "<term>">. In this work, we define <term> as <definition>.
-     <Why undesirable>. As shown in Section 2, <prior work [x]> <only N%>. Consequently, <negative consequence>.
+     <Why undesirable>. As shown in Section <2.x Limitation>, <users> <own value N%>, whereas three state-of-the-art techniques [x, y, z]
+     <only M%>. Consequently, these techniques <lose Y>.   (사용자 값 → 선행 기법 값 순서)
+     (opt., I5 흡수) <Challenge>, as the measurement in Section <2.x Limitation> shows.
 [I4] In this paper, we present <Tool>, a novel <complementary> approach that <...> without prior knowledge, thereby <goal>.
      The core idea is to <idea>. (opt.) Our hypothesis is that <...>.
-[I5] (opt.) However, a key challenge is the sheer scale of <X>. As reported in Section 2, <N ...>.
+[I5] (opt., I3에 흡수했으면 생략) However, a key challenge is the sheer scale of <X>. As reported in Section <2.x Limitation>, <N ...>.
      Even when <restricting ...>, <still ...>. Thus, <consequence>.
 [I6] To address this challenge, we developed a specialized algorithm that iteratively <V1> ..., <V2> ..., and <V3> ....
      (또는) First, <Tool> <initial stage>. It then iteratively performs three stages: (1) <S1>, which ...; (2) <S2>, which ...; and (3) <S3>, which ....
      By repeating these stages, <Tool> produces <...> tailored to each <program>.
-[I7] Experimental results demonstrate that <Tool> markedly enhances <...>. We integrated <Tool> with <category (Name) [..]>, ...
-     and evaluated it on <N> <programs> ranging from <a> to <b> <LoC>. In terms of <metric>, ... <x%> more ... than ....
-     Regarding <metric2>, ..., whereas .... We further demonstrate <Tool>'s efficacy by comparing it with <...>, and its generality by applying it to <...>.
+[I7] Experimental results demonstrate that <Tool> markedly enhances <...>. We <integrated <Tool> with|compared <Tool> with>
+     three state-of-the-art techniques [x, y, z] on <N> <programs> ranging from <a> to <b> <LoC>.
+     In terms of <metric>, <Tool> <V> from <x%> to <y%> more <...> than these techniques. Regarding <metric2>, ... <x%> to <y%> ....
+     We further demonstrate <Tool>'s efficacy by comparing it with <...> (Section 4.x), and its generality by applying it to <...> (Section 4.y).
+     (baseline 이름·범주, 실험 재료 출처, 평가 절차 세부는 쓰지 않는다. 설정이 여럿인 baseline은 최고 결과만)
 [I8] Contributions. We summarize our contributions below:
      • Observation: We show that <SOTA> <limitation + number>, motivating the need for <...>.
      • New technique: We present <Tool>, .... Our core technical contribution is a specialized algorithm that <V1>, <V2>, and <V3> ....
-     • Evaluation: We demonstrate the effectiveness of <Tool> by integrating it into <N> <techniques> and comparing ... across <N> <programs>. We make <Tool> publicly available.
+     • Evaluation: <Tool> <outperforms|improves> three state-of-the-art techniques in <metric 1> and <metric 2> on <N> <programs>.
+     (공개 문장은 Contributions가 아니라 Data Availability 한 문장으로)
 ```
 
 ---
@@ -282,14 +307,22 @@ FSE26(1단 포맷)은 역할마다 단락을 나눴고, 2단 포맷 논문은 I4
 - [ ] 첫 문장이 "<Domain> [cites] is a ... software testing method/technique ..."인가
 - [ ] SOTA를 범주명 + 인용 묶음으로 나열하고, 칭찬으로 끝내 다음 단락의 However로 넘어가는가
 - [ ] Gap에서 신조어를 "In this work, we define ..."로 정의하고, §2를 forward ref한 수치로 뒷받침했는가
-- [ ] Gap에서 가장 가까운 선행 연구를 이름으로 지목했는가
+- [ ] 동기 수치가 사용자 자신의 값 → 선행 기법의 값 순서이고, "선행 기법은 Y를 잃는다"로 귀결하는가
+- [ ] Gap에서 선행 기법을 이름·범주 없이 "three state-of-the-art techniques~\cite{..}"로 지목했는가
 - [ ] Proposal 첫 문장이 "In this paper, we present X, a novel ... approach that ..."인가
+- [ ] 도전과제가 Goal 절이 아니라 Limitation 절을 ref하는가 (I3에 흡수했다면 I5와 Goal 절이 없는가)
 - [ ] 도전과제가 있으면 규모 수치 → "To address this challenge, we developed a specialized algorithm"으로 이어지는가
 - [ ] 알고리즘 단계 동사/이름이 Abstract·§3.1·Conclusion·Contributions bullet 2와 같은가
-- [ ] Results에 baseline(범주+이름), 벤치마크 개수·규모 범위, 주/부 지표 수치, 추가 평가(비교·일반성)가 있는가
-- [ ] Contributions가 관찰/기술/평가 3 bullets이고, 2번은 "Our core technical contribution is ...", 3번은 공개 URL로 끝나는가
+- [ ] Results에 baseline(이름 없이 개수 + 인용), 벤치마크 개수·규모 범위, 지표별 범위 수치(설정이 여럿이면 최고값), 추가 평가가 있는가
+- [ ] 실험 재료의 출처, 평가 절차 세부를 쓰지 않고 해당 RQ 절을 ref했는가
+- [ ] Contributions가 관찰/기술/평가 3 bullets이고, 2번은 "Our core technical contribution is ...", 3번은 평가 결론으로 끝나는가
+- [ ] 특징의 부재를 기여로 쓰지 않았고, 공개 문장을 Data Availability로 옮겼는가
+- [ ] 선행연구 분류 이름이 Preliminaries·Approach·Related Work와 같고, 분류마다 baseline이 하나씩인가
+- [ ] 합친 단락에 새 연결 문장이 있는가
 - [ ] Proposal·Algorithm·Contributions 단락에 인용이 없는가
-- [ ] 수치가 Abstract·§2·§4와 일치하는가
+- [ ] 수치가 Abstract·§2·§4와 일치하고, "N개 중 M개" 없이 %만 썼는가
+- [ ] 약어를 Introduction 안의 첫 등장에서 다시 정의했는가 (풀어 쓴 말은 대문자로 시작)
+- [ ] 선행 기법 비교에 much/far 같은 강조어 대신 수치를 썼는가
 
 ---
 

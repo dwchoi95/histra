@@ -1,6 +1,6 @@
 """How coarsely the history marks where to repair (Section II-B). Over every trajectory, N = stmt/expr nodes of b,
 H = nodes inside holes, F = nodes that the student's own accepted fix does not keep (value-aware APTED mapping).
-Usage: [POOL=16] python paper/fixregion.py"""
+Usage: [POOL=16] python paper/src/fixregion.py"""
 import ast
 import glob
 import json
@@ -10,7 +10,7 @@ from multiprocessing import Pool
 
 from apted import APTED
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src", "experiments"))   # this folder is histra/paper/
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src", "experiments"))   # <repo>/paper/src/
 from common import DATA, POOL  # noqa: E402
 from skel import _Cfg, _tree, holed_ids, units  # noqa: E402
 

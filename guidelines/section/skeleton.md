@@ -2,6 +2,7 @@
 
 스타일 분석의 **최상위 문서**. 여기서는 전체 골격(섹션 구성·분량·플로트 배치·공통 규칙)만 다룬다.
 섹션 내부의 단락 흐름과 문체는 섹션별 상세 분석 파일에서 다룬다 (§6 참고).
+실제 집필에서 확정한 공통 규칙(절차·용어·수치·서식)은 §7에 모았다.
 
 ---
 
@@ -23,10 +24,12 @@
 ```text
 Title            [Tool]: [Verb-ing] [대상 기술] [목표/수단]
 Abstract         1단락, ~210 words
-1 Introduction   관찰 → 도전과제 → 맞춤 알고리즘 → 결과 → Contributions(3 bullets)
-2 Preliminaries  배경 형식화 + Algorithm 1(일반 알고리즘) → Limitation(측정 Table) → (Goal)
+1 Introduction   관찰 → (도전과제) → 맞춤 알고리즘 → 결과 → Contributions(3 bullets)
+                 도전과제는 Limitation 절을 forward ref해 관찰(Gap) 단락에 흡수할 수 있다
+2 Preliminaries  배경 형식화 + Algorithm 1(일반 알고리즘) → Limitation(측정 Table) → (Goal: 도전과제를 Gap에 흡수하면 생략)
 3 Our Approach   Overview(Figure) → [Tool](메인 Algorithm) → 단계별 상세
-4 Experiments    RQ 목록 → Settings → RQ별 하위절 → (Case study / Discussion) → Threats to Validity
+4 Experiments    RQ 목록 → Settings → RQ별 하위절 → (Case study / Discussion: RQ가 아닌 추가 분석)
+                 → Threats to Validity(1단락, 예상되는 지적에 대한 방어만)
 5 Related Work   bold 주제 단락 2–3개
 6 Conclusion     1단락
 Acknowledgments / Data Availability / References
@@ -37,7 +40,8 @@ Acknowledgments / Data Availability / References
 - 섹션 이름은 4편 모두 **Preliminaries / Our Approach / Experiments**로 같다.
 - Background·Motivation 섹션을 따로 두지 않는다. 배경과 한계(motivation)는 모두 **Preliminaries** 안에 들어간다.
 - **Threats to Validity는 Experiments의 마지막 하위절**이다 (4편 공통).
-- Discussion 섹션을 따로 두지 않는다. 필요하면 Experiments 하위절로 넣는다 (ICSE25 IV-F).
+- Discussion 섹션을 따로 두지 않는다 (4편 공통). RQ로 보기 어려운 추가 분석·활용 방안은 Experiments의 Discussion 하위절로
+  Threats 앞에 둔다 (ICSE25 IV-F). 가산점이 없는 내용은 Discussion에도 넣지 않는다.
 - Related Work는 **Experiments 뒤**에 둔다.
 
 ### 1.2 분량 (단어 수)
@@ -99,6 +103,7 @@ Acknowledgments / Data Availability / References
 - 도구명 접두 `Tool:`는 2/4에서만 쓴다. 쓰지 않은 두 편은 서술형 제목이다.
 - Title Case, 6–12 words. 의문형이나 말장난은 없다.
 - 도구 이름은 핵심 개념에서 따온다. TopSeed(Top+Seed), ParaSuit(Parameters+Suitable, 각주로 설명), Orbis(Option-Related Branch), RSFuzz(Recurrent Sequence+Fuzz).
+- 제목은 Abstract를 쓴 뒤 후보를 5개 정도 제안해 고른다 ([abstract.md](abstract.md) §0.1).
 
 ### 2.2 Keywords / CCS (ACM 포맷)
 
@@ -163,6 +168,7 @@ Acknowledgments / Data Availability / References
 ```text
 # <Section> — guidelines 4편 분석
 0. 핵심 규칙       이 섹션을 쓸 때 지킬 규칙 3–5개 (문서 전체 요약)
+   0.1 집필에서 확정한 규칙  실제 집필에서 정한 이 섹션 고유 규칙 (공통 규칙은 skeleton.md §7)
 1. 분량           단어 수, 문장·단락·하위절 수, 평균 문장 길이, 플로트 수
 2. 구조           분석 단위 정의 → 논문별 배치 → 단위별 비중
 3. 단위별 분석     단위마다 역할, 4편 예문, 반복 패턴
@@ -186,3 +192,54 @@ Acknowledgments / Data Availability / References
 | [floats.md](floats.md) | (섹션 공통) 플로트 유형 | 그림·표·알고리즘·수식의 시각 디자인, LaTeX 레시피 |
 | [related_work.md](related_work.md) | 주제 단락 | 주제 구성, 대비 문형 |
 | [conclusion.md](conclusion.md) | 문장 (move) | 결론 단락 구조 |
+
+---
+
+## 7. 집필 공통 규칙
+
+4편 분석과 별개로, 실제 집필에서 확정한 규칙이다. 모든 섹션에 적용한다. 섹션 고유 규칙은 각 섹션 파일의 §0.1에 둔다.
+
+### 7.1 절차
+
+- 단락 단위로 한국어 초안 → 사용자 승인 → 영어로 옮김 → 교정 순서로 쓴다.
+- 원고에서는 한국어 단락을 `% ` 주석으로 영어 단락 바로 위에 둔다. 알고리즘·표·그림·수식·캡션·약어·핵심 용어는 영어 그대로 둔다.
+- 수정안은 먼저 한국어로 제시하고, 승인을 받은 뒤 적용한다.
+- 결과 하위절(RQ)은 단락별 상세 퇴고 전에 하위절 전체의 단락 흐름부터 검토한다.
+- 계획에는 할 일만 쓴다. 일정(시간상 불가, 내일, 마감 판단)은 쓰지 않는다.
+
+### 7.2 용어·표기
+
+- 약어는 섹션마다 첫 등장에서 다시 정의하고(예: Abstract Syntax Tree (AST)), 이후에는 약어만 쓴다. 풀어 쓴 말은 대문자로 시작한다.
+- 도구명은 풀어 쓰지 않고 바로 뒤에 인용만 붙인다(`KLEE~\cite{...}`).
+- 알고리즘·개념 설명에는 일반 개념(예: SMT solving)을 쓰고, 구현 도구명은 필요한 곳에서만 짧게 언급한다.
+- 같은 대상에는 논문 전체에서 한 용어만 쓴다(예: users/developers 중 하나, test-case/test input 중 하나).
+- 선행연구는 tool이 아니라 technique으로 부른다.
+- 정의한 용어(신조어)는 축약하거나 일반어("구조" 등)로 바꾸지 않고 정의한 그대로 쓴다.
+- 기호는 서로 헷갈리지 않게 짓는다(단계 이름과 그 산출물을 같은 기호로 쓰지 않는다). 같은 대상의 기호를 문맥마다 바꾸지 않는다.
+
+### 7.3 수치·비교
+
+- 비교는 상대적인 "X% more/fewer"로 쓰고, 같은 지표 안에서는 표현 방식(%, 배수, 개수)을 섞지 않는다.
+- 억지로 끼운 통계 검정(검정명과 p값 나열)은 넣지 않는다. 대신 상대 %로 이점이 드러나게 쓴다.
+- 선행연구를 과하게 깎지 않는다. much/far 같은 강조어 대신 수치로 말한다(예: "more than twice the others").
+- Abstract·Introduction의 수치는 "N개 중 M개" 없이 %만 쓴다.
+
+### 7.4 내용 선택
+
+- 리뷰어가 떠올리지 않을 약점을 먼저 들추지 않는다. 숨기는 것이 아니라 세부를 artifact에 맡기는 것이다.
+- 유리한 부분집합을 고른 것처럼 읽히는 문장(예: "N개는 지표에서 제외")은 꼭 필요하지 않으면 뺀다.
+- 핵심 메시지 외의 수치·세부는 뺀다(예: 지표 M을 보이는 그림 설명에 다른 지표 수치를 넣지 않는다). 모든 설정을 쓰지 않는다.
+- 당연한 사실(예: "공개 구현을 각 논문 설정으로 실행했다")은 쓰지 않는다.
+- 주장은 데이터가 뒷받침하는 가장 강한 형태로 쓴다. 근거 없이 약하게 바꾸지 않되, 모든 지표가 받쳐 주지 않는 주장은 지표에 맞게 고친다.
+
+### 7.5 분량·서식
+
+- 분량은 §1.2의 섹션 비율과 섹션 파일의 move 비율을 따른다. 줄일 때는 일괄 축소하지 않고, move별 비율을 대조해 넘치는 move를 줄인다.
+- 학회 템플릿을 엄격히 따른다. IEEEtran이면 compsoc 금지, 간격·글꼴·캡션 변경 금지, caption 패키지 금지.
+- `\IEEEsetlabelwidth` 같은 임의 폭 지정을 하지 않는다. Data Availability 문단까지 쪽수 제한 안에 들어오게 맞춘다.
+
+### 7.6 실험 원칙
+
+- 가능하면 표본 대신 벤치마크 전체로 실험한다.
+- baseline은 재구현보다 공개 구현을 쓴다(공정성·신뢰성).
+- RQ로 보기 어려운 추가 분석·활용 방안은 Experiments의 Discussion 하위절(Threats 앞)에 둔다. 가산점이 없는 내용은 Discussion에도 넣지 않는다 (§1.1).

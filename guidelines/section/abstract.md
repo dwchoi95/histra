@@ -13,6 +13,15 @@ Title·Keywords는 [skeleton.md](skeleton.md) §2에서 다룬다. 원문 전체
 4. 해법은 **"iteratively V1, V2, and V3 ... based on data accumulated during ..."**처럼 동사 3개를 나열하는 문장으로 쓴다 (4/4).
 5. 인용, 경쟁 도구 이름, URL, RQ, 한계, 향후 연구는 넣지 않는다. hedging(may/might)도 없다.
 
+공통 규칙(절차·용어·수치 표기·서식)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다.
+
+### 0.1 집필에서 확정한 규칙
+
+- baseline 도구명을 쓰지 않는다. "three state-of-the-art techniques"처럼 개수로 묶고, 결과는 범위("from X% to Y%")로 쓴다.
+- 수치는 %만 쓴다. 마지막 문장(사람 평가 등)도 "N쌍 중 M쌍" 없이 %로 쓴다.
+- 분량을 줄일 때는 §2.3의 move 비율과 대조해 넘치는 move부터 줄인다.
+- 제목은 Abstract를 쓴 뒤 후보를 5개 정도 제안해 고른다 ([skeleton.md](skeleton.md) §2.1).
+
 ---
 
 ## 1. 분량
@@ -79,7 +88,7 @@ Title·Keywords는 [skeleton.md](skeleton.md) §2에서 다룬다. 원문 전체
 
 - 구조: `X` + 동격 `a [new/novel/complementary/신조어] approach/technique` + `that/to [동사] [분야]` + `by/toward [수단/목표]`.
 - 동사는 분야를 목적어로 받는 개선 동사다 (enhance / guide). 무엇을 하는지(수단)와 왜 하는지(목표)를 한 문장에 담는다.
-- 약어는 이 문장에서 처음 정의한다: "option-related branch (OB)".
+- 약어는 이 문장에서 처음 정의한다: "option-related branch (OB)". → 확정 규칙: 풀어 쓴 말은 대문자로 시작한다 ([skeleton.md](skeleton.md) §7.2).
 
 ### M2 Context — 분야가 발전해 왔음을 인정
 
@@ -147,7 +156,8 @@ SOTA를 범주명으로 나열할 수 있으나(search strategies, state-pruning
 
 - 독립 문장형: "**We implemented** ParaSuit on KLEE **and assessed it across** 12 open-source C programs." / "**We integrated** RSFuzz with existing random, probabilistic, and grammar-coverage based fuzzers **and evaluated it on** 12 real-world programs using JavaScript, JSON, CSV, and Markdown input formats."
 - 결과에 합친 형: "Experimental results **on 17 open-source C programs** show that ..."
-- 평가 대상은 **개수 + 종류**로 쓴다 (17 open-source C programs). baseline은 **개수 + 범주**로 쓴다 (four distinct cutting-edge techniques / random, probabilistic, and grammar-coverage based fuzzers).
+- 평가 대상은 **개수 + 종류**로 쓴다 (17 open-source C programs). baseline은 4편에서 개수 + 범주로 썼다 (four distinct cutting-edge techniques / random, probabilistic, and grammar-coverage based fuzzers).
+  → 확정 규칙: baseline은 도구명 없이 개수로 묶는다 (§0.1).
 
 ### M8 Results — 마지막 문장
 
@@ -161,7 +171,8 @@ SOTA를 범주명으로 나열할 수 있으나(search strategies, state-pruning
 - 도입부는 **"Experimental results (on N ...) show that" / "The results demonstrate that"**로 고정된다.
 - **significantly**는 4/4에서 쓴다. 결과 동사도 3개를 나열하는 경우가 많다 (increases / boosts / detects).
 - 비교 기준은 **"compared to [도구 없는 버전]"**(complementary 도구) 또는 **"the state-of-the-art method"**다.
-- 수치는 주 지표 %와 버그 개수를 함께 쓴다. 소수점은 한 자리다 (8.0%, 112.1%). ICSE26만 반올림해서 26%로 썼다 (본문은 25.8%).
+- 수치는 주 지표 %와 버그 개수를 함께 썼다. 소수점은 한 자리다 (8.0%, 112.1%). ICSE26만 반올림해서 26%로 썼다 (본문은 25.8%).
+  → 확정 규칙: 수치는 %만 쓰고, baseline이 여럿이면 baseline별 나열 대신 범위로 쓴다 (§0.1).
 - 결과 뒤에 의의나 함의를 덧붙이는 문장은 없다. **결과 문장으로 끝난다.**
 
 ---
@@ -215,7 +226,8 @@ Abstract의 각 move는 본문 어딘가에서 더 자세히 반복된다. 용�
 [M6]  To address this, <we introduce|<Tool> applies> a customized algorithm that iteratively <V1> ..., <V2> ..., and <V3> ... based on data accumulated during <process>.
       (초기 단계가 있으면) For a given <input>, <Tool> first <...>. It then iteratively <V1>, <V2>, and <V3> ...
 [M7]  (opt.) We implemented <Tool> on <platform> and evaluated it on <N> <subjects>.
-[M8]  Experimental results on <N> <subjects> show that <Tool> significantly <V-a> <metric> by <x%>, <V-b> <...>, and <V-c> <...> compared to <baseline without Tool|SOTA>.
+[M8]  Experimental results on <N> <subjects> show that <Tool> significantly <V-a> <metric> by <x%> to <y%>, <V-b> <...>, and <V-c> <...>
+      compared to <baseline without Tool|three state-of-the-art techniques>.   (수치는 %만, baseline이 여럿이면 범위)
 ```
 
 ---
@@ -226,11 +238,13 @@ Abstract의 각 move는 본문 어딘가에서 더 자세히 반복된다. 용�
 - [ ] Gap 문장에 신조어가 있고 그 자리에서 정의했는가
 - [ ] 문제 제기(M2–M5)가 전체의 35–50%인가
 - [ ] 해법 문장이 "iteratively V1, V2, and V3 ... accumulated data" 구조이고, 그 동사가 Intro/Overview의 단계 이름과 같은가
-- [ ] 평가 대상을 개수+종류로, baseline을 개수+범주로 썼는가
-- [ ] 마지막 문장이 수치를 포함한 결과 문장인가 (주 지표 % + 부 지표 개수)
+- [ ] 평가 대상을 개수+종류로 쓰고, baseline은 도구명 없이 개수로 묶었는가
+- [ ] 마지막 문장이 수치를 포함한 결과 문장인가 (%만, "N개 중 M개" 없이, baseline이 여럿이면 "X%–Y%" 범위)
 - [ ] 인용·URL·한계·hedging이 없는가
+- [ ] 약어를 Abstract 안의 첫 등장에서 정의했는가 (풀어 쓴 말은 대문자로 시작)
 - [ ] 신조어 정의, 단계 동사, 수치가 Intro·본문과 일치하는가 (§6)
-- [ ] 7–10문장, 160–240 words인가
+- [ ] 7–10문장, 160–240 words인가. 줄였다면 move 비율을 대조해 넘치는 move부터 줄였는가
+- [ ] 제목 후보를 5개 정도 제안해 골랐는가
 
 ---
 

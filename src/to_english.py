@@ -1,5 +1,5 @@
 """Korean review draft -> English submission source: drop each Korean block that is directly followed by
-'% EN: ' lines, strip the prefixes, remove kotex. Usage: python to_english.py main.tex > main.en.tex"""
+'% EN: ' lines, strip the prefixes, remove kotex. Usage: python paper/src/to_english.py paper/main.tex > main.en.tex"""
 import re, sys
 out, buf = [], []
 for line in open(sys.argv[1], encoding="utf-8").read().split("\n"):

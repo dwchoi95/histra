@@ -1,10 +1,10 @@
 """RQ3: share of the trajectories whose intent skeleton normalization changes (HISTRA-Norm).
-Usage: [POOL=16] python paper/std_effect.py"""
+Usage: [POOL=16] python paper/src/std_effect.py"""
 import os
 import sys
 from multiprocessing import Pool
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src", "experiments"))   # this folder is histra/paper/
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src", "experiments"))   # <repo>/paper/src/
 from common import POOL, cases  # noqa: E402
 from skel import holed_ids, units  # noqa: E402
 

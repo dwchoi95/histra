@@ -9,10 +9,27 @@
 ## 0. 핵심 규칙
 
 1. Preliminaries는 **~970 words, 하위절 2–3개**다. 순서는 **2.1 배경 형식화 → 2.2 한계(Limitation / Existing Approaches) → (2.3 Goal)**이고, 배경이 ~46%, 한계·목표가 ~54%다.
-2. 2.1은 핵심 객체를 **튜플로 정의**하고 **Algorithm 1(일반 알고리즘)**을 줄 번호를 따라 설명한다. 제안 기법이 쓸 인자를 미리 넣어 두고 **"For now, let us set aside ..."**로 설명을 미룬다.
-3. 2.2는 **관찰 → 정밀 정의 → 예제 → Table 1 측정 → 단순 대안의 실패** 순이다. Intro Gap 단락의 수치는 여기서 나온다.
+2. 2.1은 핵심 객체를 **튜플로 정의**하고 **Algorithm 1(일반 알고리즘)**을 줄 번호를 따라 설명한다. Algorithm 1의 입력은 **선행 기법도 쓰는 것만** 둔다 (0.1 D2). 4편은 제안 기법이 쓸 인자를 미리 넣고 "For now, let us set aside ..."로 미뤘다.
+3. 2.2는 **관찰 → 정밀 정의 → 예제 → 측정(Table/Figure 1, 선행 기법의 공개 구현으로) → 단순 대안의 실패** 순이다. Intro Gap 단락의 수치는 여기서 나온다.
 4. 마지막 단락은 **"These observations/limitations motivate ..."**로 §3에 넘기면서 성공 기준이나 도전과제 (1)(2)를 제시한다.
 5. 수식은 최소한으로 쓴다. 기호는 **"영어 명사 (기호)"**로 도입하고, display 수식은 0–1개이며 번호를 붙이지 않는다. 설명은 수식보다 **알고리즘·표·구체 예제**에 기댄다.
+
+### 0.1 집필에서 확정한 규칙
+
+공통 규칙(집필 절차, 약어, 용어·기호 통일, 도구명 표기 등)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다. 아래는 이 섹션에만 해당한다.
+
+- **(D1) 한계는 선행 기법으로 측정한다.** 제안 기법이 아니라 실제 baseline의 공개 구현으로 측정해, 선행 기법이 그 부분을 잘 못한다는 것을 난제의 근거로 삼는다.
+- **(D1·C1) 비교 기준을 먼저 둔다.** 사용자 자신의 값(예: 사용자가 직접 고친 결과)을 먼저 보이고 선행 기법의 값을 이어서 보인다. Intro의 난제 문장은 Goal 절이 아니라 이 Limitation 절을 forward ref한다.
+- **(C1) Goal 절은 없앨 수 있다.** Limitation 측정이 난제를 세우면 목표·난제는 Intro I3에 흡수하고 §2.3 Goal을 두지 않는다.
+- **(D2) Algorithm 1 표기:** 제목은 짧은 분야 과정 이름(예: "<기술 분야>"). Require/Ensure 대신 **Input/Output**으로 쓰고, 항목마다 첫 글자를 대문자로 쓴다.
+- **(D2)** 단계 구분용 주석 줄에는 줄 번호를 붙이지 않는다. 출력은 이름 하나로 쓰고(예: Output: Fixed program (f)) "or ⊥"처럼 둘로 쪼개지 않는다.
+- **(D2)** 선행 기법이 쓰지 않는 입력(제안 기법만 쓰는 입력)은 Algorithm 1에 넣지 않는다. 그 입력은 §3 메인 알고리즘에서 처음 도입한다.
+- **(D3)** Algorithm 1에 나오는 기호(중간 산출물 포함)는 뒤 절에서 자세히 다루더라도 §2에서 한 줄로 정의한다.
+- **(D4)** 독자가 모를 수 있는 용어는 처음 나올 때 풀어서 정의한다 (예: "reference programs, i.e., correct programs written by other users").
+- **(D5) 측정 표·그림:** 식별자(벤치마크 항목 ID)만 나열하지 않고, 공식적으로 정의된 기준(예: 공식 난이도, 수치 함께 표기)으로 묶는다. 추정 기준은 쓰지 않는다.
+- **(D5)** 구간별 경향이 보일 때만 쓴다. 세부 수치보다 메시지가 중요하면 표 대신 그래프를 쓴다. 측정 대상 설명은 벤치마크 절 forward ref로 대신하고 반복하지 않는다.
+- **(D6·C7) 선행 기법 분류:** Introduction·Approach·Related Work와 같은 분류 이름을 쓰고, 분류마다 baseline을 하나씩 고를 수 있게 짠다.
+- **(D6)** 범주 이름이 실제 동작과 맞는지 확인한다. 모든 범주가 공유하는 성질(예: 모두 참조 프로그램을 씀)로 한 범주만 이름 짓지 않는다.
 
 ---
 
@@ -104,6 +121,7 @@
   - "**For now, let us set aside the last input**, seed, and the associated function, Feasible; **their roles will be explained in Section II-B.**" (ICSE25)
   - "**For now, we set aside the last two inputs**, Arg and S_P, which will be explained later; general symbolic execution techniques [5, 7, 10, 22] typically test the target program without taking Arg and S_P as input (i.e., Arg=∅, S_P=∅)." (ASE26)
   - "**For now, let us ignore the last argument**, RS, which will be explained later." (FSE26)
+  - → 확정 규칙: 훅 인자를 두지 않는다. 선행 기법이 쓰지 않는 입력은 §3 메인 알고리즘에서 도입한다 (D2).
 - **줄 번호 따라가기:** "At lines 2–3, the algorithm initializes S and I, two sets representing states and inputs, as a singleton set and an empty set, respectively. After the initialization, Algorithm 1 repeats the loop at lines 4–17 until ..." / "At line 5, ..." / "(lines 11–12)"
 - **생략 명시:** "For simplicity, the details of how each statement updates the state are omitted."
 - **마무리:** "..., at which point it returns the set I of generated inputs." / "Finally, Algorithm 1 returns ..." / "In summary, performing symbolic execution entails ..." (ICSE26, 산문 해설)
@@ -144,6 +162,7 @@
 
 - bold run-in 단락: "**Manual Tuning Approach.**" / "**User-configured Tuning Approach.**"
 - 각 단락: 무엇을 하는가 → 근거(인용, Figure 1) → 왜 부족한가 ("Note that ...", "In other words, ... posing a critical hurdle to ...")
+- → 확정 규칙: 범주 이름은 Introduction·Approach·Related Work와 같게 하고, 실제 동작과 맞는지 확인한다 (C7, D6).
 
 #### T — Table 1로 한계 측정
 
@@ -156,6 +175,7 @@
 - 틀: `"Table 1 shows/displays <지표> by <도구> across <N programs> (<규모·예산>)"` → 전체 수치 → 도구별 수치 → "Surprisingly / Interestingly" 극단 사례 → 원인 ("The fundamental reason is that ..." / "This might stem from ...")
 - 측정 대상은 **실험 벤치마크의 일부**(5 / 6 / 8개)이고, 도구는 §4의 baseline과 같다.
 - 원인 추정에서만 hedging("might")을 허용한다.
+- → 확정 규칙: 도구는 baseline의 공개 구현으로 하고, 비교 기준(사용자 자신의 값)을 선행 기법의 값보다 먼저 보인다 (D1). 측정 대상의 규모 설명은 반복하지 않고 벤치마크 절을 forward ref한다 (D5).
 
 #### N — 단순 대안의 실패
 
@@ -261,13 +281,14 @@
 
 | 요소 | 규칙 | 예 |
 |---|---|---|
-| 캡션 | **분야 과정 이름** | "Symbolic Execution with A Seed Input" / "Symbolic Execution" / "Grammar-based Fuzzing" |
-| Input / Output | 영어 명사 + (기호), 마침표 | **Input:** Program (pgm), budget (time), seed input (seed). **Output:** Inputs (I) |
+| 캡션 | **분야 과정 이름**, 짧게 (D2) | "Symbolic Execution with A Seed Input" / "Symbolic Execution" / "Grammar-based Fuzzing" |
+| Input / Output | 영어 명사 + (기호), 마침표. → 확정 규칙 (D2): Require/Ensure 대신 Input/Output, 항목마다 첫 글자 대문자, Output은 이름 하나("or ⊥" 금지) | **Input:** Program (pgm), budget (time), seed input (seed). **Output:** Inputs (I) |
+| 단계 주석 줄 | → 확정 규칙 (D2): 단계 구분용 주석 줄에는 줄 번호를 붙이지 않는다 | `/* Step 1 */` (번호 없음) |
 | 절차 선언 | `procedure Name(args)`, 이름은 small caps | procedure SymbolicExecutor(pgm, time, seed) |
 | 키워드 | 굵게 | procedure, repeat, until, if, then, else, return |
 | 오른쪽 주석 ▷ | 변수 의미, 구조 분해, 하이퍼파라미터 기본값, 원소 형태 | ▷ A set of states / ▷ s = (stmt, m, Φ) / ▷ η_time = 120 / ▷ (v, Φ) ∈ I |
 | 루프 종료 | 예산 소진 + 예외 조건 | until time expires (or S = ∅) |
-| **훅 인자** | 일반 기법은 비워 두는 인자를 처음부터 넣는다 | seed (ICSE25), Arg, S_P (ASE26), RS (FSE26) |
+| **훅 인자** | 일반 기법은 비워 두는 인자를 처음부터 넣는다. → 확정 규칙 (D2): 선행 기법이 쓰지 않는 입력은 넣지 않고 §3에서 도입 | seed (ICSE25), Arg, S_P (ASE26), RS (FSE26) |
 | 길이 | 8–18줄 | ICSE25 18 · ASE26 16 · FSE26 8 |
 | 배치 | §2 시작 근처 페이지 상단 float | |
 
@@ -280,6 +301,7 @@
   - "Table 1: Symbolic execution on option-related code regions."
   - "Table 1. The percentage of coverage-equivalent inputs among the total inputs generated during testing."
 - 행은 벤치마크 일부(5–8개), 열은 기존 기법(헤더에 인용 번호, 예: KLEE [5]) 또는 입력 포맷 그룹이다. 수치는 %, 천 단위 쉼표, 소수점 1자리다.
+  - → 확정 규칙 (D5): 행을 식별자만으로 나열하지 않고 공식 기준(예: 공식 난이도, 수치 함께 표기)으로 묶는다. 메시지가 세부 수치보다 중요하면 그래프로 그린다.
 - **Table 2 (FSE26) = 도전과제 규모** (#Sets, Avg. Size).
 - **Figure 1 (ASE26) = 코드 스니펫.** 줄 번호를 달고 해당 줄(OB)을 색으로 강조한 뒤, 본문에서 "at line 5", "at line 10"으로 짚는다.
 
@@ -289,12 +311,12 @@
 
 | §2 요소 | 대응 위치 | 관계 |
 |---|---|---|
-| §2.1 훅 인자 | §3 | 제안 기법이 이 인자를 채운다. ICSE25 seed → §III Algorithm 3이 공급, ASE26 S_P → §3.2 Guide 단계가 생성, FSE26 RS → §3.3 Generate(𝔾, RS) |
+| §2.1 훅 인자 | §3 | 제안 기법이 이 인자를 채운다. ICSE25 seed → §III Algorithm 3이 공급, ASE26 S_P → §3.2 Guide 단계가 생성, FSE26 RS → §3.3 Generate(𝔾, RS). → 확정 규칙 (D2): 훅 인자 없이, 제안 기법만 쓰는 입력은 §3 메인 알고리즘의 Input에서 도입 |
 | Algorithm 1 | §3 Algorithm 2/3 | 제안 알고리즘이 Algorithm 1을 서브루틴으로 호출한다 (I ← SymbolicExecutor(pgm, time_s, seed), B, T ← Execute(pgm, time_s, Arg_new, S_P)) |
 | Algorithm 1 | §4 Generality | 다른 도구로 일반화할 때 Algorithm 1만 갈아 끼운다 (ASE26: "corresponds to replacing the Execute procedure (Algorithm 1)") |
 | §2.1 SOTA 대응 | §4.1 Baselines, §5 Related Work | 같은 기법(Learch, Homi, AAQC, SymTuner)이 baseline과 Related Work 범주로 다시 나온다 |
 | §2.2 단순 대안 | §4 baseline | ICSE25 Algorithm 2 → §4 RandSeed |
-| §2.2 Table 1 | Intro Gap, Abstract M3′ | 같은 수치를 쓴다 (ASE26 7.9%, FSE26 80.3% / 81.0%) |
+| §2.2 Table 1 | Intro Gap, Abstract M3′ | 같은 수치를 쓴다 (ASE26 7.9%, FSE26 80.3% / 81.0%). → 확정 규칙 (C1): Intro는 사용자 값 → 선행 기법 값 순으로 쓰고 난제는 이 절을 forward ref |
 | §2.2 신조어 정의 | Intro Gap | Intro는 한 문장, §2.2는 "More precisely" 정밀 정의 + 예제 |
 | §2.3 목표식 | §3.2 알고리즘 출력 | ICSE26: 목표 ⋃ Execute(...)가 Algorithm 1의 출력 UnionB = ⋃ B와 같다 |
 | §2.3 도전과제 | Intro I5, §3.1, §4 ablation | 도전과제 하나마다 §3 단계 하나, §4 ablation 하나가 대응한다 (FSE26 §3.1: "The key novelty ... lies in addressing two significant challenges in the "selecting" and "capturing" steps") |
@@ -309,23 +331,31 @@
 ### 2.1 <Domain> (basics)
 [D] The main aim of <domain> is to <goal>. To do so, <domain> iteratively <V1>, <V2>, and <V3> so-called "<objects>".
     We define a <object> as a triple (a, b, c), where a represents ..., b denotes ..., and c indicates ....
-[W] Algorithm 1 describes a generic <domain> algorithm. It takes <noun> (a), <noun> (b), and <noun> (h) as input.
-    For now, let us set aside the last input, h, which will be explained in Section <x>.
-    At lines 2–3, the algorithm initializes .... At line 5, .... For simplicity, the details of ... are omitted.
+[W] Algorithm 1 describes a generic <domain> algorithm. It takes <noun> (a) and <noun> (b) as input and returns <noun> (o).
+    (Input에는 선행 기법도 쓰는 것만. 제안 기법만 쓰는 입력은 §3에서 도입 — D2)
+    At lines 2–3, the algorithm initializes .... At line 5, it computes <x>, <one-line definition> (Section 3.x).   ← D3
+    For simplicity, the details of ... are omitted.
     This process repeats until the given budget (time) is exhausted, at which point it returns ....
 [E] For example, if <a> is "<v1>" and ... returns "<v2>", the resulting <x> is "<v3>".
 [M] Recent advancements have significantly improved <domain> based on Algorithm 1.
-    For instance, <category> [..], corresponding to the <F> function at line 5, ....
+    For instance, <category> [..], corresponding to the <F> function at line 5, ....   ← 범주 이름은 Intro·§3·§5와 같게 (C7)
+
+Algorithm 1: <Short Field Process Name>                ← 짧게 (D2)
+  Input: <Noun> (a), <Noun> (b)                        ← Require/Ensure 아님, 항목 첫 글자 대문자
+  Output: <Noun> (o)                                    ← 이름 하나, "or ⊥" 금지
+     /* <Step> */                                       ← 주석 줄은 줄 번호 없음
+  1: ...
 
 ### 2.2 Limitation (of <existing approaches>)
 [O] Our key observation is that <SOTA> [..] still <...>. In this work, we define <term> as <...>.
     More precisely, <operational definition>.
 [E] Figure 1 illustrates .... Suppose we execute ... (e.g., <cmd>). In this case, .... We classify <x> as <term>.
-[T] Table 1 shows that <tools> covered only N% of ... across <N> programs. Surprisingly, ....
-    The fundamental reason is that ....
+[T] Figure/Table 1 shows <metric> on the benchmark (Section 4.x), grouped by <official criterion>.   ← D5
+    <Reference, e.g., users' own fixes> <value>, whereas <prior techniques> [..] <value>.   ← D1: 기준 값 먼저, 선행 기법은 공개 구현
+    Surprisingly, .... The fundamental reason is that ....
 [N] One alternative is to .... However, this naive approach proved unsatisfactory. For instance, ....
 
-### 2.3 Goal (opt.)
+### 2.3 Goal (opt. — Limitation이 난제를 세우면 생략하고 Intro I3에 흡수, C1)
 [G] The goal of this paper is to <...>. We can formally define our goal as follows: <display>, where <symbol> denotes ....
     However, <...> is far from straightforward in practice. As shown in Table 2, .... Even when ..., the challenge remains: ....
 [close] These observations motivate our approach, which .... Our work thus tackles two key challenges: (1) ..., and (2) ....
@@ -337,18 +367,27 @@
 
 - [ ] 하위절이 2.1 배경 → 2.2 한계 → (2.3 Goal) 순이고 ~1,000 words인가
 - [ ] §2.1에서 핵심 객체를 튜플로 정의하고, 각 원소를 represents / denotes / indicates로 설명했는가
-- [ ] Algorithm 1이 일반 알고리즘이고, 제안 기법이 쓸 훅 인자를 "For now, let us set aside ..."로 미뤄 두었는가
+- [ ] Algorithm 1이 일반 알고리즘이고, 입력에 선행 기법이 쓰지 않는 것(제안 기법만 쓰는 입력)을 넣지 않았는가 (D2)
+- [ ] Algorithm 1 제목이 짧고, Input/Output(항목 첫 글자 대문자)·주석 줄 번호 없음·출력 이름 하나("or ⊥" 없음)를 지켰는가 (D2)
+- [ ] 알고리즘에 나오는 기호(중간 산출물 포함)를 모두 §2에서 한 줄로라도 정의했는가 (D3)
 - [ ] 모든 기호를 처음 쓸 때 "영어 명사 (기호)"로 도입했는가
 - [ ] 알고리즘 해설이 줄 번호를 따라가는가 ("At line N", "lines a–b")
 - [ ] 입력값·코드·문법 같은 구체 예제가 있는가
 - [ ] 기존 기법이 Algorithm 1의 어디를 바꾸는지(또는 어떤 범주인지) 보였는가
+- [ ] 범주 이름이 Introduction·Approach·Related Work와 같고, 분류마다 baseline이 하나씩 있으며, 실제 동작과 맞는가 (C7, D6)
+- [ ] 독자가 모를 수 있는 용어를 처음 나올 때 풀어서 정의했는가 (D4)
 - [ ] §2.2에서 신조어를 Intro보다 정밀하게 다시 정의했는가 ("More precisely, ...")
-- [ ] Table 1로 한계를 측정했고, 측정 범위(벤치마크 일부·예산·도구)를 밝혔는가
+- [ ] 한계를 제안 기법이 아니라 baseline의 공개 구현으로 측정했고, 비교 기준(사용자 자신의 값)을 먼저 보였는가 (D1)
+- [ ] 측정 표·그림이 식별자 나열이 아니라 공식 기준으로 묶였고, 측정 대상 설명은 벤치마크 절 forward ref로 대신했는가 (D5)
 - [ ] 단순 대안이 왜 부족한지 보였는가 (가능하면 §4 baseline으로 재사용)
-- [ ] §2가 "These observations motivate ..." + 성공 기준 / 도전과제 / 목표식으로 끝나는가
+- [ ] §2가 "These observations motivate ..." + 성공 기준 / 도전과제 / 목표식으로 끝나는가 (Goal 절은 C1에 따라 생략 가능)
 - [ ] display 수식은 0–1개, 번호 없음, 앞에 "as follows:", 뒤에 "where ... denotes ..."인가
 - [ ] 함수는 small caps(절차·오라클) / sans-serif(보조)로 일관되게 썼는가
 - [ ] 본문 수치와 표 수치가 일치하는가 (§6 불일치 사례 참고)
+- [ ] (공통 A3) 약어를 이 섹션 첫 등장에서 다시 정의했는가 (예: Tree Edit Distance (TED))
+- [ ] (공통 A4) 알고리즘과 개념 설명에 구현 도구명이 아니라 일반 개념을 썼는가. 도구명은 풀어 쓰지 않고 인용만 붙였는가
+- [ ] (공통 A5) 같은 대상에 한 용어·한 기호만 썼고, 선행연구를 "technique"으로 불렀으며, 기호끼리 헷갈리지 않는가
+- [ ] (공통 A7) 한계 측정 서술에 "much/far" 같은 강조어 없이 수치로 말했는가
 
 ---
 

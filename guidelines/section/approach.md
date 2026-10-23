@@ -14,6 +14,18 @@
 4. 수식 관용구가 정해져 있다. 데이터 레코드는 튜플(와일드카드 `_`), 점수는 set-builder 함수, 선택은 argmax, 확률은 정규화 비율이다. **번호는 뒤에서 다시 참조하는 식에만** 붙인다(0–5개). 수식 뒤에는 거의 항상 **"Intuitively, ..."** 한 문장을 단다.
 5. 하이퍼파라미터는 **η**로 이름 짓고 알고리즘 주석에 기본값을 적으며, 본문에서 **"set ... by trial and error"**라고 밝힌다. 설계 선택은 **§4.4 ablation을 forward ref**해서 정당화한다.
 
+### 0.1 집필에서 확정한 규칙
+
+공통 규칙(집필 절차, 약어, 용어·기호 통일, 도구명 표기 등)은 [skeleton.md](skeleton.md) §7 집필 공통 규칙을 따른다. 아래는 이 섹션에만 해당한다.
+
+- **(E1)** 단계 하위절은 Overview와 겹치더라도 첫 문장에서 그 단계의 목표를 짧게 다시 써서 복기시킨다.
+- **(E2)** 단계별 알고리즘·설명의 상세도를 맞춘다(한 단계만 빈약하지 않게). 알고리즘에는 구현 도구명 대신 일반 개념(예: Tree Edit Distance (TED))을 쓴다(A4).
+- **(E3)** 단계 하위절은 §1 분량을 넘기지 않게 줄이되 필수 move(G·L·F·I·E)는 남긴다. 넘치면 Introduction·Preliminaries에서 줄여도 된다.
+- **(E4)** 선행 기법과의 기술적 차별점은 해당 단계에서(또는 Related Work에서) 분명히 쓴다. 단계 이름이 선행 기법과 비슷해 보여도 억지로 바꾸지 않는다.
+- **(E5)** Overview 그림 설명은 입력부터 시작한다. 그림의 기호·라벨은 본문 표기와 같게 하고, 아이콘은 텍스트 위에 둬 가로 폭을 아낀다([floats.md](floats.md)).
+- **(C7)** 선행 기법을 언급할 때 Introduction·Preliminaries·Related Work와 같은 분류 이름을 쓴다.
+- **(D2 연장)** 메인 알고리즘도 §2 Algorithm 1 표기(Input/Output, 항목 첫 글자 대문자, 주석 줄 번호 없음, 출력 이름 하나)를 따른다. 제안 기법만 쓰는 입력은 여기서 처음 도입한다.
+
 ---
 
 ## 1. 분량
@@ -102,6 +114,7 @@
 | ASE26 | "**Figure 2 illustrates the interaction between** Orbis **and the symbolic executor**." | "Orbis coordinates symbolic execution **through four stages: Extract, Construct, Guide, and Update**." |
 | FSE26 | "**Figure 1 illustrates an overview of how** our approach, RSFuzz, **interacts with a grammar-based fuzzer**." | "RSFuzz performs **four main steps: (1) collecting ..., (2) grouping ..., (3) selecting ..., and (4) capturing ...**" |
 
+- → 확정 규칙 (E5): 그림 소개 뒤 **입력부터** 설명한다 (무엇을 받아 어느 단계로 넘기는지).
 - 흐름: 그림 소개(기존 도구와 **상호작용**하는 구도) → 단계 이름 나열 → 1회성 단계("Initially, ... / The first stage, Extraction, ...") → 반복 단계("Once ... is complete, X iteratively executes the subsequent two stages ... until the allocated total budget expires") → 단계마다 1–2문장 → 반복·반환("This process repeats until the entire budget is exhausted. Finally, X returns ...")
 - 단계 설명에 직관을 한 구절 덧붙인다: "**Intuitively,** parameters receive higher scores if they tend to cover many of the rarely reached branches and work synergistically with others" (ICSE26)
 - **신규성 위치를 밝힌다** (FSE26): "**The key novelty of RSFuzz lies in addressing two significant challenges in the "selecting" and "capturing" steps.** ... An extreme approach—... —has been shown to be inefficient, **as demonstrated in Section 4.4**."
@@ -168,6 +181,7 @@
 - **차용한 기법은 인용과 한 줄 설명:** "we use mean shift clustering [25], a well-known non-parametric method that identifies clusters without requiring the number of clusters in advance" / "the silhouette coefficient [72]" / "the k-means clustering algorithm [25] (where k to 2)"
 - **한계를 먼저 인정:** "**We acknowledge that** some hidden options may not appear in the help script. **However, as discussed in Section 4.8**, these constitute only 0.9% of all options ..., Therefore, our approach adopts the cost-effective strategy of ..."
 - **예외 처리:** "Exceptionally, if the distributions derived from TopW^i and BotW^i are similar, values are sampled from a uniform distribution ..."
+- → 확정 규칙: 단계가 선행 기법과 비슷해 보이면 R에서 기술적 차별점을 한두 문장으로 분명히 쓴다 (E4). 한계 인정은 리뷰어가 떠올릴 만한 것만 한다 (A8).
 
 #### A — 평가로 forward ref
 
@@ -205,7 +219,7 @@
 | 시제 | 기법 동작은 **현재형**. 설정값과 관찰은 **과거형**("was set to 120 seconds", "we observed that") |
 | 연결어 | Specifically, / More specifically, / To achieve this, / To do so, / Formally, / Intuitively, / Recall that / Note that / Conversely, / Finally, / In this manner, |
 | 줄 번호 | 거의 모든 단락에 1개 이상 ("(line 16)", "at lines 15–16") |
-| 인용 | **차용한 기법에만** 단다 (k-means, mean shift, silhouette, Tree-sitter, DBSCAN, OPTICS). 선행 연구 비교는 거의 없다 ("more accurately and efficiently than other existing techniques [33, 71]" 정도) |
+| 인용 | **차용한 기법에만** 단다 (k-means, mean shift, silhouette, Tree-sitter, DBSCAN, OPTICS). 선행 연구 비교는 거의 없다 ("more accurately and efficiently than other existing techniques [33, 71]" 정도). → 확정 규칙: 비슷해 보이는 단계의 차별점은 분명히 쓴다 (E4). 도구명은 풀어 쓰지 않고 인용만 붙인다 (A4) |
 | 수치 | 결과표는 없다. 수치는 하이퍼파라미터 값, 예제 값, "Empirically, ..." 근거만 쓴다 |
 | hedging | 직관 설명에서 약하게 쓴다 ("may possess similar potential", "likely does not contribute"). 나머지는 단정형이다 |
 | 따옴표 용어 | 의미를 새로 부여하는 일반어: "promising", "meaningful", "help" command |
@@ -263,6 +277,7 @@
 | 수식 안의 일반어 | 이탤릭 단어 그대로 | inp, tree, bug, seed, cmd, var, Val, Traces |
 
 - **단계 이름 = 알고리즘이 호출하는 함수 이름**이다: Gather / Select / Learn, Extract / Construct / Guide / Update, Collecting → Generate·Execute, Grouping, Selecting → Select, Capturing → Capture.
+- → 확정 규칙 (A5): 단계 이름과 산출물 기호가 헷갈리지 않게 짓고(예: 단계 Select와 산출물 selection set을 둘 다 S로 쓰지 않는다), 같은 대상의 기호를 문맥마다 바꾸지 않는다.
 
 ### 5.4 수식 도입·마무리 문형
 
@@ -279,15 +294,15 @@
 | 요소 | 규칙 | 예 |
 |---|---|---|
 | 캡션 | **도구명**(small caps) 또는 "Our ... Strategy" | "Algorithm 1 ParaSuit", "Algorithm 2 Orbis", "Algorithm 2 RSFuzz", "Algorithm 3 Our Seeding Strategy for Symbolic Execution" |
-| Input / Output | §2 Algorithm 1과 같은 형식. 입력은 최소(프로그램, 예산[, 문법]) | Input: Program (pgm), budget (time). Output: A total set of covered branches (UnionB) |
+| Input / Output | §2 Algorithm 1과 같은 형식. 입력은 최소(프로그램, 예산[, 문법]). → 확정 규칙 (D2 연장): 항목 첫 글자 대문자, Output은 이름 하나. 제안 기법만 쓰는 입력은 여기서 처음 도입 | Input: Program (pgm), budget (time). Output: A total set of covered branches (UnionB) |
 | 초기화 | 튜플 동시 대입 + 하이퍼파라미터 주석 | ⟨D, BaseD, TotalB, time_s⟩ ← ⟨∅, ∅, ∅, η_time⟩ ▷ η_time = 120 |
-| **단계 블록 주석** | `/* Step k. <Stage> stage */`, 블록 사이 빈 번호 줄 | /* Data Gathering */, /* Step 1. Extraction stage */, /* Step 2: Construct Stage */, /* Step 3: Selecting */ |
+| **단계 블록 주석** | `/* Step k. <Stage> stage */`, 블록 사이 빈 번호 줄. → 확정 규칙 (D2 연장): 주석 줄에는 줄 번호를 붙이지 않는다 | /* Data Gathering */, /* Step 1. Extraction stage */, /* Step 2: Construct Stage */, /* Step 3: Selecting */ |
 | 단계 = 함수 호출 1줄 | 단계마다 같은 이름의 함수를 호출하고, 그 함수를 하위절에서 설명 | D′ ← Gather(I) / SelectP ← Select(ParamS, BaseS) / Arg_new ← Construct(ArgD) / RS = Capture(NewG, ReG, RS) |
 | §2 Algorithm 1 호출 | 루프 안에서 일반 알고리즘을 서브루틴으로 | I ← SymbolicExecutor(pgm, time_s, seed) / B ← Execute(pgm, time_s, PV) / B, T ← Execute(pgm, time_s, Arg_new, S_P) |
 | ▷ 주석 | 하이퍼파라미터 기본값, 원소 형태, 부분집합 관계, 동작 설명 | ▷ (inp, B, bug, seed, w, p) ∈ D′ / ▷ G_i ⊆ D / ▷ NewG, ReG ⊆ TotalG / ▷ Check if L is newly covered. |
 | return | 반환값 정의를 주석으로 | return TotalI ▷ TotalI = {inp \| (inp, _, _, _, _, _) ∈ D} / return UnionB ▷ UnionB = ⋃_{B∈TotalB} B |
 | 길이 | 17–28줄 | |
-| 보조 알고리즘 | 복잡한 단계 하나만 별도 알고리즘 | ICSE26 Algorithm 2 Value Sampling Stage (procedure Sample), ASE26 Seeding procedure(캡션 없는 줄번호 목록) |
+| 보조 알고리즘 | 복잡한 단계 하나만 별도 알고리즘. → 확정 규칙 (E2): 단계별 알고리즘·설명의 상세도를 맞춘다 | ICSE26 Algorithm 2 Value Sampling Stage (procedure Sample), ASE26 Seeding procedure(캡션 없는 줄번호 목록) |
 | 배치 | 3.2 근처 페이지 상단 float | |
 
 ### 5.6 그림·표·코드
@@ -296,6 +311,7 @@
   - 캡션: "Fig. 1: Overview of TopSeed" / "Figure 2: Overview of ParaSuit." / "Figure 2: The overview of Orbis." / "Fig. 1. Overview of RSFuzz"
   - 구성: 도구 상자 안에 단계 상자(ICSE25는 ①②③ 번호), 그 안에 전략 하위 상자(Exploration/Exploitation, Score/Select, Explore/Exploit). 기존 도구 상자(Symbolic Executor, Grammar-based Fuzzer)와 **오가는 화살표에 데이터 이름**(Inputs, Seed, parameter values, covered branch set)을 붙인다. 입력(Program, Grammar)은 왼쪽, 출력(Total Inputs, total coverage, Total recurrent sequences)은 오른쪽이다.
   - 번호: Intro·§2에 그림이 있으면 그다음 번호(Figure 2)다. overview가 첫 그림이면 Figure 1이다.
+  - → 확정 규칙 (E5): 그림의 기호·라벨은 본문 표기와 같게 하고(연상되지 않는 약어 라벨 금지), 아이콘은 텍스트 위에 둔다. 디자인 상세는 [floats.md](floats.md).
 - **예제 그림** (FSE26 Figure 2): 유도 트리 (a)(b)를 나란히 놓고, 본문에서 "Figure 2-(a)"로 참조한다.
 - **정의표** (ICSE25 Table II, III): 결과가 아니라 feature·policy **정의**를 담는다.
 - **코드형 display**: 실제 도구 출력(`$ ./klee --help`), 실제 소스 코드(줄 번호 + 문자열 강조), 문법·기호 시퀀스(타자체)
@@ -309,7 +325,7 @@
 | 단계 이름 | Abstract M6, Intro I6, Contributions bullet 2, Conclusion | 같은 단어·같은 순서 |
 | 단계 하나하나 | §4 ablation | 단계마다 제거형·대체형 변형이 하나 이상 있다. ICSE25 TopSeed−(Group), −(Learn) / ICSE26 RandP·AllP·SymP(Selection), Bayesian·Genetic·CMA-ES·RandV·SymV(Sampling) / ASE26 Orbis-Extract, RandConst·FuzzConst·CitConst, RandGuide, CallAll / FSE26 without Select, without Capture, NewG only |
 | 기각한 대안 | §4 ablation 대체형 | §3에서 "we also considered ..."로 언급한 대안이 §4에서 대체 변형으로 다시 나온다 (FSE26 Capture의 단순 방법 = "RSFuzz without the Capture step") |
-| §2 훅 인자 | §3 메인 알고리즘 호출, FSE26 §3.3 | §2에서 미뤄 둔 인자를 §3에서 채운다 |
+| §2 훅 인자 | §3 메인 알고리즘 호출, FSE26 §3.3 | §2에서 미뤄 둔 인자를 §3에서 채운다. → 확정 규칙 (D2): §2에 훅 인자를 두지 않고, 제안 기법만 쓰는 입력은 §3 메인 알고리즘의 Input에서 도입 |
 | §2 예제 | §3 예제 | 같은 예제를 이어서 쓴다 (ASE26 ls -l, FSE26 𝔾_J와 "[]", ICSE26 max-memory) |
 | 하이퍼파라미터 η | §4 Hyperparameter RQ, Threats to Validity | "set by trial and error" → ICSE25 §IV-E 민감도 분석, ICSE25·ICSE26 Threats (1)·(2) |
 | "Empirically, ..." 수치 | §4.4 | Approach에 미리 쓴 수치가 §4.4 결과와 같아야 한다 (ASE26 9.6%, 21.5%, 16.8%) |
@@ -327,6 +343,7 @@
 
 ### 3.1 Overview
 Figure N illustrates how <Tool> <does ...> while interacting with <existing tool>. <Tool> operates in three stages: <A>, <B>, and <C>.
+Given <Input> (a) and <Input> (b), ....   ← 입력부터 설명, 기호는 그림 라벨과 같게 (E5)
 Initially, in the <A> stage, <Tool> <one-time step>. Once the <A> stage is complete, <Tool> iteratively performs the remaining
 two stages until the total budget expires. In the <B> stage, .... Intuitively, .... In the <C> stage, ....
 This process repeats until the budget is exhausted. Finally, <Tool> returns ....
@@ -335,6 +352,7 @@ This process repeats until the budget is exhausted. Finally, <Tool> returns ....
 
 ### 3.2 <Tool>
 Algorithm N details how <Tool> <...>. <Tool> accepts only two inputs: <noun> (pgm) and <noun> (time), and returns <...>.
+(<Tool>만 쓰는 입력이 있으면 여기서 처음 도입한다: "In addition to the inputs of Algorithm 1, <Tool> takes <noun> (h)." — D2)
 At line 1, it initializes .... It also sets a small time budget (time_s) to a hyper-parameter value (η_time).
 Since <Tool> aims to <...> without prior knowledge, it inevitably needs to <...>. In our experiments, η_time was set to 120 seconds by trial and error.
 
@@ -344,6 +362,7 @@ For example, consider <toy input from §2>. ....
 
 ### 3.3 <Stage B>
 The goal of the <B> stage is to <...> (lines x–y). Intuitively, we define <promising X> as those that (1) ..., (2) ..., and (3) ....
+   ← Overview와 겹쳐도 목표를 다시 쓴다 (E1)
 Specifically, at line x, .... To formally define the Score function, we introduce the Freq function as:
     Freq(b, D) = |{ ... | ... }|
 This function counts .... For instance, consider D = {...}. In this set, ....
@@ -352,6 +371,7 @@ Leveraging the Freq function, we define the Score function as:
 Intuitively, this function assigns a higher score when ....
 We selected <X> because it provides a practical balance between <...> and <...>.
 We also considered <alternative> [..]. However, we observed that <...>, as demonstrated in Section 4.4.
+(opt.) Unlike <category> techniques [..], which <...>, the <B> stage <...>.   ← 비슷해 보이는 선행 기법과의 차별점 (E4), 분류 이름은 C7
 Now, we proceed to the next stage: <...>.
 
 ### 3.4 <Stage C>
@@ -366,9 +386,13 @@ In this manner, without prior knowledge, <Tool> <A>s, <B>s, and <C>s based on th
 - [ ] 3.1 Overview(그림) → 3.2 [Tool](메인 알고리즘) → 단계별 하위절 순이고 ~2,500 words인가
 - [ ] 단계 이름이 overview 그림, 알고리즘 주석, 호출 함수명, 하위절 제목, Abstract·Intro·Conclusion에서 모두 같은가
 - [ ] overview 그림이 기존 도구와의 상호작용을 보여 주고, 화살표에 주고받는 데이터 이름이 붙어 있는가
-- [ ] 메인 알고리즘이 §2 Algorithm 1을 서브루틴으로 호출하고, §2에서 미뤄 둔 훅 인자를 채우는가
-- [ ] 알고리즘에 `/* Step k. <Stage> */` 블록 주석과 ▷ 하이퍼파라미터 기본값이 있는가
-- [ ] 단계마다 첫 문장이 "The goal of the X stage is to ... (lines a–b)"인가
+- [ ] Overview 설명이 입력부터 시작하고, 그림의 기호·라벨이 본문 표기와 같은가 (E5)
+- [ ] 메인 알고리즘이 §2 Algorithm 1을 서브루틴(또는 틀)으로 쓰고, 제안 기법만 쓰는 입력을 여기서 처음 도입하는가 (D2)
+- [ ] 알고리즘에 `/* Step k. <Stage> */` 블록 주석(줄 번호 없음)과 ▷ 하이퍼파라미터 기본값이 있는가
+- [ ] 단계별 알고리즘·설명의 상세도가 고른가 (한 단계만 빈약하지 않은가) (E2)
+- [ ] 단계마다 첫 문장이 "The goal of the X stage is to ... (lines a–b)"인가 (Overview와 겹쳐도 다시 쓴다, E1)
+- [ ] 단계 하위절이 §1 분량을 넘지 않으면서 필수 move를 다 담았는가 (E3)
+- [ ] 비슷해 보이는 선행 기법과의 기술적 차별점을 분명히 썼고, 분류 이름이 다른 섹션과 같은가 (E4, C7)
 - [ ] 모든 display 수식 뒤에 "where ... denotes ..." 또는 "Intuitively, ..."가 있는가
 - [ ] 번호는 뒤에서 다시 참조하는 식에만 붙였는가
 - [ ] 데이터 레코드는 튜플로 정의하고 원소를 하나씩 설명했는가 (안 쓰는 원소는 `_`)
@@ -377,6 +401,9 @@ In this manner, without prior knowledge, <Tool> <A>s, <B>s, and <C>s based on th
 - [ ] 하이퍼파라미터를 η로 이름 짓고 값과 "by trial and error"를 밝혔는가
 - [ ] 설계 정당화를 §4.4 ablation forward ref로 뒷받침했고, 미리 쓴 "Empirically" 수치가 §4와 일치하는가
 - [ ] 섹션 끝이 "In this manner, without prior knowledge, ..."로 단계 이름을 다시 나열하며 마무리되는가
+- [ ] (공통 A3) 약어를 이 섹션 첫 등장에서 다시 정의했는가
+- [ ] (공통 A4) 알고리즘과 개념 설명에 구현 도구명이 아니라 일반 개념(예: TED)을 썼는가. 도구명은 풀어 쓰지 않고 인용만 붙였는가
+- [ ] (공통 A5) 정의한 용어를 정의 그대로 쓰고, 단계 이름·산출물 기호가 헷갈리지 않으며, 같은 대상의 기호를 바꾸지 않았는가
 
 ---
 
