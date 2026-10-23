@@ -32,7 +32,10 @@ edits here; code goes to `dev` in the parent folder. Branch, repository, and art
   - Percentages without "N of M" in the Abstract and Introduction.
   - Leave out weaknesses and details the message does not need (the artifact has them); keep the strongest claim the
     data support.
-  - One term per concept; abbreviations defined at their first use in each section; tool names cited, not expanded.
+  - One term per concept; abbreviations as "Automated Program Repair (APR)" at their first use in each section; tool
+    names cited, not expanded.
+  - Tool names, ours and prior work's, in `\textsc{}` everywhere, including table headers and figure labels (all-caps
+    names capitalized inside: `\textsc{Clara}`). Metrics and newly defined terms in `\emph{}` where they are defined.
   - Baselines are not named in the Abstract or Introduction; comparisons there say "three state-of-the-art techniques"
     with citations and give results as ranges. The Conclusion repeats the Abstract's claims without numbers.
 - Figures: mix graphs into the results (tables only for exact per-item values); floats `[h]`, above their first mention.

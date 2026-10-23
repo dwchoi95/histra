@@ -212,6 +212,10 @@ Acknowledgments / Data Availability / References
 
 - 약어는 섹션마다 첫 등장에서 다시 정의하고(예: Abstract Syntax Tree (AST)), 이후에는 약어만 쓴다. 풀어 쓴 말은 대문자로 시작한다.
 - 도구명은 풀어 쓰지 않고 바로 뒤에 인용만 붙인다(`KLEE~\cite{...}`).
+- 도구명(우리 도구와 선행연구의 도구 모두)은 `\textsc{}`로 형식을 통일해 일반 단어와 구분한다. 모두 대문자인 이름은 첫 글자만
+  대문자로 넣는다(`\textsc{Klee}`가 KLEE처럼 보인다). 표 머리글과 그림 라벨·범례에도 같은 형식을 쓴다.
+- 약어는 단어 첫 글자를 대문자로 쓴 전체 이름 뒤 괄호에 넣는다(예: Automated Program Repair (APR)).
+- 평가 지표와 새로 정의한 용어는 정의하는 문장에서 `\emph{}`로 쓴다(예: "the \emph{repair rate} is …"). 이후에는 일반 글꼴로 쓴다.
 - 알고리즘·개념 설명에는 일반 개념(예: SMT solving)을 쓰고, 구현 도구명은 필요한 곳에서만 짧게 언급한다.
 - 같은 대상에는 논문 전체에서 한 용어만 쓴다(예: users/developers 중 하나, test-case/test input 중 하나).
 - 선행연구는 tool이 아니라 technique으로 부른다.

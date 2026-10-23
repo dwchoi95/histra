@@ -15,9 +15,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(PAPER), "src", "experiments"))
 from common import DATA, OUT, rows  # noqa: E402
 
 EXPERT = os.path.join(OUT, "expert", "ratings.csv")
-BASE = [("refactory", "Refactory"), ("brafar", "Brafar"), ("lsgen", "LSGen")]   # one per group of Section II-A
+BASE = [("refactory", "\\textsc{Refactory}"), ("brafar", "\\textsc{Brafar}"), ("lsgen", "\\textsc{LSGen}")]   # one per group of Section II-A
 MAIN = BASE + [("histra", "\\textsc{Histra}")]
-PRELIM = [("refactory", "Refactory"), ("lsgen", "LSGen")]                     # Fig. 1 (Section II-B)
+PRELIM = [("refactory", "\\textsc{Refactory}"), ("lsgen", "\\textsc{LSGen}")]                     # Fig. 1 (Section II-B)
 ABL = [("histra", "\\textsc{Histra}"), ("nostd", "\\textsc{Histra}$-$Norm"), ("nohole", "\\textsc{Histra}$-$Hole"),
        ("nokept", "\\textsc{Histra}$-$Kept"), ("plain", "\\textsc{Histra}$-$Min"), ("sizemin", "\\textsc{Histra}$_{\\mathit{size}}$"),
        ("randhole0", "\\textsc{Histra}$_{\\mathit{rand}}$"), ("randfrac", "\\textsc{Histra}$_{\\mathit{frac}}$"),
