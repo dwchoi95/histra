@@ -1,6 +1,6 @@
 """Tables, figure data, and the numbers in the text of the paper, from ../output/{approaches,ablation,expert}.
 Repair rates count every trajectory; skeleton metrics average over passing patches with a non-empty skeleton.
-Usage: python paper/src/summarize.py   -> paper/tables.tex and paper/numbers.txt"""
+Usage: python paper/src/summarize.py   -> paper/output/tables.tex and paper/output/numbers.txt"""
 import ast
 import csv
 import json
@@ -10,6 +10,7 @@ import sys
 from collections import defaultdict
 
 PAPER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # <repo>/paper/
+RESULTS = os.path.join(PAPER, "output")
 sys.path.insert(0, os.path.join(os.path.dirname(PAPER), "src", "experiments"))
 from common import DATA, OUT, rows  # noqa: E402
 
@@ -294,8 +295,9 @@ def numbers(em):
 if __name__ == "__main__":
     em = {f"{p}/{u}": {n: load(n)[p, u] for n, _ in MAIN} for p, u in load("histra")}
     tables = bench_rows() + limit_rows() + rq1_rows() + close_rows(em) + abl_rows() + expert_rows()
-    open(os.path.join(PAPER, "tables.tex"), "w").write("\n".join(tables) + "\n")
+    os.makedirs(RESULTS, exist_ok=True)
+    open(os.path.join(RESULTS, "tables.tex"), "w").write("\n".join(tables) + "\n")
     text = numbers(em)
-    open(os.path.join(PAPER, "numbers.txt"), "w").write("\n".join(text) + "\n")
+    open(os.path.join(RESULTS, "numbers.txt"), "w").write("\n".join(text) + "\n")
     print("\n".join(text))
-    print(f"\nwrote {os.path.join(PAPER, 'tables.tex')} and {os.path.join(PAPER, 'numbers.txt')}")
+    print(f"\nwrote {os.path.join(RESULTS, 'tables.tex')} and {os.path.join(RESULTS, 'numbers.txt')}")

@@ -8,7 +8,9 @@ edits here; code goes to `dev` in the parent folder. Branch, repository, and art
 - Follow the venue's template strictly. IEEE: `\documentclass[10pt,conference]{IEEEtran}`, no compsoc, no changes to
   spacing, fonts, or captions (desk-reject risk), so no `caption` package and no custom widths (`\IEEEsetlabelwidth`).
 - Everything up to Data Availability fits the page limit; references take their own pages.
-- Tool name via `\tool{}`; unknown numbers stay as red `\TODO{...}`.
+- No `\usepackage` that the paper does not use. In the final version, clean up every `\newcommand`/`\renewcommand`
+  (write the definition out in the text and delete it); while drafting, the tool name may go through `\tool{}`.
+- Unknown numbers stay as red `\TODO{...}`.
 
 ## Writing
 
@@ -16,11 +18,13 @@ edits here; code goes to `dev` in the parent folder. Branch, repository, and art
   §7 (common rules); `floats.md` covers figures and tables.
 - Final review: give review agents only the PDF and `guidelines/review_prompt.md` (the user's own review prompt, used
   verbatim); the procedure (venue criteria, calibration with accepted papers) is in `guidelines/review.md`.
-- Draft layout: each paragraph in Korean (commented out with `%`) directly above its live English version; floats, math,
-  captions, abbreviations, and key terms stay English. `python3 paper/src/to_english.py paper/main.tex > main.en.tex`
-  drops the Korean for submission.
-- Workflow: answer in Korean. Propose each change in Korean first and apply it after approval. Revise paragraph by
-  paragraph (Korean, approval, English, proofreading); for a results subsection, review the paragraph flow first.
+- Draft layout: every paragraph is exactly two lines in `main.tex`: the Korean paragraph on one line, commented out
+  with `%`, directly above the English paragraph on one line; a blank line between paragraphs, no line breaks inside a
+  paragraph. Floats, math, captions, abbreviations, and key terms stay English.
+  `python3 paper/src/to_english.py paper/main.tex > main.en.tex` drops the Korean for submission.
+- Workflow: answer in Korean. Revise paragraph by paragraph: show the Korean version first, and once it is confirmed,
+  show the English version (then proofread). Propose other changes in Korean first and apply them after approval. For a
+  results subsection, review the paragraph flow before the paragraphs.
   Plans list tasks only, never schedules or deadline judgments.
 - Style (details in `skeleton.md` §7):
   - Results go float, then numbers per metric, then the conclusion last; no headline sentence.
@@ -35,9 +39,12 @@ edits here; code goes to `dev` in the parent folder. Branch, repository, and art
 
 ## Data and build
 
-- All code for the paper's analyses, tables, and figures lives in `src/` here (or in one `paper.ipynb`), never in `dev`.
-  `python paper/src/summarize.py` reads `../output/` and writes `tables.tex` and `numbers.txt` next to `main.tex`;
-  `python3 paper/src/fill_tables.py` fills the `% rows:<name>` ... `% end rows` blocks of `main.tex`.
+- All code for the paper's analyses, tables, and figures lives in `src/` here (or in one `paper.ipynb`), never in `dev`,
+  and writes its results to `output/` here. `python paper/src/summarize.py` reads `../output/` and writes
+  `output/tables.tex` and `output/numbers.txt`; `python3 paper/src/fill_tables.py` copies the `% rows:<name>` sections
+  into the `% rows:<name>` ... `% end rows` blocks of `main.tex`.
+- `main.tex` never `\input`s a generated `.tex`: table and plot data are written into `main.tex` itself. The only files
+  `main.tex` may reference in `output/` are images (`.png` etc., via `\includegraphics`).
 - Build in a scratch copy: `pdflatex → bibtex → pdflatex ×2`, then check `main.log` for `^!|undefined`.
 - PDFs (`main.pdf`, `guidelines/*.pdf`) stay local (`.gitignore`).
 

@@ -1,4 +1,4 @@
-"""Fill the tables and figure data of main.tex from tables.tex (written by summarize.py).
+"""Fill the tables and figure data of main.tex from output/tables.tex (written by summarize.py); main.tex never inputs it.
 Each '% rows:<name>' section of tables.tex replaces the lines between '% rows:<name>' and '% end rows' in main.tex.
 Usage: python3 paper/src/fill_tables.py"""
 import os
@@ -7,7 +7,7 @@ import re
 PAPER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # <repo>/paper/
 
 rows, cur = {}, None
-for line in open(os.path.join(PAPER, "tables.tex")):
+for line in open(os.path.join(PAPER, "output", "tables.tex")):
     m = re.match(r"% rows:(\w+)", line)
     if m:
         cur = m.group(1)
