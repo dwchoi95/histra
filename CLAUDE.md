@@ -49,6 +49,8 @@ edits here; code goes to `dev` in the parent folder. Branch, repository, and art
 - `main.tex` never `\input`s a generated `.tex`: table and plot data are written into `main.tex` itself. The only files
   `main.tex` may reference in `output/` are images (`.png` etc., via `\includegraphics`).
 - Build in a scratch copy: `pdflatex → bibtex → pdflatex ×2`, then check `main.log` for `^!|undefined`.
+- `references.bib`: the user copies each entry from Google Scholar by hand. Never rewrite those entries; when asked,
+  only prune entries that `main.aux` does not cite, and report bibliography issues for the user to fix.
 - PDFs (`main.pdf`, `guidelines/*.pdf`) stay local (`.gitignore`).
 
 ## This project (HISTRA)
