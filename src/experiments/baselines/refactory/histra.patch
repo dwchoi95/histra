@@ -1,0 +1,337 @@
+diff --git a/basic_framework/cfs.py b/basic_framework/cfs.py
+index 8c7b084..140f898 100644
+--- a/basic_framework/cfs.py
++++ b/basic_framework/cfs.py
+@@ -62,7 +62,7 @@ def get_func_cfs(code):
+     for line in line_list:
+         if "empty_hole" in line or len(line) == 0:
+             continue
+-        if is_method_sign(line):
++        if is_method_sign(line) and get_indent(line) == 0:  # histra: a nested def is a statement of stdin_main
+             block_code = ""
+             block_list.append(line + "\n")
+             stru_list.append('sig')
+diff --git a/basic_framework/core_testing.py b/basic_framework/core_testing.py
+index 8abae4e..337b5f9 100644
+--- a/basic_framework/core_testing.py
++++ b/basic_framework/core_testing.py
+@@ -6,6 +6,7 @@ from basic_framework.holes import Holes
+ from basic_framework.utils import regularize
+ from basic_framework.exec import run_program_to
+ from basic_framework.hole_injection import add_iil_holes
++from basic_framework import stdin_io  # histra
+ 
+ 
+ class Tester:
+@@ -19,7 +20,7 @@ class Tester:
+                 len(list(self.__output_dict.keys())) == 0:
+             raise Tester.NoTestCaseException()
+ 
+-        self.__front_code = ""
++        self.__front_code = stdin_io.front_code(ques_dir_path)  # histra: `__name__ = "__main__"` + the programs' imports
+         if os.path.isfile(ques_dir_path + "/code/global.py"):
+             with open(ques_dir_path + "/code/global.py", "r") as f:
+                 self.__front_code += f.read()
+@@ -30,6 +31,7 @@ class Tester:
+             with open(ques_dir_path + "/code/global_append.py", "r") as f:
+                 self.__end_code += f.read()
+                 self.__end_code += "\n"
++        self.__end_code += stdin_io.END_CODE  # histra: run the wrapped stdin/stdout program
+ 
+     class NoTestCaseException(Exception):
+         pass
+@@ -70,23 +72,7 @@ class Tester:
+             #    print(real_output)
+             #    print(exp_output)
+ 
+-            tr_dict[tc_id] = (real_output == exp_output)
+-
+-            if "{" in real_output and "{" in exp_output:
+-                a, b = None, None
+-
+-                try:
+-                    a = eval(real_output.strip())
+-                except:
+-                    pass
+-
+-                try:
+-                    b = eval(exp_output.strip())
+-                except:
+-                    pass
+-                #print(a)
+-                #print(b)
+-                tr_dict[tc_id] = tr_dict[tc_id] or (a == b)
++            tr_dict[tc_id] = (real_output == exp_output)  # histra: stdout is compared as text, never eval()-ed
+ 
+         return tr_dict
+ 
+@@ -96,18 +82,16 @@ class Tester:
+         return tc_id_list
+ 
+     def run_tc(self, code, tc_id, timeout):
+-        input_path = self.__input_dict[tc_id]
+-        entry_code = ""
+-        with open(input_path, "r") as f:
+-            entry_code += f.read()
+-
+-        output_path = self.__output_dict[tc_id]
+-        exp_output = ""
+-        with open(output_path, "r") as f:
+-            exp_output += str(eval(f.read().strip())) + "\n"
+-
+-        real_output = run_program_to(code, self.__front_code, self.__end_code, entry_code, timeout)
+-        return real_output, exp_output
++        # histra: input_x.txt is stdin and output_x.txt the expected stdout (not a call and a literal), compared
++        # whitespace-normalized like the judge's checker; the entry call is the end code (stdin_io.END_CODE)
++        with open(self.__input_dict[tc_id], "r") as f:
++            stdin_text = f.read()
++
++        with open(self.__output_dict[tc_id], "r") as f:
++            exp_output = " ".join(f.read().split())
++
++        real_output = run_program_to(code, self.__front_code, self.__end_code, "", timeout, stdin_text)
++        return " ".join(real_output.split()), exp_output
+ 
+     def is_pass(self, tr):
+         return all(list(tr.values()))
+diff --git a/basic_framework/exec.py b/basic_framework/exec.py
+index 02bc006..b61a848 100644
+--- a/basic_framework/exec.py
++++ b/basic_framework/exec.py
+@@ -12,9 +12,10 @@ import resource
+ from io import StringIO
+ 
+ 
+-def run_program_to(code, front_code, end_code, entry_code, timeout):
++def run_program_to(code, front_code, end_code, entry_code, timeout, stdin_text=""):
+     from basic_framework.holes import Holes
+ 
++    set_stdin(stdin_text)  # histra
+     thd = threading.Thread(target=run_core,
+                            args=(code, front_code, end_code, entry_code))
+ 
+@@ -38,9 +39,8 @@ def run_core(code, front_code, end_code, entry_code):
+ 
+     hole_hdr_code = "from basic_framework.holes import *\n"
+ 
+-    if "print(" not in entry_code:
+-        entry_code = "print(" + entry_code.strip() + ")\n"
+-
++    # histra: stdin/stdout programs print their own output, so the entry code is not wrapped in print()
++    ok = True  # histra: a crash, nonzero exit, or timeout fails the test (like a judge), whatever was printed
+     final_code = hole_hdr_code + "\n\n" + \
+                  front_code + "\n\n" + \
+                  code + "\n\n" + \
+@@ -48,14 +48,17 @@ def run_core(code, front_code, end_code, entry_code):
+                  entry_code
+     try:
+         exec(final_code, globals())
++    except SystemExit as e:  # histra: exit()/sys.exit() ends a stdin program; only a nonzero code is an error
++        ok = e.code in (None, 0)
+     except DepthTrace.MaxDepthException:
+         print("Reach max depth.", file=sys.stderr)
++        ok = False
+     except Holes.NoCandidateException:
+-        pass
++        ok = False
+     except Exception as e:
+-        pass
++        ok = False
+ 
+-    real_output = sys.stdout.getvalue()
++    real_output = sys.stdout.getvalue() + ("" if ok else "\n<abnormal termination>\n")
+ 
+     if sys.stdout != backup_stdout:
+         sys.stdout.close()
+@@ -79,4 +82,25 @@ class MemoryGuarder:
+ 
+     def set_max_runtime(self, maxsize):
+         soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+-        resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard))
+\ No newline at end of file
++        try:
++            resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard))
++        except ValueError:  # histra: some platforms cannot lower RLIMIT_AS; run without the cap
++            pass
++
++    def memory_guarder(self):
++        """histra: called by f1x but missing upstream, where its AttributeError aborted every multi-candidate hole."""
++        pass
++
++
++def set_stdin(text):
++    """histra: serve `text` as fd 0 (sys.stdin, input(), sys.stdin.buffer, open(0)) of the next run."""
++    import io, tempfile
++    try:
++        os.fstat(0)
++    except OSError:  # a program's open(0) closed fd 0: occupy it so the temp file gets another descriptor
++        os.open(os.devnull, os.O_RDONLY)
++    with tempfile.TemporaryFile() as f:
++        f.write(text.encode())
++        f.seek(0)
++        os.dup2(f.fileno(), 0)
++    sys.stdin = io.open(0, closefd=False)
+\ No newline at end of file
+diff --git a/basic_framework/hole_injection.py b/basic_framework/hole_injection.py
+index 8766560..8ec9cc8 100644
+--- a/basic_framework/hole_injection.py
++++ b/basic_framework/hole_injection.py
+@@ -19,8 +19,8 @@ def add_iil_holes(code):
+         line = line_list[i] + "\n"
+         hole_result_code += line
+ 
+-        if is_method_sign(line):
+-            hole_result_code += "    Holes.iil_hole(" + str(
++        if is_method_sign(line) and line.rstrip().endswith(":"):  # histra: nested defs get the hole at their body indent
++            hole_result_code += " " * get_indent(line_list[i]) + "    Holes.iil_hole(" + str(
+                 i + sl_map[i]) + ")\n"
+             sl_map[i] += 0.01
+ 
+@@ -134,7 +134,8 @@ def add_holes(code, task, ln_list):#vari_set=None
+ 
+         if is_method_sign(line):
+             hole_result_code += line
+-            hole_result_code += "    Holes.iil_hole(" + str(i + sl_map[i]) + ")\n" #
++            if line.rstrip().endswith(":"):  # histra: as in add_iil_holes
++                hole_result_code += " " * get_indent(ind_clean_line_list[i]) + "    Holes.iil_hole(" + str(i + sl_map[i]) + ")\n" #
+             sl_map[i] += 0.01
+             continue
+ 
+diff --git a/basic_framework/repair.py b/basic_framework/repair.py
+index 15a077a..57bc3d8 100644
+--- a/basic_framework/repair.py
++++ b/basic_framework/repair.py
+@@ -23,6 +23,7 @@ from basic_framework.statement import *
+ from basic_framework.hole_injection import *
+ from basic_framework.template import *
+ from basic_framework.refactoring_ast import astRefactor
++from basic_framework import stdin_io  # histra
+ from prettytable import PrettyTable
+ 
+ 
+@@ -858,12 +859,18 @@ class BlockRepair:
+             with open(code_path, "r") as f:
+                 code += f.read()
+ 
++            code = stdin_io.wrap(code)  # histra: a raw stdin/stdout program is repaired as `def stdin_main(): ...`
++
+             if not syntax_check(code):
+                 print(code_file_name + ' has syntax errors.')
+                 continue
+ 
+             code = regularize(code)
+ 
++            if not syntax_check(code):  # histra: skip programs regularize() cannot round-trip (one would fail all repairs)
++                print(code_file_name + ' cannot be regularized.')
++                continue
++
+             code_map[code_file_name] = code
+         return code_map
+ 
+@@ -1248,6 +1255,7 @@ class BlockRepair:
+                                         rep_perf_map,
+                                         timeout)
+                     except Exception as e:
++                        import traceback; traceback.print_exc()  # histra: log why a repair failed
+                         rep_perf_map["status"] = "fail_exception"
+ 
+                     code_perf_map.update(rep_perf_map)
+@@ -1357,6 +1365,7 @@ class BlockRepair:
+                                                 rep_perf_map,
+                                                 timeout)
+                         except Exception as e:
++                            import traceback; traceback.print_exc()  # histra: log why a repair failed
+                             rep_perf_map["status"] = "fail_exception"
+ 
+                         code_perf_map.update(rep_perf_map)
+diff --git a/basic_framework/stdin_io.py b/basic_framework/stdin_io.py
+new file mode 100644
+index 0000000..b2d7dd2
+--- /dev/null
++++ b/basic_framework/stdin_io.py
+@@ -0,0 +1,64 @@
++# histra: stdin/stdout adaptation. Refactory repairs functions (regularize() drops top-level code and imports), so a raw
++# program runs as `def stdin_main(): <program>` after its question's imports and is unwrapped after repair.
++import ast
++import builtins
++import os
++
++ENTRY = "stdin_main"
++END_CODE = ENTRY + "()\n"
++
++
++def wrap(code):
++    """Raw program -> `def stdin_main(): ...`; unparseable code is returned unchanged (syntax_check then skips it)."""
++    try:
++        m = ast.parse(code)
++    except SyntaxError:
++        return code
++    imps = [n for n in m.body if isinstance(n, (ast.Import, ast.ImportFrom))]
++    fn = ast.parse("def " + ENTRY + "():\n    pass").body[0]
++    fn.body = [n for n in m.body if n not in imps] or fn.body
++    return ast.unparse(ast.Module(imps + [fn], []))
++
++
++def imports(code):
++    try:
++        return [ast.unparse(n) for n in ast.walk(ast.parse(code)) if isinstance(n, (ast.Import, ast.ImportFrom))]
++    except SyntaxError:
++        return []
++
++
++def bound(imp):
++    return {a.asname or a.name.split(".")[0] for a in ast.parse(imp).body[0].names}
++
++
++def ques_imports(ques_dir_path):
++    """Import statements of all programs of a question (reference, correct, wrong), deduplicated in file order."""
++    out = []
++    for sub in ("reference", "correct", "wrong"):
++        d = os.path.join(ques_dir_path, "code", sub)
++        for name in sorted(os.listdir(d)) if os.path.isdir(d) else []:
++            with open(os.path.join(d, name), "r") as f:
++                out.extend(imports(f.read()))
++    return list(dict.fromkeys(out))
++
++
++def front_code(ques_dir_path):
++    return "\n".join(['__name__ = "__main__"'] + ques_imports(ques_dir_path)) + "\n"
++
++
++def unwrap(rep_code, ques_dir_path, bug_file_name):
++    """Repaired `def stdin_main(): ...` -> stdin/stdout program: its body under the imports it needs."""
++    fn = ast.parse(rep_code).body[0]
++    assert isinstance(fn, ast.FunctionDef) and fn.name == ENTRY, rep_code[:80]
++    body = ast.unparse(ast.Module(fn.body, []))
++    with open(os.path.join(ques_dir_path, "code", "wrong", bug_file_name), "r") as f:
++        own = imports(f.read())
++    union = ques_imports(ques_dir_path)
++    tree = ast.parse(body)
++    used = {n.id for n in ast.walk(tree) if isinstance(n, ast.Name)} - set().union(*map(bound, own))
++    need = own + [i for i in union if i not in own and bound(i) & used]
++    defined = {n.id for n in ast.walk(tree) if isinstance(n, ast.Name) and not isinstance(n.ctx, ast.Load)}
++    defined |= {a.arg for a in ast.walk(tree) if isinstance(a, ast.arg)} | set(dir(builtins))
++    if used - defined - set().union(*map(bound, need)):
++        need += [i for i in union if i not in need and "*" in bound(i)]
++    return "\n".join(need + [body])
+diff --git a/block_repair_run.py b/block_repair_run.py
+index f870854..a7612de 100644
+--- a/block_repair_run.py
++++ b/block_repair_run.py
+@@ -5,6 +5,7 @@ import os
+ import csv
+ from basic_framework.cfs import get_cfs_map, cfs_map_equal
+ from basic_framework.repair import BlockRepair, ORO
++from basic_framework import stdin_io  # histra
+ 
+ 
+ csv_header = ["Question", "Sampling Rate", "Experiment ID", "File Name",
+@@ -57,6 +58,8 @@ def perf_to_csv(ques_dir_path, perf_map_dict, online_or_offline):
+             for exp_idx in perf_map_dict[sr].keys():
+                 for file_name in perf_map_dict[sr][exp_idx].keys():
+                     code_perf_map = perf_map_dict[sr][exp_idx][file_name]
++                    if "success" in str(code_perf_map.get("status")):  # histra: write the patch as a stdin/stdout program
++                        code_perf_map["rep_code"] = stdin_io.unwrap(code_perf_map["rep_code"], ques_dir_path, file_name)
+                     if "tr" in code_perf_map.keys():
+                         code_perf_map["cnt_case_pass"] = list(code_perf_map["tr"].values()).count(True)
+                         code_perf_map["cnt_case_all"] = len(list(code_perf_map["tr"].values()))
