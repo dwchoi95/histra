@@ -2,6 +2,8 @@ from .standardizer import Standardizer
 from .sketch import Sketcher
 from .reformat import Reformatter
 from .searcher import Searcher
+from .merge import MergeRepair
+from .minimize import Minimizer
 from .repair import Repair
-from .validator import Validator
+from .validator import passes
 from .histra import HISTRA

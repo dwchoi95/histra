@@ -1,8 +1,8 @@
 import ast
+
 from apted import APTED
 
 
-        
 class Node:
     __slots__ = ("name", "children", "node")
 
@@ -12,6 +12,8 @@ class Node:
         self.node = node
 
 class Sketcher(ast.NodeTransformer):
+    """Holes the maximal anchor subtrees whose root an earlier submission's APTED mapping does not keep (same type)."""
+
     def __init__(self, std_traj):
         self.preserved, self.changed = self.align(std_traj)
         self.k = 0
@@ -29,7 +31,6 @@ class Sketcher(ast.NodeTransformer):
         for i in range(len(std_traj) - 1):
             A = self._node(std_traj[i][0])
             mapping = APTED(A, B).compute_edit_mapping()
-            # collect anchor-side nodes that label-match
             anchor_matched = set()
             for n1, n2 in mapping:
                 if n1 is not None and n2 is not None and n1.name == n2.name:
@@ -62,4 +63,3 @@ class Sketcher(ast.NodeTransformer):
         sketched = self.visit(anchor)
         ast.fix_missing_locations(sketched)
         return sketched
-    

@@ -4,21 +4,16 @@ from .merge import MergeRepair
 
 
 class Minimizer:
-    """Shrink a passing patch back toward the student's own code.
-
-    Every patch node that differs from its aligned node in the student's program is a revert
-    candidate, and every statement the merge inserted is a deletion candidate. Candidates in the intent skeleton are tried before those in holes (keep what the
-    student settled on first), larger subtrees before smaller ones; a revert is kept whenever the
-    patch still passes the tests."""
+    """Revert a passing patch toward the student's code while it still passes: skeleton first, larger subtrees first."""
 
     def __init__(self, anchor: ast.AST, holed: set, budget: int = 20):
-        self.anchor = anchor      # pristine original program of the student (WA_n)
+        self.anchor = anchor      # the student's pristine WA_n
         self.holed = holed        # ids of anchor nodes inside holes
-        self.budget = budget      # max number of validation calls
+        self.budget = budget      # max validation calls
 
     @staticmethod
     def _slots(tree):
-        """id(child) -> (parent, field, index or None), for putting a different subtree in its place."""
+        """id(child) -> (parent, field, index or None)."""
         out = {}
         for parent in ast.walk(tree):
             for field, value in ast.iter_fields(parent):
@@ -43,7 +38,7 @@ class Minimizer:
         mapping = merger._match(self.anchor, patch_tree)
         slots = self._slots(patch_tree)
         a_slots = self._slots(self.anchor)
-        # a match counts only where the parents match too, so code is never moved in from elsewhere
+        # pair only where the parents match too, so code is never moved in from elsewhere
         pairs = {}
         for an in merger.walk(self.anchor):
             pn = mapping.get(id(an))
@@ -64,7 +59,7 @@ class Minimizer:
                 continue
             size = sum(1 for _ in ast.walk(pn))
             cands.append((self._region(an), -size, pos[id(pn)], pn, an))
-        # statements the merge inserted into the student's code (no counterpart): try dropping them
+        # statements the merge inserted (no counterpart) are deletion candidates
         for pn in ast.walk(patch_tree):
             if isinstance(pn, ast.stmt) and id(pn) not in pairs and id(pn) in slots:
                 parent, field, _ = slots[id(pn)]
@@ -80,7 +75,6 @@ class Minimizer:
         return 1 if any(id(x) in self.holed for x in ast.walk(an)) else 0
 
     def run(self, patch: str, passes) -> str:
-        """`passes(src) -> bool` validates a candidate program against the tests."""
         cur, spent, progress = patch, 0, True
         while progress and spent < self.budget:
             progress = False
@@ -93,10 +87,10 @@ class Minimizer:
                 if spent >= self.budget:
                     break
                 parent, field, i = slot = slots[id(pn)]
-                if an is None:                    # inserted statement: drop it
+                if an is None:
                     getattr(parent, field).pop(i)
                     undo = lambda: getattr(parent, field).insert(i, pn)
-                else:                             # put the student's code back
+                else:
                     self._put(slot, copy.deepcopy(an))
                     undo = lambda: self._put(slot, pn)
                 ast.fix_missing_locations(tree)

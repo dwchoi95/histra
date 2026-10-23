@@ -1,9 +1,8 @@
-from ..utils.features import Featurizer
+from .features import Featurizer
 
 
 class Searcher:
-    """Rank other students' accepted programs by similarity to the student's program
-    (IDF-weighted skip-gram weighted Jaccard, see utils/features.py)."""
+    """Rank other students' ACs by IDF-weighted skip-gram weighted Jaccard similarity to the student's program."""
 
     def __init__(self, refs: list[str]):
         self.refs = refs

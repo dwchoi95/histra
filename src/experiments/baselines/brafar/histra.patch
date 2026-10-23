@@ -1,0 +1,303 @@
+diff --git a/basic_framework/fault_locator.py b/basic_framework/fault_locator.py
+index d6f17f2..e626d29 100644
+--- a/basic_framework/fault_locator.py
++++ b/basic_framework/fault_locator.py
+@@ -2,7 +2,7 @@ import re
+ import sys
+ import threading
+ import time
+-from timeout_decorator import timeout
++from basic_framework import stdin_io  # histra
+ 
+ from basic_framework.hole import Hole
+ from basic_framework.aligner import Aligner
+@@ -13,24 +13,10 @@ from basic_framework.program_partition.program_builder import ProgramBuilder, Re
+ 
+ 
+ 
+-@timeout(0.01)
+-def run_tc(code: str, input_path, output_path, __global_path):
+-    t_code = code
+-    if __global_path is not None:
+-        with open(__global_path, "r") as f:
+-            t_code += "\n" + f.read() + "\n"
+-
+-    with open(input_path, "r") as f:
+-        t_code += "\n" + "result = " + f.read() + "\n"
+-        # exec_input = f.read() + "\n"
+-
+-    with open(output_path, "r") as f:
+-        exp_output = eval(f.read().strip())
+-    loc = {}
+-    exec(t_code, loc)
+-    # print(loc['result'])
+-    return exp_output == loc['result']
+-    # print(loc['result'])
++def run_tc(code: str, input_path, output_path, __global_path, sec=None):
++    # histra: stdin/stdout tests instead of `result = <call>` vs an eval()-ed literal. The released @timeout(0.01) suits
++    # small calls, not programs: tests use the problem's time limit (TIMEOUT), fault-localization runs FL_TIMEOUT.
++    return stdin_io.run(code, input_path, output_path, sec or stdin_io.TIMEOUT)
+ 
+ 
+ class TestResult:
+@@ -280,7 +266,8 @@ class FaultLocator:
+         # test_thread = TestThread(0.1, target_code, self.__failed_test_case_input, self.__failed_test_case_output)
+         sys.stdout = open("log.txt", "w")
+         try:
+-            run_tc(target_code, self.__failed_test_case_input, self.__failed_test_case_output, self.__global_path)
++            run_tc(target_code, self.__failed_test_case_input, self.__failed_test_case_output, self.__global_path,
++                   stdin_io.FL_TIMEOUT)  # histra
+         finally:
+             sys.stdout = sys.__stdout__
+             # test_thread.start()
+diff --git a/basic_framework/hole.py b/basic_framework/hole.py
+index 4c0b007..c82722a 100644
+--- a/basic_framework/hole.py
++++ b/basic_framework/hole.py
+@@ -1,6 +1,7 @@
+ from _ast import For, While, If
+ from typing import Any
+ import ast
++import copy  # histra
+ 
+ from basic_framework.program_partition.block_builder import get_block_type, is_jump
+ 
+@@ -11,6 +12,11 @@ class Hole(ast.NodeVisitor):
+         # self.__block_builder = block_builder
+         # self.__root_block: BlockNode = block_builder.get_root_block()
+         # self.__original_code = ast.unparse(block_builder.get_m_node())
++        # histra: a block emptied by the repair does not parse back; give it a `pass`
++        m_node = copy.deepcopy(m_node)
++        for n in ast.walk(m_node):
++            if isinstance(n, (ast.If, ast.For, ast.While)) and not n.body:
++                n.body = [ast.Pass()]
+         self.__original_code = ast.unparse(m_node)
+         self.__m_node = ast.parse(self.__original_code)
+         self.__basic_block_index = -1
+@@ -22,7 +28,8 @@ class Hole(ast.NodeVisitor):
+ 
+     def get_instrument_node(self):
+         block_index_str = "block" + str(self.__basic_block_index)
+-        __instrument_code = "print(" + "\"" + block_index_str + ":\", locals())"
++        # histra: data values only (TRACE_VARS); stdin programs keep callables and file objects in locals()
++        __instrument_code = "print(" + "\"" + block_index_str + ":\", __histra_trace_vars(locals()))"
+         __instrument_node = ast.parse(__instrument_code).body[0]
+         return __instrument_node
+ 
+diff --git a/basic_framework/program_partition/cfs.py b/basic_framework/program_partition/cfs.py
+index 36f19aa..0966444 100644
+--- a/basic_framework/program_partition/cfs.py
++++ b/basic_framework/program_partition/cfs.py
+@@ -40,7 +40,8 @@ def get_func_map(code):
+             self.func_map = {}
+ 
+         def visit_FunctionDef(self, node):
+-            self.func_map[node.name] = regularize(astunparse.unparse(node))
++            # histra: ast.unparse; astunparse 1.6.3 renders x[:, 0] on Python >= 3.9 as x[(:, 0)], which does not parse
++            self.func_map[node.name] = regularize(ast.unparse(node))
+ 
+         def run(self, code):
+             n = ast.parse(code)
+diff --git a/basic_framework/program_partition/utils.py b/basic_framework/program_partition/utils.py
+index 95fade5..c4393ab 100644
+--- a/basic_framework/program_partition/utils.py
++++ b/basic_framework/program_partition/utils.py
+@@ -8,7 +8,7 @@ from basic_framework.program_partition.statement import *
+ def regularize(code):
+     '''change code style (tab to space)'''
+     # remove comment
+-    code = astunparse.unparse(ast.parse(code))
++    code = ast.unparse(ast.parse(code)) + "\n"  # histra: ast.unparse, as in cfs.py (astunparse breaks extended slices)
+ 
+     # put logical lines into one physical line
+     token_list = get_token_list(code)
+diff --git a/basic_framework/stdin_io.py b/basic_framework/stdin_io.py
+new file mode 100644
+index 0000000..1126567
+--- /dev/null
++++ b/basic_framework/stdin_io.py
+@@ -0,0 +1,165 @@
++# histra: stdin/stdout adaptation, as for Refactory. Brafar repairs functions and tests `result = <call>`, so a raw
++# program is written as `def stdin_main(): <program>`, and run() executes it on fd 0 after its question's imports.
++import ast
++import builtins
++import functools
++import io
++import os
++import sys
++
++ENTRY = "stdin_main"
++END_CODE = ENTRY + "()\n"
++TIMEOUT = float(os.environ.get("BRAFAR_TO", 2))        # the problem's time limit (set by the driver)
++FL_TIMEOUT = float(os.environ.get("BRAFAR_FL_TO", 0.1))  # one fault-localization trace run; bounds the trace log
++
++
++def wrap(code):
++    """Raw program -> `def stdin_main(): ...`; unparseable code is returned unchanged."""
++    try:
++        m = ast.parse(code)
++    except SyntaxError:
++        return code
++    imps = [n for n in m.body if isinstance(n, (ast.Import, ast.ImportFrom))]
++    fn = ast.parse("def " + ENTRY + "():\n    pass").body[0]
++    fn.body = [n for n in m.body if n not in imps] or fn.body
++    return ast.unparse(ast.Module(imps + [fn], []))
++
++
++def imports(code):
++    try:
++        return [ast.unparse(n) for n in ast.walk(ast.parse(code)) if isinstance(n, (ast.Import, ast.ImportFrom))]
++    except SyntaxError:
++        return []
++
++
++def bound(imp):
++    return {a.asname or a.name.split(".")[0] for a in ast.parse(imp).body[0].names}
++
++
++def ques_imports(ques_dir_path):
++    """Import statements of all programs of a question (reference, correct, wrong), deduplicated in file order."""
++    out = []
++    for sub in ("reference", "correct", "wrong"):
++        d = os.path.join(ques_dir_path, "code", sub)
++        for name in sorted(os.listdir(d)) if os.path.isdir(d) else []:
++            with open(os.path.join(d, name), "r") as f:
++                out.extend(imports(f.read()))
++    return list(dict.fromkeys(out))
++
++
++TRACE_VARS = "__histra_trace_vars"
++TRACE_DEF = f"""
++def {TRACE_VARS}(env):
++    import math
++    def plain(v, depth=0):
++        if v is None or isinstance(v, (bool, int, str)):
++            return True
++        if isinstance(v, float):
++            return math.isfinite(v)
++        if depth < 3 and isinstance(v, (list, tuple, set)):
++            return all(plain(x, depth + 1) for x in v)
++        if depth < 3 and isinstance(v, dict):
++            return all(plain(k, depth + 1) and plain(x, depth + 1) for k, x in v.items())
++        return False
++    return {{k: v for k, v in env.items() if plain(v)}}
++"""
++
++
++@functools.lru_cache(maxsize=None)
++def front_code(ques_dir_path):
++    # TRACE_DEF: trace holes print locals() and eval() them back, which fails on the callables, modules and files that
++    # stdin programs keep in locals (e.g., `input = sys.stdin.readline`)
++    return "\n".join(['__name__ = "__main__"'] + ques_imports(ques_dir_path)) + "\n" + TRACE_DEF + "\n"
++
++
++def unwrap(rep_code, ques_dir_path, bug_file_name):
++    """Repaired `def stdin_main(): ...` -> stdin/stdout program: its body under the imports it needs."""
++    fn = ast.parse(rep_code).body[0]
++    assert isinstance(fn, ast.FunctionDef) and fn.name == ENTRY, rep_code[:80]
++    body = ast.unparse(ast.Module(fn.body, []))
++    with open(os.path.join(ques_dir_path, "code", "wrong", bug_file_name), "r") as f:
++        own = imports(f.read())
++    union = ques_imports(ques_dir_path)
++    tree = ast.parse(body)
++    used = {n.id for n in ast.walk(tree) if isinstance(n, ast.Name)} - set().union(*map(bound, own))
++    need = own + [i for i in union if i not in own and bound(i) & used]
++    defined = {n.id for n in ast.walk(tree) if isinstance(n, ast.Name) and not isinstance(n.ctx, ast.Load)}
++    defined |= {a.arg for a in ast.walk(tree) if isinstance(a, ast.arg)} | set(dir(builtins))
++    if used - defined - set().union(*map(bound, need)):
++        need += [i for i in union if i not in need and "*" in bound(i)]
++    return "\n".join(need + [body])
++
++
++def set_stdin(text):
++    """Serve `text` as fd 0 (sys.stdin, input(), sys.stdin.buffer, open(0)) of the next run."""
++    import tempfile
++    try:
++        os.fstat(0)
++    except OSError:  # a program's open(0) closed fd 0: occupy it so the temp file gets another descriptor
++        os.open(os.devnull, os.O_RDONLY)
++    with tempfile.TemporaryFile() as f:
++        f.write(text.encode())
++        f.seek(0)
++        os.dup2(f.fileno(), 0)
++    sys.stdin = io.open(0, closefd=False)
++
++
++def run(code, input_path, output_path, sec):
++    """True iff the program exits normally within `sec` with the expected output. Exceptions propagate as in the
++    released run_tc; a timeout is also marked on stderr (`histra:timeout:test|fl`), as its outcome depends on load."""
++    from timeout_decorator import timeout, TimeoutError as Timeout
++    with open(input_path, "r") as f:
++        set_stdin(f.read())
++    with open(output_path, "r") as f:
++        exp = f.read().split()
++    t_code = front_code(os.path.dirname(os.path.dirname(input_path))) + code + "\n" + END_CODE
++    outer, buf, ok = sys.stdout, io.StringIO(), True
++    sys.stdout = buf
++    try:
++        timeout(sec)(exec)(t_code, {})
++    except SystemExit as e:  # exit()/sys.exit() ends a stdin program; only a nonzero code is an error
++        ok = e.code in (None, 0)
++    except Timeout:
++        print("histra:timeout:" + ("fl" if sec == FL_TIMEOUT else "test"), file=sys.__stderr__, flush=True)
++        raise
++    finally:
++        sys.stdout = outer
++        if outer is not sys.__stdout__:
++            outer.write(buf.getvalue())
++    return ok and buf.getvalue().split() == exp
++
++
++if __name__ == "__main__":  # check: python -m basic_framework.stdin_io (from baselines/brafar)
++    import tempfile
++    d = tempfile.mkdtemp()
++    for sub in ("ans", "code/wrong"):
++        os.makedirs(os.path.join(d, sub))
++    open(f"{d}/ans/input_0.txt", "w").write("3\n1 2 3\n")
++    open(f"{d}/ans/output_0.txt", "w").write("6\n")
++    src = "import sys\ninput = sys.stdin.readline\nn = int(input())\nprint(sum(map(int, input().split())))\nexit()"
++    w = wrap(src)
++    open(f"{d}/code/wrong/buggy.py", "w").write(w)
++    assert run(w, f"{d}/ans/input_0.txt", f"{d}/ans/output_0.txt", 2)
++    assert not run(w.replace("sum(", "max("), f"{d}/ans/input_0.txt", f"{d}/ans/output_0.txt", 2)
++    sys.stdout = log = io.StringIO()  # a trace run
++    try:
++        traced = w.replace("print(sum", f"print('block0:', {TRACE_VARS}(locals()))\n    print(sum")
++        run(traced, f"{d}/ans/input_0.txt", f"{d}/ans/output_0.txt", 2)  # fails: the trace lines are output too
++    finally:
++        sys.stdout = sys.__stdout__
++    assert eval(log.getvalue().splitlines()[0].split(" ", 1)[1]) == {"n": 3}, log.getvalue()
++    import contextlib
++    err = io.StringIO()
++    with contextlib.redirect_stderr(err):
++        sys.__stderr__, real = err, sys.__stderr__
++        try:
++            run(wrap("while True:\n    pass"), f"{d}/ans/input_0.txt", f"{d}/ans/output_0.txt", 0.2)
++            raise AssertionError("no timeout")
++        except Exception as e:
++            assert type(e).__name__ == "TimeoutError", e
++        finally:
++            sys.__stderr__ = real
++    assert err.getvalue().strip() == "histra:timeout:test", err.getvalue()
++    fn = ast.unparse(ast.parse(w).body[-1])  # Brafar returns the repaired function only
++    assert unwrap(fn, d, "buggy.py").startswith("import sys\ninput = sys.stdin.readline")
++    print("ok")
+diff --git a/run.py b/run.py
+index 7c7f72f..d02d61c 100644
+--- a/run.py
++++ b/run.py
+@@ -1,5 +1,6 @@
+ import argparse
+ import os
++import random
+ 
+ from basic_framework.core import S_Brafar
+ 
+@@ -16,6 +17,7 @@ if __name__ == '__main__':
+     parser.add_argument("-o", "--output_path", help="the output path.",
+                         nargs='+', default=None)
+     args = parser.parse_args()
++    random.seed(0)  # histra: get_file_list() shuffles the programs; fix the order
+ 
+     base_dir = os.path.join(args.data_dir[0], args.questions[0])
+     wrong_dir = os.path.join(base_dir, "code", "wrong")

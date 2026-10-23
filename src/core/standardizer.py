@@ -2,11 +2,12 @@ import ast
 
 
 class Standardizer(ast.NodeTransformer):
+    """Intent-preserving normalization (five rewrite rules); each canonical node keeps its original in `_origin`."""
     _FLIP = {ast.Gt: ast.Lt, ast.GtE: ast.LtE}
-    
+
     def __init__(self):
         self._tmp = 0
-        
+
     @staticmethod
     def _carry(new: ast.AST, origin: ast.AST) -> ast.AST:
         """Provenance: tag created node (+ descendants) with its origin node."""
@@ -19,12 +20,11 @@ class Standardizer(ast.NodeTransformer):
     def _org(node: ast.AST) -> ast.AST:
         return getattr(node, "_origin", node)
 
-    # ---- Empty container normalization: list()/tuple()/dict() -> []/()/{} ----
+    # range(...) -> range(start, stop, step); list()/tuple()/dict() -> []/()/{}
     def visit_Call(self, node: ast.Call):
         self.generic_visit(node)
         if isinstance(node.func, ast.Name):
             fn = node.func.id
-            # Canonicalize any range(...) to range(start, stop, step) with no keywords
             if fn == "range":
                 pos = list(node.args)
                 kw = {k.arg: k.value for k in node.keywords or [] if k.arg in ("start", "stop", "step")}
@@ -39,7 +39,6 @@ class Standardizer(ast.NodeTransformer):
                     start = kw.get("start", ast.Constant(value=0))
                     stop = kw.get("stop", None)
                     step = kw.get("step", ast.Constant(value=1))
-                # apply keyword overrides when present
                 if "start" in kw:
                     start = kw["start"]
                 if "stop" in kw:
@@ -49,7 +48,6 @@ class Standardizer(ast.NodeTransformer):
                 if start is not None and stop is not None and step is not None:
                     new_call = ast.Call(func=ast.Name(id="range", ctx=ast.Load()), args=[start, stop, step], keywords=[])
                     return self._carry(new_call, self._org(node))
-            # empty container constructors -> literals
             if not node.args and not node.keywords:
                 if fn == "list":
                     return self._carry(ast.List(elts=[], ctx=ast.Load()), self._org(node))
@@ -59,7 +57,6 @@ class Standardizer(ast.NodeTransformer):
                     return self._carry(ast.Dict(keys=[], values=[]), self._org(node))
         return node
 
-    # --- Comparison normalization: flip descending comparisons to ascending ---
     def visit_Compare(self, node: ast.Compare):
         self.generic_visit(node)
         nops = len(node.ops)
@@ -69,13 +66,11 @@ class Standardizer(ast.NodeTransformer):
             return node
 
         if nops >= 2:
-            # check if all ops are descending (Gt/GtE)
             desc_types = (ast.Gt, ast.GtE)
             if all(isinstance(op, desc_types) for op in node.ops):
-                # ensure all operands are side-effect free simple nodes
+                # reordering operands is safe only without side effects
                 operands = [node.left] + list(node.comparators)
                 if all(isinstance(x, (ast.Name, ast.Constant)) for x in operands):
-                    # reverse operands and flip ops to ascending (Lt/LtE)
                     rev_ops = [self._FLIP[type(op)]() for op in reversed(node.ops)]
                     rev_operands = list(reversed(operands))
                     node.left = rev_operands[0]
@@ -83,7 +78,6 @@ class Standardizer(ast.NodeTransformer):
                     node.ops = rev_ops
         return node
 
-    # ---- AugAssign expansion: x += y  ->  x = x + y ----
     def visit_AugAssign(self, node: ast.AugAssign):
         self.generic_visit(node)
         if isinstance(node.target, ast.Name):
@@ -95,23 +89,20 @@ class Standardizer(ast.NodeTransformer):
             return self._carry(new, self._org(node))
         return node
 
-    # ---- While normalization: while cond: body -> while True: if not cond: break; body ----
+    # while c: B -> while True: if not c: break; B
     def visit_While(self, node: ast.While):
         self.generic_visit(node)
-        # keep while-else as is
         if node.orelse:
             return node
-        # while True stays
         if isinstance(node.test, ast.Constant) and node.test.value is True:
             return node
         guard = ast.If(test=ast.UnaryOp(op=ast.Not(), operand=node.test), body=[ast.Break()], orelse=[])
         new = ast.While(test=ast.Constant(value=True), body=[guard] + node.body, orelse=[])
         return self._carry(new, self._org(node))
 
-    # ---- For normalization: for t in it -> itN=iter(it); while True: try: t=next(itN); except StopIteration: break; body ----
+    # for t in it: B -> _itN = iter(it); while True: try: t = next(_itN) except StopIteration: break; B
     def visit_For(self, node: ast.For):
         self.generic_visit(node)
-        # keep for-else as is
         if node.orelse:
             return node
         self._tmp += 1
@@ -132,7 +123,7 @@ class Standardizer(ast.NodeTransformer):
         wh = ast.While(test=ast.Constant(value=True), body=[try_next] + node.body, orelse=[])
         org = self._org(node)
         return [self._carry(assign_it, org), self._carry(wh, org)]
-    
+
     @classmethod
     def standardize(cls, code: str) -> tuple[ast.AST, ast.AST]:
         org = ast.parse(code)

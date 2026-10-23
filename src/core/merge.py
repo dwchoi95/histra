@@ -1,14 +1,5 @@
-"""Deterministic, LLM-free repair by reference-AC tree merge (Sarfgen-style).
-
-Given the buggy program (last WA) and similarity-ranked correct ACs, align buggy<->AC,
-merge field-by-field (keep the student's aligned structure + variable names, take the
-AC's version where they diverge) with similarity-based statement-sequence alignment, run
-the held-out tests, and return the first passing patch (optionally delta-debugged back
-toward the buggy to minimise the edit). No model calls.
-
-`frozen` anchor nodes (HISTRA's intent skeleton, see core/repair.py) are copied verbatim, so the
-merge can be confined to the holes.
-"""
+"""Sarfgen-style tree merge of a reference program into the student's: keeps the student's aligned structure and
+identifiers, takes the reference's differing nodes; anchor nodes in `frozen` are copied verbatim."""
 import ast
 import copy
 import hashlib
@@ -16,13 +7,12 @@ from collections import Counter
 
 
 class MergeRepair:
-    SKIP_FIELDS = ("ctx",)            # Load/Store/Del contexts: noise
+    SKIP_FIELDS = ("ctx",)
 
     def __init__(self, min_height=1):
         self.min_height = min_height
         self.frozen = frozenset()
 
-    # ---- labels / structure -------------------------------------------------
     def local_label(self, node):
         if isinstance(node, ast.Name):        return f"Name:{node.id}"
         if isinstance(node, ast.Constant):    return f"Const:{node.value!r}"
@@ -32,7 +22,7 @@ class MergeRepair:
         if isinstance(node, ast.ImportFrom):  return f"ImportFrom:{node.module}"
         if isinstance(node, ast.alias):       return f"alias:{node.name}:{node.asname}"
         if isinstance(node, ast.FunctionDef): return f"FunctionDef:{node.name}"
-        return type(node).__name__            # operators -> 'Add'/'Lt'/...; BinOp -> 'BinOp'
+        return type(node).__name__
 
     def slot_children(self, node):
         out = []
@@ -73,18 +63,6 @@ class MergeRepair:
         memo[id(node)] = h
         return h
 
-    def _set_slot(self, parent, slot, new_node):
-        if "[" in slot:
-            fname, idx = slot[:-1].split("["); getattr(parent, fname)[int(idx)] = new_node
-        else:
-            setattr(parent, slot, new_node)
-
-    def _get_slot(self, parent, slot):
-        if "[" in slot:
-            fname, idx = slot[:-1].split("["); return getattr(parent, fname)[int(idx)]
-        return getattr(parent, slot)
-
-    # ---- node alignment (anchor -> ver) -------------------------------------
     def _match(self, anchor, ver):
         a_h, v_h, a_ht = {}, {}, {}
         ver_by_hash = {}
@@ -95,7 +73,7 @@ class MergeRepair:
         a_slot = {id(c): slot for n in self.walk(anchor) for slot, c in self.slot_children(n)}
         mapping, used = {}, set()
 
-        # (1) top-down: largest identical subtrees first (no lone-leaf matches)
+        # (1) identical subtrees, largest first
         for a in sorted(self.walk(anchor), key=lambda n: self.subtree_height(n, a_ht), reverse=True):
             if id(a) in mapping or self.subtree_height(a, a_ht) < self.min_height:
                 continue
@@ -104,7 +82,7 @@ class MergeRepair:
                 for an, vn in zip(self.walk(a), self.walk(cands[0])):
                     mapping[id(an)] = vn; used.add(id(vn))
 
-        # (2) identifying-leaf match (func/name nodes by label)
+        # (2) leaves by label
         ver_leaf = {}
         for n in self.walk(ver):
             if id(n) not in used and not self.children(n):
@@ -116,7 +94,7 @@ class MergeRepair:
             if cands:
                 mapping[id(a)] = cands[0]; used.add(id(cands[0]))
 
-        # (3) bottom-up: vote ancestors of matched children
+        # (3) bottom-up: ancestors voted by matched children
         def idkids(n):
             return {self.local_label(c) for s, c in self.slot_children(n)
                     if s in ("func", "target") or s.startswith("targets")}
@@ -147,7 +125,7 @@ class MergeRepair:
                 if best is not None:
                     mapping[id(a)] = best; used.add(id(best)); changed = True
 
-        # (4) slot match: parent matched and same slot -> same position
+        # (4) same slot under matched parents
         for a in self.walk(anchor):
             if id(a) in mapping or id(a) not in a_par:
                 continue
@@ -159,7 +137,6 @@ class MergeRepair:
                     mapping[id(a)] = vc; used.add(id(vc)); break
         return mapping
 
-    # ---- merge --------------------------------------------------------------
     def _rename(self, node, varmap):
         for x in ast.walk(node):
             if isinstance(x, ast.Name) and x.id in varmap:
@@ -209,10 +186,10 @@ class MergeRepair:
                 out.append(self._patch_paired(blist[bi], alist[aj], varmap, ac_order))
             elif op == "d":
                 if isinstance(blist[bi], ast.AST) and (not ac_order or id(blist[bi]) in self.frozen):
-                    out.append(copy.deepcopy(blist[bi]))      # keep the student's stmt
+                    out.append(copy.deepcopy(blist[bi]))
                 elif not isinstance(blist[bi], ast.AST):
                     out.append(blist[bi])
-            else:                                             # AC-only stmt -> insert
+            else:
                 out.append(self._rename(copy.deepcopy(alist[aj]), varmap)
                            if isinstance(alist[aj], ast.AST) else alist[aj])
         return out
@@ -234,11 +211,11 @@ class MergeRepair:
                 setattr(new, f, self._patch_paired(bv, av if isinstance(av, ast.AST) else None,
                                                    varmap, ac_order))
             elif f in ("id", "arg"):
-                setattr(new, f, bv)                           # keep the student's identifier
+                setattr(new, f, bv)
             elif bv == av or av is None:
                 setattr(new, f, bv)
             else:
-                setattr(new, f, av)                           # AC's correct scalar (op/attr/const)
+                setattr(new, f, av)
         return new
 
     def _merge_patch(self, anchor, ac_src, ac_order, frozen=frozenset()):
@@ -260,87 +237,3 @@ class MergeRepair:
             return ast.unparse(patched)
         except Exception:
             return None
-
-    def _dist(self, src_a, src_b):
-        try:
-            ba, bb = self._label_bag(ast.parse(src_a)), self._label_bag(ast.parse(src_b))
-        except (SyntaxError, ValueError):
-            return float("inf")
-        return sum((ba - bb).values()) + sum((bb - ba).values())
-
-    def _minimize_ast(self, buggy, patch, tests, validator, timeout, budget=40):
-        """Revert patch subtrees back to the buggy's aligned version (largest first)
-        while tests still pass -> smaller edit -> better intent preservation."""
-        bt = ast.parse(buggy)
-        cur, spent, progress = patch, 0, True
-        while progress and spent < budget:
-            progress = False
-            try:
-                pt = ast.parse(cur)
-            except (SyntaxError, ValueError):
-                break
-            m = self._match(pt, bt)
-            psl = {}
-            for p in ast.walk(pt):
-                for s, c in self.slot_children(p):
-                    psl[id(c)] = (p, s)
-            cands = []
-            for nd in ast.walk(pt):
-                b = m.get(id(nd))
-                if (b is None or id(nd) not in psl or type(b) is not type(nd)
-                        or not isinstance(nd, (ast.stmt, ast.expr))):
-                    continue
-                try:
-                    if ast.unparse(nd) != ast.unparse(b):
-                        cands.append(nd)
-                except Exception:
-                    pass
-            cands.sort(key=lambda nd: -sum(1 for _ in ast.walk(nd)))
-            for nd in cands:
-                if spent >= budget:
-                    break
-                p, s = psl[id(nd)]
-                saved = self._get_slot(p, s)
-                self._set_slot(p, s, copy.deepcopy(m[id(nd)]))
-                ast.fix_missing_locations(pt)
-                try:
-                    src = ast.unparse(pt)
-                except Exception:
-                    self._set_slot(p, s, saved); continue
-                spent += 1
-                if src != cur and validator.verify(src, tests, timeout=timeout).passed:
-                    cur, progress = src, True; break
-                self._set_slot(p, s, saved)
-        return cur
-
-    def repair(self, buggy, ranked_acs, tests, validator, *, timeout=3.0,
-               fast=True, minimize=True, min_budget=40):
-        """Return the first/best passing merged patch (delta-debugged). `fast`=True
-        returns the first passing AC's merge; `fast`=False scans all ranked ACs and keeps
-        the smallest-edit passing one (better IP, slower). RR is identical either way."""
-        try:
-            anchor = ast.parse(buggy)
-        except (SyntaxError, ValueError):
-            return {"patch": None, "n_validated": 0}
-        n = 0
-        for ac_order in (False, True):                    # minimal-edit first, robust fallback
-            seen, best = set(), None
-            for ac_src in ranked_acs:
-                src = self._merge_patch(anchor, ac_src, ac_order)
-                if src is None or src in seen:
-                    continue
-                seen.add(src); n += 1
-                if validator.verify(src, tests, timeout=timeout).passed:
-                    if fast:
-                        best = (0, src, ac_src); break
-                    d = self._dist(buggy, src)
-                    if best is None or d < best[0]:
-                        best = (d, src, ac_src)
-                    if ac_order:
-                        break
-            if best is not None:
-                patch = self._minimize_ast(buggy, best[1], tests, validator, timeout,
-                                           budget=min_budget) if minimize else best[1]
-                return {"patch": patch, "ac": best[2], "mode": "ac" if ac_order else "min",
-                        "n_validated": n}
-        return {"patch": None, "n_validated": n}
