@@ -1,8 +1,4 @@
-# HISTRA
-
-Artifact of *HISTRA: Guiding Program Repair for Programming Assignments with Students' Own Submission Histories*.
-HISTRA repairs a student's latest wrong-answer submission while keeping the code that the student kept across their
-earlier submissions, using other students' accepted programs and no language model.
+# HISTRA: Guiding Program Repair for Programming Assignments with Students’ Own Submission Histories
 
 ## Dataset
 
