@@ -1,0 +1,56 @@
+== Section II-B (Fig. 1)
+students' own fixes: skeleton loss 8.0%, intact 61.3%; by difficulty loss Easy 5.3%, Medium 8.7%, Hard 8.4%
+refactory: loss 21.2% (2.65x the students'), intact 30.0% (patches changing the skeleton 70.0%); by difficulty loss Easy 14.7%, Medium 23.6%
+lsgen: loss 25.3% (3.16x the students'), intact 26.3% (patches changing the skeleton 73.7%); by difficulty loss Easy 19.2%, Medium 26.0%, Hard 42.1%
+(run fixregion.py for the shares of code inside and outside the skeleton that the students' fixes change)
+
+== Section III-E
+passing patches from the hole-only phase: 1072/1702 = 63.0%
+
+== RQ1 (Table II)
+HISTRA fixed 1702/1764 = 96.5%, loss 18.7%, intact 42.6%
+vs refactory (54.6% / 21.2% / 30.0%): fixed +76.7%, loss -11.7%, intact +42.0% | on the 928 trajectories both fixed: loss 11.8% vs 21.0% (-43.8%)
+   Easy: fixed +30.6%, loss -41.6%, intact +33.4%
+   Medium: fixed +81.5%, loss -16.7%, intact +69.0%
+vs brafar (55.0% / 28.9% / 17.1%): fixed +75.3%, loss -35.2%, intact +149.7% | on the 919 trajectories both fixed: loss 13.1% vs 28.5% (-54.1%)
+   Easy: fixed +22.0%, loss -53.6%, intact +74.1%
+   Medium: fixed +98.6%, loss -34.9%, intact +302.0%
+   Hard: fixed +64.7%, loss -36.1%, intact 3.8% vs 0.0%
+vs lsgen (92.2% / 25.3% / 26.3%): fixed +4.7%, loss -26.0%, intact +62.2% | on the 1529 trajectories both fixed: loss 17.6% vs 25.1% (-29.8%)
+   Easy: fixed +0.0%, loss -55.3%, intact +77.3%
+   Medium: fixed +5.1%, loss -24.4%, intact +69.0%
+   Hard: fixed +20.0%, loss +7.7%, intact -87.2%
+Refactory mutated the control flow of b in 194/963 = 20.1% of its passing patches; they changed 36.1% of the skeleton vs 17.4% for the others
+HISTRA hole-phase patches: loss 8.6%, intact 65.0% | refactory on the same 684: 16.0% | brafar on the same 652: 23.1% | lsgen on the same 972: 20.9%
+HISTRA free-phase patches: loss 35.2%, intact 6.3% | refactory on the same 244: 35.0% | brafar on the same 267: 41.6% | lsgen on the same 557: 32.4%
+p02686: passing patches from the hole-only phase 15.5%
+
+== RQ2 (Fig. 4)
+trajectories fixed by all techniques: 679
+students' own Ident 92.4%
+refactory: Kept 78.1%, Ident 88.4%, Dist 48.4 | HISTRA: Kept +9.4%, Ident +6.2%, Dist +1.0%
+brafar: Kept 73.3%, Ident 86.4%, Dist 48.4 | HISTRA: Kept +16.6%, Ident +8.7%, Dist +0.9%
+lsgen: Kept 73.3%, Ident 81.8%, Dist 54.5 | HISTRA: Kept +16.6%, Ident +14.8%, Dist -10.4%
+histra: Kept 85.4%, Ident 93.9%, Dist 48.8
+Ident of HISTRA's fallback patches: 91.0% (147 trajectories)
+the student's fix keeps the skeleton (391): refactory Kept 76.9% Dist 46.8, brafar Kept 71.4% Dist 47.4, lsgen Kept 72.0% Dist 55.1, histra Kept 85.2% Dist 45.2 | HISTRA vs baselines: Kept +10.8%, +19.3%, +18.4%; Dist -3.5%, -4.6%, -18.1%
+the student's fix changes the skeleton (267): refactory Kept 79.8% Dist 52.4, brafar Kept 75.8% Dist 51.6, lsgen Kept 75.1% Dist 55.4, histra Kept 85.8% Dist 55.9 | HISTRA vs baselines: Kept +7.6%, +13.2%, +14.3%; Dist +6.6%, +8.4%, +0.9%
+
+== RQ3 (Table III)
+randhole0: loss 19.6%, intact 40.6%
+randhole1: loss 19.4%, intact 40.7%
+randhole2: loss 19.6%, intact 40.5%
+histra: the whole program is holed in 3.0% of the trajectories
+fl: the whole program is holed in 12.5% of the trajectories
+(run std_effect.py for the share of the trajectories whose skeleton normalization changes)
+
+== RQ4 (Fig. 5; run expert_analyze.py for the shares, the sign tests, and the agreement)
+pairs in which HISTRA kept more / the same / less of the skeleton: 59 / 23 / 16
+   gap -70--0 pp: 16 pairs, chose HISTRA as feedback 62.5%, as preserving the intent 62.5%
+   gap 0 pp: 23 pairs, chose HISTRA as feedback 65.2%, as preserving the intent 69.6%
+   gap 0--10 pp: 24 pairs, chose HISTRA as feedback 83.3%, as preserving the intent 83.3%
+   gap 10--30 pp: 18 pairs, chose HISTRA as feedback 88.9%, as preserving the intent 88.9%
+   gap 30--70 pp: 17 pairs, chose HISTRA as feedback 88.2%, as preserving the intent 88.2%
+
+== Threats to validity
+trajectories with one earlier submission (|H| = 1): 605/1764 = 34.3%; loss there refactory 23.8%, brafar 29.6%, lsgen 26.4%, histra 21.0%

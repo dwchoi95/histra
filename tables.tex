@@ -1,0 +1,70 @@
+% rows:bench
+p02694 & Simulation, integer arithmetic & 101 & 368 & 18 & 8.8 \\
+p02742 & Parity, edge cases & 125 & 381 & 10 & 7.8 \\
+p03324 & Arithmetic with an exception & 109 & 309 & 16 & 6.8 \\
+\midrule
+p02623 & Prefix sums, two pointers & 102 & 419 & 20 & 27.8 \\
+p02659 & Floating-point precision & 174 & 757 & 22 & 5.5 \\
+p02743 & Precision of square roots & 155 & 627 & 27 & 8.3 \\
+p02761 & Digit constraints, leading zero & 143 & 574 & 18 & 22.5 \\
+p02823 & Parity, boundary moves & 108 & 335 & 20 & 10.8 \\
+p02891 & Runs across repetitions & 170 & 718 & 15 & 29.5 \\
+p02975 & Counting, XOR & 110 & 435 & 24 & 21.6 \\
+p03240 & Exhaustive search & 116 & 490 & 23 & 22.9 \\
+p03438 & Counting operations & 101 & 350 & 28 & 19.0 \\
+p03838 & Case analysis on signs & 141 & 514 & 14 & 18.5 \\
+\midrule
+p02686 & Greedy ordering of strings & 109 & 655 & 32 & 43.6 \\
+\midrule
+Total & & 1,764 & 6,932 & 287 & 19.1 \\
+% rows:figlimitloss
+\addplot[lim stu] coordinates {(0,5.3) (1,8.7) (2,8.4)};
+\addplot[lim ref] coordinates {(0,14.7) (1,23.6)};
+\addplot[lim lsg] coordinates {(0,19.2) (1,26.0) (2,42.1)};
+% rows:figlimitintact
+\addplot[lim stu] coordinates {(0,72.1) (1,58.8) (2,56.3)};
+\addplot[lim ref] coordinates {(0,48.2) (1,23.3)};
+\addplot[lim lsg] coordinates {(0,36.3) (1,23.3) (2,29.4)};
+% rows:rq1
+\multirow{4}{*}{\rotatebox[origin=c]{90}{Fixed}} & Easy & 76.1 & 81.5 & \textbf{99.4} & \textbf{99.4} &  \\
+ & Medium & 53.6 & 49.0 & 92.7 & \textbf{97.3} &  \\
+ & Hard & 0.0 & 46.8 & 64.2 & \textbf{77.1} &  \\
+\cline{2-7}
+ & \rule{0pt}{2.6ex}Overall & 54.6 & 55.0 & 92.2 & \textbf{96.5} &  \\
+\midrule
+\multirow{4}{*}{\rotatebox[origin=c]{90}{Loss}} & Easy & 14.7 & 18.5 & 19.2 & \textbf{8.6} & 5.3 \\
+ & Medium & 23.6 & 30.2 & 26.0 & \textbf{19.7} & 8.7 \\
+ & Hard & -- & 71.0 & \textbf{42.1} & 45.4 & 8.4 \\
+\cline{2-7}
+ & \rule{0pt}{2.6ex}Overall & 21.2 & 28.9 & 25.3 & \textbf{18.7} & 8.0 \\
+\midrule
+\multirow{4}{*}{\rotatebox[origin=c]{90}{Intact}} & Easy & 48.2 & 36.9 & 36.3 & \textbf{64.3} & 72.1 \\
+ & Medium & 23.3 & 9.8 & 23.3 & \textbf{39.4} & 58.8 \\
+ & Hard & -- & 0.0 & \textbf{29.4} & 3.8 & 56.3 \\
+\cline{2-7}
+ & \rule{0pt}{2.6ex}Overall & 30.0 & 17.1 & 26.3 & \textbf{42.6} & 61.3 \\
+% rows:figclosebar
+\addplot[close kept] coordinates {(0,78.1) (1,73.3) (2,73.3) (3,85.4)};
+\addplot[close ident] coordinates {(0,88.4) (1,86.4) (2,81.8) (3,93.9)};
+\addplot[close stu] coordinates {(-0.5,92.4) (3.5,92.4)};
+% rows:figclosedist
+\addplot[close dist] coordinates {(0,48.4) (1,48.4) (2,54.5) (3,48.8)};
+% rows:rq2
+\tool{} & 96.5 & 18.7 & 42.6 \\
+\midrule
+\multicolumn{4}{l}{\textit{Design choice removed or replaced}} \\
+\tool{}$-$Hole & 96.1 & 21.8 ($+$16.6\%) & 31.8 ($-$25.5\%) \\
+\tool{}$-$Kept & 96.5 & 20.3 ($+$8.2\%) & 41.1 ($-$3.6\%) \\
+\tool{}$-$Min & 96.5 & 19.8 ($+$5.5\%) & 40.1 ($-$6.0\%) \\
+\tool{}$-$Norm & 96.4 & 18.8 ($+$0.4\%) & 42.5 ($-$0.4\%) \\
+\tool{}$_{\mathit{size}}$ & 96.5 & 18.7 (0.0\%) & 42.6 ($-$0.1\%) \\
+\midrule
+\multicolumn{4}{l}{\textit{Source of holes}} \\
+\tool{}$_{\emptyset}$ & 96.1 & 24.7 ($+$32.1\%) & 29.2 ($-$31.5\%) \\
+\tool{}$_{\mathit{frac}}$ & 96.2 & 23.7 ($+$26.5\%) & 30.1 ($-$29.5\%) \\
+\tool{}$_{\mathit{FL}}$ & 96.2 & 20.9 ($+$11.6\%) & 37.4 ($-$12.4\%) \\
+\tool{}$_{\mathit{rand}}$ & 96.2 & 19.5 ($+$4.1\%) & 40.6 ($-$4.8\%) \\
+% rows:figexpcount
+\addplot[exp count] coordinates {(0,16) (1,23) (2,24) (3,18) (4,17)};
+% rows:figexprate
+\addplot[exp rate] coordinates {(0,62.5) (1,65.2) (2,83.3) (3,88.9) (4,88.2)};
