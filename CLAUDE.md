@@ -51,6 +51,8 @@ edits here; code goes to `dev` in the parent folder. Branch, repository, and art
 ## This project (HISTRA)
 
 - Target: ICSE-SEET 2027 (criteria: Relevance, Significance, Soundness, Verifiability, Presentation; novelty is not one).
+- Macros are cleaned up: the tool name is written as `\textsc{Histra}` (also in `src/summarize.py`'s table labels), and
+  the algorithms' Input/Output lines use `\item[\textbf{Input:}]` instead of a redefined `\Require`.
 - Prior work is grouped as alignment-based (CLARA, Sarfgen, Refactory, MENTORED, Verifix), localization-based (Brafar,
   CEGIS, AdaPatcher, infilling), and knowledge-based (AutoGrader, Refazer, LLMs, REFERENT, PyDex, PaR, LSGen); the
   baselines are one per group: Refactory, Brafar, LSGen (GPT-4o). Orvalho et al.'s tool is CEGIS. Say "technique" and

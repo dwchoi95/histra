@@ -16,12 +16,12 @@ from common import DATA, OUT, rows  # noqa: E402
 
 EXPERT = os.path.join(OUT, "expert", "ratings.csv")
 BASE = [("refactory", "Refactory"), ("brafar", "Brafar"), ("lsgen", "LSGen")]   # one per group of Section II-A
-MAIN = BASE + [("histra", "\\tool{}")]
+MAIN = BASE + [("histra", "\\textsc{Histra}")]
 PRELIM = [("refactory", "Refactory"), ("lsgen", "LSGen")]                     # Fig. 1 (Section II-B)
-ABL = [("histra", "\\tool{}"), ("nostd", "\\tool{}$-$Norm"), ("nohole", "\\tool{}$-$Hole"),
-       ("nokept", "\\tool{}$-$Kept"), ("plain", "\\tool{}$-$Min"), ("sizemin", "\\tool{}$_{\\mathit{size}}$"),
-       ("randhole0", "\\tool{}$_{\\mathit{rand}}$"), ("randfrac", "\\tool{}$_{\\mathit{frac}}$"),
-       ("fl", "\\tool{}$_{\\mathit{FL}}$"), ("nohist", "\\tool{}$_{\\emptyset}$")]
+ABL = [("histra", "\\textsc{Histra}"), ("nostd", "\\textsc{Histra}$-$Norm"), ("nohole", "\\textsc{Histra}$-$Hole"),
+       ("nokept", "\\textsc{Histra}$-$Kept"), ("plain", "\\textsc{Histra}$-$Min"), ("sizemin", "\\textsc{Histra}$_{\\mathit{size}}$"),
+       ("randhole0", "\\textsc{Histra}$_{\\mathit{rand}}$"), ("randfrac", "\\textsc{Histra}$_{\\mathit{frac}}$"),
+       ("fl", "\\textsc{Histra}$_{\\mathit{FL}}$"), ("nohist", "\\textsc{Histra}$_{\\emptyset}$")]
 RAND = ["randhole0", "randhole1", "randhole2"]                  # three draws, averaged
 POINTS = {"p02694": 200, "p02742": 200, "p03324": 200, "p02686": 600}                 # others: 300-point problems
 GROUPS = [("Easy", 200), ("Medium", 300), ("Hard", 600)]
@@ -166,7 +166,7 @@ def abl_rows():
     def cell(x, b):
         r = rel(x, b)
         return f"{x:.1f} (0.0\\%)" if abs(r) < 0.05 else f"{x:.1f} ({r:+.1f}\\%)".replace("-", "$-$").replace("+", "$+$")
-    out = ["% rows:rq2", f"\\tool{{}} & {h[0]:.1f} & {h[1]:.1f} & {h[2]:.1f} \\\\"]
+    out = ["% rows:rq2", f"\\textsc{{Histra}} & {h[0]:.1f} & {h[1]:.1f} & {h[2]:.1f} \\\\"]
     first = [n for n, _ in ABL].index(RAND[0])
     for title, part in (("Design choice removed or replaced", ABL[1:first]), ("Source of holes", ABL[first:])):
         vs = sorted(((l, abl_stats(n)) for n, l in part), key=lambda t: -t[1][1])
