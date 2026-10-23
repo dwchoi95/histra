@@ -3,8 +3,7 @@ from .testcase import TestCase
 
 class TestCases:
     def __init__(self, testcases:list):
-        self.testcases = [TestCase(id=i, **tc) if isinstance(tc, dict) else tc
-                          for i, tc in enumerate(testcases)]
+        self.testcases = [TestCase(**tc) if not isinstance(tc, TestCase) else tc for tc in sorted(testcases, key=lambda x: x['id'] if isinstance(x, dict) else x.id)]
         self.current_index = 0
         
     def __iter__(self):

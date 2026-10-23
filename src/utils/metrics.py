@@ -1,6 +1,16 @@
-import ast
+"""Evaluation metrics. TED = type-label AST tree edit distance (APTED)."""
+import ast, sys
 from apted import APTED, Config
-from .node import Node
+
+sys.setrecursionlimit(100000)
+
+
+class _Node:
+    __slots__ = ("name", "children")
+
+    def __init__(self, name, children):
+        self.name = name
+        self.children = children
 
 
 class _Cfg(Config):
@@ -25,7 +35,7 @@ def _label(n):
 
 
 def _to_node(a):
-    return Node(_label(a), [_to_node(c) for c in ast.iter_child_nodes(a)], a)
+    return _Node(_label(a), [_to_node(c) for c in ast.iter_child_nodes(a)])
 
 
 def ted(code_a, code_b):
@@ -38,30 +48,10 @@ def ted(code_a, code_b):
 
 
 def intent_preservation(buggy, fixed, oracle):
-    """Non-negative intent preservation score in [0, 1].
-
-    The raw score is (TED_s - TED_f) / (TED_s + TED_f), where
-    TED_s = TED(buggy, oracle AC) and TED_f = TED(buggy, fixed). We rescale it
-    from [-1, 1] to [0, 1] so 0.5 means oracle-distance parity, higher means
-    the fix stays closer to the student's buggy program than adopting the AC.
-    None if unparsable.
-    """
+    """(TED_s - TED_f) / (TED_s + TED_f), where TED_s = TED(buggy, oracle AC) and
+    TED_f = TED(buggy, fixed). Higher = the fix stays closer to the student's buggy
+    program than adopting the AC would (more intent-preserving). None if unparsable."""
     ts, tf = ted(buggy, oracle), ted(buggy, fixed)
     if ts is None or tf is None:
         return None
-    raw = (ts - tf) / (ts + tf) if (ts + tf) else 0.0
-    return (raw + 1.0) / 2.0
-
-
-def intent_preservation_trajectory(buggys, fixed, oracle):
-    """Average intent preservation over all wrong attempts in a trajectory.
-
-    This uses the same per-attempt score as ``intent_preservation`` and averages
-    over parseable wrong-answer attempts. None if no attempt can be scored.
-    """
-    vals = []
-    for buggy in buggys or []:
-        score = intent_preservation(buggy, fixed, oracle)
-        if score is not None:
-            vals.append(score)
-    return (sum(vals) / len(vals)) if vals else None
+    return (ts - tf) / (ts + tf) if (ts + tf) else 0.0

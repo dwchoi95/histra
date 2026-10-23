@@ -1,18 +1,21 @@
-import csv, json, os, re
+import ast, csv, json, os, re
 from collections import defaultdict
 from tqdm import tqdm
+import warnings
+warnings.filterwarnings("ignore")
+
 
 class DatasetBuilder:
     AC = "Accepted"
     WA = "Wrong Answer"
-    MIN_TRAJ = 2 # keep problems with >=2 qualifying trajectories
+    MIN_TRAJ = 100 # keep only problems with >= 100 qualifying trajectories
 
     CN = "/Users/cdw/VSCode/aria/data/Project_CodeNet"
     META = os.path.join(CN, "metadata")
     TESTS = os.path.join(CN, "test_cases")
     PLIST = os.path.join(META, "problem_list.csv")
     BENCH = os.path.join(CN, "derived", "benchmarks", "Project_CodeNet_Python800")
-    OUT_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+    OUT_ROOT = "data"
 
     _CONTEST = re.compile(r"AtCoder (Beginner|Regular|Grand) Contest (\d+)")
     _TYPE = {"Beginner": "ABC", "Regular": "ARC", "Grand": "AGC"}
@@ -32,6 +35,26 @@ class DatasetBuilder:
     # ----------------------------------------------------------- problem selection
     def benchmark_pids(self):
         return {d for d in os.listdir(self.BENCH) if d.startswith("p")}
+
+    def benchmark_sids(self, pid):
+        """Submission ids sampled into Python800 for this problem (all Accepted)."""
+        d = os.path.join(self.BENCH, pid)
+        if not os.path.isdir(d):
+            return set()
+        return {os.path.splitext(f)[0] for f in os.listdir(d) if f.endswith(".py")}
+
+    def problem_limits(self):
+        """pid -> {'time_limit_ms', 'memory_limit_kb'} from problem_list.csv (cols time_limit/memory_limit)."""
+        out = {}
+        with open(self.PLIST, encoding="utf-8", errors="replace") as f:
+            r = csv.reader(f); next(r, None)
+            for row in r:
+                if len(row) >= 5 and row[0].startswith("p"):
+                    try:
+                        out[row[0]] = {"time_limit_ms": int(row[3]), "memory_limit_kb": int(row[4])}
+                    except ValueError:
+                        pass
+        return out
 
     def atcoder_problems(self):
         """AtCoder problems that are also in the Python800 benchmark."""
@@ -136,10 +159,20 @@ class DatasetBuilder:
         with open(path, encoding="utf-8", errors="replace") as f:
             return f.read()
 
+    @staticmethod
+    def _parses(code):
+        """True iff the source is valid Python 3 (filters Python-2 / broken submissions)."""
+        try:
+            ast.parse(code)
+            return True
+        except (SyntaxError, ValueError):
+            return False
+
     # ----------------------------------------------------------- build
     def build(self):
         rows = self.atcoder_problems()
         pid_code, pid_letter = self.contest_letter_map(rows)
+        limits = self.problem_limits()
         built = []
         for pid, name in tqdm(rows, desc="building", unit="prob"):
             code, letter = pid_code.get(pid), pid_letter.get(pid)
@@ -148,17 +181,28 @@ class DatasetBuilder:
             td = self.resolve_testdir(code, letter)
             if not td:
                 continue
+            pairs = self.test_pairs(td)
+            if not pairs:                       # a problem with no tests is unusable
+                continue
+            bench_sids = self.benchmark_sids(pid)   # Python800 ACs for this problem
+            # keep parseable trajectories (final AC in Python800; drop unparsable / all-WA-identical)
             recs = []
             for uid, traj in self.qualifying(pid):
+                if traj[-1][0] not in bench_sids:   # last submission = AC; require it in Python800
+                    continue
                 subs, ok = [], True
                 for sid, ts, verdict in traj:
                     c = self.src(pid, sid)
-                    if c is None:
+                    if c is None or not self._parses(c):   # drop traj if any submission unreadable/unparsable
                         ok = False
                         break
                     subs.append({"sid": sid, "ts": ts, "verdict": verdict, "code": c})
-                if ok:
-                    recs.append({"problem_id": pid, "user_id": uid, "submissions": subs})
+                if not ok:
+                    continue
+                wa_codes = [s["code"] for s in subs if s["verdict"] == self.WA]
+                if len(set(wa_codes)) <= 1:   # all WA identical -> no real revision, skip traj
+                    continue
+                recs.append({"problem_id": pid, "user_id": uid, "submissions": subs})
             if len(recs) < self.MIN_TRAJ:
                 continue
             pdir = os.path.join(self.OUT_ROOT, pid)
@@ -166,18 +210,21 @@ class DatasetBuilder:
             with open(os.path.join(pdir, "trajectories.jsonl"), "w", encoding="utf-8") as f:
                 for r in recs:
                     f.write(json.dumps(r, ensure_ascii=False) + "\n")
-            pairs = self.test_pairs(td)
             with open(os.path.join(pdir, "tests.jsonl"), "w", encoding="utf-8") as f:
                 for inp, outp in pairs:
                     f.write(json.dumps({"input": self._read(inp), "output": self._read(outp)},
                                        ensure_ascii=False) + "\n")
             with open(os.path.join(pdir, "problem.html"), "w", encoding="utf-8") as f:
                 f.write(self.problem_html(pid))
+            if pid in limits:
+                with open(os.path.join(pdir, "meta.json"), "w", encoding="utf-8") as f:
+                    json.dump(limits[pid], f)
             built.append({"n_traj": len(recs),
                           "n_subs": sum(len(r["submissions"]) for r in recs)})
         self._write_readme(built)
         n_traj = sum(b["n_traj"] for b in built)
-        print(f"{len(built)} problems, {n_traj} trajectories SAVED.")
+        n_subs = sum(b["n_subs"] for b in built)
+        print(f"{len(built)} problems, {n_traj} trajectories, {n_subs} submissions SAVED.")
 
     def _write_readme(self, built):
         n_traj = sum(b["n_traj"] for b in built)
@@ -196,6 +243,12 @@ class DatasetBuilder:
             "- Verdicts: AC (Accepted) / WA (Wrong Answer);",
             "- Trajectory: {AC, WA} submissions up to the first AC, with >=2 WA before it "
             "(length >=3); last = AC (oracle), last WA = buggy",
+            "- Parsability: every submission in a trajectory must parse with ast.parse "
+            "(Python 3); trajectories with any unparsable submission are dropped",
+            "- Benchmark AC: the trajectory's final AC (oracle) must be one of the Python800 "
+            "sampled submissions for that problem (caps trajectories per problem at the sample size)",
+            "- Non-trivial revision: trajectories whose WA submissions are ALL byte-identical "
+            "(no real revision before the AC) are dropped",
             f"- Problems kept: >= {self.MIN_TRAJ} trajectories",
             "",
             "## Layout",

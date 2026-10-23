@@ -1,50 +1,53 @@
-from __future__ import annotations
-
 import ast
+import copy
 
 
 class Reformatter(ast.NodeTransformer):
-    def __init__(self, replace_map: dict[int, str]):
+    """Reformat sketched anchor std_ast back onto original surface, preserving holes."""
+
+    def __init__(self, replace_map: dict[int, tuple[str, bool]]):
+        """replace_map: id(origin_node_in_anchor_org) -> (hole_id, is_stmt)."""
         self.replace_map = replace_map or {}
 
     def visit(self, node: ast.AST):
-        hole_type = self.replace_map.get(id(node))
-        if hole_type is not None:
-            node._hole = True
-            node._hole_type = hole_type
-            return node
+        if isinstance(node, (ast.expr, ast.stmt)):
+            info = self.replace_map.get(id(node))
+            if info is not None:
+                hid, is_stmt = info
+                if is_stmt:
+                    return ast.copy_location(ast.Expr(value=ast.Name(id=hid, ctx=ast.Load())), node)
+                else:
+                    return ast.copy_location(ast.Name(id=hid, ctx=ast.Load()), node)
         return super().visit(node)
 
     @classmethod
     def is_hole(cls, node):
-        return getattr(node, "_hole_type", None) if getattr(node, "_hole", False) else None
+        # stmt-hole: Expr(Name('__HOLE_k__')) ; expr-hole: Name('__HOLE_k__')
+        if isinstance(node, ast.Expr) and isinstance(node.value, ast.Name) and node.value.id.startswith("__HOLE_"):
+            return True, node.value.id, True
+        if isinstance(node, ast.Name) and node.id.startswith("__HOLE_"):
+            return True, node.id, False
+        return False, None, False
 
     @classmethod
     def walk(cls, an, sn):
-        pairs = {}
-        cls._walk(an, sn, pairs)
-        return pairs
-
-    @classmethod
-    def _walk(cls, an, sn, pairs):
+        pairs = []  # (origin_node_in_anchor_org, hole_id, is_stmt)
         if not isinstance(an, ast.AST) or not isinstance(sn, ast.AST):
-            return
-
-        hole = cls.is_hole(sn)
+            return pairs
+        hole, hid, is_stmt = cls.is_hole(sn)
         if hole:
-            origin = getattr(sn, "_origin", None) or getattr(an, "_origin", None)
-            if isinstance(origin, ast.expr):
-                pairs[id(origin)] = hole
-            return
-
-        for (name1, value1), (name2, value2) in zip(ast.iter_fields(an), ast.iter_fields(sn)):
-            if name1 != name2:
-                continue
-            if isinstance(value1, ast.AST) and isinstance(value2, ast.AST):
-                cls._walk(value1, value2, pairs)
-            elif isinstance(value1, list) and isinstance(value2, list):
-                for item1, item2 in zip(value1, value2):
-                    cls._walk(item1, item2, pairs)
+            origin = getattr(an, "_origin", None)
+            if isinstance(origin, (ast.expr, ast.stmt)) and isinstance(hid, str):
+                pairs.append((origin, hid, is_stmt))
+            return pairs
+        # recurse through fields
+        for (f1, v1), (_, v2) in zip(ast.iter_fields(an), ast.iter_fields(sn)):
+            if isinstance(v1, ast.AST) and isinstance(v2, ast.AST):
+                pairs.extend(cls.walk(v1, v2))
+            elif isinstance(v1, list) and isinstance(v2, list):
+                for a_item, s_item in zip(v1, v2):
+                    pairs.extend(cls.walk(a_item, s_item))
+        return pairs
 
     @classmethod
     def run(cls, anchor, sketched_std):
@@ -53,9 +56,11 @@ class Reformatter(ast.NodeTransformer):
         # Walk anchor_std and sketched in parallel to locate which anchor_std nodes were holed
         pairs = cls.walk(anchor_std, sketched_std)
         if not pairs:
-            return anchor_org
+            return ast.unparse(anchor_org)
 
         # Work on original object: ids in replace_map refer to anchor_org nodes.
-        new_org = cls(pairs).visit(anchor_org)
+        replace_map = {id(origin): (hid, is_stmt) for origin, hid, is_stmt in pairs}
+        new_org = cls(replace_map).visit(anchor_org)
         ast.fix_missing_locations(new_org)
-        return new_org
+        return ast.unparse(new_org)
+        
