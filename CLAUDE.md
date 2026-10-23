@@ -75,8 +75,10 @@ python src/experiments/measure.py output/approaches/refactory.jsonl ...  # (re)a
   load-sensitive rows on an idle machine), `run_lsgen.py {prep|run|recheck}` (GPT-4o; `OPENAI_API_KEY`, `CODENET`).
 - RQ4: `output/expert/ratings.csv` (both raters + adjudicated). The rating kit (pages, key, protocol) stays local in
   `results/expert_eval/`; `expert_kit.py` is in the Jul–Oct snapshot commit (`src/analysis/prelim/`).
-- Long runs: `nohup caffeinate -is sh <script> &`; all heavy experiments run on SuperServer (`~/histra-mentored`, which
-  still has the pre-cleanup layout). Never run other CPU-heavy work alongside a run that validates tests.
+- Long runs: `nohup caffeinate -is sh <script> &`. Heavy experiments ran on SuperServer; its histra folders were deleted
+  on 2026-10-23 after their results, run logs, LSGen caches, and baseline sources were copied (MD5-verified) to the
+  local `results/superserver/{histra,histra-mentored}/`. MENTORED's final run: `histra-mentored/results/eval/mentored.jsonl`
+  (713/1764 fixed; not reported in the paper). Never run other CPU-heavy work alongside a run that validates tests.
 
 ## Gotchas
 
