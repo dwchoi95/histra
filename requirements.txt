@@ -1,1 +1,2 @@
 apted==1.0.3
+numpy==2.4.6  # imported by some benchmark programs that the patches are validated with
