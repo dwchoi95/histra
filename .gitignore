@@ -1,0 +1,14 @@
+# unpacked archives and generated outputs
+data/
+output/
+src/experiments/baselines/*/upstream/
+__pycache__/
+# local files that are not part of the artifact
+/results/
+/tests/
+/baselines/
+/test.ipynb
+/CLAUDE.md
+.env
+.venv/
+.DS_Store
